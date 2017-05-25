@@ -1,0 +1,77 @@
+{
+  "name": "ngx-echarts-base",
+  "version": "1.2.0",
+  "license": "MIT",
+  "scripts": {
+    "link": "ngm link -p src --here",
+    "build": "ngm build -p src --clean",
+    "lite-server": "lite-server -c demo/server.config.js",
+    "demo:build": "ng build --prod",
+    "demo": "run-s build link demo:build lite-server"
+  },
+  "private": true,
+  "description": "Angular directive for ECharts v3.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xieziyu/ngx-echarts.git"
+  },
+  "keywords": [
+    "angular",
+    "2",
+    "4",
+    "echarts",
+    "ng",
+    "ng2"
+  ],
+  "bugs": {
+    "url": "https://github.com/xieziyu/ngx-echarts/issues",
+    "email": "xieziyu@foxmail.com"
+  },
+  "homepage": "https://github.com/xieziyu/ngx-echarts#readme",
+  "author": "Xie, Ziyu",
+  "main": "bundles/ngx-echarts.umd.js",
+  "peerDependencies": {
+    "@angular/common": "^2.3.1 || >=4.0.0",
+    "@angular/compiler": "^2.3.1 || >=4.0.0",
+    "@angular/core": "^2.3.1 || >=4.0.0",
+    "echarts": ">=3.1.1"
+  },
+  "dependencies": { },
+  "devDependencies": {
+    "@angular/cli": "1.0.3",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/compiler-cli": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
+    "codelyzer": "~2.0.0",
+    "core-js": "^2.4.1",
+    "echarts": "^3.5.4",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~3.2.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.1.1",
+    "karma-cli": "~1.0.1",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "lite-server": "^2.3.0",
+    "ng-prism": "^2.3.4",
+    "ngm-cli": "^0.5.0",
+    "ngx-bootstrap": "^1.6.6",
+    "npm-run-all": "^4.0.2",
+    "prismjs": "^1.6.0",
+    "protractor": "~5.1.0",
+    "rxjs": "^5.1.0",
+    "ts-node": "~2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "~2.2.0",
+    "zone.js": "^0.8.4"
+  }
+}
