@@ -36,7 +36,7 @@ npm install ngx-echarts --save
     // ...
 
     // add this:
-    "../node_modules/echarts/dist/echarts.js"
+    "../node_modules/echarts/dist/echarts.min.js"  // or echarts.js for debug purpose
   ],
 }
 ```
@@ -68,7 +68,7 @@ new webpack.ProvidePlugin({
     // ngx-echarts
     echarts: {
       defaultExtension: 'js',
-      main: 'dist/echarts.js',
+      main: 'dist/echarts.min.js',
       meta: {
         './*.js': {
           format: 'global', // load this module as a global

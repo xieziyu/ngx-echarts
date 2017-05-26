@@ -22,7 +22,7 @@
       ],
       "scripts": [
         "../../node_modules/prismjs/prism.js",
-        "../../node_modules/echarts/dist/echarts.js",
+        "../../node_modules/echarts/dist/echarts.min.js",
         "../theme/dark.js"
       ],
       "environmentSource": "environments/environment.ts",
