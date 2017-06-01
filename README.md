@@ -14,6 +14,8 @@ Angular directive for echarts v3. Please refer to the [demo](https://xieziyu.git
 ngx-echarts is an angular (ver >= 2.x) directive for ECharts v3.
 
 # Latest Update
++ 2017.06.01: Support `chartContextMenu` emitter for `contextmenu` event.
+
 + 2017.05.18: Publish `UMD` bundle
 
 + 2017.05.10: Support `theme`.
@@ -263,6 +265,7 @@ It supports following event outputs:
 + `chartMouseOver`: It emits the same `params` of `'mouseover'` event
 + `chartMouseOut`: It emits the same `params` of `'mouseout'` event
 + `chartGlobalOut`: It emits the same `params` of `'globalout'` event
++ `chartContextMenu`: It emits the same `params` of `'contextmenu'` event (since v1.2.1)
 + `chartDataZoom`: It emits the same `params` of `'dataZoom'` event (thanks to averhaegen)
 
 You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.

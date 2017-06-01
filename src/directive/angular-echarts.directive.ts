@@ -20,6 +20,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
   @Output() chartMouseOver: EventEmitter<any> = new EventEmitter<any>();
   @Output() chartMouseOut: EventEmitter<any> = new EventEmitter<any>();
   @Output() chartGlobalOut: EventEmitter<any> = new EventEmitter<any>();
+  @Output() chartContextMenu: EventEmitter<any> = new EventEmitter<any>();
   @Output() chartDataZoom: EventEmitter<any> = new EventEmitter<any>();
 
   private myChart: any = null;
@@ -153,6 +154,9 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       myChart.on('mouseover', (e: any) => { this.chartMouseOver.emit(e); });
       myChart.on('mouseout', (e: any) => { this.chartMouseOut.emit(e); });
       myChart.on('globalout', (e: any) => { this.chartGlobalOut.emit(e); });
+      myChart.on('contextmenu', (e: any) => { this.chartContextMenu.emit(e); });
+      
+      // other events;
       myChart.on('dataZoom', (e: any) => { this.chartDataZoom.emit(e); });
     }
   }

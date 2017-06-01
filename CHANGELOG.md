@@ -1,3 +1,9 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/xieziyu/ngx-echarts/compare/v1.2.0...v1.2.1) (2017-06-01)
+
+### New
++ Support `chartContextMenu` emitter for `contextmenu` event
+
 <a name="1.2.0"></a>
 ## [1.2.0](https://github.com/xieziyu/angular2-echarts/compare/v1.1.7...v1.2.0) (2017-05-18)
 
