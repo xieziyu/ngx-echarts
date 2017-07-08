@@ -1,3 +1,9 @@
+<a name="1.2.2"></a>
+## [1.2.1](https://github.com/xieziyu/ngx-echarts/compare/v1.2.1...v1.2.2) (2017-07-08)
+
+### New
++ Support `rollup` ([PR #12](https://github.com/xieziyu/ngx-echarts/pull/12) by [ysfjwd](https://github.com/ysfjwd))
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/xieziyu/ngx-echarts/compare/v1.2.0...v1.2.1) (2017-06-01)
 
