@@ -30,6 +30,8 @@
   "homepage": "https://github.com/xieziyu/ngx-echarts#readme",
   "author": "Xie, Ziyu",
   "main": "bundles/ngx-echarts.umd.js",
+  "module": "index.js",
+  "typings": "index.d.ts",
   "peerDependencies": {
     "@angular/common": "^2.3.1 || >=4.0.0",
     "@angular/compiler": "^2.3.1 || >=4.0.0",
