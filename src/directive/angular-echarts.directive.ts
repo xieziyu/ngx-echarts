@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer, Input, Output, HostListener, OnChanges, OnDestroy, SimpleChange, EventEmitter } from '@angular/core';
+import { Directive, ElementRef, Renderer, Input, Output, HostListener, OnChanges, OnDestroy, SimpleChange, EventEmitter, NgZone } from '@angular/core';
 
 declare var echarts: any;
 
@@ -26,7 +26,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
   private myChart: any = null;
   private currentWindowWidth: any = null;
 
-  constructor(private el: ElementRef, private renderer: Renderer) {
+  constructor(private el: ElementRef, private renderer: Renderer, private _ngZone: NgZone) {
   }
 
   private createChart() {
@@ -34,9 +34,9 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
     this.currentWindowWidth = window.innerWidth;
 
     if (this.theme) {
-      return echarts.init(this.el.nativeElement, this.theme);
+      return this._ngZone.runOutsideAngular(() => {return echarts.init(this.el.nativeElement, this.theme)});
     } else {
-      return echarts.init(this.el.nativeElement);
+      return this._ngZone.runOutsideAngular(() => {return echarts.init(this.el.nativeElement)});
     }
   }
 
