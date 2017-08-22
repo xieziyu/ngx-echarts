@@ -30,6 +30,9 @@ export class AppComponent {
   // demo6:
   chartInstance = null;
 
+  // demo8:
+  timelineOption = demo.TimelineChartOptions;
+
   chageDataset() {
     this.dataset = (this.dataset == demo.BarChartDataset2) ? demo.BarChartDataset1 :  demo.BarChartDataset2;
   }

@@ -3,7 +3,8 @@
 </h1>
 <hr>
 <div class="row">
-  <div class="col-md-6">
+  <div class="col"></div>
+  <div class="col">
     <div class="well">
       <ul>
         <li>
@@ -25,11 +26,15 @@
           <a href="#demo6">Demo 6: Expose the "echartsInstance"</a>
         </li>
         <li>
-          <a href="#demo6">Demo 7: Use "theme" to init echarts</a>
+          <a href="#demo7">Demo 7: Use "theme" to init echarts</a>
+        </li>
+        <li>
+          <a href="#demo8">Demo 8: Support "timeline" chart</a>
         </li>
       </ul>
     </div>
   </div>
+  <div class="col"></div>
 </div>
 <div class="row">
   <div class="col-md-6">
@@ -288,12 +293,38 @@ hideLoadingByInstance() {{'{'}}
         <tabset>
           <tab heading='html'>
             <codeblock language="html" theme="okaidia">
-              &lt;div echarts theme="shine" [options]="chartOption5" [dataset]="dataset" class="demo-chart">&lt;/div>
+              &lt;div echarts theme="dark" [options]="chartOption5" [dataset]="dataset" class="demo-chart">&lt;/div>
             </codeblock>
           </tab>
           <tab heading='chartOption5'>
             <codeblock language="javascript" theme="okaidia">
               chartOption5 = {{chartOption5 | json}};
+            </codeblock>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div id="demo8" class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Demo 8: Support "timeline" chart</h3>
+      </div>
+      <div class="panel-body">
+        <div echarts [options]="timelineOption" [dataset]="dataset" class="demo-chart"></div>
+        <hr>
+        <tabset>
+          <tab heading='html'>
+            <codeblock language="html" theme="okaidia">
+              &lt;div echarts [options]="timelineOption" [dataset]="dataset" class="demo-chart">&lt;/div>
+            </codeblock>
+          </tab>
+          <tab heading='timelineOption'>
+            <codeblock language="javascript" theme="okaidia">
+              timelineOption = {{timelineOption | json}};
             </codeblock>
           </tab>
         </tabset>

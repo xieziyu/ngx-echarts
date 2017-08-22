@@ -1,14 +1,16 @@
-import { Directive, ElementRef, Renderer, Input, Output, HostListener, OnChanges, OnDestroy, SimpleChange, EventEmitter, NgZone } from '@angular/core';
+import { Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter } from '@angular/core';
+import { OnChanges, OnDestroy, SimpleChange, NgZone } from '@angular/core';
 
 declare var echarts: any;
 
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[echarts]'
 })
 export class AngularEchartsDirective implements OnChanges, OnDestroy {
   @Input() options: any;
   @Input() dataset: any[];
-  @Input() theme: string = '';
+  @Input() theme = '';
   @Input() loading: boolean;
 
   // chart events:
@@ -58,7 +60,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
     if (changes['dataset']) {
       this.onDatasetChange(this.dataset);
     }
-    
+
     if (changes['options']) {
       this.onOptionsChange(this.options);
     }
@@ -101,7 +103,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       if (!this.options.series) {
         this.options.series = [];
       }
-      
+
       this.mergeDataset(dataset);
       this.updateChart();
     }
@@ -131,6 +133,25 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
    * method to check if the option has dataset.
    */
   private hasData(): boolean {
+    // fix for timeline chart:
+    if (this.options.baseOption && this.options.baseOption.timeline) {
+      const options = this.options.options;
+
+      if (options.length) {
+        for (let o of options) {
+          if (o.series) {
+            for (let serie of o.series) {
+              if (serie.data && serie.data.length > 0) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+
+      return false;
+    }
+
     if (!this.options.series || !this.options.series.length) {
       return false;
     }
