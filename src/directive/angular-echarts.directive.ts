@@ -181,4 +181,10 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       myChart.on('dataZoom', (e: any) => { this.chartDataZoom.emit(e); });
     }
   }
+
+  public clear()  {
+    if (this.myChart) {
+      this.myChart.clear();
+    }
+  }
 }
