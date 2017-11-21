@@ -49,7 +49,6 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
 
   private resetChart() {
     this.myChart.setOption({}, true);
-    this.myChart.resize();
   }
 
   @HostListener('window:resize', ['$event']) onWindowResize(event: any) {
@@ -99,7 +98,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       } else if (this.dataset && this.dataset.length) {
         this.mergeDataset(this.dataset);
         this.updateChart();
-      } else {
+      } else if (JSON.stringify(opt) === '{}' && !this.dataset) {
         this.resetChart();
       }
     }
