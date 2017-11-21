@@ -47,6 +47,10 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
     this.myChart.resize();
   }
 
+  private resetChart() {
+    this.myChart.setOption({}, true);
+  }
+
   @HostListener('window:resize', ['$event']) onWindowResize(event: any) {
     if (event.target.innerWidth !== this.currentWindowWidth) {
       this.currentWindowWidth = event.target.innerWidth;
@@ -94,6 +98,8 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       } else if (this.dataset && this.dataset.length) {
         this.mergeDataset(this.dataset);
         this.updateChart();
+      } else if (JSON.stringify(opt) === '{}' && !this.dataset) {
+        this.resetChart();
       }
     }
   }
@@ -176,7 +182,7 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
       myChart.on('mouseout', (e: any) => { this.chartMouseOut.emit(e); });
       myChart.on('globalout', (e: any) => { this.chartGlobalOut.emit(e); });
       myChart.on('contextmenu', (e: any) => { this.chartContextMenu.emit(e); });
-      
+
       // other events;
       myChart.on('dataZoom', (e: any) => { this.chartDataZoom.emit(e); });
     }
