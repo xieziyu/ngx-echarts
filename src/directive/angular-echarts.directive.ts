@@ -36,14 +36,14 @@ export class AngularEchartsDirective implements OnChanges, OnDestroy {
     this.currentWindowWidth = window.innerWidth;
 
     if (this.theme) {
-      return this._ngZone.runOutsideAngular(() => {return echarts.init(this.el.nativeElement, this.theme)});
+      return this._ngZone.runOutsideAngular(() => { return echarts.init(this.el.nativeElement, this.theme); });
     } else {
-      return this._ngZone.runOutsideAngular(() => {return echarts.init(this.el.nativeElement)});
+      return this._ngZone.runOutsideAngular(() => { return echarts.init(this.el.nativeElement); });
     }
   }
 
   private updateChart() {
-    this.myChart.setOption(this.options);
+    this.myChart.setOption(this.options, true);
     this.myChart.resize();
   }
 

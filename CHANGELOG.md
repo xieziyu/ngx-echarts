@@ -1,3 +1,10 @@
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/xieziyu/ngx-echarts/compare/v1.2.4...v1.2.5) (2017-11-21)
+
+### Changes
++ Clear chart by setting options to {}. ([PR #42](https://github.com/xieziyu/ngx-echarts/pull/42) by [Jack-Valentine](https://github.com/Jack-Valentine))
++ Provide `clear()` method for directive. ([PR #29](https://github.com/xieziyu/ngx-echarts/pull/29) by [berichte](https://github.com/berichte))
+
 <a name="1.2.4"></a>
 ## [1.2.4](https://github.com/xieziyu/ngx-echarts/compare/v1.2.3...v1.2.4) (2017-08-22)
 

@@ -14,6 +14,8 @@ Angular directive for echarts v3. Please refer to the [demo](https://xieziyu.git
 ngx-echarts is an angular (ver >= 2.x) directive for ECharts v3.
 
 # Latest Update
++ 2017.11.21: Clear chart by setting options to {}. ([PR #42](https://github.com/xieziyu/ngx-echarts/pull/42) by [Jack-Valentine](https://github.com/Jack-Valentine))
+
 + 2017.08.22: Bugfix: support chart with `timeline` options.
 
 + 2017.07.21: Reduced CPU usage. ([PR #16](https://github.com/xieziyu/ngx-echarts/pull/16) by [RozennK](https://github.com/RozennK))

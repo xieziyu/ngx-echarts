@@ -25,16 +25,19 @@ export class AppComponent {
 
   // demo5:
   chartOption5: any = demo.BarChartOptions1();
-  revert: boolean = false;
+  revert = false;
 
   // demo6:
   chartInstance = null;
 
   // demo8:
+  chartOption8: any = demo.BubbleChartOptions;
+
+  // demo9:
   timelineOption = demo.TimelineChartOptions;
 
   chageDataset() {
-    this.dataset = (this.dataset == demo.BarChartDataset2) ? demo.BarChartDataset1 :  demo.BarChartDataset2;
+    this.dataset = (this.dataset === demo.BarChartDataset2) ? demo.BarChartDataset1 : demo.BarChartDataset2;
   }
 
   toggleLoading() {
@@ -86,5 +89,9 @@ export class AppComponent {
     if (this.chartInstance) {
       this.chartInstance.hideLoading();
     }
+  }
+
+  resetChart8() {
+    this.chartOption8 = demo.BubbleChartOptions;
   }
 }

@@ -29,7 +29,10 @@
           <a href="#demo7">Demo 7: Use "theme" to init echarts</a>
         </li>
         <li>
-          <a href="#demo8">Demo 8: Support "timeline" chart</a>
+          <a href="#demo8">Demo 8: Clear chart</a>
+        </li>
+        <li>
+          <a href="#demo9">Demo 9: Support "timeline" chart</a>
         </li>
       </ul>
     </div>
@@ -305,13 +308,42 @@ hideLoadingByInstance() {{'{'}}
       </div>
     </div>
   </div>
+
+  <div class="col-md-6">
+    <div id="demo8" class="panel panel-info">
+      <div class="panel-heading">
+        <h3 class="panel-title">Demo 8: Clear chart</h3>
+      </div>
+      <div class="panel-body">
+        <button class="btn btn-primary" (click)="chartOption8 = {}">set options to {{'{}'}}</button>
+        <button class="btn btn-primary" (click)="resetChart8()">reset chart</button>
+        <hr>
+        <div #MyChart echarts [options]="chartOption8" class="demo-chart"></div>
+        <hr>
+        <tabset>
+          <tab heading='html'>
+            <codeblock language="html" theme="okaidia">
+              &lt;button class="btn btn-primary" (click)="chartOption8 = {{'{}'}}">set options to {{'{}'}}&lt;/button>
+              &lt;hr>
+              &lt;div #MyChart echarts [options]="chartOption8" class="demo-chart">&lt;/div>
+            </codeblock>
+          </tab>
+          <tab heading='chartOption8'>
+            <codeblock language="javascript" theme="okaidia">
+              chartOption8 = {{chartOption8 | json}};
+            </codeblock>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
-    <div id="demo8" class="panel panel-info">
+    <div id="demo9" class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">Demo 8: Support "timeline" chart</h3>
+        <h3 class="panel-title">Demo 9: Support "timeline" chart</h3>
       </div>
       <div class="panel-body">
         <div echarts [options]="timelineOption" [dataset]="dataset" class="demo-chart"></div>
