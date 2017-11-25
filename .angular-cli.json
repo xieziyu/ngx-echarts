@@ -1,11 +1,12 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "name": "ngx-echarts"
+    "name": "ngx-echarts-demo"
   },
   "apps": [
     {
-      "root": "demo/src",
-      "outDir": "demo/dist",
+      "root": "src",
+      "outDir": "dist/docs",
       "assets": [
         "assets",
         "favicon.ico"
@@ -18,12 +19,14 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "scss/styles.scss",
+        "prism-darcula.css",
+        "../node_modules/font-awesome/css/font-awesome.css"
       ],
       "scripts": [
-        "../../node_modules/prismjs/prism.js",
-        "../../node_modules/echarts/dist/echarts.min.js",
-        "../theme/dark.js"
+        "../node_modules/echarts/dist/echarts.min.js",
+        "theme/dark.js",
+        "theme/macarons.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
@@ -37,6 +40,20 @@
       "config": "./protractor.conf.js"
     }
   },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
   "test": {
     "karma": {
       "config": "./karma.conf.js"
@@ -44,6 +61,11 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+      "spec": false
+    },
+    "service": {
+      "spec": false
+    }
   }
 }

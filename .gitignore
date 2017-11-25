@@ -1,41 +1,43 @@
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
 /node_modules
 /bower_components
 yarn.lock
 
 # IDEs and editors
 /.idea
-/.vscode
 .project
 .classpath
 *.launch
 .settings/
 
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
 # misc
 /.sass-cache
 /connect.lock
-/coverage/*
+/coverage
 /libpeerconnection.log
 npm-debug.log
+yarn-error.log
 
 # ignore build and dist for now
-/dist
-/temp
-/demo/dist
-/demo/temp
-/demo/node_modules
-/demo/.vscode
-/logs
+.ng_build
+.ng_pkg_build
+documentation
 
 #System Files
 .DS_Store
 Thumbs.db
-
-
-/demo/e2e/*.js
-/demo/e2e/*.map
-src/**/*.js
-src/**/*.map
-scripts/**/*.js
-scripts/**/*.map
