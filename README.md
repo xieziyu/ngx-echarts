@@ -1,5 +1,10 @@
-# ngx-echarts [![npm version](https://badge.fury.io/js/ngx-echarts.svg)](http://badge.fury.io/js/ngx-echarts) [![npm downloads](https://img.shields.io/npm/dm/ngx-echarts.svg)](https://npmjs.org/ngx-echarts)
-Angular directive for echarts v3. Please refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page. (The project is renamed from **angular2-echarts**)
+# ngx-echarts
+[![npm version](https://badge.fury.io/js/ngx-echarts.svg)](http://badge.fury.io/js/ngx-echarts) [![npm downloads](https://img.shields.io/npm/dm/ngx-echarts.svg)](https://npmjs.org/ngx-echarts)
+
+Angular directive for echarts v3. (The project is renamed from **angular2-echarts**)
+
++ [Online Demo](https://xieziyu.github.io/ngx-echarts)
++ [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
 
 ## Table of contents 
 1. [Getting Started](#getting-started)
@@ -11,33 +16,23 @@ Angular directive for echarts v3. Please refer to the [demo](https://xieziyu.git
 7. [Demo](#demo)
 
 # Getting Started
-ngx-echarts is an angular (ver >= 2.x) directive for ECharts v3.
+`ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts 3.
 
 # Latest Update
-+ 2017.11.21: Clear chart by setting options to {}. ([PR #42](https://github.com/xieziyu/ngx-echarts/pull/42) by [Jack-Valentine](https://github.com/Jack-Valentine))
-
-+ 2017.08.22: Bugfix: support chart with `timeline` options.
-
-+ 2017.07.21: Reduced CPU usage. ([PR #16](https://github.com/xieziyu/ngx-echarts/pull/16) by [RozennK](https://github.com/RozennK))
-
-+ 2017.07.08: Support `rollup`. ([PR #12](https://github.com/xieziyu/ngx-echarts/pull/12) by [ysfjwd](https://github.com/ysfjwd))
-
-+ 2017.06.01: Support `chartContextMenu` emitter for `contextmenu` event.
-
-+ 2017.05.18: Publish `UMD` bundle
-
-+ 2017.05.10: Support `theme`.
-
-+ 2017.05.02: Expose `echartsInstance` in `chartInit` event. So we can directly call the API provided by echarts instance. Refer to: [http://echarts.baidu.com/api.html#echartsInstance](http://echarts.baidu.com/api.html#echartsInstance)
++ 2017.11.25: v2.0.0-beta.0. It has some [BREAKING CHANGES](https://xieziyu.github.io/ngx-echarts/changelogs) you should know.
 
 # Installation
-```
+```bash
+# if you use npm
 npm install echarts --save
-
 npm install ngx-echarts --save
+
+# or if you use yarn
+yarn add echarts
+yarn add ngx-echarts
 ```
 
-## How to use it with:
+## How to use it within:
 + `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of .angular-cli.json just like:
 
 ```javascript
@@ -99,30 +94,24 @@ new webpack.ProvidePlugin({
 }
 ```
 
-+ `index.html`: If you don't use any module resovler, you need to add script tag in **"index.html"** just like:
-
-```html
-<script type='text/javascript' src='vendor/path/echarts/dist/echarts.js'></script>
-```
-
 # Usage
-Please refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page.
+Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
-1. Firstly, import `AngularEchartsModule` in your app module (or any other proper angular module):
+1. Firstly, import `NgxEchartsModule` in your app module (or any other proper angular module):
     ```typescript
-    import { AngularEchartsModule } from 'ngx-echarts';
+    import { NgxEchartsModule } from 'ngx-echarts';
 
     @NgModule({
       imports: [
         ...,
-        AngularEchartsModule
+        NgxEchartsModule
       ],
       ...
     })
     export class AppModule { }
     ```
 
-2. Then: use `echarts` directive in a div which has **pre-defined height**.
+2. Then: use `echarts` directive in a div which has **pre-defined height**. (From v2.0, it has default height: 400px)
     + Simple example:
 
       + html:
@@ -220,19 +209,23 @@ Please refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page.
 
 # API
 `echarts` directive support following input porperties:
-+ `options`: It's the same with the options in official demo site.
++ `[options]`: It's the same with the options in official demo site.
 
-+ `dataset`: You can ignore the "data" property in "series" of the `options`, and use `dataset` to bind the series data instead.
++ `[merge]`: You can use it to update part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. So you can refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details
 
-+ `loading`: boolean property. Use it to toggle the echarts loading animation when your data is not ready.
++ `[loading]`: boolean property. Use it to toggle the echarts loading animation when your data is not ready.
 
-+ `theme`: use it to init echarts with theme. You need to include the theme file in `.angular-cli.json` or the `index.html`. For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
-  
-  ```html
-  <div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
-  ```
++ `[initOpts]`: The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details
 
-It exposes the `echartsInstance` (since v1.1.6) in `'chartInit'` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
++ `[theme]`: use it to init echarts with theme. You need to include the theme file in `.angular-cli.json` or other module resolver. 
+
+  For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
+    
+    ```html
+    <div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
+    ```
+
+It exposes the `echartsInstance` (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
 
   + html:
 
@@ -280,8 +273,12 @@ You can refer to the echarts tutorial: [Events and Actions in ECharts](https://e
 
 # Demo
 You can clone this repo to your working copy and then launch the demo page in your local machine:
-```
+```bash
 npm install
 npm run demo
+
+# or
+yarn install
+yarn demo
 ```
 The demo page server is listening to: http://localhost:4202
