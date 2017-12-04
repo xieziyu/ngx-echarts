@@ -21,6 +21,8 @@ Angular directive for echarts v3. (The project is renamed from **angular2-echart
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts 3.
 
 # Latest Update
++ 2017.12.04: v2.0.0. Provide an echarts wrapper service: NgxEchartsService. Please see [demo](https://xieziyu.github.io/ngx-echarts/usage/NgxEchartsService)
+
 + 2017.11.25: v2.0.0-beta.0. It has some [BREAKING CHANGES](https://github.com/xieziyu/ngx-echarts/blob/master/src/assets/CHANGELOG.md) you should know.
 
 # Installation
@@ -210,6 +212,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
       ```
 
 # API
+### Directive
 `echarts` directive support following input porperties:
 + `[options]`: It's the same with the options in official demo site.
 
@@ -237,7 +240,7 @@ It exposes the `echartsInstance` (since v1.1.6) in `(chartInit)` event. So you c
 
   + component:
 
-  ```javascript
+  ```typescript
   onChartInit(ec) {
     this.echartsIntance = ec;
   }
@@ -248,6 +251,26 @@ It exposes the `echartsInstance` (since v1.1.6) in `(chartInit)` event. So you c
     }
   }
   ```
+
+### Service
+`NgxEchartsService` is a wrapper for global `echarts` object. You can get native echarts object or use wrapper method directly. For example:
+  + usage:
+
+    ```typescript
+    import {NgxEchartsService} from 'ngx-echarts';
+
+    //...
+    constructor(private es: NgxEchartsService) {}
+
+    ngOnInit() {
+      const echarts = this.es.echarts;
+      echarts.registerMap('HK', HK_GEO_JSON);
+      // Or you can:
+      // this.es.registerMap('HK', HK_GEO_JSON);
+    }
+    ```
+
+More details in [Document](https://xieziyu.github.io/ngx-echarts/api-doc/injectables/NgxEchartsService.html) and [Demo](https://xieziyu.github.io/ngx-echarts/usage/NgxEchartsService)
 
 # Events
 As echarts support the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'` mouse events, our `ngx-echarts` directive also support the same mouse events but with additional `chart` prefix.

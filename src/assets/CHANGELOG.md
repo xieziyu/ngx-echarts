@@ -1,3 +1,8 @@
+## 2.0.0 (2017-12-04)
+
+#### NEW
++ New Service: `NgxEchartsService` provided. Refer to [API document](https://xieziyu.github.io/ngx-echarts/api-doc/injectables/NgxEchartsService.html) for details
+
 ## 2.0.0-beta.0 (2017-11-25)
 
 #### NEW
