@@ -9,6 +9,7 @@ import { InitOptsComponent } from './init-opts/init-opts.component';
 import { LoadingComponent } from './loading/loading.component';
 import { EchartsInstanceComponent } from './echarts-instance/echarts-instance.component';
 import { EventsComponent } from './events/events.component';
+import { NgxEchartsServiceComponent } from './ngx-echarts-service/ngx-echarts-service.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { EventsComponent } from './events/events.component';
     InitOptsComponent,
     LoadingComponent,
     EchartsInstanceComponent,
-    EventsComponent
+    EventsComponent,
+    NgxEchartsServiceComponent
   ]
 })
 export class UsageModule { }

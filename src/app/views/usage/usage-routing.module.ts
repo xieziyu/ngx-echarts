@@ -7,6 +7,7 @@ import { InitOptsComponent } from './init-opts/init-opts.component';
 import { LoadingComponent } from './loading/loading.component';
 import { EchartsInstanceComponent } from './echarts-instance/echarts-instance.component';
 import { EventsComponent } from './events/events.component';
+import { NgxEchartsServiceComponent } from './ngx-echarts-service/ngx-echarts-service.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,13 @@ const routes: Routes = [
     component: InitOptsComponent,
     data: {
       title: 'InitOpts'
+    }
+  },
+  {
+    path: 'NgxEchartsService',
+    component: NgxEchartsServiceComponent,
+    data: {
+      title: 'NgxEchartsService'
     }
   },
 ];

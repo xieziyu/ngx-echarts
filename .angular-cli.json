@@ -25,6 +25,7 @@
       ],
       "scripts": [
         "../node_modules/echarts/dist/echarts.min.js",
+        "../node_modules/echarts/dist/extension/bmap.min.js",
         "theme/dark.js",
         "theme/macarons.js"
       ],

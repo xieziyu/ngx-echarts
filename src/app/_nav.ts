@@ -11,7 +11,7 @@ export const navigation = [
   },
   {
     title: true,
-    name: 'Demo'
+    name: 'Getting Started'
   },
   {
     name: 'Usage',
@@ -60,6 +60,36 @@ export const navigation = [
           variant: 'info',
           text: '2.0'
         }
+      },
+      {
+        name: 'NgxEchartsService',
+        url: '/usage/NgxEchartsService',
+        icon: 'fa fa-cogs',
+        badge: {
+          variant: 'info',
+          text: '2.0'
+        }
+      },
+    ]
+  },
+  {
+    title: true,
+    name: 'Advanced Demo'
+  },
+  {
+    name: 'Map',
+    url: '/demo/map',
+    icon: 'fa fa-map',
+    children: [
+      {
+        name: 'Population Density',
+        url: '/demo/map/hongkong-pd',
+        icon: 'fa fa-star'
+      },
+      {
+        name: 'Bus Lines of Beijing',
+        url: '/demo/map/bus-lines-of-beijing',
+        icon: 'fa fa-star'
       },
     ]
   }
