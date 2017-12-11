@@ -89,16 +89,16 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   private registerEvents(_chart: any) {
     if (_chart) {
       // register mouse events:
-      _chart.on('click', e => this.chartClick.emit(e));
-      _chart.on('dblClick', e => this.chartDblClick.emit(e));
-      _chart.on('mousedown', e => this.chartMouseDown.emit(e));
-      _chart.on('mouseup', e => this.chartMouseUp.emit(e));
-      _chart.on('mouseover', e => this.chartMouseOver.emit(e));
-      _chart.on('mouseout', e => this.chartMouseOut.emit(e));
-      _chart.on('globalout', e => this.chartGlobalOut.emit(e));
-      _chart.on('contextmenu', e => this.chartContextMenu.emit(e));
+      _chart.on('click', e => this._ngZone.run(() => this.chartClick.emit(e)));
+      _chart.on('dblClick', e => this._ngZone.run(() => this.chartDblClick.emit(e)));
+      _chart.on('mousedown', e => this._ngZone.run(() => this.chartMouseDown.emit(e)));
+      _chart.on('mouseup', e => this._ngZone.run(() => this.chartMouseUp.emit(e)));
+      _chart.on('mouseover', e => this._ngZone.run(() => this.chartMouseOver.emit(e)));
+      _chart.on('mouseout', e => this._ngZone.run(() => this.chartMouseOut.emit(e)));
+      _chart.on('globalout', e => this._ngZone.run(() => this.chartGlobalOut.emit(e)));
+      _chart.on('contextmenu', e => this._ngZone.run(() => this.chartContextMenu.emit(e)));
       // other events;
-      _chart.on('datazoom', e => this.chartDataZoom.emit(e));
+      _chart.on('datazoom', e => this._ngZone.run(() => this.chartDataZoom.emit(e)));
     }
   }
 

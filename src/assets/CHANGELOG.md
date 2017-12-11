@@ -1,11 +1,16 @@
+## 2.0.1 (2017-12-11)
+
+#### Bugfix
++ Fix issue: No change detection involved in event handler. [#26](https://github.com/xieziyu/ngx-echarts/issues/26), [#28](https://github.com/xieziyu/ngx-echarts/issues/28)
+
 ## 2.0.0 (2017-12-04)
 
-#### NEW
+#### New
 + New Service: `NgxEchartsService` provided. Refer to [API document](https://xieziyu.github.io/ngx-echarts/api-doc/injectables/NgxEchartsService.html) for details
 
 ## 2.0.0-beta.0 (2017-11-25)
 
-#### NEW
+#### New
 + New input: `[merge]`. The value of `[merge]` will be merged into `[options]`. So it's perfect for updating chart data series. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details
 
 + New input: `[initOpts]`. The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details

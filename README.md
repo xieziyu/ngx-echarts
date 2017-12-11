@@ -21,6 +21,8 @@ Angular directive for echarts v3. (The project is renamed from **angular2-echart
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts 3.
 
 # Latest Update
++ 2017.12.11: v2.0.1. Fix issue: No change detection involved in event handler. Refer to issue [#26](https://github.com/xieziyu/ngx-echarts/issues/26), [#28](https://github.com/xieziyu/ngx-echarts/issues/28)
+
 + 2017.12.04: v2.0.0. Provide an echarts wrapper service: NgxEchartsService. Please see [demo](https://xieziyu.github.io/ngx-echarts/#/usage/NgxEchartsService)
 
 + 2017.11.25: v2.0.0-beta.0. It has some [BREAKING CHANGES](https://github.com/xieziyu/ngx-echarts/blob/master/src/assets/CHANGELOG.md) you should know.
