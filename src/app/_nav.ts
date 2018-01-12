@@ -92,5 +92,17 @@ export const navigation = [
         icon: 'fa fa-star'
       },
     ]
+  },
+  {
+    name: 'Tree',
+    url: '/demo/tree',
+    icon: 'fa fa-sitemap',
+    children: [
+      {
+        name: 'Official Demo',
+        url: '/demo/tree/official-demo',
+        icon: 'fa fa-star'
+      }
+    ]
   }
 ];

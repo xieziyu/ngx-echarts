@@ -53,13 +53,14 @@
     <div class="col-md-6 mb-3">
       <h2><span class="fa fa-caret-right mr-2 text-primary"></span>Work with angular-cli</h2>
       <markdown class="code-block-sm">
-        ```typescript
-        // edit .angular-cli.json
-        {{'{'}}
+        ```diff
+        // .angular-cli.json
+        {{ '{' }}
+          ...,
           "scripts": [
-            // add this:
-            "../node_modules/echarts/dist/echarts.min.js"
+        +   "../node_modules/echarts/dist/echarts.min.js"
           ],
+          ...,
         }
         ```
       </markdown>
@@ -67,11 +68,11 @@
     <div class="col-md-6 mb-3">
       <h2><span class="fa fa-caret-right mr-2 text-primary"></span>Work with webpack</h2>
       <markdown class="code-block-sm">
-        ```typescript
-        // edit webpack.common.js
+        ```diff
+        // webpack.common.js
         new webpack.ProvidePlugin({{'{'}}
-          // add this:
-          echarts: "echarts"
+          ...,
+        + echarts: "echarts"
         })
         ```
       </markdown>
@@ -79,35 +80,35 @@
     <div class="col-md-6 mb-3">
       <h2><span class="fa fa-caret-right mr-2 text-primary"></span>Work with SystemJS</h2>
       <markdown class="code-block-sm">
-        ```typescript
-        // edit systemjs.config.js
+        ```diff
+        // systemjs.config.js
         {{'{'}}
           map: {{'{'}}
             // ngx-echarts
-            'echarts': 'npm:echarts',
-            'ngx-echarts': 'npm:ngx-echarts'
+        +   'echarts': 'npm:echarts',
+        +   'ngx-echarts': 'npm:ngx-echarts'
           },
           packages: {{'{'}}
             // ngx-echarts
-            echarts: {{'{'}}
-              defaultExtension: 'js',
-              main: 'dist/echarts.min.js',
-              meta: {{'{'}}
-                './*.js': {{'{'}}
-                  format: 'global', // load this module as a global
-                  exports: 'echarts'
-                }
-              }
-            },
-            'ngx-echarts': {{'{'}}
-              defaultExtension: 'js',
-              main: 'bundles/ngx-echarts.umd.js',
-              meta: {{'{'}}
-                './*.js': {{'{'}}
-                  deps: ['echarts']
-                }
-              }
-            }
+        +   echarts: {{'{'}}
+        +     defaultExtension: 'js',
+        +     main: 'dist/echarts.min.js',
+        +     meta: {{'{'}}
+        +       './*.js': {{'{'}}
+        +         format: 'global', // load this module as a global
+        +         exports: 'echarts'
+        +       }
+        +     }
+        +   },
+        +   'ngx-echarts': {{'{'}}
+        +     defaultExtension: 'js',
+        +     main: 'bundles/ngx-echarts.umd.js',
+        +     meta: {{'{'}}
+        +       './*.js': {{'{'}}
+        +         deps: ['echarts']
+        +       }
+        +     }
+        +   }
           }
         }
         ```

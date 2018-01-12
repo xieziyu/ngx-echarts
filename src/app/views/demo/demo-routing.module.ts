@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HongkongPdComponent } from './map/hongkong-pd/hongkong-pd.component';
 import { BusLineComponent } from './map/bus-line/bus-line.component';
+import { OfficialDemoComponent } from './tree/official-demo/official-demo.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,13 @@ const routes: Routes = [
     component: BusLineComponent,
     data: {
       title: 'Bus Lines of Beijing (Baidu Map)'
+    }
+  },
+  {
+    path: 'tree/official-demo',
+    component: OfficialDemoComponent,
+    data: {
+      title: 'Official Demo'
     }
   },
 ];
