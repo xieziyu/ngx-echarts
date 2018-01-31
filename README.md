@@ -3,7 +3,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/ngx-echarts.svg)](https://npmjs.org/ngx-echarts)
 [![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)](https://travis-ci.org/xieziyu/ngx-echarts)
 
-Angular directive for echarts v3. (The project is renamed from **angular2-echarts**)
+Angular directive for echarts (version >= 3.x) (The project is renamed from **angular2-echarts**)
 
 + [Online Demo](https://xieziyu.github.io/ngx-echarts)
 + [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
@@ -18,7 +18,7 @@ Angular directive for echarts v3. (The project is renamed from **angular2-echart
 7. [Demo](#demo)
 
 # Getting Started
-`ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts 3.
+`ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 # Latest Update
 + 2017.12.11: v2.0.1. Fix issue: No change detection involved in event handler. Refer to issue [#26](https://github.com/xieziyu/ngx-echarts/issues/26), [#28](https://github.com/xieziyu/ngx-echarts/issues/28)
