@@ -13,6 +13,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   @Input() loading: boolean;
   @Input() initOpts: any;
   @Input() merge: any;
+  @Input() autoResize: boolean = true;
 
   // chart events:
   @Output() chartInit = new EventEmitter<any>();
@@ -47,7 +48,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize(event: any) {
-    if (event.target.innerWidth !== this.currentWindowWidth) {
+    if (this.autoResize && event.target.innerWidth !== this.currentWindowWidth) {
       this.currentWindowWidth = event.target.innerWidth;
       if (this._chart) {
         this._chart.resize();
