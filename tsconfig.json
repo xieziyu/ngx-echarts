@@ -14,6 +14,9 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-echarts": ["lib/ngx-echarts.module"]
+    }
   }
 }

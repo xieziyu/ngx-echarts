@@ -1,9 +1,9 @@
 {
   "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-  "src": "lib",
-  "dest": "dist/ngx-echarts",
+  "src": "src/lib",
+  "dest": "dist/lib",
   "workingDirectory": ".ng_build",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "./public_api.ts"
   }
 }

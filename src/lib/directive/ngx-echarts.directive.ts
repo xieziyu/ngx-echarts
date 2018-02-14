@@ -13,7 +13,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   @Input() loading: boolean;
   @Input() initOpts: any;
   @Input() merge: any;
-  @Input() autoResize: boolean = true;
+  @Input() autoResize = true;
 
   // chart events:
   @Output() chartInit = new EventEmitter<any>();
