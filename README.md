@@ -21,6 +21,10 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 # Latest Update
++ 2018.03.14: v2.1.0
+  + New: `[loadingOpts]` to customize loading style. Refer to [API](#api)
+  + Bugfix: double check `dom.style.height` before setting default value.
+
 + 2018.02.07: v2.0.2. New: `[autoResize]` input (default: true). [PR #73](https://github.com/xieziyu/ngx-echarts/pull/73) by [arethore-actility](https://github.com/arethore-actility)
 
 + 2017.12.11: v2.0.1. Fix issue: No change detection involved in event handler. Refer to issue [#26](https://github.com/xieziyu/ngx-echarts/issues/26), [#28](https://github.com/xieziyu/ngx-echarts/issues/28)
@@ -233,6 +237,18 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
     ```html
     <div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
     ```
+
++ `[loadingOpts]`: Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. By default:
+
+  ```javascript
+  {
+    text: 'loading',
+    color: '#c23531',
+    textColor: '#000',
+    maskColor: 'rgba(255, 255, 255, 0.8)',
+    zlevel: 0
+  }
+  ```
 
 It exposes the `echartsInstance` (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
 

@@ -1,3 +1,13 @@
+## 2.1.0 (2018-03-14)
+
+#### New
++ `[loadingOpts]`. Use this option to customize loading style.
+
+#### Bugfix
++ Double check `dom.style.height` before setting default value.
+
+---
+
 ## 2.0.2 (2018-02-07)
 
 #### New
