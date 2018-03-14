@@ -41,34 +41,26 @@ export const navigation = [
       {
         name: 'Loading',
         url: '/usage/loading',
-        icon: 'fa fa-spinner'
+        icon: 'fa fa-spinner',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
       {
         name: 'Update Chart',
         url: '/usage/update-chart',
-        icon: 'fa fa-line-chart',
-        badge: {
-          variant: 'info',
-          text: '2.0'
-        }
+        icon: 'fa fa-line-chart'
       },
       {
         name: 'InitOpts',
         url: '/usage/init-opts',
-        icon: 'fa fa-cog',
-        badge: {
-          variant: 'info',
-          text: '2.0'
-        }
+        icon: 'fa fa-cog'
       },
       {
         name: 'NgxEchartsService',
         url: '/usage/NgxEchartsService',
-        icon: 'fa fa-cogs',
-        badge: {
-          variant: 'info',
-          text: '2.0'
-        }
+        icon: 'fa fa-cogs'
       },
     ]
   },
