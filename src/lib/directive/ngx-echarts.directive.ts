@@ -14,6 +14,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   @Input() initOpts: any;
   @Input() merge: any;
   @Input() autoResize = true;
+  @Input() loadingType = 'default';
+  @Input() loadingOpts: any;
 
   // chart events:
   @Output() chartInit = new EventEmitter<any>();
@@ -38,7 +40,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
 
     if (window && window.getComputedStyle) {
       let prop = window.getComputedStyle(dom, null).getPropertyValue('height');
-      if (!prop || prop === '0px') {
+      if ((!prop || prop === '0px') &&
+          (!dom.style.height || dom.style.height === '0px')) {
         dom.style.height = '400px';
       }
     }
@@ -111,7 +114,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
 
   toggleLoading(loading: boolean) {
     if (this._chart) {
-      loading ? this._chart.showLoading() : this._chart.hideLoading();
+      loading ? this._chart.showLoading(this.loadingType, this.loadingOpts) : this._chart.hideLoading();
     }
   }
 
