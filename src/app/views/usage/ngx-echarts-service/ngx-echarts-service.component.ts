@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { NgxEchartsService } from 'ngx-echarts';
-import { CODE_TS, CODE_HTML } from './code';
+
+declare const require: any;
 
 @Component({
   selector: 'app-ngx-echarts-service',
@@ -8,8 +9,8 @@ import { CODE_TS, CODE_HTML } from './code';
   styleUrls: ['./ngx-echarts-service.component.scss']
 })
 export class NgxEchartsServiceComponent implements AfterViewInit {
-  demo_html = CODE_HTML;
-  demo_ts = CODE_TS;
+  demo_html = require('!!html-loader!./ngx-echarts-service.component.html');
+  demo_ts = require('!!raw-loader!./ngx-echarts-service.component.ts');
 
   options = CHART_OPTIONS;
 

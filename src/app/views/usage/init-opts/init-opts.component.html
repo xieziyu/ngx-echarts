@@ -6,17 +6,8 @@
         <tab heading="demo">
           <div class="row">
             <div class="col-md-6">
-              <markdown>
-                Please refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for detail.
-                ```typescript
-                interface initOpts {{'{'}}
-                  devicePixelRatio?: number,
-                  renderer?: string,
-                  width?: number|string,
-                  height? number|string,
-                }
-                ```
-              </markdown>
+              Please refer to <a href="https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init" target="_blank">ECharts documentation</a> for detail.
+              <markdown [data]="demo_hint | language: 'typescript'"></markdown>
             </div>
             <div class="col-md-6">
               <echarts [initOpts]="initOpts" [options]="options"></echarts>

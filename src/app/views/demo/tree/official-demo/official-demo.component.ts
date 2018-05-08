@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CODE_HTML, CODE_TS } from './code';
+
+declare const require: any;
 
 @Component({
   selector: 'app-official-demo',
@@ -7,8 +8,8 @@ import { CODE_HTML, CODE_TS } from './code';
   styleUrls: ['./official-demo.component.scss']
 })
 export class OfficialDemoComponent implements OnInit {
-  demo_html = CODE_HTML;
-  demo_ts = CODE_TS;
+  demo_html = require('!!html-loader!./official-demo.component.html');
+  demo_ts = require('!!raw-loader!./official-demo.component.ts');
   options = TREE_OPTION;
   mergeData = null;
 

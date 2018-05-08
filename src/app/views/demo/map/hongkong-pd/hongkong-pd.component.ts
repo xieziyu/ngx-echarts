@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgxEchartsService } from 'ngx-echarts';
-import { CODE_HTML, CODE_TS } from './code';
+
+declare const require: any;
 
 @Component({
   selector: 'app-hongkong-pd',
@@ -9,8 +10,8 @@ import { CODE_HTML, CODE_TS } from './code';
   styleUrls: ['./hongkong-pd.component.scss']
 })
 export class HongkongPdComponent implements OnInit {
-  demo_html = CODE_HTML;
-  demo_ts = CODE_TS;
+  demo_html = require('!!html-loader!./hongkong-pd.component.html');
+  demo_ts = require('!!raw-loader!./hongkong-pd.component.ts');
 
   // show loading spinner:
   mapLoaded = false;
