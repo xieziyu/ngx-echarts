@@ -25,10 +25,10 @@ export class BusLineComponent implements OnInit {
     this.http.get('assets/data/lines-bus.json')
       .subscribe((data: any[]) => {
         // processing data:
-        let hStep = 300 / (data.length - 1);
-        let busLines = [].concat.apply([], data.map((busLine, idx) => {
+        const hStep = 300 / (data.length - 1);
+        const busLines = [].concat.apply([], data.map((busLine, idx) => {
           let prevPt;
-          let points = [];
+          const points = [];
           for (let i = 0; i < busLine.length; i += 2) {
             let pt = [busLine[i], busLine[i + 1]];
             if (i > 0) {

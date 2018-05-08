@@ -1,7 +1,5 @@
 import { SimpleChanges } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/empty';
+import { Observable, of, empty } from 'rxjs';
 
 export class ChangeFilter {
   constructor(private _changes: SimpleChanges) { }
@@ -12,20 +10,20 @@ export class ChangeFilter {
 
   notEmpty<T>(key: string): Observable<T> {
     if (this._changes[key]) {
-      let value: T = this._changes[key].currentValue;
+      const value: T = this._changes[key].currentValue;
 
       if (value !== undefined && value !== null) {
-        return Observable.of(value);
+        return of(value);
       }
     }
-    return Observable.empty();
+    return empty();
   }
 
   has<T>(key: string): Observable<T> {
     if (this._changes[key]) {
-      let value: T = this._changes[key].currentValue;
-      return Observable.of(value);
+      const value: T = this._changes[key].currentValue;
+      return of(value);
     }
-    return Observable.empty();
+    return empty();
   }
 }

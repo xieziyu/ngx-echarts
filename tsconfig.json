@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -16,7 +17,9 @@
       "dom"
     ],
     "paths": {
-      "ngx-echarts": ["lib/ngx-echarts.module"]
+      "ngx-echarts": [
+        "dist/ngx-echarts"
+      ]
     }
   }
 }

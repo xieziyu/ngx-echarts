@@ -1,6 +1,6 @@
 import { Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter,
   OnChanges, OnDestroy, SimpleChanges, NgZone } from '@angular/core';
-import { ChangeFilter } from '../util/change-filter';
+import { ChangeFilter } from './change-filter';
 
 declare var echarts: any;
 
@@ -36,10 +36,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
 
   private createChart() {
     this.currentWindowWidth = window.innerWidth;
-    let dom = this.el.nativeElement;
+    const dom = this.el.nativeElement;
 
     if (window && window.getComputedStyle) {
-      let prop = window.getComputedStyle(dom, null).getPropertyValue('height');
+      const prop = window.getComputedStyle(dom, null).getPropertyValue('height');
       if ((!prop || prop === '0px') &&
           (!dom.style.height || dom.style.height === '0px')) {
         dom.style.height = '400px';

@@ -20,7 +20,19 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 # Getting Started
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
+Latest version @npm:
++ `v3.0.0` for Angular >= 6
++ `v2.1.0` for Angular < 6
+
+Github branches:
++ `master` for Angular >= 6
++ `v2.x` for Angular < 6
+
 # Latest Update
++ 2018.05.08: v3.0.0:
+  + Change: Support Angular 6
+  + Docs: generate demo app by @angular/cli-6.0.0
+
 + 2018.03.14: v2.1.0
   + New: `[loadingOpts]` to customize loading style. Refer to [API](#api)
   + Bugfix: double check `dom.style.height` before setting default value.

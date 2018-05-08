@@ -22,14 +22,15 @@ declare var echarts: any;
  * }
  * ```
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class NgxEchartsService {
 
   constructor() {}
 
   /**
    * Get global echarts object
-   * @returns {ECharts}
    */
   get echarts(): any {
     return echarts;
