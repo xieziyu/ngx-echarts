@@ -1,3 +1,10 @@
+## 3.0.1 (2018-06-12)
+
+#### Bugfix
++ Line chart is not animated on init.
+
+---
+
 ## 3.0.0 (2018-05-08)
 
 #### Changes
