@@ -86,7 +86,12 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
       }
 
       this._chart.setOption(this.options, true);
-      this._chart.resize();
+
+      /**
+       * Bugfix: Line chart is not animated on init
+       * https://github.com/xieziyu/ngx-echarts/issues/102
+       */
+      // this._chart.resize();
     }
   }
 
