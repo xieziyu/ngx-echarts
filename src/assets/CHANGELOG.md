@@ -1,4 +1,11 @@
-## 3.0.1 (2018-06-12)
+## 3.1.0 & 2.2.0 (2018-06-13)
+
+#### New
++ [autoResize] now detects its container element's offset width. Especially useful for charts inside `<ng-template>` such as NG-ZORRO components.
+
+---
+
+## 3.0.1 & 2.1.1 (2018-06-12)
 
 #### Bugfix
 + Line chart is not animated on init.
