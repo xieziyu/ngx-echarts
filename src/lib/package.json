@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Angular directive for ECharts 3",
   "repository": "https://github.com/xieziyu/ngx-echarts.git",
   "author": "Xie, Ziyu <ziyu.xie@foxmail.com>",

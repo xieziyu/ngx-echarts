@@ -21,14 +21,17 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v3.0.1` for Angular >= 6
-+ `v2.1.1` for Angular < 6
++ `v3.1.0` for Angular >= 6
++ `v2.2.0` for Angular < 6
 
 Github branches:
 + `master` for Angular >= 6
 + `v2.x` for Angular < 6
 
 # Latest Update
++ 2018.06.13: v3.1.0 & v2.2.0:
+  + New: [autoResize] now detects its container element's offset width. Especially useful for charts inside `<ng-template>` such as NG-ZORRO components.
+
 + 2018.06.12: v3.0.1 & v2.1.1:
   + Bugfix: Line chart is not animated on init. [issue#102](https://github.com/xieziyu/ngx-echarts/issues/102)
 
@@ -241,7 +244,9 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 + `[merge]`: You can use it to update part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. So you can refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details
 
-+ `[loading]`: boolean property. Use it to toggle the echarts loading animation when your data is not ready.
++ `[loading]`: boolean. Use it to toggle the echarts loading animation when your data is not ready.
+
++ `[autoResize]`: boolean. Default: true. Charts will be automatically resized when container's width changed.
 
 + `[initOpts]`: The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details
 

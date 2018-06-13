@@ -1,5 +1,7 @@
-import { Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter,
-  OnChanges, OnDestroy, SimpleChanges, NgZone } from '@angular/core';
+import {
+  Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter,
+  OnChanges, OnDestroy, SimpleChanges, NgZone, DoCheck
+} from '@angular/core';
 import { ChangeFilter } from '../util/change-filter';
 
 declare var echarts: any;
@@ -7,7 +9,7 @@ declare var echarts: any;
 @Directive({
   selector: 'echarts, [echarts]'
 })
-export class NgxEchartsDirective implements OnChanges, OnDestroy {
+export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   @Input() options: any;
   @Input() theme: string;
   @Input() loading: boolean;
@@ -30,18 +32,20 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   @Output() chartDataZoom = new EventEmitter<any>();
 
   private _chart: any = null;
+  private currentOffsetWidth = 0;
   private currentWindowWidth: any = null;
 
   constructor(private el: ElementRef, private _ngZone: NgZone) { }
 
   private createChart() {
     this.currentWindowWidth = window.innerWidth;
-    let dom = this.el.nativeElement;
+    this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
+    const dom = this.el.nativeElement;
 
     if (window && window.getComputedStyle) {
-      let prop = window.getComputedStyle(dom, null).getPropertyValue('height');
+      const prop = window.getComputedStyle(dom, null).getPropertyValue('height');
       if ((!prop || prop === '0px') &&
-          (!dom.style.height || dom.style.height === '0px')) {
+        (!dom.style.height || dom.style.height === '0px')) {
         dom.style.height = '400px';
       }
     }
@@ -53,6 +57,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
   onWindowResize(event: any) {
     if (this.autoResize && event.target.innerWidth !== this.currentWindowWidth) {
       this.currentWindowWidth = event.target.innerWidth;
+      this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
+
       if (this._chart) {
         this._chart.resize();
       }
@@ -70,6 +76,18 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy {
     if (this._chart) {
       this._chart.dispose();
       this._chart = null;
+    }
+  }
+
+  ngDoCheck() {
+    // No heavy work in DoCheck!
+    if (this._chart && this.autoResize) {
+      const offsetWidth = this.el.nativeElement.offsetWidth;
+
+      if (this.currentOffsetWidth !== offsetWidth) {
+        this.currentOffsetWidth = offsetWidth;
+        this._chart.resize();
+      }
     }
   }
 
