@@ -63,16 +63,17 @@ yarn add ngx-echarts
 ```
 
 ## How to use it within:
-+ `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of .angular-cli.json just like:
++ `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of `angular-cli.json` just like:
 
-```javascript
+```diff
 {
-  "scripts": [
-    // ...
-
-    // add this:
-    "../node_modules/echarts/dist/echarts.min.js"  // or echarts.js for debug purpose
-  ],
+  // projects ...
+  "architect": {
+    {
+      "scripts": [
++       "node_modules/echarts/dist/echarts.min.js"
+      ],
+    }
 }
 ```
 
