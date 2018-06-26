@@ -72,11 +72,14 @@ yarn add ngx-echarts
 {
   // projects ...
   "architect": {
-    {
-      "scripts": [
-+       "node_modules/echarts/dist/echarts.min.js"
-      ],
+    "build": {
+      "options": {
+        "scripts": [
++         "node_modules/echarts/dist/echarts.min.js"
+        ]
+      }
     }
+  }
 }
 ```
 
