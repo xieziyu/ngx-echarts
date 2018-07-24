@@ -23,7 +23,7 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 
 Latest version @npm:
 + `v3.2.0` for Angular >= 6
-+ `v2.3.0` for Angular < 6
++ `v2.3.1` for Angular < 6
 
 Github branches:
 + `master` for Angular >= 6
@@ -32,7 +32,7 @@ Github branches:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
-+ 2018.07.24: v3.2.0 & v2.3.0:
++ 2018.07.24: v3.2.0 & v2.3.1:
   + New: [autoResize] now detects its container element's offset height.
   + Change: Resizing detection is now debounced.
 
