@@ -29,7 +29,8 @@
             "styles": [
               "src/scss/styles.scss",
               "src/prism-darcula.css",
-              "node_modules/font-awesome/css/font-awesome.css"
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/angular2-draggable/css/resizable.min.css"
             ],
             "scripts": [
               "node_modules/echarts/dist/echarts.min.js",
@@ -42,6 +43,7 @@
               "node_modules/prismjs/components/prism-javascript.min.js",
               "node_modules/prismjs/components/prism-bash.min.js",
               "node_modules/prismjs/components/prism-diff.min.js",
+              "node_modules/prismjs/components/prism-scss.min.js",
               "src/theme/dark.js",
               "src/theme/macarons.js"
             ]

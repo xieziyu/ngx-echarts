@@ -10,12 +10,15 @@ import { LoadingComponent } from './loading/loading.component';
 import { EchartsInstanceComponent } from './echarts-instance/echarts-instance.component';
 import { EventsComponent } from './events/events.component';
 import { NgxEchartsServiceComponent } from './ngx-echarts-service/ngx-echarts-service.component';
+import { AngularDraggableModule } from 'angular2-draggable';
+import { AutoResizeComponent } from './auto-resize/auto-resize.component';
 
 @NgModule({
   imports: [
     CommonModule,
     UsageRoutingModule,
-    SharedModule
+    SharedModule,
+    AngularDraggableModule
   ],
   declarations: [
     BasicComponent,
@@ -25,7 +28,8 @@ import { NgxEchartsServiceComponent } from './ngx-echarts-service/ngx-echarts-se
     LoadingComponent,
     EchartsInstanceComponent,
     EventsComponent,
-    NgxEchartsServiceComponent
+    NgxEchartsServiceComponent,
+    AutoResizeComponent
   ]
 })
 export class UsageModule { }

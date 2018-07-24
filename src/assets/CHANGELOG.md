@@ -1,3 +1,13 @@
+## 3.2.0 & 2.3.0 (2018-07-24)
+
+#### New
++ [autoResize] now detects its container element's offset height. 
+
+#### Change
++ Resizing detection is now debounced.
+
+---
+
 ## 3.1.0 & 2.2.0 (2018-06-13)
 
 #### New

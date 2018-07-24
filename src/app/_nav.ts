@@ -41,11 +41,7 @@ export const navigation = [
       {
         name: 'Loading',
         url: '/usage/loading',
-        icon: 'fa fa-spinner',
-        badge: {
-          variant: 'success',
-          text: 'new'
-        }
+        icon: 'fa fa-spinner'
       },
       {
         name: 'Update Chart',
@@ -61,6 +57,15 @@ export const navigation = [
         name: 'NgxEchartsService',
         url: '/usage/NgxEchartsService',
         icon: 'fa fa-cogs'
+      },
+      {
+        name: 'Auto Resize',
+        url: '/usage/auto-resize',
+        icon: 'fa fa-cogs',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
     ]
   },
