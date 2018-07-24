@@ -7,6 +7,7 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 
 + [Online Demo](https://xieziyu.github.io/ngx-echarts)
 + [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
++ [Starter Project](https://github.com/xieziyu/ngx-echarts-starter)
 
 ## Table of contents 
 1. [Getting Started](#getting-started)
@@ -21,14 +22,20 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v3.1.0` for Angular >= 6
-+ `v2.2.0` for Angular < 6
++ `v3.2.0` for Angular >= 6
++ `v2.3.0` for Angular < 6
 
 Github branches:
 + `master` for Angular >= 6
 + `v2.x` for Angular < 6
 
+A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
+
 # Latest Update
++ 2018.07.24: v3.2.0 & v2.3.0:
+  + New: [autoResize] now detects its container element's offset height.
+  + Change: Resizing detection is now debounced.
+
 + 2018.06.13: v3.1.0 & v2.2.0:
   + New: [autoResize] now detects its container element's offset width. Especially useful for charts inside `<ng-template>` such as NG-ZORRO components.
 
@@ -63,16 +70,20 @@ yarn add ngx-echarts
 ```
 
 ## How to use it within:
-+ `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of .angular-cli.json just like:
++ `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of `angular-cli.json` just like:
 
-```javascript
+```diff
 {
-  "scripts": [
-    // ...
-
-    // add this:
-    "../node_modules/echarts/dist/echarts.min.js"  // or echarts.js for debug purpose
-  ],
+  // projects ...
+  "architect": {
+    "build": {
+      "options": {
+        "scripts": [
++         "node_modules/echarts/dist/echarts.min.js"
+        ]
+      }
+    }
+  }
 }
 ```
 
@@ -94,7 +105,7 @@ new webpack.ProvidePlugin({
     // ...
 
     // ngx-echarts
-    'echarts':                   'npm:echarts',
+    'echarts':              'npm:echarts',
     'ngx-echarts':          'npm:ngx-echarts'
   },
   packages: {
@@ -240,57 +251,57 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 # API
 ### Directive
 `echarts` directive support following input porperties:
-+ `[options]`: It's the same with the options in official demo site.
 
-+ `[merge]`: You can use it to update part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. So you can refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details
+| Input | Type | Default | Description |
+|-------|------|---------|-------------|
+| `[options]` | object | null | It's the same with the options in official demo site. |
+| `[merge]` | object | null | You can use it to update part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. So you can refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details |
+| `[loading]` | boolean | false | Use it to toggle the echarts loading animation when your data is not ready. |
+| `[autoResize]` | boolean | true | Charts will be automatically resized when container's width changed. |
+| `[initOpts]` | object | null | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details |
+| `[theme]` | string | null | Use it to init echarts with theme. You need to include the theme file in `angular-cli.json` or other module resolver. |
+| `[loadingOpts]` | object | null | Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. |
 
-+ `[loading]`: boolean. Use it to toggle the echarts loading animation when your data is not ready.
+For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
+  
+```html
+<div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
+```
 
-+ `[autoResize]`: boolean. Default: true. Charts will be automatically resized when container's width changed.
+By default, `loadingOpts` is:
 
-+ `[initOpts]`: The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details
+```javascript
+{
+  text: 'loading',
+  color: '#c23531',
+  textColor: '#000',
+  maskColor: 'rgba(255, 255, 255, 0.8)',
+  zlevel: 0
+}
+```
 
-+ `[theme]`: use it to init echarts with theme. You need to include the theme file in `.angular-cli.json` or other module resolver. 
+### echartsInstance
+`echartsInstance` is exposed (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
 
-  For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
-    
-    ```html
-    <div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
-    ```
++ html:
 
-+ `[loadingOpts]`: Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. By default:
+```html
+<div echarts class="demo-chart" [options]="chartOptions" (chartInit)="onChartInit($event)"></div>
+```
 
-  ```javascript
-  {
-    text: 'loading',
-    color: '#c23531',
-    textColor: '#000',
-    maskColor: 'rgba(255, 255, 255, 0.8)',
-    zlevel: 0
++ component:
+
+```typescript
+onChartInit(ec) {
+  this.echartsIntance = ec;
+}
+
+resizeChart() {
+  if (this.echartsIntance) {
+    this.echartsIntance.resize();
   }
-  ```
-
-It exposes the `echartsInstance` (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
-
-  + html:
-
-  ```html
-  <div echarts class="demo-chart" [options]="chartOptions" (chartInit)="onChartInit($event)"></div>
-  ```
-
-  + component:
-
-  ```typescript
-  onChartInit(ec) {
-    this.echartsIntance = ec;
-  }
-
-  resizeChart() {
-    if (this.echartsIntance) {
-      this.echartsIntance.resize();
-    }
-  }
-  ```
+}
+```
 
 ### Service
 `NgxEchartsService` is a wrapper for global `echarts` object. You can get native echarts object or use wrapper method directly. For example:

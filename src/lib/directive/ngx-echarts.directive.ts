@@ -3,6 +3,9 @@ import {
   OnChanges, OnDestroy, SimpleChanges, NgZone, DoCheck
 } from '@angular/core';
 import { ChangeFilter } from '../util/change-filter';
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
+import { debounceTime } from 'rxjs/operators';
 
 declare var echarts: any;
 
@@ -33,13 +36,17 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
 
   private _chart: any = null;
   private currentOffsetWidth = 0;
+  private currentOffsetHeight = 0;
   private currentWindowWidth: any = null;
+  private _resize$ = new Subject<any>();
+  private _resizeSub: Subscription;
 
   constructor(private el: ElementRef, private _ngZone: NgZone) { }
 
   private createChart() {
     this.currentWindowWidth = window.innerWidth;
     this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
+    this.currentOffsetHeight = this.el.nativeElement.offsetHeight;
     const dom = this.el.nativeElement;
 
     if (window && window.getComputedStyle) {
@@ -58,10 +65,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     if (this.autoResize && event.target.innerWidth !== this.currentWindowWidth) {
       this.currentWindowWidth = event.target.innerWidth;
       this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
+      this.currentOffsetHeight = this.el.nativeElement.offsetHeight;
 
-      if (this._chart) {
-        this._chart.resize();
-      }
+      this._resize$.next();
     }
   }
 
@@ -73,6 +79,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   }
 
   ngOnDestroy() {
+    if (this._resizeSub) {
+      this._resizeSub.unsubscribe();
+      this._resizeSub = null;
+    }
+
     if (this._chart) {
       this._chart.dispose();
       this._chart = null;
@@ -83,10 +94,12 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     // No heavy work in DoCheck!
     if (this._chart && this.autoResize) {
       const offsetWidth = this.el.nativeElement.offsetWidth;
+      const offsetHeight = this.el.nativeElement.offsetHeight;
 
-      if (this.currentOffsetWidth !== offsetWidth) {
+      if (this.currentOffsetWidth !== offsetWidth || this.currentOffsetHeight !== offsetHeight) {
         this.currentOffsetWidth = offsetWidth;
-        this._chart.resize();
+        this.currentOffsetHeight = offsetHeight;
+        this._resize$.next();
       }
     }
   }
@@ -95,6 +108,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     if (opt) {
       if (!this._chart) {
         this._chart = this.createChart();
+
+        // subscribe to _resize$ and debounced
+        this._resizeSub = this._resize$.pipe(debounceTime(50)).subscribe(() => {
+          if (this._chart) {
+            this._chart.resize();
+          }
+        });
 
         // output echart instance:
         this.chartInit.emit(this._chart);
