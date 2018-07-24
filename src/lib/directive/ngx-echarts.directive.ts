@@ -5,7 +5,7 @@ import {
 import { ChangeFilter } from '../util/change-filter';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
-import { debounceTime } from 'rxjs/operators';
+import 'rxjs/add/operator/debounceTime';
 
 declare var echarts: any;
 
@@ -110,7 +110,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
         this._chart = this.createChart();
 
         // subscribe to _resize$ and debounced
-        this._resizeSub = this._resize$.pipe(debounceTime(50)).subscribe(() => {
+        this._resizeSub = this._resize$.debounceTime(50).subscribe(() => {
           if (this._chart) {
             this._chart.resize();
           }
