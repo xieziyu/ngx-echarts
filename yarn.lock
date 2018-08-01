@@ -264,6 +264,10 @@
     semver "^5.3.0"
     semver-intersect "^1.1.2"
 
+"@types/echarts@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-0.0.13.tgz#e19aed81537c3e68b9ed94300321572e7bed4edd"
+
 "@types/estree@0.0.38":
   version "0.0.38"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.38.tgz#c1be40aa933723c608820a99a373a16d215a1ca2"

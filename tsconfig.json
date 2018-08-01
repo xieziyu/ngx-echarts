@@ -19,6 +19,9 @@
     "paths": {
       "ngx-echarts": [
         "dist/ngx-echarts"
+      ],
+      "echarts": [
+        "node_modules/echarts/dist/echarts.min.js"
       ]
     }
   }
