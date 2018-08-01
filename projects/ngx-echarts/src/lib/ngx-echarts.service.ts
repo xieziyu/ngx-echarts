@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-
-declare var echarts: any;
+import * as echarts from 'echarts';
 
 /**
  * Provide an wrapper for global echarts
@@ -30,7 +29,7 @@ export class NgxEchartsService {
   constructor() {}
 
   /**
-   * Get global echarts object
+   * Get echarts object
    */
   get echarts(): any {
     return echarts;
@@ -61,7 +60,7 @@ export class NgxEchartsService {
    * Wrapper for echarts.disconnect
    */
   get disconnect(): any {
-    return this._checkEcharts() ? echarts.disconnect : undefined;
+    return this._checkEcharts() ? (<any>echarts).disconnect : undefined;
   }
 
   /**

@@ -5,24 +5,28 @@ import {
 import { ChangeFilter } from './change-filter';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-
-declare var echarts: any;
+import { init, ECharts, EChartOption } from 'echarts';
 
 @Directive({
-  selector: 'echarts, [echarts]'
+  selector: 'echarts, [echarts]',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
-  @Input() options: any;
+  @Input() options: EChartOption;
   @Input() theme: string;
   @Input() loading: boolean;
-  @Input() initOpts: any;
-  @Input() merge: any;
+  @Input() initOpts: {
+    devicePixelRatio?: number
+    renderer?: string
+    width?: number | string
+    height?: number | string
+  };
+  @Input() merge: EChartOption;
   @Input() autoResize = true;
   @Input() loadingType = 'default';
-  @Input() loadingOpts: any;
+  @Input() loadingOpts: object;
 
   // chart events:
-  @Output() chartInit = new EventEmitter<any>();
+  @Output() chartInit = new EventEmitter<ECharts>();
   @Output() chartClick = new EventEmitter<any>();
   @Output() chartDblClick = new EventEmitter<any>();
   @Output() chartMouseDown = new EventEmitter<any>();
@@ -33,11 +37,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   @Output() chartContextMenu = new EventEmitter<any>();
   @Output() chartDataZoom = new EventEmitter<any>();
 
-  private _chart: any = null;
+  private _chart: ECharts;
   private currentOffsetWidth = 0;
   private currentOffsetHeight = 0;
-  private currentWindowWidth: any = null;
-  private _resize$ = new Subject<any>();
+  private currentWindowWidth: number;
+  private _resize$ = new Subject<void>();
   private _resizeSub: Subscription;
 
   constructor(private el: ElementRef, private _ngZone: NgZone) { }
@@ -56,13 +60,15 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
       }
     }
 
-    return this._ngZone.runOutsideAngular(() => echarts.init(dom, this.theme || undefined, this.initOpts || undefined));
+    return this._ngZone.runOutsideAngular(() => init(dom, this.theme || undefined, this.initOpts || undefined));
   }
 
   @HostListener('window:resize', ['$event'])
-  onWindowResize(event: any) {
-    if (this.autoResize && event.target.innerWidth !== this.currentWindowWidth) {
-      this.currentWindowWidth = event.target.innerWidth;
+  onWindowResize(event: Event) {
+    const target = event.target as Window;
+
+    if (this.autoResize && target.innerWidth !== this.currentWindowWidth) {
+      this.currentWindowWidth = target.innerWidth;
       this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
       this.currentOffsetHeight = this.el.nativeElement.offsetHeight;
 
@@ -103,7 +109,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     }
   }
 
-  private onOptionsChange(opt: any) {
+  private onOptionsChange(opt: EChartOption) {
     if (opt) {
       if (!this._chart) {
         this._chart = this.createChart();
@@ -132,7 +138,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     }
   }
 
-  private registerEvents(_chart: any) {
+  private registerEvents(_chart: ECharts) {
     if (_chart) {
       // register mouse events:
       _chart.on('click', e => this._ngZone.run(() => this.chartClick.emit(e)));
