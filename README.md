@@ -61,28 +61,27 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 # Installation
 ```bash
 # if you use npm
-npm install echarts --save
-npm install ngx-echarts --save
+npm install echarts -S
+npm install @types/echarts -D
+npm install ngx-echarts -S
 
 # or if you use yarn
 yarn add echarts
+yarn add @types/echarts -D
 yarn add ngx-echarts
 ```
 
 ## How to use it within:
-+ `angular-cli`: If you already have an angular-cli project. You need to import echarts in the **"scripts"** list of `angular-cli.json` just like:
++ `angular-cli`: If you already have an angular-cli project. You need to map the echarts path to minified version of echarts in the **compilerOptions** of **"tsconfig.json"** in your project's root (this is important for AOT build):
 
 ```diff
 {
-  // projects ...
-  "architect": {
-    "build": {
-      "options": {
-        "scripts": [
-+         "node_modules/echarts/dist/echarts.min.js"
-        ]
-      }
-    }
+  ...,
+  "compilerOptions": {
+    ...,
++    "paths": {
++      "echarts": ["node_modules/echarts/dist/echarts.min.js"]
++    }
   }
 }
 ```
