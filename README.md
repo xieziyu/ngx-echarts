@@ -22,8 +22,8 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v3.2.0` for Angular >= 6
-+ `v2.3.1` for Angular < 6
++ `v4.0.0-beta.0` for Angular >= 6
++ `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 Github branches:
 + `master` for Angular >= 6
@@ -32,6 +32,18 @@ Github branches:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2018.08.03: v4.0.0-beta.0 (thanks to [smnbbrv](https://github.com/smnbbrv))
+  + BREAKING CHANGES: 
+    + ES6 import instead of polluting global namespace. [issue #123](https://github.com/xieziyu/ngx-echarts/issues/123)
+    + NgxEchartsService is now obsoleted. If you want to use echarts API, please just import it
+    ```typescript
+    import * as echarts from 'echarts';
+    /** or */
+    import { graphic, registerMap } from 'echarts';
+    ```
+    + No need to configure `angular.json` any more. But we still need to configure `tsconfig.json` currently.
+    + Import echarts theme files or other extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions)
+
 + 2018.07.24: v3.2.0 & v2.3.1:
   + New: [autoResize] now detects its container element's offset height.
   + Change: Resizing detection is now debounced.
@@ -59,80 +71,32 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 + 2017.11.25: v2.0.0-beta.0. It has some [BREAKING CHANGES](https://github.com/xieziyu/ngx-echarts/blob/master/src/assets/CHANGELOG.md) you should know.
 
 # Installation
-```bash
-# if you use npm
-npm install echarts -S
-npm install @types/echarts -D
-npm install ngx-echarts -S
++ Since v4.0
+  ```bash
+  # if you use npm
+  npm install echarts -S
+  npm install ngx-echarts -S
+  npm install @types/echarts -D
 
-# or if you use yarn
-yarn add echarts
-yarn add @types/echarts -D
-yarn add ngx-echarts
-```
+  # or if you use yarn
+  yarn add echarts
+  yarn add ngx-echarts
+  yarn add @types/echarts -D
+  ```
 
-## How to use it within:
-+ `angular-cli`: If you already have an angular-cli project. You need to map the echarts path to minified version of echarts in the **compilerOptions** of **"tsconfig.json"** in your project's root (this is important for AOT build):
-
-```diff
-{
-  ...,
-  "compilerOptions": {
++ tsconfig.json:
+You need to map the echarts path to minified version of echarts in the **compilerOptions** of **"tsconfig.json"** in your project's root (this is important for AoT build):
+  ```diff
+  {
     ...,
-+    "paths": {
-+      "echarts": ["node_modules/echarts/dist/echarts.min.js"]
-+    }
-  }
-}
-```
-
-+ `Webpack`: You need to edit `webpack.common.js`, just like:
-```javascript
-new webpack.ProvidePlugin({
-  // ...
-
-  // add this:
-  echarts: "echarts"
-})
-```
-
-+ `SystemJS`: For example: angular `quickstart`. You need to modify `systemjs.config.js` file just like:
-
-```javascript
-{
-  map: {
-    // ...
-
-    // ngx-echarts
-    'echarts':              'npm:echarts',
-    'ngx-echarts':          'npm:ngx-echarts'
-  },
-  packages: {
-    // other packages ...
-
-    // ngx-echarts
-    echarts: {
-      defaultExtension: 'js',
-      main: 'dist/echarts.min.js',
-      meta: {
-        './*.js': {
-          format: 'global', // load this module as a global
-          exports: 'echarts', // the global property to take as the module value
-        }
-      }
-    },
-    'ngx-echarts': {
-      defaultExtension: 'js',
-      main: 'bundles/ngx-echarts.umd.js',
-      meta: {
-        './*.js': {
-          deps: ['echarts']
-        }
-      }
+    "compilerOptions": {
+      ...,
+  +    "paths": {
+  +      "echarts": ["node_modules/echarts/dist/echarts.min.js"]
+  +    }
     }
   }
-}
-```
+  ```
 
 # Usage
 Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
@@ -159,7 +123,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
       <div echarts [options]="chartOption" class="demo-chart"></div>
       ```
 
-      + css:
+      + scss:
       ```css
       .demo-chart {
         height: 400px;
@@ -167,83 +131,19 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
       ```
 
       + component:
-      ```javascript
+      ```typescript
       chartOption = {
-        title: {
-          text: '堆叠区域图'
+        xAxis: {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
         },
-        tooltip : {
-          trigger: 'axis'
+        yAxis: {
+          type: 'value'
         },
-        legend: {
-          data:['邮件营销','联盟广告','视频广告','直接访问','搜索引擎']
-        },
-        toolbox: {
-          feature: {
-            saveAsImage: {}
-          }
-        },
-        grid: {
-          left: '3%',
-          right: '4%',
-          bottom: '3%',
-          containLabel: true
-        },
-        xAxis : [
-          {
-            type : 'category',
-            boundaryGap : false,
-            data : ['周一','周二','周三','周四','周五','周六','周日']
-          }
-        ],
-        yAxis : [
-          {
-            type : 'value'
-          }
-        ],
-        series : [
-          {
-            name:'邮件营销',
-            type:'line',
-            stack: '总量',
-            areaStyle: {normal: {}},
-            data:[120, 132, 101, 134, 90, 230, 210]
-          },
-          {
-            name:'联盟广告',
-            type:'line',
-            stack: '总量',
-            areaStyle: {normal: {}},
-            data:[220, 182, 191, 234, 290, 330, 310]
-          },
-          {
-            name:'视频广告',
-            type:'line',
-            stack: '总量',
-            areaStyle: {normal: {}},
-            data:[150, 232, 201, 154, 190, 330, 410]
-          },
-          {
-            name:'直接访问',
-            type:'line',
-            stack: '总量',
-            areaStyle: {normal: {}},
-            data:[320, 332, 301, 334, 390, 330, 320]
-          },
-          {
-            name:'搜索引擎',
-            type:'line',
-            stack: '总量',
-            label: {
-              normal: {
-                show: true,
-                position: 'top'
-              }
-            },
-            areaStyle: {normal: {}},
-            data:[820, 932, 901, 934, 1290, 1330, 1320]
-          }
-        ]
+        series: [{
+          data: [820, 932, 901, 934, 1290, 1330, 1320],
+          type: 'line'
+        }]
       }
       ```
 
@@ -258,7 +158,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 | `[loading]` | boolean | false | Use it to toggle the echarts loading animation when your data is not ready. |
 | `[autoResize]` | boolean | true | Charts will be automatically resized when container's width changed. |
 | `[initOpts]` | object | null | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details |
-| `[theme]` | string | null | Use it to init echarts with theme. You need to include the theme file in `angular-cli.json` or other module resolver. |
+| `[theme]` | string | null | Use it to init echarts with theme. You need to import the theme file in `main.ts`. |
 | `[loadingOpts]` | object | null | Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. |
 
 For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
@@ -279,7 +179,22 @@ By default, `loadingOpts` is:
 }
 ```
 
-### echartsInstance
+### ECharts API
+If you need echarts API such as `echarts.graphic`, please import it from echarts. For example:
+
+```typescript
+/** import all */
+import * as echarts from 'echarts';
+
+new echarts.graphic.LinearGradient(/** ... */);
+
+/** or you can */
+import { graphic } from 'echarts';
+
+new graphic.LinearGradient(/** ... */);
+```
+
+### ECharts Instance
 `echartsInstance` is exposed (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
 
 + html:
@@ -302,25 +217,30 @@ resizeChart() {
 }
 ```
 
+### ECharts Extensions
+Import echarts theme files or other extension files in `main.ts`. For example:
+
+```typescript
+  import { enableProdMode } from '@angular/core';
+  import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+  import { AppModule } from './app/app.module';
+  import { environment } from './environments/environment';
+
+  /** echarts extensions: */
+  import 'echarts/theme/macarons.js';
+  import 'echarts/dist/extension/bmap.min.js';
+
+  if (environment.production) {
+    enableProdMode();
+  }
+
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.log(err));
+  ```
+
 ### Service
-`NgxEchartsService` is a wrapper for global `echarts` object. You can get native echarts object or use wrapper method directly. For example:
-  + usage:
-
-    ```typescript
-    import {NgxEchartsService} from 'ngx-echarts';
-
-    //...
-    constructor(private es: NgxEchartsService) {}
-
-    ngOnInit() {
-      const echarts = this.es.echarts;
-      echarts.registerMap('HK', HK_GEO_JSON);
-      // Or you can:
-      // this.es.registerMap('HK', HK_GEO_JSON);
-    }
-    ```
-
-More details in [Document](https://xieziyu.github.io/ngx-echarts/api-doc/injectables/NgxEchartsService.html) and [Demo](https://xieziyu.github.io/ngx-echarts/#/usage/NgxEchartsService)
+`NgxEchartsService` has been obsoleted since v4.0
 
 # Events
 As echarts support the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'` mouse events, our `ngx-echarts` directive also support the same mouse events but with additional `chart` prefix.

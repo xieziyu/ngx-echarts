@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgxEchartsService } from 'ngx-echarts';
+
+import * as echarts from 'echarts';
 
 declare const require: any;
 
@@ -18,7 +19,7 @@ export class HongkongPdComponent implements OnInit {
   // empty option before geoJSON loaded:
   options = {};
 
-  constructor(private http: HttpClient, private es: NgxEchartsService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     // fetch map geo JSON data from server
@@ -27,7 +28,7 @@ export class HongkongPdComponent implements OnInit {
         // hide loading:
         this.mapLoaded = true;
         // register map:
-        this.es.registerMap('HK', geoJson);
+        echarts.registerMap('HK', geoJson);
         // update options:
         this.options = {
           title: {
