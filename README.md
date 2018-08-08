@@ -132,7 +132,11 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
       + component:
       ```typescript
-      chartOption = {
+      import { EChartOption } from 'echarts';
+      
+      // ...
+      
+      chartOption: EChartOption = {
         xAxis: {
           type: 'category',
           data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
