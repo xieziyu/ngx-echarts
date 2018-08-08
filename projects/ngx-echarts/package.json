@@ -1,9 +1,9 @@
 {
   "name": "ngx-echarts",
-  "version": "3.2.0",
+  "version": "4.0.0-beta.0",
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/common": "6.x",
+    "@angular/core": "6.x",
     "echarts": ">=3.1.1"
   }
 }

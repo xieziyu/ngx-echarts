@@ -1,3 +1,17 @@
+## 4.0.0-beta.0 (2018-08-03)
+
+#### BREAKING CHANGES
++ ES6 import instead of polluting global namespace. [issue #123](https://github.com/xieziyu/ngx-echarts/issues/123)
++ NgxEchartsService is now obsoleted. If you want to use echarts API, please just import it
+  ```typescript
+  import * as echarts from 'echarts';
+  /** or */
+  import { graphic, registerMap } from 'echarts';
+  ```
++ No need to configure `angular.json` any more. But we still need to configure `tsconfig.json` currently.
++ Import echarts theme files or other extension files in `main.ts`.
+
+
 ## 3.2.0 & 2.3.0 (2018-07-24)
 
 #### New

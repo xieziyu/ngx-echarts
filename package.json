@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts-demo",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4202",
@@ -46,6 +46,7 @@
     "@angular/compiler-cli": "^6.0.0",
     "@angular/language-service": "^6.0.0",
     "@compodoc/compodoc": "^1.1.2",
+    "@types/echarts": "^0.0.13",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",

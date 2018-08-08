@@ -33,9 +33,6 @@
               "node_modules/angular2-draggable/css/resizable.min.css"
             ],
             "scripts": [
-              "node_modules/echarts/dist/echarts.min.js",
-              "node_modules/echarts/dist/extension/bmap.min.js",
-              "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
               "node_modules/prismjs/components/prism-markup.min.js",
               "node_modules/prismjs/components/prism-css.min.js",
@@ -44,8 +41,7 @@
               "node_modules/prismjs/components/prism-bash.min.js",
               "node_modules/prismjs/components/prism-diff.min.js",
               "node_modules/prismjs/components/prism-scss.min.js",
-              "src/theme/dark.js",
-              "src/theme/macarons.js"
+              "node_modules/marked/lib/marked.js"
             ]
           },
           "configurations": {

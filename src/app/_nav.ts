@@ -54,11 +54,6 @@ export const navigation = [
         icon: 'fa fa-cog'
       },
       {
-        name: 'NgxEchartsService',
-        url: '/usage/NgxEchartsService',
-        icon: 'fa fa-cogs'
-      },
-      {
         name: 'Auto Resize',
         url: '/usage/auto-resize',
         icon: 'fa fa-cogs',
@@ -81,11 +76,6 @@ export const navigation = [
       {
         name: 'Population Density',
         url: '/demo/map/hongkong-pd',
-        icon: 'fa fa-star'
-      },
-      {
-        name: 'Bus Lines of Beijing',
-        url: '/demo/map/bus-lines-of-beijing',
         icon: 'fa fa-star'
       },
     ]

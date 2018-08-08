@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { graphic } from 'echarts';
 
 declare const require: any;
-declare const echarts: any;
 
 @Component({
   selector: 'app-events',
@@ -79,7 +79,7 @@ export class EventsComponent implements OnInit {
           type: 'bar',
           itemStyle: {
             normal: {
-              color: new echarts.graphic.LinearGradient(
+              color: new graphic.LinearGradient(
                 0, 0, 0, 1,
                 [
                   { offset: 0, color: '#83bff6' },
@@ -89,7 +89,7 @@ export class EventsComponent implements OnInit {
               )
             },
             emphasis: {
-              color: new echarts.graphic.LinearGradient(
+              color: new graphic.LinearGradient(
                 0, 0, 0, 1,
                 [
                   { offset: 0, color: '#2378f7' },
