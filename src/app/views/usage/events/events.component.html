@@ -4,7 +4,12 @@
     <div class="mt-4">
       <tabset>
         <tab heading="demo">
+          <button class="btn" [ngClass]="detectEventChanges ? 'btn-outline-danger' : 'btn-outline-success'" (click)="detectEventChanges = !detectEventChanges">
+            {{ detectEventChanges ? 'Disable' : 'Enable' }} [detectEventChanges]
+          </button>
+          <hr>
           <div echarts [options]="options" class="demo-chart"
+            [detectEventChanges]="detectEventChanges"
             (chartInit)="onChartEvent($event, 'chartInit')"
             (chartClick)="onChartEvent($event, 'chartClick')"
             (chartDblClick)="onChartEvent($event, 'chartDblClick')"

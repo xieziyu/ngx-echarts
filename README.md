@@ -164,12 +164,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 | `[initOpts]` | object | null | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details |
 | `[theme]` | string | null | Use it to init echarts with theme. You need to import the theme file in `main.ts`. |
 | `[loadingOpts]` | object | null | Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. |
-
-For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
-  
-```html
-<div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
-```
+| `[detectEventChanges]` | boolean | true | Whether to register mouse event handlers on echartInstance. Use it to avoid unwanted change detections. |
 
 By default, `loadingOpts` is:
 

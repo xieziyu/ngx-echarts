@@ -31,7 +31,11 @@ export const navigation = [
       {
         name: 'Events',
         url: '/usage/events',
-        icon: 'fa fa-comment'
+        icon: 'fa fa-comment',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
       {
         name: 'Theme',
