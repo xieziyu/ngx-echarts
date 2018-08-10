@@ -22,7 +22,7 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v4.0.0-beta.0` for Angular >= 6
++ `v4.0.0-beta.1` for Angular >= 6
 + `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 Github branches:
