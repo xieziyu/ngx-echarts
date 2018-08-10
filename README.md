@@ -32,6 +32,12 @@ Github branches:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2018.08.10: v4.0.0-beta.1
+  + New: [detectEventChanges] Use it to avoid unwanted change detections.
+    + If you set it false, `chartClick` and some other event-emitters become silent. [demo](https://xieziyu.github.io/ngx-echarts/#/usage/events)
+  + Change: [theme] now detect changes at runtime. 
+    + When you change theme at runtime, the chart would be destroyed first and then initialized again. [demo](https://xieziyu.github.io/ngx-echarts/#/usage/theme)
+
 + 2018.08.03: v4.0.0-beta.0 (thanks to [smnbbrv](https://github.com/smnbbrv))
   + BREAKING CHANGES: 
     + ES6 import instead of polluting global namespace. [issue #123](https://github.com/xieziyu/ngx-echarts/issues/123)
@@ -66,7 +72,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 + 2017.12.11: v2.0.1. Fix issue: No change detection involved in event handler. Refer to issue [#26](https://github.com/xieziyu/ngx-echarts/issues/26), [#28](https://github.com/xieziyu/ngx-echarts/issues/28)
 
-+ 2017.12.04: v2.0.0. Provide an echarts wrapper service: NgxEchartsService. Please see [demo](https://xieziyu.github.io/ngx-echarts/#/usage/NgxEchartsService)
++ 2017.12.04: v2.0.0. Provide an echarts wrapper service: NgxEchartsService.
 
 + 2017.11.25: v2.0.0-beta.0. It has some [BREAKING CHANGES](https://github.com/xieziyu/ngx-echarts/blob/master/src/assets/CHANGELOG.md) you should know.
 
@@ -164,12 +170,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 | `[initOpts]` | object | null | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details |
 | `[theme]` | string | null | Use it to init echarts with theme. You need to import the theme file in `main.ts`. |
 | `[loadingOpts]` | object | null | Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details. |
-
-For example, if we want to use `dark.js` in [Echarts Themes Page](http://echarts.baidu.com/download-theme.html): 
-  
-```html
-<div echarts theme="dark" class="demo-chart" [options]="chartOptions"></div>
-```
+| `[detectEventChanges]` | boolean | true | Whether to register mouse event handlers on echartInstance. Use it to avoid unwanted change detections. |
 
 By default, `loadingOpts` is:
 

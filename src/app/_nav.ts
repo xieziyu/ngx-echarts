@@ -31,12 +31,20 @@ export const navigation = [
       {
         name: 'Events',
         url: '/usage/events',
-        icon: 'fa fa-comment'
+        icon: 'fa fa-comment',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
       {
         name: 'Theme',
         url: '/usage/theme',
-        icon: 'fa fa-eyedropper'
+        icon: 'fa fa-eyedropper',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
       {
         name: 'Loading',

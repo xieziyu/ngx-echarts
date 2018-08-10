@@ -13,6 +13,7 @@ export class EventsComponent implements OnInit {
   demo_ts = require('!!raw-loader!./events.component.ts');
 
   options: any;
+  detectEventChanges = true;
 
   constructor() { }
 

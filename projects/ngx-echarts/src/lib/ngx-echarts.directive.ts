@@ -6,6 +6,7 @@ import { ChangeFilter } from './change-filter';
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { init, ECharts, EChartOption } from 'echarts';
+import { EChartEvents } from './echart-events';
 
 @Directive({
   selector: 'echarts, [echarts]',
@@ -24,6 +25,12 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   @Input() autoResize = true;
   @Input() loadingType = 'default';
   @Input() loadingOpts: object;
+
+  /**
+   * Whether to register event handlers on echartInstance. Default is true.
+   * Use it to avoid unwanted change detection, if you want to optimize the performance.
+   */
+  @Input() detectEventChanges = true;
 
   // chart events:
   @Output() chartInit = new EventEmitter<ECharts>();
@@ -81,6 +88,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     filter.notEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
     filter.notEmpty<any>('merge').subscribe(opt => this.setOption(opt));
     filter.has<boolean>('loading').subscribe(v => this.toggleLoading(!!v));
+    filter.notFirst<boolean>('detectEventChanges').subscribe(v => this.toggleEventDetectors(!!v));
+    filter.notFirst<string>('theme').subscribe(() => this.onThemeChange());
   }
 
   ngOnDestroy() {
@@ -125,7 +134,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
         this.chartInit.emit(this._chart);
 
         // register events:
-        this.registerEvents(this._chart);
+        if (this.detectEventChanges) {
+          this.registerEvents();
+        }
       }
 
       this._chart.setOption(this.options, true);
@@ -138,19 +149,21 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     }
   }
 
-  private registerEvents(_chart: ECharts) {
-    if (_chart) {
-      // register mouse events:
-      _chart.on('click', e => this._ngZone.run(() => this.chartClick.emit(e)));
-      _chart.on('dblClick', e => this._ngZone.run(() => this.chartDblClick.emit(e)));
-      _chart.on('mousedown', e => this._ngZone.run(() => this.chartMouseDown.emit(e)));
-      _chart.on('mouseup', e => this._ngZone.run(() => this.chartMouseUp.emit(e)));
-      _chart.on('mouseover', e => this._ngZone.run(() => this.chartMouseOver.emit(e)));
-      _chart.on('mouseout', e => this._ngZone.run(() => this.chartMouseOut.emit(e)));
-      _chart.on('globalout', e => this._ngZone.run(() => this.chartGlobalOut.emit(e)));
-      _chart.on('contextmenu', e => this._ngZone.run(() => this.chartContextMenu.emit(e)));
-      // other events;
-      _chart.on('datazoom', e => this._ngZone.run(() => this.chartDataZoom.emit(e)));
+  private registerEvents() {
+    if (this._chart) {
+      const events = EChartEvents.All;
+      for (let i = 0, len = events.length; i < len; i++) {
+        this._chart.on(events[i], this.eventHandler, this);
+      }
+    }
+  }
+
+  private unregisterEvents() {
+    if (this._chart) {
+      const events = EChartEvents.All;
+      for (let i = 0, len = events.length; i < len; i++) {
+        this._chart.off(events[i], this.eventHandler);
+      }
     }
   }
 
@@ -169,6 +182,53 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   setOption(option: any, opts?: any) {
     if (this._chart) {
       this._chart.setOption(option, opts);
+    }
+  }
+
+  private eventHandler(event) {
+    switch (event.type) {
+      case EChartEvents.Click:
+        this._ngZone.run(() => this.chartClick.emit(event));
+        break;
+      case EChartEvents.DblClick:
+        this._ngZone.run(() => this.chartDblClick.emit(event));
+        break;
+      case EChartEvents.MouseDown:
+        this._ngZone.run(() => this.chartMouseDown.emit(event));
+        break;
+      case EChartEvents.MouseUp:
+        this._ngZone.run(() => this.chartMouseUp.emit(event));
+        break;
+      case EChartEvents.MouseOver:
+        this._ngZone.run(() => this.chartMouseOver.emit(event));
+        break;
+      case EChartEvents.MouseOut:
+        this._ngZone.run(() => this.chartMouseOut.emit(event));
+        break;
+      case EChartEvents.GlobalOut:
+        this._ngZone.run(() => this.chartGlobalOut.emit(event));
+        break;
+      case EChartEvents.ContextMenu:
+        this._ngZone.run(() => this.chartContextMenu.emit(event));
+        break;
+      case EChartEvents.DataZoom:
+        this._ngZone.run(() => this.chartDataZoom.emit(event));
+        break;
+    }
+  }
+
+  private toggleEventDetectors(detect: boolean) {
+    if (this._chart) {
+      detect ? this.registerEvents() : this.unregisterEvents();
+    }
+  }
+
+  onThemeChange() {
+    this.ngOnDestroy();
+    this.onOptionsChange(this.options);
+
+    if (this.merge && this._chart) {
+      this.setOption(this.merge);
     }
   }
 }
