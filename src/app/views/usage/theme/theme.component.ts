@@ -10,14 +10,26 @@ declare const require: any;
 export class ThemeComponent implements OnInit {
   demo_html = require('!!html-loader!./theme.component.html');
   demo_ts = require('!!raw-loader!./theme.component.ts');
-  demo_cli_ts = `\
-  // .angular-cli.json
-  {
-    "scripts": [
-      "../node_modules/echarts/dist/echarts.min.js",
-      "theme/macarons.js"
-    ],
-  }`;
+  demo_main_ts = `\
+  import { enableProdMode } from '@angular/core';
+  import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+  import { AppModule } from './app/app.module';
+  import { environment } from './environments/environment';
+
+  /** import theme files here: */
+  import 'echarts/theme/dark.js';
+  import 'echarts/theme/macarons.js';
+
+  if (environment.production) {
+    enableProdMode();
+  }
+
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.log(err));
+  `;
+
+  theme: string;
 
   options = {
     title: {

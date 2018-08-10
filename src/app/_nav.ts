@@ -40,7 +40,11 @@ export const navigation = [
       {
         name: 'Theme',
         url: '/usage/theme',
-        icon: 'fa fa-eyedropper'
+        icon: 'fa fa-eyedropper',
+        badge: {
+          variant: 'success',
+          text: 'new'
+        }
       },
       {
         name: 'Loading',

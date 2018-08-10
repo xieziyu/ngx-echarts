@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "4.0.0-beta.0",
+  "version": "4.0.0-beta.1",
   "peerDependencies": {
     "@angular/common": "6.x",
     "@angular/core": "6.x",

@@ -88,7 +88,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     filter.notEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
     filter.notEmpty<any>('merge').subscribe(opt => this.setOption(opt));
     filter.has<boolean>('loading').subscribe(v => this.toggleLoading(!!v));
-    filter.has<boolean>('detectEventChanges').subscribe(v => this.toggleEventDetectors(!!v));
+    filter.notFirst<boolean>('detectEventChanges').subscribe(v => this.toggleEventDetectors(!!v));
+    filter.notFirst<string>('theme').subscribe(() => this.onThemeChange());
   }
 
   ngOnDestroy() {
@@ -219,6 +220,15 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
   private toggleEventDetectors(detect: boolean) {
     if (this._chart) {
       detect ? this.registerEvents() : this.unregisterEvents();
+    }
+  }
+
+  onThemeChange() {
+    this.ngOnDestroy();
+    this.onOptionsChange(this.options);
+
+    if (this.merge && this._chart) {
+      this.setOption(this.merge);
     }
   }
 }
