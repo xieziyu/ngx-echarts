@@ -99,5 +99,22 @@ export const navigation = [
         icon: 'fa fa-star'
       }
     ]
+  },
+  {
+    name: 'Graph',
+    url: '/demo/graph',
+    icon: 'fa fa-share-alt',
+    children: [
+      {
+        name: 'Simple Graph',
+        url: '/demo/graph/simple',
+        icon: 'fa fa-star'
+      },
+      {
+        name: 'Force Layout',
+        url: '/demo/graph/force-layout',
+        icon: 'fa fa-star'
+      }
+    ]
   }
 ];

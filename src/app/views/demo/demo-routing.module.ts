@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HongkongPdComponent } from './map/hongkong-pd/hongkong-pd.component';
 import { OfficialDemoComponent } from './tree/official-demo/official-demo.component';
+import { GraphForceLayoutDemoComponent } from './graph/graph-force-layout-demo/graph-force-layout-demo.component';
+import { GraphSimpleDemoComponent } from './graph/graph-simple-demo/graph-simple-demo.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,20 @@ const routes: Routes = [
       title: 'Official Demo'
     }
   },
+  {
+    path: 'graph/simple',
+    component: GraphSimpleDemoComponent,
+    data: {
+      title: 'Simple Graph'
+    }
+  },
+  {
+    path: 'graph/force-layout',
+    component: GraphForceLayoutDemoComponent,
+    data: {
+      title: 'Force Layout'
+    }
+  }
 ];
 
 @NgModule({
