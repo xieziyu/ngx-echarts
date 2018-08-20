@@ -1,7 +1,8 @@
 # ngx-echarts
-[![npm version](https://badge.fury.io/js/ngx-echarts.svg)](http://badge.fury.io/js/ngx-echarts)
-[![npm downloads](https://img.shields.io/npm/dm/ngx-echarts.svg)](https://npmjs.org/ngx-echarts)
-[![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)](https://travis-ci.org/xieziyu/ngx-echarts)
+<!-- Badges section here. -->
+[![npm](https://img.shields.io/npm/v/ngx-echarts.svg)][npm-badge-url]
+[![npm](https://img.shields.io/npm/dm/ngx-echarts.svg)][npm-badge-url]
+[![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)][ci-url]
 
 Angular directive for echarts (version >= 3.x) (The project is renamed from **angular2-echarts**)
 
@@ -22,7 +23,7 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v4.0.0-beta.1` for Angular >= 6
++ `v4.0.0` for Angular >= 6
 + `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 Github branches:
@@ -32,14 +33,13 @@ Github branches:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
-+ 2018.08.10: v4.0.0-beta.1
++ 2018.08.20: v4.0.0
+  + Change: ECharts instance creating is delayed until view initialized.
   + New: [detectEventChanges] Use it to avoid unwanted change detections.
     + If you set it false, `chartClick` and some other event-emitters become silent. [demo](https://xieziyu.github.io/ngx-echarts/#/usage/events)
   + Change: [theme] now detect changes at runtime. 
     + When you change theme at runtime, the chart would be destroyed first and then initialized again. [demo](https://xieziyu.github.io/ngx-echarts/#/usage/theme)
-
-+ 2018.08.03: v4.0.0-beta.0 (thanks to [smnbbrv](https://github.com/smnbbrv))
-  + BREAKING CHANGES: 
+  + **BREAKING CHANGES**:
     + ES6 import instead of polluting global namespace. [issue #123](https://github.com/xieziyu/ngx-echarts/issues/123)
     + NgxEchartsService is now obsoleted. If you want to use echarts API, please just import it
     ```typescript
@@ -103,6 +103,11 @@ You need to map the echarts path to minified version of echarts in the **compile
     }
   }
   ```
+
+## Upgrade from v3.x
+1. Remove ECharts related files from `scripts` in `angular.json`, including lib, theme and extension files.
+2. Modify `tsconfig.json` according to the installation guidance above.
+3. Import necessary theme or extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions).
 
 # Usage
 Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
@@ -282,3 +287,7 @@ yarn install
 yarn demo
 ```
 The demo page server is listening to: http://localhost:4202
+
+
+[npm-badge-url]: https://www.npmjs.com/package/ngx-echarts
+[ci-url]: https://travis-ci.org/xieziyu/ngx-echarts

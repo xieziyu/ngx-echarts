@@ -34,4 +34,15 @@ export class ChangeFilter {
     }
     return empty();
   }
+
+  notFirstAndEmpty<T>(key: string): Observable<T> {
+    if (this._changes[key] && !this._changes[key].isFirstChange()) {
+      const value: T = this._changes[key].currentValue;
+
+      if (value !== undefined && value !== null) {
+        return of(value);
+      }
+    }
+    return empty();
+  }
 }

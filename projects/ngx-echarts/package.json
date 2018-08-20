@@ -1,7 +1,20 @@
 {
   "name": "ngx-echarts",
-  "version": "4.0.0-beta.2",
+  "version": "4.0.0",
+  "author": "Xie, Ziyu",
   "license": "MIT",
+  "keywords": [
+    "angular",
+    "ng",
+    "echarts",
+    "chart"
+  ],
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/xieziyu/ngx-echarts.git"
+  },
+  "homepage": "https://xieziyu.github.io/ngx-echarts",
+  "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || >=6.0.0",
     "@angular/core": "^6.0.0-rc.0 || >=6.0.0",

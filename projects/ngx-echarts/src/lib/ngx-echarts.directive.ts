@@ -1,6 +1,6 @@
 import {
   Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter,
-  OnChanges, OnDestroy, SimpleChanges, NgZone, DoCheck
+  OnChanges, OnDestroy, SimpleChanges, NgZone, DoCheck, AfterViewInit
 } from '@angular/core';
 import { ChangeFilter } from './change-filter';
 import { Subject, Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { EChartEvents } from './echart-events';
 @Directive({
   selector: 'echarts, [echarts]',
 })
-export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
+export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, AfterViewInit {
   @Input() options: EChartOption;
   @Input() theme: string;
   @Input() loading: boolean;
@@ -85,11 +85,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
 
   ngOnChanges(changes: SimpleChanges) {
     const filter = ChangeFilter.of(changes);
-    filter.notEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
-    filter.notEmpty<any>('merge').subscribe(opt => this.setOption(opt));
+    filter.notFirstAndEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
+    filter.notFirstAndEmpty<any>('merge').subscribe(opt => this.setOption(opt));
     filter.has<boolean>('loading').subscribe(v => this.toggleLoading(!!v));
     filter.notFirst<boolean>('detectEventChanges').subscribe(v => this.toggleEventDetectors(!!v));
-    filter.notFirst<string>('theme').subscribe(() => this.onThemeChange());
+    filter.notFirst<string>('theme').subscribe(() => this.refreshChart());
   }
 
   ngOnDestroy() {
@@ -118,6 +118,18 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     }
   }
 
+  ngAfterViewInit() {
+    setTimeout(() => this.initChart());
+  }
+
+  private initChart() {
+    this.onOptionsChange(this.options);
+
+    if (this.merge && this._chart) {
+      this.setOption(this.merge);
+    }
+  }
+
   private onOptionsChange(opt: EChartOption) {
     if (opt) {
       if (!this._chart) {
@@ -140,12 +152,6 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
       }
 
       this._chart.setOption(this.options, true);
-
-      /**
-       * Bugfix: Line chart is not animated on init
-       * https://github.com/xieziyu/ngx-echarts/issues/102
-       */
-      // this._chart.resize();
     }
   }
 
@@ -223,12 +229,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck {
     }
   }
 
-  onThemeChange() {
+  private refreshChart() {
     this.ngOnDestroy();
-    this.onOptionsChange(this.options);
-
-    if (this.merge && this._chart) {
-      this.setOption(this.merge);
-    }
+    this.initChart();
   }
 }
