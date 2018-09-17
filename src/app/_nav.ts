@@ -116,5 +116,17 @@ export const navigation = [
         icon: 'fa fa-star'
       }
     ]
+  },
+  {
+    name: '3D Bar',
+    url: '/demo/bar3d',
+    icon: 'fa fa-bar-chart',
+    children: [
+      {
+        name: '3D Bar Demo',
+        url: '/demo/bar3d/bar3d-demo',
+        icon: 'fa fa-star'
+      }
+    ]
   }
 ];

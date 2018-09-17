@@ -4,6 +4,7 @@ import { HongkongPdComponent } from './map/hongkong-pd/hongkong-pd.component';
 import { OfficialDemoComponent } from './tree/official-demo/official-demo.component';
 import { GraphForceLayoutDemoComponent } from './graph/graph-force-layout-demo/graph-force-layout-demo.component';
 import { GraphSimpleDemoComponent } from './graph/graph-simple-demo/graph-simple-demo.component';
+import { Bar3dDemoComponent } from './bar3d/bar3d-demo/bar3d-demo.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,13 @@ const routes: Routes = [
     component: GraphForceLayoutDemoComponent,
     data: {
       title: 'Force Layout'
+    }
+  },
+  {
+    path: 'bar3d/bar3d-demo',
+    component: Bar3dDemoComponent,
+    data: {
+      title: '3D Bar with Dataset'
     }
   }
 ];

@@ -264,9 +264,9 @@
     semver "^5.3.0"
     semver-intersect "^1.1.2"
 
-"@types/echarts@^0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-0.0.13.tgz#e19aed81537c3e68b9ed94300321572e7bed4edd"
+"@types/echarts@4.1.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@types/echarts/-/echarts-4.1.1.tgz#7ef6bcfc546034b9ec781683e848238cd1936d6d"
 
 "@types/estree@0.0.38":
   version "0.0.38"
@@ -402,9 +402,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2-draggable@^2.0.0-beta.2:
-  version "2.0.0-beta.2"
-  resolved "https://registry.yarnpkg.com/angular2-draggable/-/angular2-draggable-2.0.0-beta.2.tgz#985213e1beb96f531d5362936925574c1d1f24d7"
+angular2-draggable@2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/angular2-draggable/-/angular2-draggable-2.1.2.tgz#9d0d637d4c0050a031ff18793d7c12b3ef828cbe"
   dependencies:
     tslib "^1.9.0"
 
@@ -1237,6 +1237,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
+claygl@^1.2.1:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/claygl/-/claygl-1.2.3.tgz#16359822921a9b9363257a6cba116d6cd21e8da7"
+
 clean-css@4.1.x, clean-css@^4.1.11, clean-css@^4.x:
   version "4.1.11"
   resolved "https://registry.yarnpkg.com/clean-css/-/clean-css-4.1.11.tgz#2ecdf145aba38f54740f26cefd0ff3e03e125d6a"
@@ -2023,6 +2027,13 @@ ecc-jsbn@~0.1.1:
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+echarts-gl@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/echarts-gl/-/echarts-gl-1.1.1.tgz#3df321cd4df7fee774e9a09e4dd29c9fd7e9104f"
+  dependencies:
+    claygl "^1.2.1"
+    zrender "^4.0.4"
 
 echarts@^4.1.0:
   version "4.1.0"
@@ -7531,3 +7542,7 @@ zone.js@^0.8.26:
 zrender@4.0.4:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.4.tgz#910e60d888f00c9599073f23758dd23345fe48fd"
+
+zrender@^4.0.4:
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/zrender/-/zrender-4.0.5.tgz#6e8f738971ce2cd624aac82b2156729b1c0e5a82"

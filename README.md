@@ -90,6 +90,14 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add @types/echarts -D
   ```
 
++ If you need ECharts GL support, please install it first:
+  ```bash
+  npm install echarts-gl -S
+
+  # or
+  yarn add echarts-gl
+  ```
+
 + tsconfig.json:
 You need to map the echarts path to minified version of echarts in the **compilerOptions** of **"tsconfig.json"** in your project's root (this is important for AoT build):
   ```diff
@@ -103,6 +111,23 @@ You need to map the echarts path to minified version of echarts in the **compile
     }
   }
   ```
+
++ If you also installed ECharts GL:
+  ```diff
+  {
+    ...,
+    "compilerOptions": {
+      ...,
+      "paths": {
+         "echarts": ["node_modules/echarts/dist/echarts.min.js"],
+  +      "echarts-gl": ["node_modules/echarts-gl/dist/echarts-gl.min.js"]
+      }
+    }
+  }
+  ```
+
++ Import other extentions such as themes or `echarts-gl` in your `main.ts`: [ECharts Extensions](#echarts-extensions)
+
 
 ## Upgrade from v3.x
 1. Remove ECharts related files from `scripts` in `angular.json`, including lib, theme and extension files.
@@ -230,7 +255,7 @@ resizeChart() {
 ### ECharts Extensions
 Import echarts theme files or other extension files in `main.ts`. For example:
 
-```typescript
+  ```typescript
   import { enableProdMode } from '@angular/core';
   import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
@@ -238,6 +263,7 @@ Import echarts theme files or other extension files in `main.ts`. For example:
   import { environment } from './environments/environment';
 
   /** echarts extensions: */
+  import 'echarts-gl';
   import 'echarts/theme/macarons.js';
   import 'echarts/dist/extension/bmap.min.js';
 
