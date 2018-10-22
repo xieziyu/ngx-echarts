@@ -1,4 +1,4 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, ChangeDetectorRef } from '@angular/core';
 
 /**
 * Allows the sidebar to be toggled via click.
@@ -7,12 +7,13 @@ import { Directive, HostListener } from '@angular/core';
   selector: '[appSidebarToggler]'
 })
 export class SidebarToggleDirective {
-  constructor() { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   @HostListener('click', ['$event'])
   toggleOpen($event: any) {
     $event.preventDefault();
     document.querySelector('body').classList.toggle('sidebar-hidden');
+    this.ref.detectChanges();
   }
 }
 
