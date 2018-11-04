@@ -8,6 +8,9 @@ export class EChartEvents {
   static GlobalOut = 'globalout';
   static ContextMenu = 'contextmenu';
   static DataZoom = 'datazoom';
+  static MapSelectChanged = 'mapselectchanged';
+  static MapSelected = 'mapselected';
+  static MapUnselected = 'mapunselected';
 
   static All = [
     EChartEvents.Click,
@@ -19,5 +22,8 @@ export class EChartEvents {
     EChartEvents.GlobalOut,
     EChartEvents.ContextMenu,
     EChartEvents.DataZoom,
+    EChartEvents.MapSelectChanged,
+    EChartEvents.MapSelected,
+    EChartEvents.MapUnselected,
   ];
 }
