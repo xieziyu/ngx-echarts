@@ -43,6 +43,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, After
   @Output() chartGlobalOut = new EventEmitter<any>();
   @Output() chartContextMenu = new EventEmitter<any>();
   @Output() chartDataZoom = new EventEmitter<any>();
+  @Output() chartMapSelectChanged = new EventEmitter<any>();
+  @Output() chartMapSelected = new EventEmitter<any>();
+  @Output() chartMapUnselected = new EventEmitter<any>();
 
   private _chart: ECharts;
   private currentOffsetWidth = 0;
@@ -219,6 +222,15 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, After
         break;
       case EChartEvents.DataZoom:
         this._ngZone.run(() => this.chartDataZoom.emit(event));
+        break;
+      case EChartEvents.MapSelectChanged:
+        this._ngZone.run(() => this.chartMapSelectChanged.emit(event));
+        break;
+      case EChartEvents.MapSelected:
+        this._ngZone.run(() => this.chartMapSelected.emit(event));
+        break;
+      case EChartEvents.MapUnselected:
+        this._ngZone.run(() => this.chartMapUnselected.emit(event));
         break;
     }
   }
