@@ -77,7 +77,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    MarkdownModule.forRoot({ loader: HttpClient})
+    MarkdownModule.forRoot({ loader: HttpClient })
   ],
   declarations: [
     AppComponent,

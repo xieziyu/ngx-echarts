@@ -1,3 +1,10 @@
+## 4.0.1 (2018-11-11)
+
+#### New
++ Add map events support: (chartMapSelectChanged), (chartMapSelected), (chartMapUnselected). (by [amirch1](https://github.com/amirch1) - [PR #147](https://github.com/xieziyu/ngx-echarts/pull/147))
+
+---
+
 ## 4.0.0 (2018-08-20)
 
 #### BREAKING CHANGES

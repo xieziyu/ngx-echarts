@@ -23,16 +23,15 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v4.0.0` for Angular >= 6
++ `v4.0.1` for Angular >= 6
 + `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
-
-Github branches:
-+ `master` for Angular >= 6
-+ `v2.x` for Angular < 6
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2018.11.11: v4.0.1
+  + Add map events support: (chartMapSelectChanged), (chartMapSelected), (chartMapUnselected). (by [amirch1](https://github.com/amirch1) - [PR #147](https://github.com/xieziyu/ngx-echarts/pull/147))
+
 + 2018.08.20: v4.0.0
   + Change: ECharts instance creating is delayed until view initialized.
   + New: [detectEventChanges] Use it to avoid unwanted change detections.
@@ -299,6 +298,9 @@ It supports following event outputs:
 + `chartGlobalOut`: It emits the same `params` of `'globalout'` event
 + `chartContextMenu`: It emits the same `params` of `'contextmenu'` event (since v1.2.1)
 + `chartDataZoom`: It emits the same `params` of `'dataZoom'` event (thanks to averhaegen)
++ `chartMapSelectChanged`: It emits the same `params` of `'mapselectchanged'` event (thanks to amirch1)
++ `chartMapSelected`: It emits the same `params` of `'mapselected'` event (thanks to amirch1)
++ `chartMapUnselected`: It emits the same `params` of `'mapunselected'` event (thanks to amirch1)
 
 You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.
 
