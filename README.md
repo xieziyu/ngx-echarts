@@ -89,6 +89,22 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add @types/echarts -D
   ```
 
++ Update `angular.json`:
+  ```diff
+  {
+    ...,
+    "architect": {
+      "build": {
+        "options": {
+          "scripts": [
+            ...,
+  +         "node_modules/echarts/dist/echarts.min.js"
+          ]
+        }
+      }
+  }
+  ```
+
 + If you need ECharts GL support, please install it first:
   ```bash
   npm install echarts-gl -S
@@ -97,31 +113,19 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add echarts-gl
   ```
 
-+ tsconfig.json:
-You need to map the echarts path to minified version of echarts in the **compilerOptions** of **"tsconfig.json"** in your project's root (this is important for AoT build):
++ And then `angular.json`:
   ```diff
   {
     ...,
-    "compilerOptions": {
-      ...,
-  +    "paths": {
-  +      "echarts": ["node_modules/echarts/dist/echarts.min.js"]
-  +    }
-    }
-  }
-  ```
-
-+ If you also installed ECharts GL:
-  ```diff
-  {
-    ...,
-    "compilerOptions": {
-      ...,
-      "paths": {
-         "echarts": ["node_modules/echarts/dist/echarts.min.js"],
-  +      "echarts-gl": ["node_modules/echarts-gl/dist/echarts-gl.min.js"]
+    "architect": {
+      "build": {
+        "options": {
+          "scripts": [
+            ...,
+  +         "node_modules/echarts-gl/dist/echarts-gl.min.js"
+          ]
+        }
       }
-    }
   }
   ```
 
@@ -129,9 +133,8 @@ You need to map the echarts path to minified version of echarts in the **compile
 
 
 ## Upgrade from v3.x
-1. Remove ECharts related files from `scripts` in `angular.json`, including lib, theme and extension files.
-2. Modify `tsconfig.json` according to the installation guidance above.
-3. Import necessary theme or extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions).
+1. Install `@types/echarts`
+2. Import necessary theme or extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions).
 
 # Usage
 Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
