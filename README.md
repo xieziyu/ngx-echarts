@@ -46,7 +46,6 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
     /** or */
     import { graphic, registerMap } from 'echarts';
     ```
-    + No need to configure `angular.json` any more. But we still need to configure `tsconfig.json` currently.
     + Import echarts theme files or other extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions)
 
 + 2018.07.24: v3.2.0 & v2.3.1:
