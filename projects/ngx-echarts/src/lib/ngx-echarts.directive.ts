@@ -1,17 +1,13 @@
-import {
-  Directive, ElementRef, Renderer, Input, Output, HostListener, EventEmitter,
-  OnChanges, OnDestroy, SimpleChanges, NgZone, DoCheck, AfterViewInit
-} from '@angular/core';
+import { AfterViewInit, Directive, DoCheck, ElementRef, EventEmitter, Input, NgZone, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { EChartOption, ECharts, init } from 'echarts';
+import { fromEvent, Observable, Subscription } from 'rxjs';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
-import { Subject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
-import { init, ECharts, EChartOption } from 'echarts';
-import { EChartEvents } from './echart-events';
 
 @Directive({
   selector: 'echarts, [echarts]',
 })
-export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, AfterViewInit {
+export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoCheck, AfterViewInit {
   @Input() options: EChartOption;
   @Input() theme: string;
   @Input() loading: boolean;
@@ -25,36 +21,127 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, After
   @Input() autoResize = true;
   @Input() loadingType = 'default';
   @Input() loadingOpts: object;
+  @Input() detectEventChanges = true; // deprecated, left for compatibility reasons to avoid triggering major version
 
-  /**
-   * Whether to register event handlers on echartInstance. Default is true.
-   * Use it to avoid unwanted change detection, if you want to optimize the performance.
-   */
-  @Input() detectEventChanges = true;
-
-  // chart events:
+  // ngx-echarts events
   @Output() chartInit = new EventEmitter<ECharts>();
-  @Output() chartClick = new EventEmitter<any>();
-  @Output() chartDblClick = new EventEmitter<any>();
-  @Output() chartMouseDown = new EventEmitter<any>();
-  @Output() chartMouseUp = new EventEmitter<any>();
-  @Output() chartMouseOver = new EventEmitter<any>();
-  @Output() chartMouseOut = new EventEmitter<any>();
-  @Output() chartGlobalOut = new EventEmitter<any>();
-  @Output() chartContextMenu = new EventEmitter<any>();
-  @Output() chartDataZoom = new EventEmitter<any>();
-  @Output() chartMapSelectChanged = new EventEmitter<any>();
-  @Output() chartMapSelected = new EventEmitter<any>();
-  @Output() chartMapUnselected = new EventEmitter<any>();
 
-  private _chart: ECharts;
+  // echarts mouse events
+  @Output() chartClick = this.createLazyEvent('click');
+  @Output() chartDblClick = this.createLazyEvent('dblclick');
+  @Output() chartMouseDown = this.createLazyEvent('mousedown');
+  @Output() chartMouseMove = this.createLazyEvent('mousemove');
+  @Output() chartMouseUp = this.createLazyEvent('mouseup');
+  @Output() chartMouseOver = this.createLazyEvent('mouseover');
+  @Output() chartMouseOut = this.createLazyEvent('mouseout');
+  @Output() chartGlobalOut = this.createLazyEvent('globalout');
+  @Output() chartContextMenu = this.createLazyEvent('contextmenu');
+
+  // echarts mouse events
+  @Output() chartLegendSelectChanged = this.createLazyEvent('legendselectchanged');
+  @Output() chartLegendSelected = this.createLazyEvent('legendselected');
+  @Output() chartLegendUnselected = this.createLazyEvent('legendunselected');
+  @Output() chartLegendScroll = this.createLazyEvent('legendscroll');
+  @Output() chartDataZoom = this.createLazyEvent('datazoom');
+  @Output() chartDataRangeSelected = this.createLazyEvent('datarangeselected');
+  @Output() chartTimelineChanged = this.createLazyEvent('timelinechanged');
+  @Output() chartTimelinePlayChanged = this.createLazyEvent('timelineplaychanged');
+  @Output() chartRestore = this.createLazyEvent('restore');
+  @Output() chartDataViewChanged = this.createLazyEvent('dataviewchanged');
+  @Output() chartMagicTypeChanged = this.createLazyEvent('magictypechanged');
+  @Output() chartPieSelectChanged = this.createLazyEvent('pieselectchanged');
+  @Output() chartPieSelected = this.createLazyEvent('pieselected');
+  @Output() chartPieUnselected = this.createLazyEvent('pieunselected');
+  @Output() chartMapSelectChanged = this.createLazyEvent('mapselectchanged');
+  @Output() chartMapSelected = this.createLazyEvent('mapselected');
+  @Output() chartMapUnselected = this.createLazyEvent('mapunselected');
+  @Output() chartAxisAreaSelected = this.createLazyEvent('axisareaselected');
+  @Output() chartFocusNodeAdjacency = this.createLazyEvent('focusnodeadjacency');
+  @Output() chartUnfocusNodeAdjacency = this.createLazyEvent('unfocusnodeadjacency');
+  @Output() chartBrush = this.createLazyEvent('brush');
+  @Output() chartBrushSelected = this.createLazyEvent('brushselected');
+  @Output() chartRendered = this.createLazyEvent('rendered');
+  @Output() chartFinished = this.createLazyEvent('finished');
+
+  private chart: ECharts;
   private currentOffsetWidth = 0;
   private currentOffsetHeight = 0;
   private currentWindowWidth: number;
-  private _resize$ = new Subject<void>();
-  private _resizeSub: Subscription;
+  private resizeSub: Subscription;
 
-  constructor(private el: ElementRef, private _ngZone: NgZone) { }
+  constructor(private el: ElementRef, private ngZone: NgZone) { }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const filter = ChangeFilter.of(changes);
+    filter.notFirstAndEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
+    filter.notFirstAndEmpty<any>('merge').subscribe(opt => this.setOption(opt));
+    filter.has<boolean>('loading').subscribe(v => this.toggleLoading(!!v));
+    filter.notFirst<string>('theme').subscribe(() => this.refreshChart());
+  }
+
+  ngOnInit() {
+    this.resizeSub = fromEvent(window, 'resize').pipe(debounceTime(50)).subscribe(() => {
+      if (this.autoResize && window.innerWidth !== this.currentWindowWidth) {
+        this.currentWindowWidth = window.innerWidth;
+        this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
+        this.currentOffsetHeight = this.el.nativeElement.offsetHeight;
+        this.resize();
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.resizeSub.unsubscribe();
+    this.dispose();
+  }
+
+  ngDoCheck() {
+    // No heavy work in DoCheck!
+    if (this.chart && this.autoResize) {
+      const offsetWidth = this.el.nativeElement.offsetWidth;
+      const offsetHeight = this.el.nativeElement.offsetHeight;
+
+      if (this.currentOffsetWidth !== offsetWidth || this.currentOffsetHeight !== offsetHeight) {
+        this.currentOffsetWidth = offsetWidth;
+        this.currentOffsetHeight = offsetHeight;
+        this.resize();
+      }
+    }
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => this.initChart());
+  }
+
+  private dispose() {
+    if (this.chart) {
+      this.chart.dispose();
+      this.chart = null;
+    }
+  }
+
+  private resize() {
+    if (this.chart) {
+      this.chart.resize();
+    }
+  }
+
+  private toggleLoading(loading: boolean) {
+    if (this.chart) {
+      loading ? this.chart.showLoading(this.loadingType, this.loadingOpts) : this.chart.hideLoading();
+    }
+  }
+
+  private setOption(option: any, opts?: any) {
+    if (this.chart) {
+      this.chart.setOption(option, opts);
+    }
+  }
+
+  private refreshChart() {
+    this.dispose();
+    this.initChart();
+  }
 
   private createChart() {
     this.currentWindowWidth = window.innerWidth;
@@ -70,179 +157,37 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, DoCheck, After
       }
     }
 
-    return this._ngZone.runOutsideAngular(() => init(dom, this.theme || undefined, this.initOpts || undefined));
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize(event: Event) {
-    const target = event.target as Window;
-
-    if (this.autoResize && target.innerWidth !== this.currentWindowWidth) {
-      this.currentWindowWidth = target.innerWidth;
-      this.currentOffsetWidth = this.el.nativeElement.offsetWidth;
-      this.currentOffsetHeight = this.el.nativeElement.offsetHeight;
-
-      this._resize$.next();
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    const filter = ChangeFilter.of(changes);
-    filter.notFirstAndEmpty<any>('options').subscribe(opt => this.onOptionsChange(opt));
-    filter.notFirstAndEmpty<any>('merge').subscribe(opt => this.setOption(opt));
-    filter.has<boolean>('loading').subscribe(v => this.toggleLoading(!!v));
-    filter.notFirst<boolean>('detectEventChanges').subscribe(v => this.toggleEventDetectors(!!v));
-    filter.notFirst<string>('theme').subscribe(() => this.refreshChart());
-  }
-
-  ngOnDestroy() {
-    if (this._resizeSub) {
-      this._resizeSub.unsubscribe();
-      this._resizeSub = null;
-    }
-
-    if (this._chart) {
-      this._chart.dispose();
-      this._chart = null;
-    }
-  }
-
-  ngDoCheck() {
-    // No heavy work in DoCheck!
-    if (this._chart && this.autoResize) {
-      const offsetWidth = this.el.nativeElement.offsetWidth;
-      const offsetHeight = this.el.nativeElement.offsetHeight;
-
-      if (this.currentOffsetWidth !== offsetWidth || this.currentOffsetHeight !== offsetHeight) {
-        this.currentOffsetWidth = offsetWidth;
-        this.currentOffsetHeight = offsetHeight;
-        this._resize$.next();
-      }
-    }
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => this.initChart());
+    return this.ngZone.runOutsideAngular(() => init(dom, this.theme, this.initOpts));
   }
 
   private initChart() {
     this.onOptionsChange(this.options);
 
-    if (this.merge && this._chart) {
+    if (this.merge && this.chart) {
       this.setOption(this.merge);
     }
   }
 
   private onOptionsChange(opt: EChartOption) {
     if (opt) {
-      if (!this._chart) {
-        this._chart = this.createChart();
-
-        // subscribe to _resize$ and debounced
-        this._resizeSub = this._resize$.pipe(debounceTime(50)).subscribe(() => {
-          if (this._chart) {
-            this._chart.resize();
-          }
-        });
-
-        // output echart instance:
-        this.chartInit.emit(this._chart);
-
-        // register events:
-        if (this.detectEventChanges) {
-          this.registerEvents();
-        }
+      if (!this.chart) {
+        this.chart = this.createChart();
+        this.chartInit.emit(this.chart);
       }
 
-      this._chart.setOption(this.options, true);
+      this.chart.setOption(this.options, true);
     }
   }
 
-  private registerEvents() {
-    if (this._chart) {
-      const events = EChartEvents.All;
-      for (let i = 0, len = events.length; i < len; i++) {
-        this._chart.on(events[i], this.eventHandler, this);
-      }
-    }
+  // allows to lazily bind to only those events that are requested through the `@Output` by parent components
+  // see https://stackoverflow.com/questions/51787972/optimal-reentering-the-ngzone-from-eventemitter-event for more info
+  private createLazyEvent<T>(eventName: string): EventEmitter<T> {
+    return this.chartInit.pipe(
+      switchMap((chart: ECharts) => new Observable(observer => {
+        chart.on(eventName, (data: T) => this.ngZone.run(() => observer.next(data)));
+        return null; // no need to react on unsubscribe as long as the `dispose()` is called in ngOnDestroy
+      }))
+    ) as EventEmitter<T>;
   }
 
-  private unregisterEvents() {
-    if (this._chart) {
-      const events = EChartEvents.All;
-      for (let i = 0, len = events.length; i < len; i++) {
-        this._chart.off(events[i], this.eventHandler);
-      }
-    }
-  }
-
-  clear() {
-    if (this._chart) {
-      this._chart.clear();
-    }
-  }
-
-  toggleLoading(loading: boolean) {
-    if (this._chart) {
-      loading ? this._chart.showLoading(this.loadingType, this.loadingOpts) : this._chart.hideLoading();
-    }
-  }
-
-  setOption(option: any, opts?: any) {
-    if (this._chart) {
-      this._chart.setOption(option, opts);
-    }
-  }
-
-  private eventHandler(event) {
-    switch (event.type) {
-      case EChartEvents.Click:
-        this._ngZone.run(() => this.chartClick.emit(event));
-        break;
-      case EChartEvents.DblClick:
-        this._ngZone.run(() => this.chartDblClick.emit(event));
-        break;
-      case EChartEvents.MouseDown:
-        this._ngZone.run(() => this.chartMouseDown.emit(event));
-        break;
-      case EChartEvents.MouseUp:
-        this._ngZone.run(() => this.chartMouseUp.emit(event));
-        break;
-      case EChartEvents.MouseOver:
-        this._ngZone.run(() => this.chartMouseOver.emit(event));
-        break;
-      case EChartEvents.MouseOut:
-        this._ngZone.run(() => this.chartMouseOut.emit(event));
-        break;
-      case EChartEvents.GlobalOut:
-        this._ngZone.run(() => this.chartGlobalOut.emit(event));
-        break;
-      case EChartEvents.ContextMenu:
-        this._ngZone.run(() => this.chartContextMenu.emit(event));
-        break;
-      case EChartEvents.DataZoom:
-        this._ngZone.run(() => this.chartDataZoom.emit(event));
-        break;
-      case EChartEvents.MapSelectChanged:
-        this._ngZone.run(() => this.chartMapSelectChanged.emit(event));
-        break;
-      case EChartEvents.MapSelected:
-        this._ngZone.run(() => this.chartMapSelected.emit(event));
-        break;
-      case EChartEvents.MapUnselected:
-        this._ngZone.run(() => this.chartMapUnselected.emit(event));
-        break;
-    }
-  }
-
-  private toggleEventDetectors(detect: boolean) {
-    if (this._chart) {
-      detect ? this.registerEvents() : this.unregisterEvents();
-    }
-  }
-
-  private refreshChart() {
-    this.ngOnDestroy();
-    this.initChart();
-  }
 }
