@@ -1,3 +1,14 @@
+## 4.1.0 (2018-12-16)
+
+#### New
++ Perfomance update: echarts events are now lazily bounded, so it won't trigger change dectection unexpectedly. Please refer to [PR #154](https://github.com/xieziyu/ngx-echarts/pull/154) for more details. Thanks to [smnbbrv](https://github.com/smnbbrv)!
++ Plenty of echarts event are now [supported](#events).
+
+#### Deprecated
++ `[detectEventChanges]` is now deprecated.
+
+---
+
 ## 4.0.1 (2018-11-11)
 
 #### New

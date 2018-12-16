@@ -25,12 +25,14 @@
       <markdown ngPreserveWhitespaces class="code-block-sm">
         ```bash
         # if you use npm
-        npm install echarts --save
-        npm install ngx-echarts --save
+        npm install echarts -S
+        npm install ngx-echarts -S
+        npm install @types/echarts -D
         
         # or if you use yarn
         yarn add echarts
         yarn add ngx-echarts
+        yarn add @types/echarts -D
         ```
       </markdown>
     </div>
@@ -47,21 +49,6 @@
           ],
         })
         export class AppModule {{'{'}} }
-        ```
-      </markdown>
-    </div>
-    <div class="col-md-6 mb-3">
-      <h2><span class="fa fa-caret-right mr-2 text-primary"></span>Work with angular-cli</h2>
-      <markdown ngPreserveWhitespaces class="code-block-sm">
-        ```diff
-        // .angular-cli.json
-        {{ '{' }}
-          ...,
-          "scripts": [
-        +   "node_modules/echarts/dist/echarts.min.js"
-          ],
-          ...,
-        }
         ```
       </markdown>
     </div>

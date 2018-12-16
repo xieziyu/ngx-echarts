@@ -23,12 +23,17 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v4.0.1` for Angular >= 6
++ `v4.1.0` for Angular >= 6
 + `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2018.12.16: v4.1.0
+  + Perfomance update: echarts events are now lazily bounded, so it won't trigger change dectection unexpectedly. Please refer to [PR #154](https://github.com/xieziyu/ngx-echarts/pull/154) for more details. Thanks to [smnbbrv](https://github.com/smnbbrv)!
+  + `[detectEventChanges]` is now deprecated.
+  + Plenty of echarts event are now [supported](#events).
+
 + 2018.11.11: v4.0.1
   + Add map events support: (chartMapSelectChanged), (chartMapSelected), (chartMapUnselected). (by [amirch1](https://github.com/amirch1) - [PR #147](https://github.com/xieziyu/ngx-echarts/pull/147))
 
@@ -88,22 +93,6 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add @types/echarts -D
   ```
 
-+ Update `angular.json`:
-  ```diff
-  {
-    ...,
-    "architect": {
-      "build": {
-        "options": {
-          "scripts": [
-            ...,
-  +         "node_modules/echarts/dist/echarts.min.js"
-          ]
-        }
-      }
-  }
-  ```
-
 + If you need ECharts GL support, please install it first:
   ```bash
   npm install echarts-gl -S
@@ -112,28 +101,13 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add echarts-gl
   ```
 
-+ And then `angular.json`:
-  ```diff
-  {
-    ...,
-    "architect": {
-      "build": {
-        "options": {
-          "scripts": [
-            ...,
-  +         "node_modules/echarts-gl/dist/echarts-gl.min.js"
-          ]
-        }
-      }
-  }
-  ```
-
 + Import other extentions such as themes or `echarts-gl` in your `main.ts`: [ECharts Extensions](#echarts-extensions)
 
 
 ## Upgrade from v3.x
 1. Install `@types/echarts`
 2. Import necessary theme or extension files in `main.ts`. Refer to [ECharts Extensions](#echarts-extensions).
+3. Remove `echarts` related scripts in `angular.json`.
 
 # Usage
 Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
@@ -291,18 +265,44 @@ As echarts support the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mo
   + The '$event' is same with the 'params' that Echarts dispatches
 
 It supports following event outputs:
-+ `chartClick`: It emits the same `params` of `'click'` event
-+ `chartDblClick`: It emits the same `params` of `'dblclick'` event
-+ `chartMouseDown`: It emits the same `params` of `'mousedown'` event
-+ `chartMouseUp`: It emits the same `params` of `'mouseup'` event
-+ `chartMouseOver`: It emits the same `params` of `'mouseover'` event
-+ `chartMouseOut`: It emits the same `params` of `'mouseout'` event
-+ `chartGlobalOut`: It emits the same `params` of `'globalout'` event
-+ `chartContextMenu`: It emits the same `params` of `'contextmenu'` event (since v1.2.1)
-+ `chartDataZoom`: It emits the same `params` of `'dataZoom'` event (thanks to averhaegen)
-+ `chartMapSelectChanged`: It emits the same `params` of `'mapselectchanged'` event (thanks to amirch1)
-+ `chartMapSelected`: It emits the same `params` of `'mapselected'` event (thanks to amirch1)
-+ `chartMapUnselected`: It emits the same `params` of `'mapunselected'` event (thanks to amirch1)
+
+| @Output | Event |
+| ------- | ----- |
+| chartInit | Emitted when chart is intialized |
+| chartClick | echarts event: `'click'` |
+| chartDblClick | echarts event: `'dblclick'` |
+| chartMouseDown | echarts event: `'mousedown'` |
+| chartMouseMove | echarts event: `'mousemove'` |
+| chartMouseUp | echarts event: `'mouseup'` |
+| chartMouseOver | echarts event: `'mouseover'` |
+| chartMouseOut | echarts event: `'mouseout'` |
+| chartGlobalOut | echarts event: `'globalout'` |
+| chartContextMenu | echarts event: `'contextmenu'` |
+| chartLegendSelectChanged | echarts event: `'legendselectchanged'` |
+| chartLegendSelected | echarts event: `'legendselected'` |
+| chartLegendUnselected | echarts event: `'legendunselected'` |
+| chartLegendScroll | echarts event: `'legendscroll'` |
+| chartDataZoom | echarts event: `'datazoom'` |
+| chartDataRangeSelected | echarts event: `'datarangeselected'` |
+| chartTimelineChanged | echarts event: `'timelinechanged'` |
+| chartTimelinePlayChanged | echarts event: `'timelineplaychanged'` |
+| chartRestore | echarts event: `'restore'` |
+| chartDataViewChanged | echarts event: `'dataviewchanged'` |
+| chartMagicTypeChanged | echarts event: `'magictypechanged'` |
+| chartPieSelectChanged | echarts event: `'pieselectchanged'` |
+| chartPieSelected | echarts event: `'pieselected'` |
+| chartPieUnselected | echarts event: `'pieunselected'` |
+| chartMapSelectChanged | echarts event: `'mapselectchanged'` |
+| chartMapSelected | echarts event: `'mapselected'` |
+| chartMapUnselected | echarts event: `'mapunselected'` |
+| chartAxisAreaSelected | echarts event: `'axisareaselected'` |
+| chartFocusNodeAdjacency | echarts event: `'focusnodeadjacency'` |
+| chartUnfocusNodeAdjacency | echarts event: `'unfocusnodeadjacency'` |
+| chartBrush | echarts event: `'brush'` |
+| chartBrushSelected | echarts event: `'brushselected'` |
+| chartRendered | echarts event: `'rendered'` |
+| chartFinished | echarts event: `'finished'` |
+
 
 You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.
 

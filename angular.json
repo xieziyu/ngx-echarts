@@ -42,9 +42,7 @@
               "node_modules/prismjs/components/prism-bash.min.js",
               "node_modules/prismjs/components/prism-diff.min.js",
               "node_modules/prismjs/components/prism-scss.min.js",
-              "node_modules/marked/lib/marked.js",
-              "node_modules/echarts/dist/echarts.min.js",
-              "node_modules/echarts-gl/dist/echarts-gl.min.js"
+              "node_modules/marked/lib/marked.js"
             ]
           },
           "configurations": {
