@@ -29,6 +29,9 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2019.04.16: v4.1.1
+  + Bugfix: not call 'unsubscribe' when 'this.resizeSub' is undefined. (by [Tian-Hun](https://github.com/Tian-Hun) - [PR #165](https://github.com/xieziyu/ngx-echarts/pull/165))
+
 + 2018.12.16: v4.1.0
   + Perfomance update: echarts events are now lazily bounded, so it won't trigger change dectection unexpectedly. Please refer to [PR #154](https://github.com/xieziyu/ngx-echarts/pull/154) for more details. Thanks to [smnbbrv](https://github.com/smnbbrv)!
   + `[detectEventChanges]` is now deprecated.

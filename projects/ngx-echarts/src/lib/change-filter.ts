@@ -1,5 +1,5 @@
 import { SimpleChanges } from '@angular/core';
-import { Observable, of, empty } from 'rxjs';
+import { Observable, of, EMPTY } from 'rxjs';
 
 export class ChangeFilter {
   constructor(private _changes: SimpleChanges) { }
@@ -16,7 +16,7 @@ export class ChangeFilter {
         return of(value);
       }
     }
-    return empty();
+    return EMPTY;
   }
 
   has<T>(key: string): Observable<T> {
@@ -24,7 +24,7 @@ export class ChangeFilter {
       const value: T = this._changes[key].currentValue;
       return of(value);
     }
-    return empty();
+    return EMPTY;
   }
 
   notFirst<T>(key: string): Observable<T> {
@@ -32,7 +32,7 @@ export class ChangeFilter {
       const value: T = this._changes[key].currentValue;
       return of(value);
     }
-    return empty();
+    return EMPTY;
   }
 
   notFirstAndEmpty<T>(key: string): Observable<T> {
@@ -43,6 +43,6 @@ export class ChangeFilter {
         return of(value);
       }
     }
-    return empty();
+    return EMPTY;
   }
 }
