@@ -77,6 +77,18 @@ export const navigation = [
     name: 'Advanced Demo'
   },
   {
+    name: 'Advanced',
+    url: '/demo/advanced',
+    icon: 'fa fa-sun-o',
+    children: [
+      {
+        name: 'Connect Charts',
+        url: '/demo/advanced/connect-charts',
+        icon: 'fa fa-star'
+      },
+    ]
+  },
+  {
     name: 'Map',
     url: '/demo/map',
     icon: 'fa fa-map',

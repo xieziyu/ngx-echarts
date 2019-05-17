@@ -5,8 +5,16 @@ import { OfficialDemoComponent } from './tree/official-demo/official-demo.compon
 import { GraphForceLayoutDemoComponent } from './graph/graph-force-layout-demo/graph-force-layout-demo.component';
 import { GraphSimpleDemoComponent } from './graph/graph-simple-demo/graph-simple-demo.component';
 import { Bar3dDemoComponent } from './bar3d/bar3d-demo/bar3d-demo.component';
+import { ConnectChartsComponent } from './advanced/connect-charts/connect-charts.component';
 
 const routes: Routes = [
+  {
+    path: 'advanced/connect-charts',
+    component: ConnectChartsComponent,
+    data: {
+      title: 'Connect Charts'
+    }
+  },
   {
     path: 'map/hongkong-pd',
     component: HongkongPdComponent,

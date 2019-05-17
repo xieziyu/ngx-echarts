@@ -8,6 +8,7 @@ import { OfficialDemoComponent } from './tree/official-demo/official-demo.compon
 import { GraphForceLayoutDemoComponent } from './graph/graph-force-layout-demo/graph-force-layout-demo.component';
 import { GraphSimpleDemoComponent } from './graph/graph-simple-demo/graph-simple-demo.component';
 import { Bar3dDemoComponent } from './bar3d/bar3d-demo/bar3d-demo.component';
+import { ConnectChartsComponent } from './advanced/connect-charts/connect-charts.component';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import { Bar3dDemoComponent } from './bar3d/bar3d-demo/bar3d-demo.component';
     OfficialDemoComponent,
     GraphForceLayoutDemoComponent,
     GraphSimpleDemoComponent,
-    Bar3dDemoComponent
+    Bar3dDemoComponent,
+    ConnectChartsComponent,
   ]
 })
 export class DemoModule { }
