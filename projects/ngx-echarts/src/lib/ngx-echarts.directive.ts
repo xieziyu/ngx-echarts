@@ -1,5 +1,6 @@
 import { AfterViewInit, Directive, DoCheck, ElementRef, EventEmitter, Input, NgZone, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
-import { EChartOption, ECharts, init } from 'echarts';
+import { EChartOption, ECharts } from 'echarts';
+import { init } from 'echarts/lib/echarts';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
