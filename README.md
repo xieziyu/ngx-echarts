@@ -17,18 +17,22 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 4. [Usage](#usage)
 5. [API](#api)
 6. [Events](#events)
-7. [Demo](#demo)
+7. [Custom Build](#custom-build)
+8. [Demo](#demo)
 
 # Getting Started
 `ngx-echarts` is an Angular (ver >= 2.x) directive for ECharts (ver >= 3.x).
 
 Latest version @npm:
-+ `v4.1.0` for Angular >= 6
++ `v4.x` for Angular >= 6
 + `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2019.06.14: v4.2.0
+  + New: support ECharts custom build
+
 + 2019.04.16: v4.1.1
   + Bugfix: not call 'unsubscribe' when 'this.resizeSub' is undefined. (by [Tian-Hun](https://github.com/Tian-Hun) - [PR #165](https://github.com/xieziyu/ngx-echarts/pull/165))
 
@@ -197,12 +201,12 @@ If you need echarts API such as `echarts.graphic`, please import it from echarts
 
 ```typescript
 /** import all */
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/lib/echarts';
 
 new echarts.graphic.LinearGradient(/** ... */);
 
 /** or you can */
-import { graphic } from 'echarts';
+import { graphic } from 'echarts/lib/echarts';
 
 new graphic.LinearGradient(/** ... */);
 ```
@@ -308,6 +312,67 @@ It supports following event outputs:
 
 
 You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.
+
+# Custom Build
+If you want to custom build echarts, just import want you need in a file:
+
+```ts
+// custom-echarts.ts
+
+// chart examples:
+import 'echarts/lib/chart/line';
+import 'echarts/lib/chart/bar';
+// component examples:
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
+import 'echarts/lib/component/toolbox';
+```
+
+And then import it in your `main.ts`:
+
+```ts
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+import { AppModule } from './app/app.module';
+import { environment } from './environments/environment';
+
+// For echarts custom build
+import './custom-echarts'
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));
+```
+
+And if you want to use the global `echarts` object, please import it from `lib` instead:
+
+```ts
+import * as echarts from 'echarts/lib/echarts'
+// Don't write:
+// import * as echarts from 'echarts'
+```
+
+If you need to import theme files, remember to change their `'echarts'` path to `'echarts/lib/echarts'`, for example:
+
+```ts
+// ... part of echarts/theme/dark.js:
+function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['exports', 'echarts/lib/echarts'], factory);
+    } else if (typeof exports === 'object' && typeof exports.nodeName !== 'string') {
+        // CommonJS
+        factory(exports, require('echarts/lib/echarts'));
+    } else {
+        // Browser globals
+        factory({}, root.echarts);
+    }
+}
+```
 
 # Demo
 You can clone this repo to your working copy and then launch the demo page in your local machine:

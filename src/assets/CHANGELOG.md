@@ -1,3 +1,8 @@
+## 4.2.0 (2019-06-14)
+
+#### New
++ Support ECharts custom build.
+
 ## 4.1.1 (2019-04-16)
 
 #### Bugfix
