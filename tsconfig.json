@@ -19,6 +19,9 @@
     "paths": {
       "ngx-echarts": [
         "dist/ngx-echarts"
+      ],
+      "ngx-echarts/core": [
+        "dist/ngx-echarts/core"
       ]
     }
   }

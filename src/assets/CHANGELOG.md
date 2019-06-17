@@ -1,3 +1,9 @@
+## 4.2.1 (2019-06-17)
+
+#### Bugfix
++ [issue #197](https://github.com/xieziyu/ngx-echarts/issues/197)
+
+
 ## 4.2.0 (2019-06-14)
 
 #### New
