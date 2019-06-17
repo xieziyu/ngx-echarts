@@ -1,0 +1,9 @@
+{
+  "ngPackage": {
+    "lib": {
+      "umdModuleIds": {
+        "echarts/lib/echarts": "echarts/lib/echarts"
+      }
+    }
+  }
+}

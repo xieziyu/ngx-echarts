@@ -30,6 +30,9 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2019.06.17: v4.2.1
+  + Bugfix: [issue #197](https://github.com/xieziyu/ngx-echarts/issues/197)
+
 + 2019.06.14: v4.2.0
   + New: support ECharts custom build
 
@@ -314,7 +317,13 @@ It supports following event outputs:
 You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.
 
 # Custom Build
-If you want to custom build echarts, just import want you need in a file:
+If you want to custom build echarts, import `NgxEchartsCoreModule` instead of `NgxEchartsModule`:
+
+```ts
+import { NgxEchartsCoreModule } from 'ngx-echarts/core';
+```
+
+Then import want you need in a custom file:
 
 ```ts
 // custom-echarts.ts

@@ -5,7 +5,7 @@
   "lib": {
     "entryFile": "src/public_api.ts",
     "umdModuleIds": {
-      "echarts/lib/echarts": "echarts/lib/echarts"
+      "echarts": "echarts"
     }
   }
 }
