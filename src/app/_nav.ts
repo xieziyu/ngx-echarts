@@ -86,6 +86,11 @@ export const navigation = [
         url: '/demo/advanced/connect-charts',
         icon: 'fa fa-star'
       },
+      {
+        name: 'Draggable Chart',
+        url: '/demo/advanced/line-draggable',
+        icon: 'fa fa-star'
+      },
     ]
   },
   {

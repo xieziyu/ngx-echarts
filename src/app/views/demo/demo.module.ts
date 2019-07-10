@@ -9,6 +9,7 @@ import { GraphForceLayoutDemoComponent } from './graph/graph-force-layout-demo/g
 import { GraphSimpleDemoComponent } from './graph/graph-simple-demo/graph-simple-demo.component';
 import { Bar3dDemoComponent } from './bar3d/bar3d-demo/bar3d-demo.component';
 import { ConnectChartsComponent } from './advanced/connect-charts/connect-charts.component';
+import { LineDraggableComponent } from './advanced/line-draggable/line-draggable.component';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { ConnectChartsComponent } from './advanced/connect-charts/connect-charts
     GraphSimpleDemoComponent,
     Bar3dDemoComponent,
     ConnectChartsComponent,
+    LineDraggableComponent,
   ]
 })
 export class DemoModule { }

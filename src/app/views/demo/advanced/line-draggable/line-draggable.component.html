@@ -1,0 +1,22 @@
+<div class="card card-accent-info">
+  <div class="card-body">
+    <h4 class="card-title">Draggable Line Chart</h4>
+    <div class="mt-4">
+      <tabset>
+        <tab heading="demo">
+          <div echarts (chartInit)="onChartReady($event)" [options]="options" style="height: 600px;"></div>
+        </tab>
+        <tab heading="html">
+          <markdown [data]="demo_html | language: 'html'"></markdown>
+        </tab>
+        <tab heading="component">
+          <markdown [data]="demo_ts | language: 'typescript'"></markdown>
+        </tab>
+        <tab heading="types.d.ts">
+          <markdown [data]="demo_types | language: 'typescript'"></markdown>
+        </tab>
+      </tabset>
+    </div>
+  </div>
+</div>
+  
