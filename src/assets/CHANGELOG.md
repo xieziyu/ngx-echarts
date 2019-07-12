@@ -3,16 +3,21 @@
 #### Bugfix
 + [issue #197](https://github.com/xieziyu/ngx-echarts/issues/197)
 
+---
 
 ## 4.2.0 (2019-06-14)
 
 #### New
 + Support ECharts custom build.
 
+---
+
 ## 4.1.1 (2019-04-16)
 
 #### Bugfix
 + fix not call 'unsubscribe' when 'this.resizeSub' is undefined. (by [Tian-Hun](https://github.com/Tian-Hun) - [PR #165](https://github.com/xieziyu/ngx-echarts/pull/165))
+
+---
 
 ## 4.1.0 (2018-12-16)
 

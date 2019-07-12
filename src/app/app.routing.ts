@@ -34,12 +34,12 @@ export const routes: Routes = [
       },
       {
         path: 'usage',
-        loadChildren: './views/usage/usage.module#UsageModule',
+        loadChildren: () => import('./views/usage/usage.module').then(m => m.UsageModule),
         data: { title: 'Usage' }
       },
       {
         path: 'demo',
-        loadChildren: './views/demo/demo.module#DemoModule',
+        loadChildren: () => import('./views/demo/demo.module').then(m => m.DemoModule),
         data: { title: 'Demo' }
       },
     ]
@@ -53,7 +53,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './views/pages/pages.module#PagesModule',
+        loadChildren: () => import('./views/pages/pages.module').then(m => m.PagesModule),
       }
     ]
   },
