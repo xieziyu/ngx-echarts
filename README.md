@@ -9,6 +9,7 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 + [Online Demo](https://xieziyu.github.io/ngx-echarts)
 + [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
 + [Starter Project](https://github.com/xieziyu/ngx-echarts-starter)
++ [Changelog](https://xieziyu.github.io/ngx-echarts/#/changelogs)
 
 ## Table of contents 
 1. [Getting Started](#getting-started)
