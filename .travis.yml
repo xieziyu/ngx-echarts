@@ -1,12 +1,19 @@
 language: node_js
 node_js:
     - "10"
-cache: yarn
-script: yarn release
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: dist/docs
-  github_token: $GITHUB_TOKEN
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+    - stage: compile
+      script: npm run build:lib
+    - stage: deploy
+      if: branch = master
+      script: npm run release
+      deploy:
+        provider: pages
+        skip_cleanup: true
+        local_dir: dist/docs
+        github_token: $GITHUB_TOKEN
+        on:
+          branch: master
