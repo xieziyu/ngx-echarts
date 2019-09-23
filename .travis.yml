@@ -6,6 +6,7 @@ jobs:
     - stage: lint
       script: npm run lint
     - stage: compile
+      if: branch != master
       script: npm run build:lib
     - stage: deploy
       if: branch = master

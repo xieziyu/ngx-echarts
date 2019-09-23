@@ -48,11 +48,10 @@ export class GraphForceLayoutDemoComponent implements OnInit {
           },
           tooltip: {},
           legend: [{
-            // selectedMode: 'single',
             data: categories.map(function (a) {
               return a.name;
             })
-          }],
+          }] as EChartOption.Legend,
           animation: false,
           series: [
             {
