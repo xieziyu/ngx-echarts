@@ -97,7 +97,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "styles.scss"
+              "src/scss/styles.scss"
             ],
             "scripts": [],
             "assets": [

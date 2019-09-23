@@ -91,7 +91,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
   }
 
   ngOnDestroy() {
-    this.resizeSub && this.resizeSub.unsubscribe();
+    if (this.resizeSub) {
+      this.resizeSub.unsubscribe();
+    }
     this.dispose();
   }
 

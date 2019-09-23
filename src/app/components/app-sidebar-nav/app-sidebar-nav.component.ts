@@ -25,11 +25,11 @@ export class AppSidebarNavComponent {
   public navigation = navigation;
 
   public isDivider(item) {
-    return item.divider ? true : false
+    return item.divider ? true : false;
   }
 
   public isTitle(item) {
-    return item.title ? true : false
+    return item.title ? true : false;
   }
 
   constructor() { }
@@ -57,19 +57,19 @@ export class AppSidebarNavItemComponent {
   @Input() item: any;
 
   public hasClass() {
-    return this.item.class ? true : false
+    return this.item.class ? true : false;
   }
 
   public isDropdown() {
-    return this.item.children ? true : false
+    return this.item.children ? true : false;
   }
 
   public thisUrl() {
-    return this.item.url
+    return this.item.url;
   }
 
   public isActive() {
-    return this.router.isActive(this.thisUrl(), false)
+    return this.router.isActive(this.thisUrl(), false);
   }
 
   constructor( private router: Router )  { }
@@ -100,19 +100,19 @@ export class AppSidebarNavLinkComponent {
   @Input() link: any;
 
   public hasVariant() {
-    return this.link.variant ? true : false
+    return this.link.variant ? true : false;
   }
 
   public isBadge() {
-    return this.link.badge ? true : false
+    return this.link.badge ? true : false;
   }
 
   public isExternalLink() {
-    return this.link.url.substring(0, 4) === 'http' ? true : false
+    return this.link.url.substring(0, 4) === 'http' ? true : false;
   }
 
   public isIcon() {
-    return this.link.icon ? true : false
+    return this.link.icon ? true : false;
   }
 
   constructor() { }
@@ -137,11 +137,11 @@ export class AppSidebarNavDropdownComponent {
   @Input() link: any;
 
   public isBadge() {
-    return this.link.badge ? true : false
+    return this.link.badge ? true : false;
   }
 
   public isIcon() {
-    return this.link.icon ? true : false
+    return this.link.icon ? true : false;
   }
 
   constructor() { }
@@ -176,7 +176,7 @@ export class AppSidebarNavTitleComponent implements OnInit {
     } else {
       this.renderer.appendChild(li, name);
     }
-    this.renderer.appendChild(nativeElement, li)
+    this.renderer.appendChild(nativeElement, li);
   }
 }
 

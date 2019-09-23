@@ -9,7 +9,6 @@
 # dependencies
 /node_modules
 /bower_components
-package-lock.json
 
 # IDEs and editors
 /.idea

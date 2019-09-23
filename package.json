@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --port=4202",
     "build": "ng build --prod --base-href ./",
-    "test": "ng test",
+    "test": "npm run lint",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build:lib": "ng build ngx-echarts",
