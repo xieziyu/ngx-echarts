@@ -31,6 +31,9 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
++ 2019.11.05: v4.2.2
+  + Bugfix: [issue #171](https://github.com/xieziyu/ngx-echarts/issues/171)
+
 + 2019.06.17: v4.2.1
   + Bugfix: [issue #197](https://github.com/xieziyu/ngx-echarts/issues/197)
 

@@ -187,7 +187,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
     return this.chartInit.pipe(
       switchMap((chart: ECharts) => new Observable(observer => {
         chart.on(eventName, (data: T) => this.ngZone.run(() => observer.next(data)));
-        return null; // no need to react on unsubscribe as long as the `dispose()` is called in ngOnDestroy
+        return () => chart.off(eventName);
       }))
     ) as EventEmitter<T>;
   }
