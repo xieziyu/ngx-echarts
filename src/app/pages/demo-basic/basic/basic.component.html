@@ -1,0 +1,46 @@
+<nz-page-header nzTitle="Getting Started">
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+    <nz-breadcrumb-item> Basic </nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-divider></nz-divider>
+
+<nz-tabset style="margin-top: 8px;" [nzTabPosition]="'left'">
+  <nz-tab nzTitle="Simple Chart">
+    <ng-template nz-tab>
+      <app-basic-simple></app-basic-simple>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Events">
+    <ng-template nz-tab>
+      <app-basic-events></app-basic-events>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="[theme]">
+    <ng-template nz-tab>
+      <app-basic-themes></app-basic-themes>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="[loading]">
+    <ng-template nz-tab>
+      <app-basic-loading></app-basic-loading>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="[merge]">
+    <ng-template nz-tab>
+      <app-basic-update></app-basic-update>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="[initOpts]">
+    <ng-template nz-tab>
+      <app-basic-init-opts></app-basic-init-opts>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="ECharts Instance">
+    <ng-template nz-tab>
+      <app-basic-instance></app-basic-instance>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

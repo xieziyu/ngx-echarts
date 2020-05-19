@@ -1,0 +1,43 @@
+<ul nz-menu nzTheme="dark" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+  <ng-template ngFor let-menu [ngForOf]="menus">
+    <ng-container *ngIf="!menu.submenus; else submenu">
+      <li nz-menu-item [routerLink]="menu.path" [routerLinkActive]="'ant-menu-item-selected'">
+        <span title>
+          <i
+            nz-icon
+            [nzType]="menu.icon"
+            [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"
+          ></i>
+          <span class="nav-text">{{ menu.text }}</span>
+        </span>
+      </li>
+    </ng-container>
+    <ng-template #submenu>
+      <li
+        nz-submenu
+        [nzTitle]="menu.text"
+        [nzIcon]="menu.icon"
+        [nzOpen]="menu.pathRegex.test(currentUrl)"
+      >
+        <ul>
+          <li
+            *ngFor="let submenu of menu.submenus"
+            nz-menu-item
+            [routerLink]="submenu.path"
+            [routerLinkActive]="'ant-menu-item-selected'"
+          >
+            <span title>
+              <i
+                nz-icon
+                *ngIf="submenu.icon"
+                [nzType]="submenu.icon"
+                [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"
+              ></i>
+              <span class="nav-text">{{ submenu.text }}</span>
+            </span>
+          </li>
+        </ul>
+      </li>
+    </ng-template>
+  </ng-template>
+</ul>

@@ -1,0 +1,15 @@
+<!-- DEMO START -->
+<div class="button-groups">
+  <button (click)="callMethod('getWidth')" nz-button nzType="default">getWidth()</button>
+  <button (click)="callMethod('getHeight')" nz-button nzType="default">getHeight()</button>
+  <button (click)="callMethod('getDom')" nz-button nzType="default">getDom()</button>
+  <button (click)="callMethod('getOption')" nz-button nzType="default">getOption()</button>
+  <button (click)="callMethod('clear')" nz-button nzType="default">clear()</button>  
+</div>
+<div echarts (chartInit)="onChartInit($event)" [options]="options" class="demo-chart"></div>
+<!-- DEMO END -->
+
+<code-block
+  [html]="html"
+  [component]="component">
+</code-block>

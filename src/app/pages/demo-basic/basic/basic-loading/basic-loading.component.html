@@ -1,0 +1,11 @@
+<!-- DEMO START -->
+<div class="button-groups">
+  <button (click)="isLoading=!isLoading" nz-button nzType="default">Toggle Loading</button>
+</div>
+<div echarts [options]="options" [loading]="isLoading" theme="macarons" class="demo-chart"></div>
+<!-- DEMO END -->
+
+<code-block
+  [html]="html"
+  [component]="component">
+</code-block>
