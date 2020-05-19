@@ -22,4 +22,15 @@ export const APP_MENUS: AppMenu[] = [
     icon: 'group',
     text: 'Advanced',
   },
+  {
+    path: '/series',
+    icon: 'bar-chart',
+    text: 'Series',
+    submenus: [
+      {
+        path: '/series/graph',
+        text: 'Graph',
+      }
+    ],
+  },
 ];

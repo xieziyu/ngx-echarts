@@ -17,6 +17,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/demo-advanced/demo-advanced.module').then((m) => m.DemoAdvancedModule),
   },
+  {
+    path: 'series',
+    loadChildren: () =>
+      import('./pages/demo-series/demo-series.module').then((m) => m.DemoSeriesModule),
+  },
 ];
 
 @NgModule({
