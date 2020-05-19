@@ -16,7 +16,7 @@ markdown table {
 
 .code-block {
   pre {
-    max-height: 280px;
+    max-height: 400px;
   }
 }
 
@@ -29,4 +29,8 @@ markdown table {
 
 .demo-chart {
   height: 500px;
+}
+
+.demo-chart-600 {
+  height: 600px;
 }

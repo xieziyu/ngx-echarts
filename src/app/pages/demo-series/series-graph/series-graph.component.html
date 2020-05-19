@@ -1,0 +1,24 @@
+<nz-page-header nzTitle="Graph">
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a routerLink="/welcome">Home</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
+    <nz-breadcrumb-item>Graph</nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-divider></nz-divider>
+
+<nz-tabset style="margin-top: 8px;" [nzTabPosition]="'left'">
+  <nz-tab nzTitle="Simple Graph">
+    <ng-template nz-tab>
+      <app-graph-simple></app-graph-simple>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Force Layout">
+    <ng-template nz-tab>
+      <app-graph-force-layout></app-graph-force-layout>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>
