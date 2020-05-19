@@ -13,11 +13,12 @@
     "lint": "ng lint",
     "lint:lib": "ng lint ngx-echarts",
     "e2e": "ng e2e",
+    "clean": "rm -rf dist",
     "compodoc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -d dist/docs/api-doc --theme stripe",
     "serve:doc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -s",
     "build:doc": "run-s build:prod compodoc",
     "update:file": "cpr README.md dist/ngx-echarts/README.md -o",
-    "release": "run-s dist build:doc",
+    "release": "run-s clean dist build:doc",
     "demo": "run-s build:lib start",
     "dist": "run-s build:lib:prod update:file",
     "prettier": "prettier --config .prettierrc.js --write '{src,e2e,projects}/**/*.ts'"

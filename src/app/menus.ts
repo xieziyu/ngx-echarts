@@ -17,4 +17,9 @@ export const APP_MENUS: AppMenu[] = [
     icon: 'appstore',
     text: 'Getting Started',
   },
+  {
+    path: '/advanced',
+    icon: 'group',
+    text: 'Advanced',
+  },
 ];

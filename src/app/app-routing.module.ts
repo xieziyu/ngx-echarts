@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/demo-basic/demo-basic.module').then((m) => m.DemoBasicModule),
   },
+  {
+    path: 'advanced',
+    loadChildren: () =>
+      import('./pages/demo-advanced/demo-advanced.module').then((m) => m.DemoAdvancedModule),
+  },
 ];
 
 @NgModule({
