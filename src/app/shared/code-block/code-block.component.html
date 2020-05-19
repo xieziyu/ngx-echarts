@@ -1,0 +1,16 @@
+<div class="code-block">
+  <nz-tabset nzType="card">
+    <nz-tab nzTitle="html" *ngIf="htmlCode">
+      <markdown [data]="htmlCode | language: 'html'"></markdown>
+    </nz-tab>
+    <nz-tab nzTitle="component" *ngIf="componentCode">
+      <markdown [data]="componentCode | language: 'typescript'"></markdown>
+    </nz-tab>
+    <nz-tab nzTitle="scss" *ngIf="scssCode">
+      <markdown [data]="scssCode | language: 'scss'"></markdown>
+    </nz-tab>
+    <nz-tab nzTitle="data" *ngIf="dataCode">
+      <markdown [data]="dataCode | language: 'typescript'"></markdown>
+    </nz-tab>
+  </nz-tabset>
+</div>

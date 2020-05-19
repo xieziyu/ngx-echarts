@@ -1,0 +1,13 @@
+<!-- DEMO START -->
+<div class="button-groups">
+  <button (click)="theme=undefined" nz-button nzType="default">default</button>
+  <button (click)="theme='macarons'" nz-button nzType="default">macarons</button>
+  <button (click)="theme='dark'" nz-button nzType="default">dark</button>
+</div>
+<div echarts [options]="options" [theme]="theme" class="demo-chart"></div>
+<!-- DEMO END -->
+
+<code-block
+  [html]="html"
+  [component]="component">
+</code-block>
