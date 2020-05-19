@@ -5,12 +5,13 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
     "moduleResolution": "node",
-    "importHelpers": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "lib": [
       "es2018",
       "dom"
@@ -19,13 +20,9 @@
       "ngx-echarts": [
         "dist/ngx-echarts"
       ],
-      "ngx-echarts/*": [
-        "dist/ngx-echarts/*"
+      "ngx-echarts/core": [
+        "dist/ngx-echarts/core"
       ]
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
 }
