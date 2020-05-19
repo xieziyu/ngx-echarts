@@ -1,0 +1,24 @@
+<nz-page-header nzTitle="Tree">
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a routerLink="/welcome">Home</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
+    <nz-breadcrumb-item>Tree</nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-divider></nz-divider>
+
+<nz-tabset style="margin-top: 8px;" [nzTabPosition]="'left'">
+  <nz-tab nzTitle="From Left To Right">
+    <ng-template nz-tab>
+      <app-tree-from-left-to-right></app-tree-from-left-to-right>
+    </ng-template>
+  </nz-tab>
+  <nz-tab nzTitle="Radial Tree">
+    <ng-template nz-tab>
+      <app-tree-radial></app-tree-radial>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

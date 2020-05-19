@@ -30,7 +30,11 @@ export const APP_MENUS: AppMenu[] = [
       {
         path: '/series/graph',
         text: 'Graph',
-      }
+      },
+      {
+        path: '/series/tree',
+        text: 'Tree',
+      },
     ],
   },
 ];
