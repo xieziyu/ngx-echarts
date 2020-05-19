@@ -1,0 +1,19 @@
+<nz-page-header nzTitle="3D Bar">
+  <nz-breadcrumb nz-page-header-breadcrumb>
+    <nz-breadcrumb-item>
+      <a routerLink="/welcome">Home</a>
+    </nz-breadcrumb-item>
+    <nz-breadcrumb-item>GL</nz-breadcrumb-item>
+    <nz-breadcrumb-item>3D Bar</nz-breadcrumb-item>
+  </nz-breadcrumb>
+</nz-page-header>
+
+<nz-divider></nz-divider>
+
+<nz-tabset style="margin-top: 8px;" [nzTabPosition]="'left'">
+  <nz-tab nzTitle="With Dataset">
+    <ng-template nz-tab>
+      <app-bar3d-dataset></app-bar3d-dataset>
+    </ng-template>
+  </nz-tab>
+</nz-tabset>

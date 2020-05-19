@@ -22,6 +22,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/demo-series/demo-series.module').then((m) => m.DemoSeriesModule),
   },
+  {
+    path: 'gl',
+    loadChildren: () =>
+      import('./pages/demo-gl/demo-gl.module').then((m) => m.DemoGlModule),
+  },
 ];
 
 @NgModule({

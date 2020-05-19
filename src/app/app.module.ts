@@ -19,6 +19,8 @@ import * as echarts from 'echarts';
 // Custom build:
 // import * as echarts from './custom-echarts';
 
+// Import echarts extensions
+import 'echarts-gl';
 // Import echarts themes
 import 'echarts/theme/macarons.js';
 

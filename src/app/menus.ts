@@ -37,4 +37,15 @@ export const APP_MENUS: AppMenu[] = [
       },
     ],
   },
+  {
+    path: '/gl',
+    icon: 'heat-map',
+    text: 'GL',
+    submenus: [
+      {
+        path: '/gl/bar3d',
+        text: '3D Bar',
+      },
+    ],
+  },
 ];
