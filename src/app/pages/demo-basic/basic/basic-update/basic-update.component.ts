@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-update.component.scss']
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
-  html = require('!!html-loader!./basic-update.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?-minimize!./basic-update.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-update.component.ts').default; // DEMO IGNORE
   options: any;
   updateOptions: any;

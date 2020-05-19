@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-init-opts.component.scss']
 })
 export class BasicInitOptsComponent {
-  html = require('!!html-loader!./basic-init-opts.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?-minimize!./basic-init-opts.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-init-opts.component.ts').default; // DEMO IGNORE
   initOpts = {
     renderer: 'svg',

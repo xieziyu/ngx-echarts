@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-themes.component.scss']
 })
 export class BasicThemesComponent {
-  html = require('!!html-loader!./basic-themes.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?-minimize!./basic-themes.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-themes.component.ts').default; // DEMO IGNORE
   theme: string;
   options = {

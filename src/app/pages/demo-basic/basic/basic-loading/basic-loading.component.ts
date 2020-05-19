@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-loading.component.scss']
 })
 export class BasicLoadingComponent {
-  html = require('!!html-loader!./basic-loading.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?-minimize!./basic-loading.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-loading.component.ts').default; // DEMO IGNORE
   isLoading = false;
   options = {
