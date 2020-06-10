@@ -44,6 +44,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
 
   // ngx-echarts events
   @Output() chartInit = new EventEmitter<any>();
+  @Output() optionsError = new EventEmitter<Error>();
 
   // echarts mouse events
   @Output() chartClick = this.createLazyEvent('click');
@@ -166,7 +167,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
 
   private setOption(option: any, opts?: any) {
     if (this.chart) {
-      this.chart.setOption(option, opts);
+      try {
+        this.chart.setOption(option, opts);
+      }
+      catch (e){
+        console.error(e);
+        this.optionsError.emit(e);
+      }
     }
   }
 
@@ -206,7 +213,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
         this.chartInit.emit(this.chart);
       }
 
-      this.chart.setOption(this.options, true);
+      this.setOption(this.options, true);
     }
   }
 
