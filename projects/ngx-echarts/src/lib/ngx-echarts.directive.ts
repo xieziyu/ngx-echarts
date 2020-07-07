@@ -4,23 +4,24 @@ import {
   DoCheck,
   ElementRef,
   EventEmitter,
+  Inject,
+  InjectionToken,
   Input,
   NgZone,
   OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges,
-  InjectionToken,
-  Inject,
+  SimpleChanges
 } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
 
 export interface NgxEchartsConfig {
-  echarts: any;
+  echarts: any | (() => Promise<any>);
 }
+
 export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
 
 @Directive({
@@ -170,9 +171,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
     }
   }
 
-  private refreshChart() {
+  private async refreshChart() {
     this.dispose();
-    this.initChart();
+    await this.initChart();
   }
 
   private createChart() {
@@ -188,24 +189,33 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
       }
     }
 
-    return this.ngZone.runOutsideAngular(() => this.echarts.init(dom, this.theme, this.initOpts));
+    // here a bit tricky: we check if the echarts module is provided as function returning native import('...') then use the promise
+    // otherwise create the function that imitates behaviour above with a provided as is module
+    return this.ngZone.runOutsideAngular(() => {
+      const load = typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
+
+      return load().then(({ init }) => init(dom, this.theme, this.initOpts));
+    });
   }
 
-  private initChart() {
-    this.onOptionsChange(this.options);
+  private async initChart() {
+    await this.onOptionsChange(this.options);
 
     if (this.merge && this.chart) {
       this.setOption(this.merge);
     }
   }
 
-  private onOptionsChange(opt: any) {
-    if (opt) {
-      if (!this.chart) {
-        this.chart = this.createChart();
-        this.chartInit.emit(this.chart);
-      }
+  private async onOptionsChange(opt: any) {
+    if (!opt) {
+      return;
+    }
 
+    if (this.chart) {
+      this.chart.setOption(this.options, true);
+    } else {
+      this.chart = await this.createChart();
+      this.chartInit.emit(this.chart);
       this.chart.setOption(this.options, true);
     }
   }
