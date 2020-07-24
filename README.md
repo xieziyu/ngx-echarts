@@ -15,14 +15,22 @@ Angular directive for echarts (version >= 3.x) (The project is renamed from **an
 
 ## Table of contents
 
-1. [Getting Started](#getting-started)
-2. [Latest Update](#latest-update)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [API](#api)
-6. [Events](#events)
-7. [Custom Build](#custom-build)
-8. [Demo](#demo)
+- [ngx-echarts](#ngx-echarts)
+  - [Table of contents](#table-of-contents)
+- [Getting Started](#getting-started)
+- [Latest Update](#latest-update)
+- [Installation](#installation)
+  - [Upgrade from v4.x](#upgrade-from-v4x)
+- [Usage](#usage)
+- [API](#api)
+    - [Directive](#directive)
+    - [ECharts API](#echarts-api)
+    - [ECharts Instance](#echarts-instance)
+    - [ECharts Extensions](#echarts-extensions)
+    - [Service](#service)
+- [Events](#events)
+- [Custom Build](#custom-build)
+- [Demo](#demo)
 
 # Getting Started
 
@@ -80,14 +88,31 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 1. Firstly, import `NgxEchartsModule` in your app module (or any other proper angular module):
 
+    ```typescript
+   import { NgxEchartsModule } from 'ngx-echarts';
+
+   @NgModule({
+     imports: [
+       NgxEchartsModule.forRoot({
+         /**
+          * This will import all modules from echarts.
+          * If you only need custom modules,
+          * please refer to [Custom Build] section.
+          */
+         echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+       }),
+     ],
+   })
+   export class AppModule {}
+   ```
+   
+   The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
+
+   You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
+
    ```typescript
    import { NgxEchartsModule } from 'ngx-echarts';
 
-   /**
-    * This will import all modules from echarts.
-    * If you only need custom modules,
-    * please refer to [Custom Build] section.
-    */
    import * as echarts from 'echarts';
 
    @NgModule({
