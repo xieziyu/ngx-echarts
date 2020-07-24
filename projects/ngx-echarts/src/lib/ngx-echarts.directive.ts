@@ -79,6 +79,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
   @Output() chartFocusNodeAdjacency = this.createLazyEvent('focusnodeadjacency');
   @Output() chartUnfocusNodeAdjacency = this.createLazyEvent('unfocusnodeadjacency');
   @Output() chartBrush = this.createLazyEvent('brush');
+  @Output() chartBrushEnd = this.createLazyEvent('brushend');
   @Output() chartBrushSelected = this.createLazyEvent('brushselected');
   @Output() chartRendered = this.createLazyEvent('rendered');
   @Output() chartFinished = this.createLazyEvent('finished');
