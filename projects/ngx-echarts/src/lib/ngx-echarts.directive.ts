@@ -45,6 +45,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
 
   // ngx-echarts events
   @Output() chartInit = new EventEmitter<any>();
+  @Output() optionsError = new EventEmitter<Error>();
 
   // echarts mouse events
   @Output() chartClick = this.createLazyEvent('click');
@@ -79,6 +80,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
   @Output() chartFocusNodeAdjacency = this.createLazyEvent('focusnodeadjacency');
   @Output() chartUnfocusNodeAdjacency = this.createLazyEvent('unfocusnodeadjacency');
   @Output() chartBrush = this.createLazyEvent('brush');
+  @Output() chartBrushEnd = this.createLazyEvent('brushend');
   @Output() chartBrushSelected = this.createLazyEvent('brushselected');
   @Output() chartRendered = this.createLazyEvent('rendered');
   @Output() chartFinished = this.createLazyEvent('finished');
@@ -167,7 +169,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
 
   private setOption(option: any, opts?: any) {
     if (this.chart) {
-      this.chart.setOption(option, opts);
+      try {
+        this.chart.setOption(option, opts);
+      }
+      catch (e){
+        console.error(e);
+        this.optionsError.emit(e);
+      }
     }
   }
 
@@ -212,11 +220,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
     }
 
     if (this.chart) {
-      this.chart.setOption(this.options, true);
+      this.setOption(this.options, true);
     } else {
       this.chart = await this.createChart();
       this.chartInit.emit(this.chart);
-      this.chart.setOption(this.options, true);
+      this.setOption(this.options, true);
     }
   }
 

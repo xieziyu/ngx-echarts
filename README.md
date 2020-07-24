@@ -293,6 +293,7 @@ It supports following event outputs:
 | chartFocusNodeAdjacency   | echarts event: `'focusnodeadjacency'`   |
 | chartUnfocusNodeAdjacency | echarts event: `'unfocusnodeadjacency'` |
 | chartBrush                | echarts event: `'brush'`                |
+| chartBrushEnd             | echarts event: `'brushend'`             |
 | chartBrushSelected        | echarts event: `'brushselected'`        |
 | chartRendered             | echarts event: `'rendered'`             |
 | chartFinished             | echarts event: `'finished'`             |
