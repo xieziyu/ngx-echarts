@@ -12,7 +12,7 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { debounceTime, switchMap } from 'rxjs/operators';
@@ -171,8 +171,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
     if (this.chart) {
       try {
         this.chart.setOption(option, opts);
-      }
-      catch (e){
+      } catch (e) {
         console.error(e);
         this.optionsError.emit(e);
       }
@@ -200,7 +199,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, DoChec
     // here a bit tricky: we check if the echarts module is provided as function returning native import('...') then use the promise
     // otherwise create the function that imitates behaviour above with a provided as is module
     return this.ngZone.runOutsideAngular(() => {
-      const load = typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
+      const load =
+        typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
 
       return load().then(({ init }) => init(dom, this.theme, this.initOpts));
     });
