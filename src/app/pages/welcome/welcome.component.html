@@ -42,14 +42,13 @@
       <markdown ngPreserveWhitespaces>
         ## Import
         ```typescript
-        import * as echarts from 'echarts';
         import {{'{'}} NgxEchartsModule } from 'ngx-echarts';
 
         @NgModule({{'{'}}
           imports: [
             ...,
             NgxEchartsModule.forRoot({{'{'}}
-              echarts
+              echarts: () => import('echarts')
             })
           ],
         })
