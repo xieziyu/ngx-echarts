@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NgZorroCustomModule } from './ng-zorro-custom.module';
 import { MarkdownModule } from 'ngx-markdown';
 
 import { IconsProviderModule } from './icons-provider.module';
@@ -11,12 +11,12 @@ import { CodeBlockComponent } from './code-block/code-block.component';
   imports: [
     CommonModule,
     IconsProviderModule,
-    NgZorroAntdModule,
+    NgZorroCustomModule,
     MarkdownModule.forChild(),
   ],
   exports: [
     IconsProviderModule,
-    NgZorroAntdModule,
+    NgZorroCustomModule,
     MarkdownModule,
     CodeBlockComponent,
   ],

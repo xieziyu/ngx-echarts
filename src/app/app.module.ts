@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
+import { NgZorroCustomModule } from './shared/ng-zorro-custom.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +28,7 @@ registerLocaleData(en);
     LayoutModule,
     AppRoutingModule,
     FormsModule,
-    NgZorroAntdModule,
+    NgZorroCustomModule,
     MarkdownModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
@@ -37,7 +37,6 @@ registerLocaleData(en);
     }),
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US },
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
