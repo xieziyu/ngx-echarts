@@ -45,9 +45,12 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-- 2020.08.06: v5.1.1:
+- 2020.08.06: v5.1.2:
   - [PR #254](https://github.com/xieziyu/ngx-echarts/pull/254): Fix Angular 10 generic ModuleWithProviders depreciation (by[olicooper](https://github.com/olicooper))
 
+- 2020.08.06: v5.1.1:
+  - ~~NPM package is broken~~.
+ 
 - 2020.07.24: v5.1.0:
   - [PR #240](https://github.com/xieziyu/ngx-echarts/pull/240): Added output 'optionsError' (by [trajnisz](https://github.com/trajnisz))
   - [PR #242](https://github.com/xieziyu/ngx-echarts/pull/242): Add output for brushEnd event (by [Uular](https://github.com/Uular))
