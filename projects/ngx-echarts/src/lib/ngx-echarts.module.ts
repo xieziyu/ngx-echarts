@@ -20,4 +20,4 @@ export class NgxEchartsModule {
   }
 }
 
-export { NgxEchartsDirective };
+export { NgxEchartsDirective, NGX_ECHARTS_CONFIG };
