@@ -6,7 +6,8 @@
 [![npm](https://img.shields.io/npm/dm/ngx-echarts.svg)][npm-badge-url]
 [![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)][ci-url]
 
-Angular directive for echarts (version >= 3.x) (The project is renamed from **angular2-echarts**)
+Angular directive for [Apache ECharts (incubating)](https://github.com/apache/incubator-echarts)
+ (version >= 3.x) (The project is renamed from **angular2-echarts**)
 
 - [Online Demo](https://xieziyu.github.io/ngx-echarts)
 - [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
