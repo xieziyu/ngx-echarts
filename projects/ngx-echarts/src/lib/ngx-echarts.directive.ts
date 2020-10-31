@@ -105,12 +105,16 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngOnInit() {
-    this.resizeSub = new ResizeObserver(() => this.resize());
-    this.resizeSub.observe(this.el.nativeElement);
+    if (this.autoResize) {
+      this.resizeSub = new ResizeObserver(() => this.resize());
+      this.resizeSub.observe(this.el.nativeElement);
+    }
   }
 
   ngOnDestroy() {
-    this.resizeSub.unobserve(this.el.nativeElement);
+    if (this.resizeSub) {
+      this.resizeSub.unobserve(this.el.nativeElement);
+    }
     this.dispose();
   }
 
