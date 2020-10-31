@@ -33,6 +33,7 @@
     "@angular/platform-browser": "~9.1.7",
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
+    "@types/resize-observer-browser": "^0.1.4",
     "echarts": "^4.7.0",
     "echarts-gl": "^1.1.1",
     "ng-zorro-antd": "^9.1.2",
