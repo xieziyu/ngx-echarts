@@ -5,12 +5,7 @@
     "target": "es2015",
     "declaration": true,
     "inlineSources": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "types": [
-      "resize-observer-browser"
-    ],
+    "types": [],
     "lib": [
       "dom",
       "es2018"
