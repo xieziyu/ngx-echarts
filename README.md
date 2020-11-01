@@ -87,7 +87,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   yarn add echarts-gl
   ```
 
-- Import other extentions such as themes or `echarts-gl` in your `main.ts`: [ECharts Extensions](#echarts-extensions)
+- Import other extensions such as themes or `echarts-gl` in your `main.ts`: [ECharts Extensions](#echarts-extensions)
 
 ## Upgrade from v4.x
 
@@ -183,17 +183,17 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 ### Directive
 
-`echarts` directive support following input porperties:
+`echarts` directive support following input properties:
 
 | Input           | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                |
 | --------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[options]`     | object  | null    | It's the same with the options in official demo site.                                                                                                                                                                                                                                                                                                      |
-| `[merge]`       | object  | null    | You can use it to update part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. So you can refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.setOption) for details |
-| `[loading]`     | boolean | false   | Use it to toggle the echarts loading animation when your data is not ready.                                                                                                                                                                                                                                                                                |
-| `[autoResize]`  | boolean | true    | Charts will be automatically resized when container's width changed.                                                                                                                                                                                                                                                                                       |
-| `[initOpts]`    | object  | null    | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echarts.init) for details                                                                                              |
-| `[theme]`       | string  | null    | Use it to init echarts with theme. You need to import the theme file in `main.ts`.                                                                                                                                                                                                                                                                         |
-| `[loadingOpts]` | object  | null    | Input an object to customize loading style. Refer to [ECharts documentation](https://ecomfe.github.io/echarts-doc/public/en/api.html#echartsInstance.showLoading) for details.                                                                                                                                                                             |
+| `[options]`     | object  | null    | The same as the options on the official demo site.                                                                                                                                                                                                                                                                                                      |
+| `[merge]`       | object  | null    | Used to update a part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echartsInstance.setOption) for details. |
+| `[loading]`     | boolean | false   | Used to toggle the echarts loading animation when your data is not ready.                                                                                                                                                                                                                                                                                |
+| `[autoResize]`  | boolean | true    | If set to `true`, the chart will be automatically resized when the window's width is changed.                                                                                                                                                                                                                                                                                       |
+| `[initOpts]`    | object  | null    | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echarts.init) for details.                                                                                              |
+| `[theme]`       | string  | null    | Used it to initialize echarts with theme. The theme file must also be imported in `main.ts`.                                                                                                                                                                                                                                                                         |
+| `[loadingOpts]` | object  | null    | Input an object to customize the loading style. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echartsInstance.showLoading) for details.                                                                                                                                                                             |
 
 By default, `loadingOpts` is:
 
@@ -209,17 +209,17 @@ By default, `loadingOpts` is:
 
 ### ECharts API
 
-If you need echarts API such as `echarts.graphic`, please import it from echarts. For example:
+If you need to access parts of the ECharts API such as `echarts.graphic`, please import it from echarts. For example:
 
 ```typescript
 import { graphic } from 'echarts';
 
-new graphic.LinearGradient(/** ... */);
+new graphic.LinearGradient(/* ... */);
 ```
 
 ### ECharts Instance
 
-`echartsInstance` is exposed (since v1.1.6) in `(chartInit)` event. So you can directly call the APIs just like: `resize()`, `showLoading()`, etc. For example:
+`echartsInstance` is exposed (since v1.1.6) in the `(chartInit)` event, enabling you to directly call functions like: `resize()`, `showLoading()`, etc. For example:
 
 - html:
 
@@ -231,19 +231,19 @@ new graphic.LinearGradient(/** ... */);
 
 ```typescript
 onChartInit(ec) {
-  this.echartsIntance = ec;
+  this.echartsInstance = ec;
 }
 
 resizeChart() {
-  if (this.echartsIntance) {
-    this.echartsIntance.resize();
+  if (this.echartsInstance) {
+    this.echartsInstance.resize();
   }
 }
 ```
 
 ### ECharts Extensions
 
-Import echarts theme files or other extension files after you imported `echarts` core. For example:
+Import echarts theme files or other extension files after you have imported `echarts` core. For example:
 
 ```typescript
 import * as echarts from 'echarts';
@@ -256,11 +256,11 @@ import 'echarts/dist/extension/bmap.min.js';
 
 ### Service
 
-`NgxEchartsService` has been obsoleted since v4.0
+`NgxEchartsService` has been obsolete since v4.0
 
 # Events
 
-As echarts support the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, `'globalout'` mouse events, our `ngx-echarts` directive also support the same mouse events but with additional `chart` prefix.
+As ECharts supports the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mouseover'`, `'mouseout'`, and `'globalout'` mouse events, our `ngx-echarts` directive also supports the same mouse events but with an additional `chart` prefix. For example:
 
 - html:
 
@@ -268,13 +268,13 @@ As echarts support the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'mo
 <div echarts class="demo-chart" [options]="chartOptions" (chartClick)="onChartClick($event)"></div>
 ```
 
-- The '\$event' is same with the 'params' that Echarts dispatches
+- The '\$event' is same with the 'params' that ECharts dispatches.
 
 It supports following event outputs:
 
 | @Output                   | Event                                   |
 | ------------------------- | --------------------------------------- |
-| chartInit                 | Emitted when chart is intialized        |
+| chartInit                 | Emitted when the chart is initialized   |
 | chartClick                | echarts event: `'click'`                |
 | chartDblClick             | echarts event: `'dblclick'`             |
 | chartMouseDown            | echarts event: `'mousedown'`            |
@@ -310,13 +310,13 @@ It supports following event outputs:
 | chartRendered             | echarts event: `'rendered'`             |
 | chartFinished             | echarts event: `'finished'`             |
 
-You can refer to the echarts tutorial: [Events and Actions in ECharts](https://ecomfe.github.io/echarts-doc/public/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for the detailed example.
+You can refer to the ECharts tutorial: [Events and Actions in ECharts](https://echarts.apache.org/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for a detailed example.
 
 # Custom Build
 
-> Please refer to [ECharts Document](https://echarts.apache.org/en/tutorial.html#Create%20Custom%20Build%20of%20ECharts) for more details.
+> Please refer to [ECharts Documentation](https://echarts.apache.org/en/tutorial.html#Create%20Custom%20Build%20of%20ECharts) for more details.
 
-If you want to custom build echarts, prepare a file like `custom-echarts.ts`:
+If you want to produce a custom build of ECharts, prepare a file like `custom-echarts.ts`:
 
 ```ts
 // custom-echarts.ts
@@ -352,7 +352,7 @@ And if you want to use the global `echarts` object, please import it from `lib` 
 import * as echarts from 'echarts/lib/echarts';
 ```
 
-If you need to import theme files, remember to change their `'echarts'` path to `'echarts/lib/echarts'`, for example:
+If you need to import theme files, remember to change the `'echarts'` path to `'echarts/lib/echarts'`, for example:
 
 ```ts
 // ... part of echarts/theme/dark.js:
@@ -383,7 +383,7 @@ yarn install
 yarn demo
 ```
 
-The demo page server is listening to: http://localhost:4202
+The demo page server is listening on: http://localhost:4202
 
 [npm-badge-url]: https://www.npmjs.com/package/ngx-echarts
 [ci-url]: https://travis-ci.org/xieziyu/ngx-echarts
