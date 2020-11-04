@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NZ_ICONS } from 'ng-zorro-antd';
+import { NZ_ICONS } from 'ng-zorro-antd/icon';
 
 import {
   MenuFoldOutline,
