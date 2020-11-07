@@ -46,7 +46,8 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-- 2020.11.07: v5.2.0:
+- 2020.11.07: v5.2.1:
+  - Required `resize-observer-polyfill`
   - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
   - Exposed methods: `refreshChart()` and `resize()`
 
@@ -76,10 +77,12 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   # if you use npm
   npm install echarts -S
   npm install ngx-echarts -S
+  npm install resize-observer-polyfill -D
 
   # or if you use yarn
   yarn add echarts
   yarn add ngx-echarts
+  yarn add -D resize-observer-polyfill
   ```
 
 - If you need ECharts GL support, please install it first:
