@@ -67,6 +67,7 @@
     "prismjs": "^1.20.0",
     "protractor": "~5.4.3",
     "raw-loader": "^4.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.8.3"
