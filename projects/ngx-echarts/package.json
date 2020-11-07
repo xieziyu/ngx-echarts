@@ -16,8 +16,8 @@
   "homepage": "https://xieziyu.github.io/ngx-echarts",
   "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
   "peerDependencies": {
-    "@angular/common": ">=6.0.0",
-    "@angular/core": ">=6.0.0",
+    "@angular/common": ">=10.0.0",
+    "@angular/core": ">=10.0.0",
     "echarts": ">=3.1.1",
     "resize-observer-polyfill": ">=1.5.1"
   }
