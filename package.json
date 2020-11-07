@@ -36,6 +36,7 @@
     "echarts": "^4.7.0",
     "echarts-gl": "^1.1.1",
     "ng-zorro-antd": "^10.1.0",
+    "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.3",
     "zone.js": "~0.10.3"
