@@ -36,7 +36,6 @@
     "echarts": "^4.7.0",
     "echarts-gl": "^1.1.1",
     "ng-zorro-antd": "^10.1.0",
-    "resize-observer-polyfill": "^1.5.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.3",
     "zone.js": "~0.10.3"
@@ -68,6 +67,7 @@
     "prismjs": "^1.20.0",
     "protractor": "~5.4.3",
     "raw-loader": "^4.0.1",
+    "resize-observer-polyfill": "^1.5.1",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~4.0.5"
