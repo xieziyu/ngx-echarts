@@ -39,12 +39,15 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
-- `v5.x` for Angular >= 6
+- `v6.x` for Angular >= 6
 - `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2020.11.07: v6.0.0-alpha.1:
+  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/272): Angular 10 support (by[Ghostbird](https://github.com/Ghostbird))
 
 - 2020.11.07: v5.2.0:
   - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
