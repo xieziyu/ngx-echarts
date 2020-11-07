@@ -46,6 +46,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2020.11.07: v5.2.0:
+  - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
+  - Exposed methods: `refreshChart()` and `resize()`
+
 - 2020.08.06: v5.1.2:
   - [PR #254](https://github.com/xieziyu/ngx-echarts/pull/254): Fix Angular 10 generic ModuleWithProviders depreciation (by[olicooper](https://github.com/olicooper))
 

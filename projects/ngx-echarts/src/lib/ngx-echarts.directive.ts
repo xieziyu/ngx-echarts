@@ -130,7 +130,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     }
   }
 
-  private resize() {
+  /**
+   * resize chart
+   */
+  resize() {
     if (this.chart) {
       this.chart.resize();
     }
@@ -155,7 +158,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     }
   }
 
-  private async refreshChart() {
+  /**
+   * dispose old chart and create a new one.
+   */
+  async refreshChart() {
     this.dispose();
     await this.initChart();
   }
