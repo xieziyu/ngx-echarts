@@ -1,6 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { getInstanceByDom, connect } from 'echarts';
-declare const require: any; // DEMO IGNORE
 
 @Component({
   selector: 'app-connect-charts',
@@ -51,8 +50,8 @@ export class ConnectChartsComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     setTimeout(() => {
-      const chartElement1 = document.getElementById('chart1');
-      const chartElement2 = document.getElementById('chart2');
+      const chartElement1 = document.getElementById('chart1') as HTMLDivElement;
+      const chartElement2 = document.getElementById('chart2') as HTMLDivElement;
       const chart1 = getInstanceByDom(chartElement1);
       const chart2 = getInstanceByDom(chartElement2);
       connect([chart1, chart2]);

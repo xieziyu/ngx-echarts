@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-declare const require: any; // DEMO IGNORE
 
 @Component({
   selector: 'app-basic-update',

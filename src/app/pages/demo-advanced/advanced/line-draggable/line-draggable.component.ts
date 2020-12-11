@@ -1,6 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
 import * as echarts from 'echarts';
-declare const require: any; // DEMO IGNORE
 
 const SymbolSize = 20;
 const Data = [
@@ -10,6 +9,12 @@ const Data = [
   [-46.5, 30],
   [-22.1, 40],
 ];
+
+function curry<T extends (...args: any[]) => any>(func: T, ...args: Parameters<T>) {
+  return function() {
+    return func.apply(this, [...args, func, ...args ]);
+  };
+}
 
 @Component({
   selector: 'app-line-draggable',
@@ -83,7 +88,7 @@ export class LineDraggableComponent implements OnDestroy {
   }
 
   onChartReady(myChart: echarts.ECharts) {
-    const onPointDragging = function(dataIndex) {
+    const onPointDragging = function(dataIndex: number) {
       Data[dataIndex] = myChart.convertFromPixel({ gridIndex: 0 }, this.position) as number[];
 
       // Update data
@@ -113,7 +118,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     const updatePosition = () => {
       myChart.setOption({
-        graphic: echarts.util.map(Data, (item) => ({
+        graphic: Data.map((item) => ({
           position: myChart.convertToPixel({ gridIndex: 0 }, item),
         })),
       });
@@ -127,7 +132,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     setTimeout(() => {
       myChart.setOption({
-        graphic: echarts.util.map(Data, (item, dataIndex) => {
+        graphic: Data.map((item, dataIndex) => {
           return {
             type: 'circle',
             position: myChart.convertToPixel({ gridIndex: 0 }, item),
@@ -138,9 +143,9 @@ export class LineDraggableComponent implements OnDestroy {
             },
             invisible: true,
             draggable: true,
-            ondrag: echarts.util.curry(onPointDragging, dataIndex),
-            onmousemove: echarts.util.curry(showTooltip, dataIndex),
-            onmouseout: echarts.util.curry(hideTooltip, dataIndex),
+            ondrag: curry(onPointDragging, dataIndex),
+            onmousemove: curry(showTooltip, dataIndex),
+            onmouseout: curry(hideTooltip),
             z: 100,
           };
         }),

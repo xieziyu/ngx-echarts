@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { graphic } from 'echarts';
 
-declare const require: any; // DEMO IGNORE
-
 @Component({
   selector: 'app-basic-events',
   templateUrl: './basic-events.component.html',

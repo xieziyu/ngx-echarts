@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { parse } from 'echarts/extension/dataTool/gexf';
-declare const require: any; // DEMO IGNORE
 
 @Component({
   selector: 'app-graph-force-layout',

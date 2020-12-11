@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-declare const require: any; // DEMO IGNORE
 
 @Component({
   selector: 'app-bar3d-dataset',

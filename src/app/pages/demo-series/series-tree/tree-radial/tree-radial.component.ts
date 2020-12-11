@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as echarts from 'echarts';
-declare const require: any; // DEMO IGNORE
 
 @Component({
   selector: 'app-tree-radial',
