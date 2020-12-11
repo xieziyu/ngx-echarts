@@ -17,9 +17,13 @@ import ResizeObserver from 'resize-observer-polyfill';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
+import * as echarts from 'echarts';
+import EChartOption = echarts.EChartOption;
+import EChartsResponsiveOption = echarts.EChartsResponsiveOption;
+import EChartsOptionConfig = echarts.EChartsOptionConfig;
 
 export interface NgxEchartsConfig {
-  echarts: any | (() => Promise<any>);
+  echarts: typeof echarts | (() => Promise<typeof echarts>);
 }
 
 export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
@@ -29,7 +33,7 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
   exportAs: 'echarts',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
-  @Input() options: any;
+  @Input() options: echarts.EChartOption;
   @Input() theme: string;
   @Input() loading: boolean;
   @Input() initOpts: {
@@ -38,10 +42,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     width?: number | string;
     height?: number | string;
   };
-  @Input() merge: any;
+  @Input() merge?: EChartOption;
   @Input() autoResize = true;
   @Input() loadingType = 'default';
-  @Input() loadingOpts: object;
+  @Input() loadingOpts: echarts.EChartsLoadingOption;
 
   // ngx-echarts events
   @Output() chartInit = new EventEmitter<any>();
@@ -85,8 +89,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Output() chartRendered = this.createLazyEvent('rendered');
   @Output() chartFinished = this.createLazyEvent('finished');
 
-  private chart: any;
-  private echarts: any;
+  private chart: echarts.ECharts | null;
+  private echarts: NgxEchartsConfig['echarts'];
   private resizeSub: ResizeObserver;
 
   constructor(
@@ -146,15 +150,14 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
         : this.chart.hideLoading();
     }
   }
-
-  private setOption(option: any, opts?: any) {
-    if (this.chart) {
-      try {
-        this.chart.setOption(option, opts);
-      } catch (e) {
-        console.error(e);
-        this.optionsError.emit(e);
-      }
+  private setOption(option: EChartOption, params?: EChartsOptionConfig): void;
+  private setOption(option: EChartOption|EChartsResponsiveOption, notMerge?: boolean, lazyUpdate?: boolean): void;
+  private setOption(opt: any, ...params: any[]) {
+    try {
+      this.chart.setOption(opt, ...params);
+    } catch (e) {
+      console.error(e);
+      this.optionsError.emit(e);
     }
   }
 
@@ -178,12 +181,17 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
     // here a bit tricky: we check if the echarts module is provided as function returning native import('...') then use the promise
     // otherwise create the function that imitates behaviour above with a provided as is module
-    return this.ngZone.runOutsideAngular(() => {
-      const load =
-        typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
-
-      return load().then(({ init }) => init(dom, this.theme, this.initOpts));
+    return this.ngZone.runOutsideAngular(async () => {
+      const { init } = await this.getEchartsInstance();
+      return init(dom, this.theme, this.initOpts);
     });
+  }
+  private async getEchartsInstance() {
+    if (typeof this.echarts === 'function') {
+      return await this.echarts();
+    } else {
+      return this.echarts;
+    }
   }
 
   private async initChart() {
