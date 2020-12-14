@@ -89,10 +89,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Output() chartRendered = this.createLazyEvent('rendered');
   @Output() chartFinished = this.createLazyEvent('finished');
 
+  public animationFrameID = null;
   private chart: echarts.ECharts | null;
   private echarts: NgxEchartsConfig['echarts'];
   private resizeSub: ResizeObserver;
-
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
     private el: ElementRef,
@@ -111,7 +111,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
   ngOnInit() {
     if (this.autoResize) {
-      this.resizeSub = new ResizeObserver(() => this.resize());
+      this.resizeSub = new ResizeObserver(() => {
+        this.animationFrameID = window.requestAnimationFrame(() => this.resize());
+      });
       this.resizeSub.observe(this.el.nativeElement);
     }
   }
@@ -119,6 +121,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   ngOnDestroy() {
     if (this.resizeSub) {
       this.resizeSub.unobserve(this.el.nativeElement);
+      window.cancelAnimationFrame(this.animationFrameID);
     }
     this.dispose();
   }
