@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)][ci-url]
 
 Angular directive for [Apache ECharts (incubating)](https://github.com/apache/incubator-echarts)
- (version >= 3.x) (The project is renamed from **angular2-echarts**)
+(version >= 3.x) (The project is renamed from **angular2-echarts**)
 
 - [Online Demo](https://xieziyu.github.io/ngx-echarts)
 - [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
@@ -24,11 +24,11 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
   - [Upgrade from v4.x](#upgrade-from-v4x)
 - [Usage](#usage)
 - [API](#api)
-    - [Directive](#directive)
-    - [ECharts API](#echarts-api)
-    - [ECharts Instance](#echarts-instance)
-    - [ECharts Extensions](#echarts-extensions)
-    - [Service](#service)
+  - [Directive](#directive)
+  - [ECharts API](#echarts-api)
+  - [ECharts Instance](#echarts-instance)
+  - [ECharts Extensions](#echarts-extensions)
+  - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
 - [Demo](#demo)
@@ -46,18 +46,26 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2020.12.14: v5.2.2:
+
+  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by[parkdihoon](https://github.com/parkdihoon))
+
 - 2020.11.07: v5.2.1:
+
   - Required `resize-observer-polyfill`
   - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
   - Exposed methods: `refreshChart()` and `resize()`
 
 - 2020.08.06: v5.1.2:
+
   - [PR #254](https://github.com/xieziyu/ngx-echarts/pull/254): Fix Angular 10 generic ModuleWithProviders depreciation (by[olicooper](https://github.com/olicooper))
 
 - 2020.08.06: v5.1.1:
+
   - ~~NPM package is broken~~.
- 
+
 - 2020.07.24: v5.1.0:
+
   - [PR #240](https://github.com/xieziyu/ngx-echarts/pull/240): Added output 'optionsError' (by [trajnisz](https://github.com/trajnisz))
   - [PR #242](https://github.com/xieziyu/ngx-echarts/pull/242): Add output for brushEnd event (by [Uular](https://github.com/Uular))
   - [PR #246](https://github.com/xieziyu/ngx-echarts/pull/246): Allow loading echarts library lazily via native import (by [smnbbrv](https://github.com/smnbbrv))
@@ -107,7 +115,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 1. Firstly, import `NgxEchartsModule` in your app module (or any other proper angular module):
 
-    ```typescript
+   ```typescript
    import { NgxEchartsModule } from 'ngx-echarts';
 
    @NgModule({
@@ -124,7 +132,7 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
    })
    export class AppModule {}
    ```
-   
+
    The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
 
    You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
@@ -192,15 +200,15 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 `echarts` directive support following input properties:
 
-| Input           | Type    | Default | Description                                                                                                                                                                                                                                                                                                                                                |
-| --------------- | ------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `[options]`     | object  | null    | The same as the options on the official demo site.                                                                                                                                                                                                                                                                                                      |
+| Input           | Type    | Default | Description                                                                                                                                                                                                                                                                                                             |
+| --------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `[options]`     | object  | null    | The same as the options on the official demo site.                                                                                                                                                                                                                                                                      |
 | `[merge]`       | object  | null    | Used to update a part of the `options`, especially helpful when you need to update the chart data. In fact, the value of `merge` will be used in `echartsInstance.setOption()` with `notMerge = false`. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echartsInstance.setOption) for details. |
-| `[loading]`     | boolean | false   | Used to toggle the echarts loading animation when your data is not ready.                                                                                                                                                                                                                                                                                |
-| `[autoResize]`  | boolean | true    | If set to `true`, the chart will be automatically resized when the window's width is changed.                                                                                                                                                                                                                                                                                       |
-| `[initOpts]`    | object  | null    | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echarts.init) for details.                                                                                              |
-| `[theme]`       | string  | null    | Used it to initialize echarts with theme. The theme file must also be imported in `main.ts`.                                                                                                                                                                                                                                                                         |
-| `[loadingOpts]` | object  | null    | Input an object to customize the loading style. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echartsInstance.showLoading) for details.                                                                                                                                                                             |
+| `[loading]`     | boolean | false   | Used to toggle the echarts loading animation when your data is not ready.                                                                                                                                                                                                                                               |
+| `[autoResize]`  | boolean | true    | If set to `true`, the chart will be automatically resized when the window's width is changed.                                                                                                                                                                                                                           |
+| `[initOpts]`    | object  | null    | The value of `[initOpts]` will be used in `echarts.init()`. It may contain `devicePixelRatio`, `renderer`, `width` or `height` properties. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echarts.init) for details.                                                                           |
+| `[theme]`       | string  | null    | Used it to initialize echarts with theme. The theme file must also be imported in `main.ts`.                                                                                                                                                                                                                            |
+| `[loadingOpts]` | object  | null    | Input an object to customize the loading style. Refer to [ECharts documentation](https://echarts.apache.org/en/api.html#echartsInstance.showLoading) for details.                                                                                                                                                       |
 
 By default, `loadingOpts` is:
 
