@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "6.0.0-alpha.1",
+  "version": "6.0.0-alpha.2",
   "author": "Xie, Ziyu",
   "license": "MIT",
   "keywords": [
@@ -10,8 +10,8 @@
     "chart"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/xieziyu/ngx-echarts.git"
+    "type": "git",
+    "url": "https://github.com/xieziyu/ngx-echarts.git"
   },
   "homepage": "https://xieziyu.github.io/ngx-echarts",
   "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
