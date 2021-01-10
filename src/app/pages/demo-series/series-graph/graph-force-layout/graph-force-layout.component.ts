@@ -27,15 +27,6 @@ export class GraphForceLayoutComponent implements OnInit {
             name: 'category' + i,
           };
         }
-        graph.nodes.forEach((node) => {
-          node.itemStyle = null;
-          node.symbolSize = 10;
-          node.value = node.symbolSize;
-          node.category = node.attributes.modularity_class;
-          // Use random x, y
-          node.x = node.y = null;
-          node.draggable = true;
-        });
         return {
           title: {
             text: 'Les Miserables',

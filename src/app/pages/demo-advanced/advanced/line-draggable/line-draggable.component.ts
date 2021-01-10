@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import * as echarts from 'echarts';
+import * as util from 'zrender/lib/core/util'
+
 declare const require: any; // DEMO IGNORE
 
 const SymbolSize = 20;
@@ -82,7 +83,7 @@ export class LineDraggableComponent implements OnDestroy {
     }
   }
 
-  onChartReady(myChart: echarts.ECharts) {
+  onChartReady(myChart: any) {
     const onPointDragging = function(dataIndex) {
       Data[dataIndex] = myChart.convertFromPixel({ gridIndex: 0 }, this.position) as number[];
 
@@ -113,7 +114,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     const updatePosition = () => {
       myChart.setOption({
-        graphic: echarts.util.map(Data, (item) => ({
+        graphic: util.map(Data, (item) => ({
           position: myChart.convertToPixel({ gridIndex: 0 }, item),
         })),
       });
@@ -127,7 +128,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     setTimeout(() => {
       myChart.setOption({
-        graphic: echarts.util.map(Data, (item, dataIndex) => {
+        graphic: util.map(Data, (item, dataIndex) => {
           return {
             type: 'circle',
             position: myChart.convertToPixel({ gridIndex: 0 }, item),
@@ -138,9 +139,9 @@ export class LineDraggableComponent implements OnDestroy {
             },
             invisible: true,
             draggable: true,
-            ondrag: echarts.util.curry(onPointDragging, dataIndex),
-            onmousemove: echarts.util.curry(showTooltip, dataIndex),
-            onmouseout: echarts.util.curry(hideTooltip, dataIndex),
+            ondrag: util.curry<(dataIndex: any) => void, number>(onPointDragging, dataIndex),
+            onmousemove: util.curry<(dataIndex: any) => void, number>(showTooltip, dataIndex),
+            onmouseout: util.curry<(dataIndex: any) => void, number>(hideTooltip, dataIndex),
             z: 100,
           };
         }),
