@@ -129,7 +129,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
   private dispose() {
     if (this.chart) {
-      this.chart.dispose();
+      if (!this.chart.isDisposed()) {
+        this.chart.dispose();
+      }
       this.chart = null;
     }
   }
