@@ -49,12 +49,12 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 - 2021.01.10: v6.0.0:
 
-  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by[gjsmith66](https://github.com/gjsmith66))
+  - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by[gjsmith66](https://github.com/gjsmith66))
   - update demo to use echarts v5.0
 
 - 2020.12.14: v6.0.0-alpha.2, v5.2.2:
 
-  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by[parkdihoon](https://github.com/parkdihoon))
+  - [PR #282](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by[parkdihoon](https://github.com/parkdihoon))
 
 - 2020.11.07: v6.0.0-alpha.1:
 
