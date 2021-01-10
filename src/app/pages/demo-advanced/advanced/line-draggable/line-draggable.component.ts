@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import * as util from 'zrender/lib/core/util'
+import * as util from 'zrender/lib/core/util';
 
 declare const require: any; // DEMO IGNORE
 

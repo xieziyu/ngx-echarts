@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import  LinearGradient from 'zrender/lib/graphic/LinearGradient'
+import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 
 declare const require: any; // DEMO IGNORE
 
