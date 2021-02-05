@@ -31,6 +31,8 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
   - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
+  - [Legacy version](#legacy-custom-build)
+  - [ECharts 5 Treeshaking](#treeshaking-custom-build)
 - [Demo](#demo)
 
 # Getting Started
@@ -338,7 +340,7 @@ It supports following event outputs:
 You can refer to the ECharts tutorial: [Events and Actions in ECharts](https://echarts.apache.org/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for a detailed example.
 
 # Custom Build
-
+## Legacy Custom Build
 > Please refer to [ECharts Documentation](https://echarts.apache.org/en/tutorial.html#Create%20Custom%20Build%20of%20ECharts) for more details.
 
 If you want to produce a custom build of ECharts, prepare a file like `custom-echarts.ts`:
@@ -394,7 +396,54 @@ function (root, factory) {
     }
 }
 ```
+## Treeshaking Custom Build
+> Since version 5.0.1 ECharts supports [Treeshaking with NPM](https://echarts.apache.org/en/tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM).
 
+There is no need for the `custom-echarts.ts` file anymore. The `app.modules.ts` should look like this:
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { NgxEchartsModule } from 'ngx-echarts';
+
+import { AppComponent } from './app.component';
+
+// Import the echarts core module, which provides the necessary interfaces for using echarts.
+import * as echarts from 'echarts/core';
+// Import bar charts, all with Chart suffix
+import {
+    BarChart
+} from 'echarts/charts';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent
+} from 'echarts/components';
+// Import the Canvas renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+  CanvasRenderer
+} from 'echarts/renderers';
+import 'echarts/theme/macarons.js';
+
+echarts.use(
+  [TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]
+);
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    NgxEchartsModule.forRoot({ echarts }),
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
 # Demo
 
 You can clone this repo to your working copy and then launch the demo page in your local machine:
