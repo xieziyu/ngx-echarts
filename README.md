@@ -49,6 +49,9 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2021.01.10: v6.0.1:
+  - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by[taipeiwu](https://github.com/taipeiwu))
+
 - 2021.01.10: v6.0.0:
 
   - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by[gjsmith66](https://github.com/gjsmith66))
@@ -67,14 +70,6 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   - Required `resize-observer-polyfill`
   - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
   - Exposed methods: `refreshChart()` and `resize()`
-
-- 2020.08.06: v5.1.2:
-
-  - [PR #254](https://github.com/xieziyu/ngx-echarts/pull/254): Fix Angular 10 generic ModuleWithProviders depreciation (by[olicooper](https://github.com/olicooper))
-
-- 2020.08.06: v5.1.1:
-
-  - ~~NPM package is broken~~.
 
 - 2020.07.24: v5.1.0:
 
