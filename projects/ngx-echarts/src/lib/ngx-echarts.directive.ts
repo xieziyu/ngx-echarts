@@ -222,7 +222,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
         (chart: any) =>
           new Observable((observer) => {
             chart.on(eventName, (data: T) => this.ngZone.run(() => observer.next(data)));
-            return () => chart.off(eventName);
+            return () => {
+              if (this.chart) {
+                if (!this.chart.isDisposed()) {
+                  chart.off(eventName);
+                }
+              }
+            }
           }),
       ),
     ) as EventEmitter<T>;
