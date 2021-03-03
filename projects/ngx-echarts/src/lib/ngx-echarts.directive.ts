@@ -228,7 +228,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
                   chart.off(eventName);
                 }
               }
-            }
+            };
           }),
       ),
     ) as EventEmitter<T>;

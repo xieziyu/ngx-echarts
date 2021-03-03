@@ -50,25 +50,25 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 # Latest Update
 
 - 2021.01.10: v6.0.1:
-  - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by[taipeiwu](https://github.com/taipeiwu))
+  - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by [taipeiwu](https://github.com/taipeiwu))
 
 - 2021.01.10: v6.0.0:
 
-  - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by[gjsmith66](https://github.com/gjsmith66))
+  - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by [gjsmith66](https://github.com/gjsmith66))
   - update demo to use echarts v5.0
 
 - 2020.12.14: v6.0.0-alpha.2, v5.2.2:
 
-  - [PR #282](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by[parkdihoon](https://github.com/parkdihoon))
+  - [PR #282](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by [parkdihoon](https://github.com/parkdihoon))
 
 - 2020.11.07: v6.0.0-alpha.1:
 
-  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/272): Angular 10 support (by[Ghostbird](https://github.com/Ghostbird))
+  - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/272): Angular 10 support (by [Ghostbird](https://github.com/Ghostbird))
 
 - 2020.11.07: v5.2.1:
 
   - Required `resize-observer-polyfill`
-  - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by[ThomasBower](https://github.com/ThomasBower))
+  - [PR #271](https://github.com/xieziyu/ngx-echarts/pull/271): Fix autoResize functionality (by [ThomasBower](https://github.com/ThomasBower))
   - Exposed methods: `refreshChart()` and `resize()`
 
 - 2020.07.24: v5.1.0:
