@@ -37,7 +37,7 @@
     "echarts-gl": "^1.1.1",
     "echarts": "^5.0.0",
     "echarts-gl": "^2.0.0-rc.3",
-        "@types/echarts": "^4.9.2",
+    "@types/echarts": "^4.9.2",
     "ng-zorro-antd": "^10.1.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.3",
