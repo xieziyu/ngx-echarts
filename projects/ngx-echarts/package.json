@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "6.0.1",
+  "version": "6.1.0",
   "author": "Xie, Ziyu",
   "license": "MIT",
   "keywords": [
@@ -14,11 +14,5 @@
     "url": "https://github.com/xieziyu/ngx-echarts.git"
   },
   "homepage": "https://xieziyu.github.io/ngx-echarts",
-  "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
-  "peerDependencies": {
-    "@angular/common": ">=10.0.0",
-    "@angular/core": ">=10.0.0",
-    "echarts": ">=3.1.1",
-    "resize-observer-polyfill": ">=1.5.1"
-  }
+  "bugs": "https://github.com/xieziyu/ngx-echarts/issues"
 }

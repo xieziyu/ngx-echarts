@@ -13,7 +13,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
@@ -143,7 +143,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
    */
   resize() {
     if (this.chart) {
-      this.chart.resize();
+      this.ngZone.runOutsideAngular(() => {
+        this.chart.resize();
+      })
     }
   }
 
