@@ -4,8 +4,7 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "echarts": "echarts",
-      "resize-observer-polyfill": "ResizeObserver"
+      "echarts": "echarts"
     }
   }
 }

@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { NgxEchartsDirective, NgxEchartsConfig, NGX_ECHARTS_CONFIG } from './ngx-echarts.directive';
+import { NgxEchartsDirective, NgxEchartsConfig, NGX_ECHARTS_CONFIG, ThemeOption } from './ngx-echarts.directive';
 
 @NgModule({
   imports: [],
@@ -20,4 +20,4 @@ export class NgxEchartsModule {
   }
 }
 
-export { NgxEchartsDirective, NGX_ECHARTS_CONFIG };
+export { NgxEchartsDirective, NGX_ECHARTS_CONFIG, ThemeOption };

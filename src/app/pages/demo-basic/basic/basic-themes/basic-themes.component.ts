@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ThemeOption } from 'ngx-echarts';
+import { CoolTheme } from './cool-theme';
 declare const require: any; // DEMO IGNORE
 
 @Component({
@@ -9,7 +11,9 @@ declare const require: any; // DEMO IGNORE
 export class BasicThemesComponent {
   html = require('!!html-loader?-minimize!./basic-themes.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-themes.component.ts').default; // DEMO IGNORE
-  theme: string;
+  data = require('!!raw-loader!./cool-theme.ts').default; // DEMO IGNORE
+  theme: string | ThemeOption;
+  coolTheme = CoolTheme;
   options = {
     title: {
       text: 'Nightingale\'s Rose Diagram',

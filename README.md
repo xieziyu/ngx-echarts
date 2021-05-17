@@ -41,13 +41,19 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
-- `v6.x` for Angular >= 10
-- `v5.x` for Angular >= 6
+- `v7.x` for Angular >= 11
+- `v6.x` for Angular >= 10, < 11
+- `v5.x` for Angular >= 6, < 10
 - `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2021.05.17: v7.0.0:
+  - Feat: support Angular v11, ECharts v5
+  - Feat: support echart theme object
+  - Perf: resize animation
 
 - 2021.01.10: v6.0.1:
   - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by [taipeiwu](https://github.com/taipeiwu))
@@ -56,13 +62,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
   - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by [gjsmith66](https://github.com/gjsmith66))
   - update demo to use echarts v5.0
-
-- 2020.12.14: v6.0.0-alpha.2, v5.2.2:
-
   - [PR #282](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by [parkdihoon](https://github.com/parkdihoon))
-
-- 2020.11.07: v6.0.0-alpha.1:
-
   - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/272): Angular 10 support (by [Ghostbird](https://github.com/Ghostbird))
 
 - 2020.11.07: v5.2.1:
@@ -92,12 +92,12 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   # if you use npm
   npm install echarts -S
   npm install ngx-echarts -S
-  npm install resize-observer-polyfill -D
+  npm install @juggle/resize-observer -D
 
   # or if you use yarn
   yarn add echarts
   yarn add ngx-echarts
-  yarn add -D resize-observer-polyfill
+  yarn add -D @juggle/resize-observer
   ```
 
 - If you need ECharts GL support, please install it first:
@@ -147,12 +147,10 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
    ```typescript
    import { NgxEchartsModule } from 'ngx-echarts';
 
-   import * as echarts from 'echarts';
-
    @NgModule({
      imports: [
        NgxEchartsModule.forRoot({
-         echarts,
+         echarts: () => import('echarts'),
        }),
      ],
    })

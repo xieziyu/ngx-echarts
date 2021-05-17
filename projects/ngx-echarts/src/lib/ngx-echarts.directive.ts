@@ -13,14 +13,17 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import ResizeObserver from 'resize-observer-polyfill';
+import { ResizeObserver } from '@juggle/resize-observer';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
+import type { EChartsOption } from 'echarts';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
 }
+
+export type ThemeOption = Record<string, any>;
 
 export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
 
@@ -29,8 +32,8 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
   exportAs: 'echarts',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
-  @Input() options: any;
-  @Input() theme: string;
+  @Input() options: EChartsOption;
+  @Input() theme: string | ThemeOption;
   @Input() loading: boolean;
   @Input() initOpts: {
     devicePixelRatio?: number;
@@ -38,7 +41,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     width?: number | string;
     height?: number | string;
   };
-  @Input() merge: any;
+  @Input() merge: EChartsOption;
   @Input() autoResize = true;
   @Input() loadingType = 'default';
   @Input() loadingOpts: object;
@@ -104,7 +107,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     filter.notFirstAndEmpty<any>('options').subscribe((opt) => this.onOptionsChange(opt));
     filter.notFirstAndEmpty<any>('merge').subscribe((opt) => this.setOption(opt));
     filter.has<boolean>('loading').subscribe((v) => this.toggleLoading(!!v));
-    filter.notFirst<string>('theme').subscribe(() => this.refreshChart());
+    filter.notFirst<string | ThemeOption>('theme').subscribe(() => this.refreshChart());
   }
 
   ngOnInit() {
@@ -143,7 +146,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
    */
   resize() {
     if (this.chart) {
-      this.chart.resize();
+      this.ngZone.runOutsideAngular(() => {
+        this.chart.resize();
+      })
     }
   }
 
