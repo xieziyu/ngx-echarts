@@ -41,13 +41,19 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
-- `v6.x` for Angular >= 10
-- `v5.x` for Angular >= 6
+- `v7.x` for Angular >= 11
+- `v6.x` for Angular >= 10, < 11
+- `v5.x` for Angular >= 6, < 10
 - `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2021.05.17: v7.0.0:
+  - Feat: support Angular v11, ECharts v5
+  - Feat: support echart theme object
+  - Perf: resize animation
 
 - 2021.01.10: v6.0.1:
   - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by [taipeiwu](https://github.com/taipeiwu))
