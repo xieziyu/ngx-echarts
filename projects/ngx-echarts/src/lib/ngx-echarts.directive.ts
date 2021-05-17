@@ -89,6 +89,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private chart: any;
   private echarts: any;
   private resizeSub: ResizeObserver;
+  private initChartTimer?: number;
 
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
@@ -116,6 +117,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngOnDestroy() {
+    window.clearTimeout(this.initChartTimer);
     if (this.resizeSub) {
       this.resizeSub.unobserve(this.el.nativeElement);
       window.cancelAnimationFrame(this.animationFrameID);
@@ -124,7 +126,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngAfterViewInit() {
-    setTimeout(() => this.initChart());
+    this.initChartTimer = window.setTimeout(() => this.initChart());
   }
 
   private dispose() {
