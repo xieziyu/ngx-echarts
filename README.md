@@ -62,13 +62,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
   - [PR #285](https://github.com/xieziyu/ngx-echarts/pull/285): Guard dispose (by [gjsmith66](https://github.com/gjsmith66))
   - update demo to use echarts v5.0
-
-- 2020.12.14: v6.0.0-alpha.2, v5.2.2:
-
   - [PR #282](https://github.com/xieziyu/ngx-echarts/pull/282): fix avoid "ResizeObserver loop limit exceeded" error (by [parkdihoon](https://github.com/parkdihoon))
-
-- 2020.11.07: v6.0.0-alpha.1:
-
   - [PR #272](https://github.com/xieziyu/ngx-echarts/pull/272): Angular 10 support (by [Ghostbird](https://github.com/Ghostbird))
 
 - 2020.11.07: v5.2.1:
@@ -98,12 +92,12 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   # if you use npm
   npm install echarts -S
   npm install ngx-echarts -S
-  npm install resize-observer-polyfill -D
+  npm install @juggle/resize-observer -D
 
   # or if you use yarn
   yarn add echarts
   yarn add ngx-echarts
-  yarn add -D resize-observer-polyfill
+  yarn add -D @juggle/resize-observer
   ```
 
 - If you need ECharts GL support, please install it first:
@@ -153,12 +147,10 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
    ```typescript
    import { NgxEchartsModule } from 'ngx-echarts';
 
-   import * as echarts from 'echarts';
-
    @NgModule({
      imports: [
        NgxEchartsModule.forRoot({
-         echarts,
+         echarts: () => import('echarts'),
        }),
      ],
    })
