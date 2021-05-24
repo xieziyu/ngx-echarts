@@ -92,7 +92,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   # if you use npm
   npm install echarts -S
   npm install ngx-echarts -S
-  npm install @juggle/resize-observer -D
+  npm install @juggle/resize-observer -S
 
   # or if you use yarn
   yarn add echarts
