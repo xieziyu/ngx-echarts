@@ -33,6 +33,7 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 - [Custom Build](#custom-build)
   - [Legacy version](#legacy-custom-build)
   - [ECharts 5 Treeshaking](#treeshaking-custom-build)
+- [Custom Locale](#custom-locale)
 - [Demo](#demo)
 
 # Getting Started
