@@ -50,6 +50,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2021.08.05: v7.0.2:
+
+  - [PR #322](https://github.com/xieziyu/ngx-echarts/pull/322): Add initOpts locale property (by [augustoicaro](https://github.com/augustoicaro))
+
 - 2021.05.17: v7.0.0:
 
   - Feat: support Angular v11, ECharts v5

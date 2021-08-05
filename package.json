@@ -20,7 +20,7 @@
     "update:file": "cpr README.md dist/ngx-echarts/README.md -o",
     "release": "run-s clean dist build:doc",
     "demo": "run-s build:lib start",
-    "dist": "run-s build:lib:prod update:file",
+    "dist": "run-s clean build:lib:prod update:file",
     "prettier": "prettier --config .prettierrc.js --write '{src,e2e,projects}/**/*.ts'"
   },
   "private": true,
