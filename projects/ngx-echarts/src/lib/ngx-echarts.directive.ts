@@ -40,6 +40,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     renderer?: string;
     width?: number | string;
     height?: number | string;
+    locale?: string;
   };
   @Input() merge: EChartsOption;
   @Input() autoResize = true;
@@ -148,7 +149,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     if (this.chart) {
       this.ngZone.runOutsideAngular(() => {
         this.chart.resize();
-      })
+      });
     }
   }
 
