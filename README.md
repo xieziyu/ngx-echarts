@@ -42,6 +42,7 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
+- `v8.x` for Angular >= 13
 - `v7.x` for Angular >= 11
 - `v6.x` for Angular >= 10, < 11
 - `v5.x` for Angular >= 6, < 10
@@ -50,6 +51,11 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2021.11.08: v8.0.0 / v7.1.0:
+  
+  - Fix: remove @juggle/resize-observer from the peer dependencies
+  - Perf: fix performance issue [#330](https://github.com/xieziyu/ngx-echarts/issues/330)
 
 - 2021.08.05: v7.0.2:
 
@@ -99,12 +105,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   # if you use npm
   npm install echarts -S
   npm install ngx-echarts -S
-  npm install @juggle/resize-observer -S
 
   # or if you use yarn
   yarn add echarts
   yarn add ngx-echarts
-  yarn add -D @juggle/resize-observer
   ```
 
 - If you need ECharts GL support, please install it first:
