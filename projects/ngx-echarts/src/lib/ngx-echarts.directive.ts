@@ -13,11 +13,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ResizeObserver } from '@juggle/resize-observer';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { interval, Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
+import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
-import type { EChartsOption } from 'echarts';
+import type { EChartsOption, ECharts } from 'echarts';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
@@ -90,9 +89,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Output() chartFinished = this.createLazyEvent('finished');
 
   public animationFrameID = null;
-  private chart: any;
+  private chart: ECharts;
   private echarts: any;
-  private resizeSub: ResizeObserver;
+  private resizeOb: ResizeObserver;
+  private resize$ = new Subject<void>();
+  private resizeSub: Subscription;
   private initChartTimer?: number;
 
   constructor(
@@ -112,19 +113,28 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngOnInit() {
+    if (!window.ResizeObserver) {
+      throw new Error('please install a polyfill for ResizeObserver');
+    }
+    this.resizeSub = this.resize$.pipe(
+      throttleTime(200, asyncScheduler, { leading: false, trailing: true })
+    ).subscribe(() => this.resize())
+
     if (this.autoResize) {
-      this.resizeSub = new ResizeObserver(() => {
-        this.animationFrameID = window.requestAnimationFrame(() => this.resize());
-      });
-      this.resizeSub.observe(this.el.nativeElement);
+      this.resizeOb = this.ngZone.runOutsideAngular(() => new window.ResizeObserver(() => {
+        this.resize$.next()
+      }))
+      this.resizeOb.observe(this.el.nativeElement);
     }
   }
 
   ngOnDestroy() {
     window.clearTimeout(this.initChartTimer);
+    if (this.resizeOb) {
+      this.resizeOb.unobserve(this.el.nativeElement);
+    }
     if (this.resizeSub) {
-      this.resizeSub.unobserve(this.el.nativeElement);
-      window.cancelAnimationFrame(this.animationFrameID);
+      this.resizeSub.unsubscribe()
     }
     this.dispose();
   }
@@ -147,9 +157,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
    */
   resize() {
     if (this.chart) {
-      this.ngZone.runOutsideAngular(() => {
-        this.chart.resize();
-      });
+      this.chart.resize();
     }
   }
 
