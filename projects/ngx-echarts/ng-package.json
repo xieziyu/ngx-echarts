@@ -3,9 +3,6 @@
   "dest": "../../dist/ngx-echarts",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public-api.ts",
-    "umdModuleIds": {
-      "echarts": "echarts"
-    }
+    "entryFile": "src/public-api.ts"
   }
 }
