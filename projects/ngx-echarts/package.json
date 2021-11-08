@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "7.0.2",
+  "version": "7.1.0",
   "author": "Xie, Ziyu",
   "license": "MIT",
   "keywords": [
@@ -16,7 +16,6 @@
   "homepage": "https://xieziyu.github.io/ngx-echarts",
   "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
   "peerDependencies": {
-    "echarts": ">=5.0.0",
-    "@juggle/resize-observer": ">=3.3.1"
+    "echarts": ">=5.0.0"
   }
 }

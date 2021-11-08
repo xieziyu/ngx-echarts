@@ -33,7 +33,6 @@
     "@angular/platform-browser": "~11.2.14",
     "@angular/platform-browser-dynamic": "~11.2.14",
     "@angular/router": "~11.2.14",
-    "@juggle/resize-observer": "^3.3.1",
     "echarts": "^5.0.0",
     "echarts-gl": "^2.0.0-rc.3",
     "ng-zorro-antd": "^11.4.1",
