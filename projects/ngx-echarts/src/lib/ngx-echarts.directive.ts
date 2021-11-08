@@ -13,7 +13,6 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { ResizeObserver } from '@juggle/resize-observer';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
