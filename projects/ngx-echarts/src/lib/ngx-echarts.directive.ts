@@ -13,7 +13,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { interval, Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
+import { Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
 import type { EChartsOption, ECharts } from 'echarts';
@@ -117,12 +117,12 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       throw new Error('please install a polyfill for ResizeObserver');
     }
     this.resizeSub = this.resize$.pipe(
-      throttleTime(200, asyncScheduler, { leading: false, trailing: true })
+      throttleTime(100, asyncScheduler, { leading: false, trailing: true })
     ).subscribe(() => this.resize())
 
     if (this.autoResize) {
       this.resizeOb = this.ngZone.runOutsideAngular(() => new window.ResizeObserver(() => {
-        this.resize$.next()
+        this.animationFrameID = window.requestAnimationFrame(() => this.resize$.next())
       }))
       this.resizeOb.observe(this.el.nativeElement);
     }
@@ -130,11 +130,14 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
   ngOnDestroy() {
     window.clearTimeout(this.initChartTimer);
-    if (this.resizeOb) {
-      this.resizeOb.unobserve(this.el.nativeElement);
-    }
     if (this.resizeSub) {
       this.resizeSub.unsubscribe()
+    }
+    if (this.animationFrameID) {
+      window.cancelAnimationFrame(this.animationFrameID);
+    }
+    if (this.resizeOb) {
+      this.resizeOb.unobserve(this.el.nativeElement);
     }
     this.dispose();
   }
