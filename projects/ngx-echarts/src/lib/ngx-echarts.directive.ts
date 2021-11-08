@@ -91,7 +91,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   public animationFrameID = null;
   private chart: ECharts;
   private echarts: any;
-  private resizeOb: ResizeObserver;
+  private resizeOb: any;
   private resize$ = new Subject<void>();
   private resizeSub: Subscription;
   private initChartTimer?: number;
@@ -113,7 +113,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngOnInit() {
-    if (!window.ResizeObserver) {
+    if (!(window as any).ResizeObserver) {
       throw new Error('please install a polyfill for ResizeObserver');
     }
     this.resizeSub = this.resize$.pipe(
@@ -121,7 +121,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     ).subscribe(() => this.resize())
 
     if (this.autoResize) {
-      this.resizeOb = this.ngZone.runOutsideAngular(() => new window.ResizeObserver(() => {
+      this.resizeOb = this.ngZone.runOutsideAngular(() => new (window as any).ResizeObserver(() => {
         this.animationFrameID = window.requestAnimationFrame(() => this.resize$.next())
       }))
       this.resizeOb.observe(this.el.nativeElement);
