@@ -5,8 +5,6 @@ before_install:
   - npm i -g npm@7
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
     - stage: compile
       if: branch != master
       script: npm run build:lib
