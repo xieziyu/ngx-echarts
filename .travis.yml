@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-    - "14"
+    - "16"
 before_install:
-  - npm i -g npm@7
+  - npm i -g npm@8
 jobs:
   include:
     - stage: compile
