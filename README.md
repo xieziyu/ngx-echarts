@@ -52,6 +52,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2021.12.07: v8.0.1:
+  
+  - Fix: NgxEchartsModule.forChild() issue [#334](https://github.com/xieziyu/ngx-echarts/issues/334)
+
 - 2021.11.08: v8.0.0 / v7.1.0:
   
   - Fix: remove @juggle/resize-observer from the peer dependencies
