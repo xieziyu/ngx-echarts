@@ -13,7 +13,7 @@ export class NgxEchartsModule {
       providers: [{ provide: NGX_ECHARTS_CONFIG, useValue: config }],
     };
   }
-  static forChild() {
+  static forChild(): ModuleWithProviders<NgxEchartsModule> {
     return {
       ngModule: NgxEchartsModule,
     };
