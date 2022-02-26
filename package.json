@@ -64,7 +64,7 @@
     "ngx-markdown": "^10.1.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
-    "prismjs": "^1.20.0",
+    "prismjs": "^1.27.0",
     "protractor": "~7.0.0",
     "raw-loader": "^4.0.1",
     "ts-node": "~8.3.0",
