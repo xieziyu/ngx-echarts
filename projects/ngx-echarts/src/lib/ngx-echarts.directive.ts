@@ -16,15 +16,22 @@ import {
 import { Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilter } from './change-filter';
-import type { EChartsOption, ECharts } from 'echarts';
+import type { EChartsOption, ECharts, init, registerTheme } from 'echarts';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
 }
 
-export type ThemeOption = Record<string, any>;
-
 export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
+
+// 'echarts' library does not export the type 'EchartsInitOpts',
+// hence we extract it from the signature of 'echarts.init'.
+export type EChartsInitOpts = Parameters<typeof init>[2];
+
+// 'echarts' library does not export the type 'ThemeOption',
+// hence we extract it from the signature of 'registerTheme'.
+export type ThemeOption = Parameters<typeof registerTheme>[1];
+
 
 @Directive({
   selector: 'echarts, [echarts]',
@@ -34,13 +41,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Input() options: EChartsOption;
   @Input() theme: string | ThemeOption;
   @Input() loading: boolean;
-  @Input() initOpts: {
-    devicePixelRatio?: number;
-    renderer?: string;
-    width?: number | string;
-    height?: number | string;
-    locale?: string;
-  };
+  @Input() initOpts: EChartsInitOpts;
   @Input() merge: EChartsOption;
   @Input() autoResize = true;
   @Input() loadingType = 'default';
