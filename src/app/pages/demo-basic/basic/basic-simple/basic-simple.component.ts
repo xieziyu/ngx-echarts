@@ -7,10 +7,10 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-simple.component.scss'],
 })
 export class BasicSimpleComponent implements OnInit {
-  html = require('!!html-loader?-minimize!./basic-simple.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./basic-simple.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-simple.component.ts').default; // DEMO IGNORE
   options: any;
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     const xAxisData = [];

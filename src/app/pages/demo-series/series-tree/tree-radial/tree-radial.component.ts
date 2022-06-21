@@ -11,10 +11,10 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./tree-radial.component.scss'],
 })
 export class TreeRadialComponent implements OnInit {
-  html = require('!!html-loader?-minimize!./tree-radial.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./tree-radial.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./tree-radial.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.options = this.http
