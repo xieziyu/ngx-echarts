@@ -178,6 +178,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-echarts-demo"
+  }
 }
