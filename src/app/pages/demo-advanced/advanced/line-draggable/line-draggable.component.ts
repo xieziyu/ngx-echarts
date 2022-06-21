@@ -18,7 +18,7 @@ const Data = [
   styleUrls: ['./line-draggable.component.scss'],
 })
 export class LineDraggableComponent implements OnDestroy {
-  html = require('!!html-loader?-minimize!./line-draggable.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./line-draggable.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./line-draggable.component.ts').default; // DEMO IGNORE
   updatePosition: () => void;
   options = {
@@ -75,7 +75,7 @@ export class LineDraggableComponent implements OnDestroy {
       },
     ],
   };
-  constructor() {}
+  constructor() { }
 
   ngOnDestroy() {
     if (this.updatePosition) {
@@ -84,7 +84,7 @@ export class LineDraggableComponent implements OnDestroy {
   }
 
   onChartReady(myChart: any) {
-    const onPointDragging = function(dataIndex) {
+    const onPointDragging = function (dataIndex) {
       Data[dataIndex] = myChart.convertFromPixel({ gridIndex: 0 }, this.position) as number[];
 
       // Update data

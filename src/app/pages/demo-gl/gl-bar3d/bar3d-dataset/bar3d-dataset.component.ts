@@ -10,11 +10,11 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./bar3d-dataset.component.scss'],
 })
 export class Bar3dDatasetComponent implements OnInit {
-  html = require('!!html-loader?-minimize!./bar3d-dataset.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./bar3d-dataset.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./bar3d-dataset.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.options = this.http

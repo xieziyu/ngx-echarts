@@ -8,7 +8,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./connect-charts.component.scss'],
 })
 export class ConnectChartsComponent implements AfterViewInit {
-  html = require('!!html-loader?-minimize!./connect-charts.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./connect-charts.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./connect-charts.component.ts').default; // DEMO IGNORE
   options = {
     color: ['#3398DB'],
@@ -47,7 +47,7 @@ export class ConnectChartsComponent implements AfterViewInit {
       },
     ],
   };
-  constructor() {}
+  constructor() { }
 
   ngAfterViewInit() {
     setTimeout(() => {

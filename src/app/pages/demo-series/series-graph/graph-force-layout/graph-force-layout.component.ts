@@ -11,11 +11,11 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./graph-force-layout.component.scss'],
 })
 export class GraphForceLayoutComponent implements OnInit {
-  html = require('!!html-loader?-minimize!./graph-force-layout.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./graph-force-layout.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./graph-force-layout.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.options = this.http.get('assets/data/les-miserables.gexf', { responseType: 'text' }).pipe(

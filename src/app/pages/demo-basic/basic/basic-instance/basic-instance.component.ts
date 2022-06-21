@@ -8,7 +8,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-instance.component.scss'],
 })
 export class BasicInstanceComponent {
-  html = require('!!html-loader?-minimize!./basic-instance.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./basic-instance.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-instance.component.ts').default; // DEMO IGNORE
   chartInstance: any;
   options = {
@@ -78,7 +78,7 @@ export class BasicInstanceComponent {
       },
     ],
   };
-  constructor(private msg: NzMessageService) {}
+  constructor(private msg: NzMessageService) { }
 
   onChartInit(e: any) {
     this.chartInstance = e;

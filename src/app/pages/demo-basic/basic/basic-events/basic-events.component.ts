@@ -9,11 +9,11 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-events.component.scss'],
 })
 export class BasicEventsComponent implements OnInit {
-  html = require('!!html-loader?-minimize!./basic-events.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./basic-events.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./basic-events.component.ts').default; // DEMO IGNORE
   options: any;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
     const dataAxis = [

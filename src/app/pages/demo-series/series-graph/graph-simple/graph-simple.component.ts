@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./graph-simple.component.scss']
 })
 export class GraphSimpleComponent {
-  html = require('!!html-loader?-minimize!./graph-simple.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize":true}!./graph-simple.component.html'); // DEMO IGNORE
   component = require('!!raw-loader!./graph-simple.component.ts').default; // DEMO IGNORE
   options = {
     title: {

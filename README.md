@@ -24,15 +24,15 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
   - [Upgrade from v4.x](#upgrade-from-v4x)
 - [Usage](#usage)
 - [API](#api)
-  - [Directive](#directive)
-  - [ECharts API](#echarts-api)
-  - [ECharts Instance](#echarts-instance)
-  - [ECharts Extensions](#echarts-extensions)
-  - [Service](#service)
+    - [Directive](#directive)
+    - [ECharts API](#echarts-api)
+    - [ECharts Instance](#echarts-instance)
+    - [ECharts Extensions](#echarts-extensions)
+    - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
-  - [Legacy version](#legacy-custom-build)
-  - [ECharts 5 Treeshaking](#treeshaking-custom-build)
+  - [Legacy Custom Build](#legacy-custom-build)
+  - [Treeshaking Custom Build](#treeshaking-custom-build)
 - [Custom Locale](#custom-locale)
 - [Demo](#demo)
 
@@ -42,6 +42,7 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
+- `v14.x` for Angular >= 14
 - `v8.x` for Angular >= 13
 - `v7.x` for Angular >= 11
 - `v6.x` for Angular >= 10, < 11
@@ -51,6 +52,10 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2022.06.21: v14.0.0:
+
+  - Feat: upgrade to Angular 14
 
 - 2021.12.07: v8.0.1:
   
