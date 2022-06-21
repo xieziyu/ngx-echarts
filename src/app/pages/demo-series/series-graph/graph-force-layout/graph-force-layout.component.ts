@@ -11,7 +11,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./graph-force-layout.component.scss'],
 })
 export class GraphForceLayoutComponent implements OnInit {
-  html = require('!!html-loader?{"minimize":true}!./graph-force-layout.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./graph-force-layout.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./graph-force-layout.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
 
