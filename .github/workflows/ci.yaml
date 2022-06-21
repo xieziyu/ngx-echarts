@@ -3,18 +3,24 @@ on:
   push:
     branches:
       - master
+      - fix/action
 jobs:
   build:
 
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: All things angular
-      uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.2
-      with:
-        github_access_token: ${{ secrets.ACCESS_TOKEN }}
-        build_configuration: staging
-        base_href: /ngx-echarts/
-        deploy_branch: gh-pages
-        angular_dist_build_folder: dist/docs
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: NPM Install
+        uses: ng-easy/npm-install@v2
+      - name: Build
+        run: npm run release
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: dist/docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
