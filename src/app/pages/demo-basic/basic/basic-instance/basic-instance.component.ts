@@ -8,7 +8,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-instance.component.scss'],
 })
 export class BasicInstanceComponent {
-  html = require('!!html-loader?{"minimize":true}!./basic-instance.component.html'); // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-instance.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-instance.component.ts').default; // DEMO IGNORE
   chartInstance: any;
   options = {
