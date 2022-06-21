@@ -13,7 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: NPM Install
-        uses: ng-easy/npm-setup@v1.7.2
+        uses: bahmutov/npm-install@v1.6.0
+        with:
+          install-command: npm ci --legacy-peer-deps
       - name: Build
         run: npm run release
       - name: Deploy to GitHub Pages
