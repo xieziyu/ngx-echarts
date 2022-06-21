@@ -13,7 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: NPM Install
-        uses: ng-easy/npm-install@v1
+        uses: ng-easy/npm-setup@v1.7.2
       - name: Build
         run: npm run release
       - name: Deploy to GitHub Pages
