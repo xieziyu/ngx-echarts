@@ -4,7 +4,7 @@
 
 [![npm](https://img.shields.io/npm/v/ngx-echarts.svg)][npm-badge-url]
 [![npm](https://img.shields.io/npm/dm/ngx-echarts.svg)][npm-badge-url]
-[![Build Status](https://travis-ci.org/xieziyu/ngx-echarts.svg?branch=master)][ci-url]
+[![Build Status](https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml/badge.svg)][ci-url]
 
 Angular directive for [Apache ECharts (incubating)](https://github.com/apache/incubator-echarts)
 (version >= 3.x) (The project is renamed from **angular2-echarts**)
@@ -488,4 +488,4 @@ yarn demo
 The demo page server is listening on: http://localhost:4202
 
 [npm-badge-url]: https://www.npmjs.com/package/ngx-echarts
-[ci-url]: https://travis-ci.org/xieziyu/ngx-echarts
+[ci-url]: https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml
