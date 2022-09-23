@@ -46,28 +46,28 @@ export class BasicLoadingComponent {
         name: 'X-1',
         type: 'line',
         stack: 'counts',
-        areaStyle: { normal: {} },
+        areaStyle: {},
         data: [120, 132, 101, 134, 90, 230, 210]
       },
       {
         name: 'X-2',
         type: 'line',
         stack: 'counts',
-        areaStyle: { normal: {} },
+        areaStyle: {},
         data: [220, 182, 191, 234, 290, 330, 310]
       },
       {
         name: 'X-3',
         type: 'line',
         stack: 'counts',
-        areaStyle: { normal: {} },
+        areaStyle: {},
         data: [150, 232, 201, 154, 190, 330, 410]
       },
       {
         name: 'X-4',
         type: 'line',
         stack: 'counts',
-        areaStyle: { normal: {} },
+        areaStyle: {},
         data: [320, 332, 301, 334, 390, 330, 320]
       },
       {
@@ -75,12 +75,10 @@ export class BasicLoadingComponent {
         type: 'line',
         stack: 'counts',
         label: {
-          normal: {
-            show: true,
-            position: 'top'
-          }
+          show: true,
+          position: 'top',
         },
-        areaStyle: { normal: {} },
+        areaStyle: {},
         data: [820, 932, 901, 934, 1290, 1330, 1320]
       }
     ]

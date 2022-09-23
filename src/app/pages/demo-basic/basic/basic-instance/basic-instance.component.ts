@@ -8,7 +8,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-instance.component.scss'],
 })
 export class BasicInstanceComponent {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-instance.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-instance.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-instance.component.ts').default; // DEMO IGNORE
   chartInstance: any;
   options = {
@@ -17,9 +17,7 @@ export class BasicInstanceComponent {
       text: 'Customized Pie',
       left: 'center',
       top: 20,
-      textStyle: {
-        color: '#ccc',
-      },
+      color: '#ccc',
     },
     tooltip: {
       trigger: 'item',
@@ -48,28 +46,18 @@ export class BasicInstanceComponent {
         ].sort((a, b) => a.value - b.value),
         roseType: 'radius',
         label: {
-          normal: {
-            textStyle: {
-              color: 'rgba(255, 255, 255, 0.3)',
-            },
-          },
+          color: 'rgba(255, 255, 255, 0.3)',
         },
         labelLine: {
-          normal: {
-            lineStyle: {
-              color: 'rgba(255, 255, 255, 0.3)',
-            },
-            smooth: 0.2,
-            length: 10,
-            length2: 20,
-          },
+          color: 'rgba(255, 255, 255, 0.3)',
+          smooth: 0.2,
+          length: 10,
+          length2: 20,
         },
         itemStyle: {
-          normal: {
-            color: '#c23531',
-            shadowBlur: 200,
-            shadowColor: 'rgba(0, 0, 0, 0.5)',
-          },
+          color: '#c23531',
+          shadowBlur: 200,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
         },
 
         animationType: 'scale',

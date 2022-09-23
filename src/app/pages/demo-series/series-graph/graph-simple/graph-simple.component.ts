@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./graph-simple.component.scss']
 })
 export class GraphSimpleComponent {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./graph-simple.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-simple.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./graph-simple.component.ts').default; // DEMO IGNORE
   options = {
     title: {
@@ -23,18 +23,14 @@ export class GraphSimpleComponent {
         symbolSize: 60,
         roam: true,
         label: {
-          normal: {
-            show: true
-          }
+          show: true,
         },
         edgeSymbol: ['circle', 'arrow'],
         edgeSymbolSize: [4, 10],
         edgeLabel: {
-          normal: {
-            textStyle: {
-              fontSize: 20
-            }
-          }
+          textStyle: {
+            fontSize: 20
+          },
         },
         data: [{
           name: 'Node 1',
@@ -59,26 +55,20 @@ export class GraphSimpleComponent {
           target: 1,
           symbolSize: [5, 20],
           label: {
-            normal: {
-              show: true
-            }
+            show: true,
           },
           lineStyle: {
-            normal: {
-              width: 5,
-              curveness: 0.2
-            }
+            width: 5,
+            curveness: 0.2,
           }
         }, {
           source: 'Node 2',
           target: 'Node 1',
           label: {
-            normal: {
-              show: true
-            }
+            show: true,
           },
           lineStyle: {
-            normal: { curveness: 0.2 }
+            curveness: 0.2,
           }
         }, {
           source: 'Node 1',
@@ -94,11 +84,9 @@ export class GraphSimpleComponent {
           target: 'Node 4'
         }],
         lineStyle: {
-          normal: {
-            opacity: 0.9,
-            width: 2,
-            curveness: 0
-          }
+          opacity: 0.9,
+          width: 2,
+          curveness: 0,
         }
       }
     ]

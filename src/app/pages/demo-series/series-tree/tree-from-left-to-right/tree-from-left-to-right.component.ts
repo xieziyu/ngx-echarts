@@ -11,7 +11,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./tree-from-left-to-right.component.scss'],
 })
 export class TreeFromLeftToRightComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./tree-from-left-to-right.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-from-left-to-right.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./tree-from-left-to-right.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
   constructor(private http: HttpClient) { }

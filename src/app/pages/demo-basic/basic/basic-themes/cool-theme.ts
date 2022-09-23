@@ -13,10 +13,8 @@ export const CoolTheme = {
   ],
 
   title: {
-    textStyle: {
-      fontWeight: 'normal',
-      color: '#00aecd'
-    }
+    fontWeight: 'normal',
+    color: '#00aecd'
   },
 
   visualMap: {
