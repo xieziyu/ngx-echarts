@@ -11,7 +11,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./tree-radial.component.scss'],
 })
 export class TreeRadialComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./tree-radial.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-radial.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./tree-radial.component.ts').default; // DEMO IGNORE
   options: Observable<any>;
   constructor(private http: HttpClient) { }

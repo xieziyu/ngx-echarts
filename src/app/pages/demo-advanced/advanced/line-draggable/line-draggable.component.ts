@@ -18,7 +18,7 @@ const Data = [
   styleUrls: ['./line-draggable.component.scss'],
 })
 export class LineDraggableComponent implements OnDestroy {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./line-draggable.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./line-draggable.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./line-draggable.component.ts').default; // DEMO IGNORE
   updatePosition: () => void;
   options = {

@@ -9,7 +9,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-events.component.scss'],
 })
 export class BasicEventsComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-events.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-events.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-events.component.ts').default; // DEMO IGNORE
   options: any;
 
@@ -94,9 +94,7 @@ export class BasicEventsComponent implements OnInit {
           show: false,
         },
         axisLabel: {
-          textStyle: {
-            color: '#999',
-          },
+          color: '#999',
         },
       },
       dataZoom: [

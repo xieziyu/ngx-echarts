@@ -7,7 +7,7 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-update.component.scss']
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
-  html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-update.component.html').default; // DEMO IGNORE
+  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-update.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-update.component.ts').default; // DEMO IGNORE
   options: any;
   updateOptions: any;
@@ -63,7 +63,9 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
         name: 'Mocking Data',
         type: 'line',
         showSymbol: false,
-        hoverAnimation: false,
+        emphasis: {
+          line: false,
+        },
         data: this.data
       }]
     };
