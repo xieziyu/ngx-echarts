@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts-demo",
-  "version": "14.0.0",
+  "version": "15.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4202",
@@ -25,14 +25,14 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~14.0.2",
-    "@angular/common": "~14.0.2",
-    "@angular/compiler": "~14.0.2",
-    "@angular/core": "~14.0.2",
-    "@angular/forms": "~14.0.2",
-    "@angular/platform-browser": "~14.0.2",
-    "@angular/platform-browser-dynamic": "~14.0.2",
-    "@angular/router": "~14.0.2",
+    "@angular/animations": "~15.0.0",
+    "@angular/common": "~15.0.0",
+    "@angular/compiler": "~15.0.0",
+    "@angular/core": "~15.0.0",
+    "@angular/forms": "~15.0.0",
+    "@angular/platform-browser": "~15.0.0",
+    "@angular/platform-browser-dynamic": "~15.0.0",
+    "@angular/router": "~15.0.0",
     "@ant-design/icons-angular": "^13.1.0",
     "echarts": "~5.3.3",
     "echarts-gl": "^2.0.9",
@@ -42,11 +42,11 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~14.0.2",
-    "@angular-devkit/core": "~14.0.2",
-    "@angular/cli": "~14.0.2",
-    "@angular/compiler-cli": "~14.0.2",
-    "@angular/language-service": "~14.0.2",
+    "@angular-devkit/build-angular": "~15.0.0",
+    "@angular-devkit/core": "~15.0.0",
+    "@angular/cli": "~15.0.0",
+    "@angular/compiler-cli": "~15.0.0",
+    "@angular/language-service": "~15.0.0",
     "@compodoc/compodoc": "^1.1.19",
     "@types/jasmine": "~4.0.3",
     "@types/jasminewd2": "~2.0.10",
@@ -61,7 +61,7 @@
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
-    "ng-packagr": "^14.0.2",
+    "ng-packagr": "^15.0.0",
     "ngx-markdown": "^14.0.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
@@ -70,6 +70,6 @@
     "raw-loader": "^4.0.2",
     "ts-node": "~10.8.1",
     "tslint": "~6.1.3",
-    "typescript": "~4.7.4"
+    "typescript": "~4.8.4"
   }
 }

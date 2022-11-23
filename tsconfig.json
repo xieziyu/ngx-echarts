@@ -10,7 +10,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "lib": [
       "es2018",
       "dom"
@@ -22,7 +22,8 @@
       "ngx-echarts/*": [
         "dist/ngx-echarts/*"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
