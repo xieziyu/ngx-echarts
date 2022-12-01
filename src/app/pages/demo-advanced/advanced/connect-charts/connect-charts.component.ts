@@ -1,4 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 import { getInstanceByDom, connect } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
@@ -10,7 +11,7 @@ declare const require: any; // DEMO IGNORE
 export class ConnectChartsComponent implements AfterViewInit {
   html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./connect-charts.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./connect-charts.component.ts').default; // DEMO IGNORE
-  options = {
+  options: EChartsOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

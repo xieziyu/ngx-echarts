@@ -1,8 +1,10 @@
+import type { ThemeType } from '@ant-design/icons-angular';
+
 export interface AppMenu {
   path: string;
   text: string;
   icon?: string;
-  iconTheme?: string;
+  iconTheme?: ThemeType;
   submenus?: AppMenu[];
 }
 

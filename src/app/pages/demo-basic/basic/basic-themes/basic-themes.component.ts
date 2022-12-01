@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 import { ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
 declare const require: any; // DEMO IGNORE
@@ -14,19 +15,19 @@ export class BasicThemesComponent {
   data = require('!!raw-loader!./cool-theme.ts').default; // DEMO IGNORE
   theme: string | ThemeOption;
   coolTheme = CoolTheme;
-  options = {
+  options: EChartsOption = {
     title: {
       text: 'Nightingale\'s Rose Diagram',
       subtext: 'Mocking Data',
-      x: 'center'
+      textAlign: 'center'
     },
     tooltip: {
       trigger: 'item',
       formatter: '{a} <br/>{b} : {c} ({d}%)'
     },
     legend: {
-      x: 'center',
-      y: 'bottom',
+      align: 'auto',
+      bottom: 10,
       data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
     },
     calculable: true,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
 @Component({
@@ -9,7 +10,7 @@ declare const require: any; // DEMO IGNORE
 export class GraphSimpleComponent {
   html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-simple.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./graph-simple.component.ts').default; // DEMO IGNORE
-  options = {
+  options: EChartsOption = {
     title: {
       text: 'Simple Graph'
     },
@@ -28,9 +29,7 @@ export class GraphSimpleComponent {
         edgeSymbol: ['circle', 'arrow'],
         edgeSymbolSize: [4, 10],
         edgeLabel: {
-          textStyle: {
-            fontSize: 20
-          },
+          fontSize: 20,
         },
         data: [{
           name: 'Node 1',
