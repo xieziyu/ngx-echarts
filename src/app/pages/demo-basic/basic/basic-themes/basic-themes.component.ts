@@ -17,9 +17,10 @@ export class BasicThemesComponent {
   coolTheme = CoolTheme;
   options: EChartsOption = {
     title: {
-      text: 'Nightingale\'s Rose Diagram',
+      left: '50%',
+      text: 'Nightingale Rose Diagram',
       subtext: 'Mocking Data',
-      textAlign: 'center'
+      textAlign: 'center',
     },
     tooltip: {
       trigger: 'item',
