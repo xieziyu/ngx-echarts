@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
 @Component({
@@ -10,7 +11,7 @@ export class BasicLoadingComponent {
   html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-loading.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-loading.component.ts').default; // DEMO IGNORE
   isLoading = false;
-  options = {
+  options: EChartsOption = {
     tooltip: {
       trigger: 'axis',
       axisPointer: {

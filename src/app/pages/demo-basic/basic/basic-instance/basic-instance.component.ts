@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 import { NzMessageService } from 'ng-zorro-antd/message';
 declare const require: any; // DEMO IGNORE
 
@@ -11,13 +12,15 @@ export class BasicInstanceComponent {
   html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-instance.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-instance.component.ts').default; // DEMO IGNORE
   chartInstance: any;
-  options = {
+  options: EChartsOption = {
     backgroundColor: '#2c343c',
     title: {
       text: 'Customized Pie',
       left: 'center',
       top: 20,
-      color: '#ccc',
+      textStyle: {
+        color: '#ccc',
+      }
     },
     tooltip: {
       trigger: 'item',
@@ -49,7 +52,9 @@ export class BasicInstanceComponent {
           color: 'rgba(255, 255, 255, 0.3)',
         },
         labelLine: {
-          color: 'rgba(255, 255, 255, 0.3)',
+          lineStyle: {
+            color: 'rgba(255, 255, 255, 0.3)',
+          },
           smooth: 0.2,
           length: 10,
           length2: 20,

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
 @Component({
@@ -15,7 +16,7 @@ export class BasicInitOptsComponent {
     height: 300
   };
 
-  options = {
+  options: EChartsOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

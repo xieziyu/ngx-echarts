@@ -31,20 +31,20 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
   exportAs: 'echarts',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
-  @Input() options: EChartsOption;
-  @Input() theme: string | ThemeOption;
-  @Input() loading: boolean;
+  @Input() options: EChartsOption | null = null;
+  @Input() theme: string | ThemeOption | null = null;
   @Input() initOpts: {
     devicePixelRatio?: number;
     renderer?: string;
     width?: number | string;
     height?: number | string;
     locale?: string;
-  };
-  @Input() merge: EChartsOption;
+  } | null = null;
+  @Input() merge: EChartsOption | null = null;
   @Input() autoResize = true;
+  @Input() loading = false;
   @Input() loadingType = 'default';
-  @Input() loadingOpts: object;
+  @Input() loadingOpts: object | null = null;
 
   // ngx-echarts events
   @Output() chartInit = new EventEmitter<any>();

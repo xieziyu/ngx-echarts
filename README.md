@@ -54,6 +54,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2022.12.01: v15.0.1:
+
+  - Feat: Support nullable @Inputs. Issue [#378](https://github.com/xieziyu/ngx-echarts/issues/378)
+
 - 2022.11.23: v15.0.0:
 
   - Feat: upgrade to Angular 15
