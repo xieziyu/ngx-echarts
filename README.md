@@ -151,40 +151,63 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 1. Firstly, import `NgxEchartsModule` in your app module (or any other proper angular module):
 
-   ```typescript
-   import { NgxEchartsModule } from 'ngx-echarts';
+  ```typescript
+  import { NgxEchartsModule } from 'ngx-echarts';
 
-   @NgModule({
-     imports: [
-       NgxEchartsModule.forRoot({
-         /**
-          * This will import all modules from echarts.
-          * If you only need custom modules,
-          * please refer to [Custom Build] section.
-          */
-         echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-       }),
-     ],
-   })
-   export class AppModule {}
-   ```
+  @NgModule({
+    imports: [
+      NgxEchartsModule.forRoot({
+        /**
+         * This will import all modules from echarts.
+         * If you only need custom modules,
+         * please refer to [Custom Build] section.
+         */
+        echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+      }),
+    ],
+  })
+  export class AppModule {}
+  ```
 
-   The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
+  The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
 
-   You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
+  You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
 
-   ```typescript
-   import { NgxEchartsModule } from 'ngx-echarts';
+  ```typescript
+  import * as echarts from 'echarts';
+  import { NgxEchartsModule } from 'ngx-echarts';
 
-   @NgModule({
-     imports: [
-       NgxEchartsModule.forRoot({
-         echarts: () => import('echarts'),
-       }),
-     ],
-   })
-   export class AppModule {}
-   ```
+  @NgModule({
+    imports: [
+      NgxEchartsModule.forRoot({ echarts }),
+    ],
+  })
+  export class AppModule {}
+  ```
+
+  When using NgxEchartsModule in a **standalone component**, we can use token `NGX_ECHARTS_CONFIG` to provide echarts
+
+  ```typescript
+  import { NgxEchartsModule, NGX_ECHARTS_CONFIG } from 'ngx-echarts';
+
+  @Component({
+    standalone: true,
+    selector: 'my-chart',
+    template: `
+      <div echarts [options]="chartOptions" class="demo-chart"></div>
+    `,
+    imports: [NgxEchartsModule],
+    providers: [
+      {
+        provide: NGX_ECHARTS_CONFIG,
+        useFactory: () => ({ echarts: () => import('echarts') })
+      },
+    ]
+  })
+  export class MyChartComponent {
+    // logic
+  }
+  ```
 
 2. Then: use `echarts` directive in a div which has **pre-defined height**. (From v2.0, it has default height: 400px)
 
