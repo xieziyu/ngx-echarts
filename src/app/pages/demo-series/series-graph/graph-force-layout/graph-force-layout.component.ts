@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import type { EChartsOption } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
@@ -12,8 +11,6 @@ export class GraphForceLayoutComponent implements OnInit {
   html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-force-layout.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./graph-force-layout.component.ts').default; // DEMO IGNORE
   options: EChartsOption;
-
-  constructor(private http: HttpClient) { }
 
   createNodes(count: number) {
     const nodes = [];
