@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { parse } from 'echarts/extension/dataTool/gexf';
+import type { EChartsOption } from 'echarts';
 declare const require: any; // DEMO IGNORE
 
 @Component({
@@ -13,53 +11,63 @@ declare const require: any; // DEMO IGNORE
 export class GraphForceLayoutComponent implements OnInit {
   html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-force-layout.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./graph-force-layout.component.ts').default; // DEMO IGNORE
-  options: Observable<any>;
+  options: EChartsOption;
 
   constructor(private http: HttpClient) { }
 
+  createNodes(count: number) {
+    const nodes = [];
+    for (let i = 0; i < count; i++) {
+      nodes.push({
+        id: i + ''
+      });
+    }
+    return nodes;
+  }
+
+  createEdges(count: number) {
+    const edges = [];
+    if (count === 2) {
+      return [[0, 1]];
+    }
+    for (let i = 0; i < count; i++) {
+      edges.push([i, (i + 1) % count]);
+    }
+    return edges;
+  }
+
   ngOnInit(): void {
-    this.options = this.http.get('assets/data/les-miserables.gexf', { responseType: 'text' }).pipe(
-      map((xml) => {
-        const graph = parse(xml);
-        const categories = [];
-        for (let i = 0; i < 9; i++) {
-          categories[i] = {
-            name: 'category' + i,
-          };
-        }
+    const datas = [];
+    for (let i = 0; i < 16; i++) {
+      datas.push({
+        nodes: this.createNodes(i + 2),
+        edges: this.createEdges(i + 2)
+      });
+    }
+
+    this.options = {
+      series: datas.map((item, idx) => {
         return {
-          title: {
-            text: 'Les Miserables',
-            subtext: 'Default layout',
-            top: 'bottom',
-            left: 'right',
-          },
-          tooltip: {},
-          legend: [
-            {
-              data: categories.map((a) => a.name),
-            },
-          ],
+          type: 'graph',
+          layout: 'force',
           animation: false,
-          series: [
-            {
-              name: 'Les Miserables',
-              type: 'graph',
-              layout: 'force',
-              data: graph.nodes,
-              links: graph.links,
-              categories,
-              roam: true,
-              label: {
-                position: 'right',
-              },
-              force: {
-                repulsion: 100,
-              },
-            },
-          ],
+          data: item.nodes,
+          left: (idx % 4) * 25 + '%',
+          top: Math.floor(idx / 4) * 25 + '%',
+          width: '25%',
+          height: '25%',
+          force: {
+            repulsion: 60,
+            edgeLength: 2
+          },
+          edges: item.edges.map((e) => {
+            return {
+              source: e[0] + '',
+              target: e[1] + ''
+            };
+          })
         };
-      }),
-    );
+      })
+    };
   }
 }
