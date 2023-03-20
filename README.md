@@ -54,6 +54,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2023.03.20: v15.0.2:
+
+  - Fix: unsubscribe ChangeFilter subscriptions onDestroy.
+
 - 2022.12.01: v15.0.1:
 
   - Feat: Support nullable @Inputs. Issue [#378](https://github.com/xieziyu/ngx-echarts/issues/378)

@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 import { Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
-import { ChangeFilter } from './change-filter';
+import { ChangeFilterV2 } from './change-filter-v2';
 import type { EChartsOption, ECharts } from 'echarts';
 
 export interface NgxEchartsConfig {
@@ -95,6 +95,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private resize$ = new Subject<void>();
   private resizeSub: Subscription;
   private initChartTimer?: number;
+  private changeFilter = new ChangeFilterV2();
 
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
@@ -105,11 +106,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    const filter = ChangeFilter.of(changes);
-    filter.notFirstAndEmpty<any>('options').subscribe((opt) => this.onOptionsChange(opt));
-    filter.notFirstAndEmpty<any>('merge').subscribe((opt) => this.setOption(opt));
-    filter.has<boolean>('loading').subscribe((v) => this.toggleLoading(!!v));
-    filter.notFirst<string | ThemeOption>('theme').subscribe(() => this.refreshChart());
+    this.changeFilter.doFilter(changes);
   }
 
   ngOnInit() {
@@ -126,6 +123,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       }))
       this.resizeOb.observe(this.el.nativeElement);
     }
+
+    this.changeFilter.notFirstAndEmpty('options', (opt) => this.onOptionsChange(opt));
+    this.changeFilter.notFirstAndEmpty('merge', (opt) => this.setOption(opt));
+    this.changeFilter.has<boolean>('loading', (v) => this.toggleLoading(!!v));
+    this.changeFilter.notFirst<string | ThemeOption>('theme', () => this.refreshChart());
   }
 
   ngOnDestroy() {
@@ -139,6 +141,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     if (this.resizeOb) {
       this.resizeOb.unobserve(this.el.nativeElement);
     }
+    this.changeFilter.dispose();
     this.dispose();
   }
 
