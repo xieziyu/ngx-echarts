@@ -11,6 +11,7 @@ import { BasicLoadingComponent } from './basic/basic-loading/basic-loading.compo
 import { BasicUpdateComponent } from './basic/basic-update/basic-update.component';
 import { BasicInitOptsComponent } from './basic/basic-init-opts/basic-init-opts.component';
 import { BasicInstanceComponent } from './basic/basic-instance/basic-instance.component';
+import { BasicDatasetComponent } from './basic/basic-dataset/basic-dataset.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { BasicInstanceComponent } from './basic/basic-instance/basic-instance.co
     BasicUpdateComponent,
     BasicInitOptsComponent,
     BasicInstanceComponent,
+    BasicDatasetComponent,
   ],
   imports: [CommonModule, SharedModule, NgxEchartsModule, DemoBasicRoutingModule],
 })
