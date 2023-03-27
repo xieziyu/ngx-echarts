@@ -54,6 +54,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2023.03.27: v15.0.3:
+
+  - Fix: `[loading]=true` is not triggered when chart initialized.
+
 - 2023.03.20: v15.0.2:
 
   - Fix: unsubscribe ChangeFilter subscriptions onDestroy.
