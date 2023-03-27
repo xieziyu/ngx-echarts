@@ -1,8 +1,8 @@
 import { SimpleChanges } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { ReplaySubject, Subscription } from 'rxjs';
 
 export class ChangeFilterV2 {
-  private subject = new Subject<SimpleChanges>();
+  private subject = new ReplaySubject<SimpleChanges>(1);
   private subscriptions: Subscription = new Subscription();
 
   doFilter(changes: SimpleChanges) {

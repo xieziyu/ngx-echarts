@@ -13,7 +13,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Observable, Subject, Subscription, asyncScheduler } from 'rxjs';
+import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
 import type { EChartsOption, ECharts } from 'echarts';
@@ -90,12 +90,14 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
   public animationFrameID = null;
   private chart: ECharts;
+  private chart$ = new ReplaySubject<ECharts>(1);
   private echarts: any;
   private resizeOb: ResizeObserver;
   private resize$ = new Subject<void>();
   private resizeSub: Subscription;
   private initChartTimer?: number;
   private changeFilter = new ChangeFilterV2();
+  private loadingSub: Subscription;
 
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
@@ -141,6 +143,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     if (this.resizeOb) {
       this.resizeOb.unobserve(this.el.nativeElement);
     }
+    if (this.loadingSub) {
+      this.loadingSub.unsubscribe()
+    }
     this.changeFilter.dispose();
     this.dispose();
   }
@@ -172,6 +177,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       loading
         ? this.chart.showLoading(this.loadingType, this.loadingOpts)
         : this.chart.hideLoading();
+    }
+    else {
+      this.loadingSub = this.chart$.subscribe(chart =>
+        loading
+          ? chart.showLoading(this.loadingType, this.loadingOpts)
+          : chart.hideLoading()
+      );
     }
   }
 
@@ -231,6 +243,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       this.setOption(this.options, true);
     } else {
       this.chart = await this.createChart();
+      this.chart$.next(this.chart);
       this.chartInit.emit(this.chart);
       this.setOption(this.options, true);
     }

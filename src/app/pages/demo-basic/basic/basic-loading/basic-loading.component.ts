@@ -10,7 +10,7 @@ declare const require: any; // DEMO IGNORE
 export class BasicLoadingComponent {
   html = require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-loading.component.html').default; // DEMO IGNORE
   component = require('!!raw-loader!./basic-loading.component.ts').default; // DEMO IGNORE
-  isLoading = false;
+  isLoading = true;
   options: EChartsOption = {
     tooltip: {
       trigger: 'axis',
