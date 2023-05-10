@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { ECharts, EChartsOption } from 'echarts';
 import { NzMessageService } from 'ng-zorro-antd/message';
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-basic-instance',
@@ -9,9 +11,13 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-instance.component.scss'],
 })
 export class BasicInstanceComponent {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-instance.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./basic-instance.component.ts').default; // DEMO IGNORE
-  chartInstance: any;
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-instance.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-instance.component.ts').default;
+  // IGNORE END
+  chartInstance: ECharts;
   options: EChartsOption = {
     backgroundColor: '#2c343c',
     title: {
@@ -20,7 +26,7 @@ export class BasicInstanceComponent {
       top: 20,
       textStyle: {
         color: '#ccc',
-      }
+      },
     },
     tooltip: {
       trigger: 'item',
@@ -71,9 +77,9 @@ export class BasicInstanceComponent {
       },
     ],
   };
-  constructor(private msg: NzMessageService) { }
+  constructor(private msg: NzMessageService) {}
 
-  onChartInit(e: any) {
+  onChartInit(e: ECharts) {
     this.chartInstance = e;
     console.log('on chart init:', e);
   }

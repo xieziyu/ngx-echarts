@@ -42,6 +42,7 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
+- `v16.x` for Angular >= 16
 - `v15.x` for Angular >= 15
 - `v14.x` for Angular >= 14
 - `v8.x` for Angular >= 13
@@ -53,6 +54,11 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2023.05.10: v16.0.0:
+
+  - Feat: upgrade to Angular 16
+  - Chore: replaced tslint with eslint.
 
 - 2023.03.27: v15.0.3:
 

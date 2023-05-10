@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AppMenu, APP_MENUS } from '../../menus';
@@ -12,7 +12,7 @@ interface AppMenuEx extends AppMenu {
   templateUrl: './app-menu.component.html',
   styleUrls: ['./app-menu.component.scss'],
 })
-export class AppMenuComponent implements OnInit {
+export class AppMenuComponent {
   @Input() isCollapsed: boolean;
   menus: AppMenuEx[];
   currentUrl: string;
@@ -30,6 +30,4 @@ export class AppMenuComponent implements OnInit {
       submenus: m.submenus ? m.submenus.concat() : undefined,
     }));
   }
-
-  ngOnInit() {}
 }

@@ -14,42 +14,50 @@ export class ChangeFilterV2 {
   }
 
   notEmpty<T>(key: string, handler: (t: T) => void) {
-    this.subscriptions.add(this.subject.subscribe(changes => {
-      if (changes[key]) {
-        const value: T = changes[key].currentValue;
-        if (value !== undefined && value !== null) {
-          handler(value);
+    this.subscriptions.add(
+      this.subject.subscribe(changes => {
+        if (changes[key]) {
+          const value: T = changes[key].currentValue;
+          if (value !== undefined && value !== null) {
+            handler(value);
+          }
         }
-      }
-    }));
+      })
+    );
   }
 
   has<T>(key: string, handler: (t: T) => void) {
-    this.subscriptions.add(this.subject.subscribe(changes => {
-      if (changes[key]) {
-        const value: T = changes[key].currentValue;
-        handler(value);
-      }
-    }));
+    this.subscriptions.add(
+      this.subject.subscribe(changes => {
+        if (changes[key]) {
+          const value: T = changes[key].currentValue;
+          handler(value);
+        }
+      })
+    );
   }
 
   notFirst<T>(key: string, handler: (t: T) => void) {
-    this.subscriptions.add(this.subject.subscribe(changes => {
-      if (changes[key] && !changes[key].isFirstChange()) {
-        const value: T = changes[key].currentValue;
-        handler(value);
-      }
-    }));
+    this.subscriptions.add(
+      this.subject.subscribe(changes => {
+        if (changes[key] && !changes[key].isFirstChange()) {
+          const value: T = changes[key].currentValue;
+          handler(value);
+        }
+      })
+    );
   }
 
   notFirstAndEmpty<T>(key: string, handler: (t: T) => void) {
-    this.subscriptions.add(this.subject.subscribe(changes => {
-      if (changes[key] && !changes[key].isFirstChange()) {
-        const value: T = changes[key].currentValue;
-        if (value !== undefined && value !== null) {
-          handler(value);
+    this.subscriptions.add(
+      this.subject.subscribe(changes => {
+        if (changes[key] && !changes[key].isFirstChange()) {
+          const value: T = changes[key].currentValue;
+          if (value !== undefined && value !== null) {
+            handler(value);
+          }
         }
-      }
-    }));
+      })
+    );
   }
 }

@@ -102,7 +102,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
     private el: ElementRef,
-    private ngZone: NgZone,
+    private ngZone: NgZone
   ) {
     this.echarts = config.echarts;
   }
@@ -115,27 +115,30 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     if (!window.ResizeObserver) {
       throw new Error('please install a polyfill for ResizeObserver');
     }
-    this.resizeSub = this.resize$.pipe(
-      throttleTime(100, asyncScheduler, { leading: false, trailing: true })
-    ).subscribe(() => this.resize())
+    this.resizeSub = this.resize$
+      .pipe(throttleTime(100, asyncScheduler, { leading: false, trailing: true }))
+      .subscribe(() => this.resize());
 
     if (this.autoResize) {
-      this.resizeOb = this.ngZone.runOutsideAngular(() => new window.ResizeObserver(() => {
-        this.animationFrameID = window.requestAnimationFrame(() => this.resize$.next())
-      }))
+      this.resizeOb = this.ngZone.runOutsideAngular(
+        () =>
+          new window.ResizeObserver(() => {
+            this.animationFrameID = window.requestAnimationFrame(() => this.resize$.next());
+          })
+      );
       this.resizeOb.observe(this.el.nativeElement);
     }
 
-    this.changeFilter.notFirstAndEmpty('options', (opt) => this.onOptionsChange(opt));
-    this.changeFilter.notFirstAndEmpty('merge', (opt) => this.setOption(opt));
-    this.changeFilter.has<boolean>('loading', (v) => this.toggleLoading(!!v));
+    this.changeFilter.notFirstAndEmpty('options', opt => this.onOptionsChange(opt));
+    this.changeFilter.notFirstAndEmpty('merge', opt => this.setOption(opt));
+    this.changeFilter.has<boolean>('loading', v => this.toggleLoading(!!v));
     this.changeFilter.notFirst<string | ThemeOption>('theme', () => this.refreshChart());
   }
 
   ngOnDestroy() {
     window.clearTimeout(this.initChartTimer);
     if (this.resizeSub) {
-      this.resizeSub.unsubscribe()
+      this.resizeSub.unsubscribe();
     }
     if (this.animationFrameID) {
       window.cancelAnimationFrame(this.animationFrameID);
@@ -144,7 +147,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       this.resizeOb.unobserve(this.el.nativeElement);
     }
     if (this.loadingSub) {
-      this.loadingSub.unsubscribe()
+      this.loadingSub.unsubscribe();
     }
     this.changeFilter.dispose();
     this.dispose();
@@ -177,12 +180,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       loading
         ? this.chart.showLoading(this.loadingType, this.loadingOpts)
         : this.chart.hideLoading();
-    }
-    else {
+    } else {
       this.loadingSub = this.chart$.subscribe(chart =>
-        loading
-          ? chart.showLoading(this.loadingType, this.loadingOpts)
-          : chart.hideLoading()
+        loading ? chart.showLoading(this.loadingType, this.loadingOpts) : chart.hideLoading()
       );
     }
   }
@@ -255,7 +255,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     return this.chartInit.pipe(
       switchMap(
         (chart: any) =>
-          new Observable((observer) => {
+          new Observable(observer => {
             chart.on(eventName, (data: T) => this.ngZone.run(() => observer.next(data)));
             return () => {
               if (this.chart) {
@@ -264,8 +264,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
                 }
               }
             };
-          }),
-      ),
+          })
+      )
     ) as EventEmitter<T>;
   }
 }

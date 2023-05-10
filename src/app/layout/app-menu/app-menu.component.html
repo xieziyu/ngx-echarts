@@ -6,8 +6,7 @@
           <i
             nz-icon
             [nzType]="menu.icon"
-            [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"
-          ></i>
+            [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"></i>
           <span class="nav-text">{{ menu.text }}</span>
         </span>
       </li>
@@ -17,22 +16,19 @@
         nz-submenu
         [nzTitle]="menu.text"
         [nzIcon]="menu.icon"
-        [nzOpen]="menu.pathRegex.test(currentUrl)"
-      >
+        [nzOpen]="menu.pathRegex.test(currentUrl)">
         <ul>
           <li
             *ngFor="let submenu of menu.submenus"
             nz-menu-item
             [routerLink]="submenu.path"
-            [routerLinkActive]="'ant-menu-item-selected'"
-          >
+            [routerLinkActive]="'ant-menu-item-selected'">
             <span title>
               <i
                 nz-icon
                 *ngIf="submenu.icon"
                 [nzType]="submenu.icon"
-                [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"
-              ></i>
+                [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"></i>
               <span class="nav-text">{{ submenu.text }}</span>
             </span>
           </li>

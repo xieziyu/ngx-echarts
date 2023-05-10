@@ -12,12 +12,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: NPM Install
-        uses: bahmutov/npm-install@v1.6.0
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          install-command: npm ci --legacy-peer-deps
+          node-version: 18
+          cache: 'yarn'
+      - name: Install
+        run: yarn
       - name: Build
-        run: npm run release
+        run: yarn release
       - name: Deploy to GitHub Pages
         if: success()
         uses: crazy-max/ghaction-github-pages@v3

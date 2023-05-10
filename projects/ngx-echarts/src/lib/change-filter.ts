@@ -2,7 +2,7 @@ import { SimpleChanges } from '@angular/core';
 import { Observable, of, EMPTY } from 'rxjs';
 
 export class ChangeFilter {
-  constructor(private changes: SimpleChanges) { }
+  constructor(private changes: SimpleChanges) {}
 
   static of(changes: SimpleChanges) {
     return new ChangeFilter(changes);

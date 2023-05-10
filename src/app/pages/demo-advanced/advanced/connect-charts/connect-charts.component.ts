@@ -1,7 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 import { getInstanceByDom, connect } from 'echarts';
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-connect-charts',
@@ -9,8 +11,12 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./connect-charts.component.scss'],
 })
 export class ConnectChartsComponent implements AfterViewInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./connect-charts.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./connect-charts.component.ts').default; // DEMO IGNORE
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./connect-charts.component.html')
+      .default;
+  component = require('!!raw-loader!./connect-charts.component.ts').default;
+  // IGNORE END
   options: EChartsOption = {
     color: ['#3398DB'],
     tooltip: {
@@ -48,7 +54,7 @@ export class ConnectChartsComponent implements AfterViewInit {
       },
     ],
   };
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit() {
     setTimeout(() => {

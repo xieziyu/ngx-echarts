@@ -1,24 +1,31 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-declare const require: any; // DEMO IGNORE
+import type { EChartsOption } from 'echarts';
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
-  styleUrls: ['./basic-update.component.scss']
+  styleUrls: ['./basic-update.component.scss'],
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-update.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./basic-update.component.ts').default; // DEMO IGNORE
-  options: any;
-  updateOptions: any;
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-update.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-update.component.ts').default;
+  // IGNORE END
+  options: EChartsOption;
+  updateOptions: EChartsOption;
 
   private oneDay = 24 * 3600 * 1000;
   private now: Date;
   private value: number;
-  private data: any[];
+  private data: DataT[];
   private timer: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     // generate some random testing data:
@@ -33,41 +40,48 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
     // initialize chart options:
     this.options = {
       title: {
-        text: 'Dynamic Data + Time Axis'
+        text: 'Dynamic Data + Time Axis',
       },
       tooltip: {
         trigger: 'axis',
-        formatter: (params) => {
+        formatter: params => {
           params = params[0];
           const date = new Date(params.name);
-          return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+          return (
+            date.getDate() +
+            '/' +
+            (date.getMonth() + 1) +
+            '/' +
+            date.getFullYear() +
+            ' : ' +
+            params.value[1]
+          );
         },
         axisPointer: {
-          animation: false
-        }
+          animation: false,
+        },
       },
       xAxis: {
         type: 'time',
         splitLine: {
-          show: false
-        }
+          show: false,
+        },
       },
       yAxis: {
         type: 'value',
         boundaryGap: [0, '100%'],
         splitLine: {
-          show: false
-        }
-      },
-      series: [{
-        name: 'Mocking Data',
-        type: 'line',
-        showSymbol: false,
-        emphasis: {
-          line: false,
+          show: false,
         },
-        data: this.data
-      }]
+      },
+      series: [
+        {
+          name: 'Mocking Data',
+          type: 'line',
+          showSymbol: false,
+          data: this.data,
+        },
+      ],
     };
 
     // Mock dynamic data:
@@ -79,9 +93,11 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
 
       // update series data:
       this.updateOptions = {
-        series: [{
-          data: this.data
-        }]
+        series: [
+          {
+            data: this.data,
+          },
+        ],
       };
     }, 1000);
   }
@@ -90,15 +106,20 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
     clearInterval(this.timer);
   }
 
-  randomData() {
+  randomData(): DataT {
     this.now = new Date(this.now.getTime() + this.oneDay);
     this.value = this.value + Math.random() * 21 - 10;
     return {
       name: this.now.toString(),
       value: [
         [this.now.getFullYear(), this.now.getMonth() + 1, this.now.getDate()].join('/'),
-        Math.round(this.value)
-      ]
+        Math.round(this.value),
+      ],
     };
   }
 }
+
+type DataT = {
+  name: string;
+  value: [string, number];
+};

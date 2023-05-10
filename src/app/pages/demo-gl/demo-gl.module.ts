@@ -6,14 +6,8 @@ import { DemoGlRoutingModule } from './demo-gl-routing.module';
 import { GlBar3dComponent } from './gl-bar3d/gl-bar3d.component';
 import { Bar3dDatasetComponent } from './gl-bar3d/bar3d-dataset/bar3d-dataset.component';
 
-
 @NgModule({
   declarations: [GlBar3dComponent, Bar3dDatasetComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    NgxEchartsModule,
-    DemoGlRoutingModule
-  ]
+  imports: [CommonModule, SharedModule, NgxEchartsModule, DemoGlRoutingModule],
 })
-export class DemoGlModule { }
+export class DemoGlModule {}
