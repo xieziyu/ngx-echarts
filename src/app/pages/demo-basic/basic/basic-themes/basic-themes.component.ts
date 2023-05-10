@@ -2,17 +2,23 @@ import { Component } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 import { ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-basic-themes',
   templateUrl: './basic-themes.component.html',
-  styleUrls: ['./basic-themes.component.scss']
+  styleUrls: ['./basic-themes.component.scss'],
 })
 export class BasicThemesComponent {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-themes.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./basic-themes.component.ts').default; // DEMO IGNORE
-  data = require('!!raw-loader!./cool-theme.ts').default; // DEMO IGNORE
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-themes.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-themes.component.ts').default;
+  data = require('!!raw-loader!./cool-theme.ts').default;
+  // IGNORE END
   theme: string | ThemeOption;
   coolTheme = CoolTheme;
   options: EChartsOption = {
@@ -24,12 +30,12 @@ export class BasicThemesComponent {
     },
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b} : {c} ({d}%)'
+      formatter: '{a} <br/>{b} : {c} ({d}%)',
     },
     legend: {
       align: 'auto',
       bottom: 10,
-      data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8']
+      data: ['rose1', 'rose2', 'rose3', 'rose4', 'rose5', 'rose6', 'rose7', 'rose8'],
     },
     calculable: true,
     series: [
@@ -46,9 +52,9 @@ export class BasicThemesComponent {
           { value: 20, name: 'rose5' },
           { value: 35, name: 'rose6' },
           { value: 30, name: 'rose7' },
-          { value: 40, name: 'rose8' }
-        ]
-      }
-    ]
+          { value: 40, name: 'rose8' },
+        ],
+      },
+    ],
   };
 }

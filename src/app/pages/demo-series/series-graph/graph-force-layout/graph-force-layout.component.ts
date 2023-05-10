@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-graph-force-layout',
@@ -8,15 +10,19 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./graph-force-layout.component.scss'],
 })
 export class GraphForceLayoutComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-force-layout.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./graph-force-layout.component.ts').default; // DEMO IGNORE
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-force-layout.component.html')
+      .default;
+  component = require('!!raw-loader!./graph-force-layout.component.ts').default;
+  // IGNORE END
   options: EChartsOption;
 
   createNodes(count: number) {
     const nodes = [];
     for (let i = 0; i < count; i++) {
       nodes.push({
-        id: i + ''
+        id: i + '',
       });
     }
     return nodes;
@@ -38,7 +44,7 @@ export class GraphForceLayoutComponent implements OnInit {
     for (let i = 0; i < 16; i++) {
       datas.push({
         nodes: this.createNodes(i + 2),
-        edges: this.createEdges(i + 2)
+        edges: this.createEdges(i + 2),
       });
     }
 
@@ -55,16 +61,16 @@ export class GraphForceLayoutComponent implements OnInit {
           height: '25%',
           force: {
             repulsion: 60,
-            edgeLength: 2
+            edgeLength: 2,
           },
-          edges: item.edges.map((e) => {
+          edges: item.edges.map(e => {
             return {
               source: e[0] + '',
-              target: e[1] + ''
+              target: e[1] + '',
             };
-          })
+          }),
         };
-      })
+      }),
     };
   }
 }

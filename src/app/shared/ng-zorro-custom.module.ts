@@ -23,7 +23,7 @@ const NG_ZORRO_MODULES = [
   NzTabsModule,
   NzCardModule,
   NzDividerModule,
-  NzPageHeaderModule
+  NzPageHeaderModule,
 ];
 
 @NgModule({

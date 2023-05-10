@@ -1,8 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { ECharts, EChartsOption } from 'echarts';
 import * as util from 'zrender/lib/core/util';
-
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 const SymbolSize = 20;
 const Data = [
@@ -19,8 +20,12 @@ const Data = [
   styleUrls: ['./line-draggable.component.scss'],
 })
 export class LineDraggableComponent implements OnDestroy {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./line-draggable.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./line-draggable.component.ts').default; // DEMO IGNORE
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./line-draggable.component.html')
+      .default;
+  component = require('!!raw-loader!./line-draggable.component.ts').default;
+  // IGNORE END
   updatePosition: () => void;
   options: EChartsOption = {
     title: {
@@ -28,7 +33,7 @@ export class LineDraggableComponent implements OnDestroy {
     },
     tooltip: {
       triggerOn: 'none',
-      formatter: (params) =>
+      formatter: params =>
         'X: ' + params.data[0].toFixed(2) + '<br>Y: ' + params.data[1].toFixed(2),
     },
     grid: {},
@@ -76,7 +81,7 @@ export class LineDraggableComponent implements OnDestroy {
       },
     ],
   };
-  constructor() { }
+  constructor() {}
 
   ngOnDestroy() {
     if (this.updatePosition) {
@@ -84,9 +89,12 @@ export class LineDraggableComponent implements OnDestroy {
     }
   }
 
-  onChartReady(myChart: any) {
+  onChartReady(myChart: ECharts) {
     const onPointDragging = function (dataIndex) {
-      Data[dataIndex] = myChart.convertFromPixel({ gridIndex: 0 }, this.position) as number[];
+      Data[dataIndex] = myChart.convertFromPixel(
+        { gridIndex: 0 },
+        this.position as number[]
+      ) as number[];
 
       // Update data
       myChart.setOption({
@@ -99,7 +107,7 @@ export class LineDraggableComponent implements OnDestroy {
       });
     };
 
-    const showTooltip = (dataIndex) => {
+    const showTooltip = dataIndex => {
       myChart.dispatchAction({
         type: 'showTip',
         seriesIndex: 0,
@@ -115,7 +123,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     const updatePosition = () => {
       myChart.setOption({
-        graphic: util.map(Data, (item) => ({
+        graphic: util.map(Data, item => ({
           position: myChart.convertToPixel({ gridIndex: 0 }, item),
         })),
       });

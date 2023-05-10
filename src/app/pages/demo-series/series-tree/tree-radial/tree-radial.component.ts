@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as echarts from 'echarts';
-declare const require: any; // DEMO IGNORE
+import type { EChartsOption } from 'echarts';
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-tree-radial',
@@ -11,34 +13,36 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./tree-radial.component.scss'],
 })
 export class TreeRadialComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-radial.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./tree-radial.component.ts').default; // DEMO IGNORE
-  options: Observable<any>;
-  constructor(private http: HttpClient) { }
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-radial.component.html')
+      .default;
+  component = require('!!raw-loader!./tree-radial.component.ts').default;
+  // IGNORE END
+  options: Observable<EChartsOption>;
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.options = this.http
-      .get<any>('assets/data/flare.json', { responseType: 'json' })
-      .pipe(
-        map((data) => ({
-          tooltip: {
-            trigger: 'item',
-            triggerOn: 'mousemove',
+    this.options = this.http.get<any>('assets/data/flare.json', { responseType: 'json' }).pipe(
+      map(data => ({
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
+        },
+        series: [
+          {
+            type: 'tree',
+            data: [data],
+            top: '18%',
+            bottom: '14%',
+            layout: 'radial',
+            symbol: 'emptyCircle',
+            symbolSize: 7,
+            initialTreeDepth: 3,
+            animationDurationUpdate: 750,
           },
-          series: [
-            {
-              type: 'tree',
-              data: [data],
-              top: '18%',
-              bottom: '14%',
-              layout: 'radial',
-              symbol: 'emptyCircle',
-              symbolSize: 7,
-              initialTreeDepth: 3,
-              animationDurationUpdate: 750,
-            },
-          ],
-        })),
-      );
+        ],
+      }))
+    );
   }
 }

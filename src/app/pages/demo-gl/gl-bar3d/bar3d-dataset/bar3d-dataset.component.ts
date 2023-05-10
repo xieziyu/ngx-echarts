@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-bar3d-dataset',
@@ -10,17 +12,21 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./bar3d-dataset.component.scss'],
 })
 export class Bar3dDatasetComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./bar3d-dataset.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./bar3d-dataset.component.ts').default; // DEMO IGNORE
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./bar3d-dataset.component.html')
+      .default;
+  component = require('!!raw-loader!./bar3d-dataset.component.ts').default;
+  // IGNORE END
   options: Observable<any>;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.options = this.http
       .get('assets/data/life-expectancy-table.json', { responseType: 'json' })
       .pipe(
-        map((data) => ({
+        map(data => ({
           grid3D: {},
           tooltip: {},
           xAxis3D: {
@@ -57,7 +63,7 @@ export class Bar3dDatasetComponent implements OnInit {
               },
             },
           ],
-        })),
+        }))
       );
   }
 }

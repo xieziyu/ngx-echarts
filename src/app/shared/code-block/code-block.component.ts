@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'code-block',
+  selector: 'app-code-block',
   templateUrl: './code-block.component.html',
   styleUrls: ['./code-block.component.scss'],
 })
@@ -23,15 +23,18 @@ export class CodeBlockComponent implements OnInit {
     }
 
     if (this.component) {
-      this.componentCode = this.component.replace(/.*DEMO IGNORE\n/g, '');
+      this.componentCode = this.component.replace(
+        / *\/\/ IGNORE START[\s\S]*?\/\/ IGNORE END\n/g,
+        ''
+      );
     }
 
     if (this.scss) {
-      this.scssCode = this.scss.replace(/.*DEMO IGNORE\n/g, '');
+      this.scssCode = this.scss.replace(/ *\/\/ IGNORE START[\s\S]*?\/\/ IGNORE END\n/g, '');
     }
 
     if (this.data) {
-      this.dataCode = this.data.replace(/.*DEMO IGNORE\n/g, '');
+      this.dataCode = this.data.replace(/ *\/\/ IGNORE START[\s\S]*?\/\/ IGNORE END\n/g, '');
     }
   }
 }

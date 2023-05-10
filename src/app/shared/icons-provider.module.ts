@@ -11,9 +11,7 @@ import {
 const icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];
 
 @NgModule({
-  imports: [
-    NzIconModule.forRoot(icons)
-  ],
+  imports: [NzIconModule.forRoot(icons)],
   exports: [NzIconModule],
 })
-export class IconsProviderModule { }
+export class IconsProviderModule {}

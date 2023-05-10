@@ -13,7 +13,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 
-
 // Import echarts extensions
 import 'echarts-gl';
 // Import echarts themes

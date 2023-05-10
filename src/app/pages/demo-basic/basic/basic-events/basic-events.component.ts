@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import type { EChartsOption } from 'echarts';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
-
-declare const require: any; // DEMO IGNORE
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-basic-events',
@@ -9,11 +11,15 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-events.component.scss'],
 })
 export class BasicEventsComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-events.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./basic-events.component.ts').default; // DEMO IGNORE
-  options: any;
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-events.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-events.component.ts').default;
+  // IGNORE END
+  options: EChartsOption;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
     const dataAxis = [
@@ -39,31 +45,12 @@ export class BasicEventsComponent implements OnInit {
       'T',
     ];
     const data = [
-      220,
-      182,
-      191,
-      234,
-      290,
-      330,
-      310,
-      123,
-      442,
-      321,
-      90,
-      149,
-      210,
-      122,
-      133,
-      334,
-      198,
-      123,
-      125,
+      220, 182, 191, 234, 290, 330, 310, 123, 442, 321, 90, 149, 210, 122, 133, 334, 198, 123, 125,
       220,
     ];
     const yMax = 500;
     const dataShadow = [];
 
-    // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < data.length; i++) {
       dataShadow.push(yMax);
     }
@@ -107,7 +94,7 @@ export class BasicEventsComponent implements OnInit {
           // For shadow
           type: 'bar',
           itemStyle: {
-            color: 'rgba(0,0,0,0.05)'
+            color: 'rgba(0,0,0,0.05)',
           },
           barGap: '-100%',
           barCategoryGap: '40%',
@@ -130,7 +117,7 @@ export class BasicEventsComponent implements OnInit {
                 { offset: 0.7, color: '#2378f7' },
                 { offset: 1, color: '#83bff6' },
               ]),
-            }
+            },
           },
           data,
         },

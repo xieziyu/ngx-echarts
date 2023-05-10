@@ -1,5 +1,8 @@
 <!-- DEMO START -->
-<div echarts [options]="options" class="demo-chart"
+<div
+  echarts
+  [options]="options"
+  class="demo-chart"
   (chartInit)="onChartEvent($event, 'chartInit')"
   (chartClick)="onChartEvent($event, 'chartClick')"
   (chartDblClick)="onChartEvent($event, 'chartDblClick')"
@@ -9,9 +12,7 @@
   (chartMouseOut)="onChartEvent($event, 'chartMouseOut')"
   (chartGlobalOut)="onChartEvent($event, 'chartGlobalOut')"
   (chartContextMenu)="onChartEvent($event, 'chartContextMenu')"
-  (chartDataZoom)="onChartEvent($event, 'chartDataZoom')">
-</div>
+  (chartDataZoom)="onChartEvent($event, 'chartDataZoom')"></div>
 <!-- DEMO END -->
 
-<code-block [html]="html" [component]="component">
-</code-block>
+<app-code-block [html]="html" [component]="component"> </app-code-block>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-declare const require: any; // DEMO IGNORE
+import type { EChartsOption } from 'echarts';
+// IGNORE START
+declare const require: any;
+// IGNORE END
 
 @Component({
   selector: 'app-basic-simple',
@@ -7,10 +10,14 @@ declare const require: any; // DEMO IGNORE
   styleUrls: ['./basic-simple.component.scss'],
 })
 export class BasicSimpleComponent implements OnInit {
-  html = require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-simple.component.html').default; // DEMO IGNORE
-  component = require('!!raw-loader!./basic-simple.component.ts').default; // DEMO IGNORE
-  options: any;
-  constructor() { }
+  // IGNORE START
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-simple.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-simple.component.ts').default;
+  // IGNORE END
+  options: EChartsOption;
+  constructor() {}
 
   ngOnInit(): void {
     const xAxisData = [];
@@ -42,17 +49,17 @@ export class BasicSimpleComponent implements OnInit {
           name: 'bar',
           type: 'bar',
           data: data1,
-          animationDelay: (idx) => idx * 10,
+          animationDelay: idx => idx * 10,
         },
         {
           name: 'bar2',
           type: 'bar',
           data: data2,
-          animationDelay: (idx) => idx * 10 + 100,
+          animationDelay: idx => idx * 10 + 100,
         },
       ],
       animationEasing: 'elasticOut',
-      animationDelayUpdate: (idx) => idx * 5,
+      animationDelayUpdate: idx => idx * 5,
     };
   }
 }
