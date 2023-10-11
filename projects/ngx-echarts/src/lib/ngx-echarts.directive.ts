@@ -16,7 +16,8 @@ import {
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
-import type { EChartsOption, ECharts } from 'echarts';
+import type { EChartsOption, ECharts, ECElementEvent } from 'echarts';
+import type { ECActionEvent } from 'echarts/types/src/util/types';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
@@ -51,42 +52,46 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Output() optionsError = new EventEmitter<Error>();
 
   // echarts mouse events
-  @Output() chartClick = this.createLazyEvent('click');
-  @Output() chartDblClick = this.createLazyEvent('dblclick');
-  @Output() chartMouseDown = this.createLazyEvent('mousedown');
-  @Output() chartMouseMove = this.createLazyEvent('mousemove');
-  @Output() chartMouseUp = this.createLazyEvent('mouseup');
-  @Output() chartMouseOver = this.createLazyEvent('mouseover');
-  @Output() chartMouseOut = this.createLazyEvent('mouseout');
-  @Output() chartGlobalOut = this.createLazyEvent('globalout');
-  @Output() chartContextMenu = this.createLazyEvent('contextmenu');
+  @Output() chartClick = this.createLazyEvent<ECElementEvent>('click');
+  @Output() chartDblClick = this.createLazyEvent<ECElementEvent>('dblclick');
+  @Output() chartMouseDown = this.createLazyEvent<ECElementEvent>('mousedown');
+  @Output() chartMouseMove = this.createLazyEvent<ECElementEvent>('mousemove');
+  @Output() chartMouseUp = this.createLazyEvent<ECElementEvent>('mouseup');
+  @Output() chartMouseOver = this.createLazyEvent<ECElementEvent>('mouseover');
+  @Output() chartMouseOut = this.createLazyEvent<ECElementEvent>('mouseout');
+  @Output() chartGlobalOut = this.createLazyEvent<ECElementEvent>('globalout');
+  @Output() chartContextMenu = this.createLazyEvent<ECElementEvent>('contextmenu');
 
-  // echarts mouse events
-  @Output() chartLegendSelectChanged = this.createLazyEvent('legendselectchanged');
-  @Output() chartLegendSelected = this.createLazyEvent('legendselected');
-  @Output() chartLegendUnselected = this.createLazyEvent('legendunselected');
-  @Output() chartLegendScroll = this.createLazyEvent('legendscroll');
-  @Output() chartDataZoom = this.createLazyEvent('datazoom');
-  @Output() chartDataRangeSelected = this.createLazyEvent('datarangeselected');
-  @Output() chartTimelineChanged = this.createLazyEvent('timelinechanged');
-  @Output() chartTimelinePlayChanged = this.createLazyEvent('timelineplaychanged');
-  @Output() chartRestore = this.createLazyEvent('restore');
-  @Output() chartDataViewChanged = this.createLazyEvent('dataviewchanged');
-  @Output() chartMagicTypeChanged = this.createLazyEvent('magictypechanged');
-  @Output() chartPieSelectChanged = this.createLazyEvent('pieselectchanged');
-  @Output() chartPieSelected = this.createLazyEvent('pieselected');
-  @Output() chartPieUnselected = this.createLazyEvent('pieunselected');
-  @Output() chartMapSelectChanged = this.createLazyEvent('mapselectchanged');
-  @Output() chartMapSelected = this.createLazyEvent('mapselected');
-  @Output() chartMapUnselected = this.createLazyEvent('mapunselected');
-  @Output() chartAxisAreaSelected = this.createLazyEvent('axisareaselected');
-  @Output() chartFocusNodeAdjacency = this.createLazyEvent('focusnodeadjacency');
-  @Output() chartUnfocusNodeAdjacency = this.createLazyEvent('unfocusnodeadjacency');
-  @Output() chartBrush = this.createLazyEvent('brush');
-  @Output() chartBrushEnd = this.createLazyEvent('brushend');
-  @Output() chartBrushSelected = this.createLazyEvent('brushselected');
-  @Output() chartRendered = this.createLazyEvent('rendered');
-  @Output() chartFinished = this.createLazyEvent('finished');
+  // echarts events
+  @Output() chartHighlight = this.createLazyEvent<ECActionEvent>('highlight');
+  @Output() chartDownplay = this.createLazyEvent<ECActionEvent>('downplay');
+  @Output() chartSelectChanged = this.createLazyEvent<ECActionEvent>('selectchanged');
+  @Output() chartLegendSelected = this.createLazyEvent<ECActionEvent>('legendselected');
+  @Output() chartLegendUnselected = this.createLazyEvent<ECActionEvent>('legendunselected');
+  @Output() chartLegendLegendSelectAll = this.createLazyEvent<ECActionEvent>('legendselectall');
+  @Output() chartLegendLegendInverseSelect =
+    this.createLazyEvent<ECActionEvent>('legendinverseselect');
+  @Output() chartLegendScroll = this.createLazyEvent<ECActionEvent>('legendscroll');
+  @Output() chartDataZoom = this.createLazyEvent<ECActionEvent>('datazoom');
+  @Output() chartDataRangeSelected = this.createLazyEvent<ECActionEvent>('datarangeselected');
+  @Output() chartGraphRoam = this.createLazyEvent<ECActionEvent>('graphroam');
+  @Output() chartGeoRoam = this.createLazyEvent<ECActionEvent>('georoam');
+  @Output() chartTreeRoam = this.createLazyEvent<ECActionEvent>('treeroam');
+  @Output() chartTimelineChanged = this.createLazyEvent<ECActionEvent>('timelinechanged');
+  @Output() chartTimelinePlayChanged = this.createLazyEvent<ECActionEvent>('timelineplaychanged');
+  @Output() chartRestore = this.createLazyEvent<ECActionEvent>('restore');
+  @Output() chartDataViewChanged = this.createLazyEvent<ECActionEvent>('dataviewchanged');
+  @Output() chartMagicTypeChanged = this.createLazyEvent<ECActionEvent>('magictypechanged');
+  @Output() chartGeoSelectChanged = this.createLazyEvent<ECActionEvent>('geoselectchanged');
+  @Output() chartGeoSelected = this.createLazyEvent<ECActionEvent>('geoselected');
+  @Output() chartGeoUnselected = this.createLazyEvent<ECActionEvent>('geounselected');
+  @Output() chartAxisAreaSelected = this.createLazyEvent<ECActionEvent>('axisareaselected');
+  @Output() chartBrush = this.createLazyEvent<ECActionEvent>('brush');
+  @Output() chartBrushEnd = this.createLazyEvent<ECActionEvent>('brushend');
+  @Output() chartBrushSelected = this.createLazyEvent<ECActionEvent>('brushselected');
+  @Output() chartGlobalCursorTaken = this.createLazyEvent<ECActionEvent>('globalcursortaken');
+  @Output() chartRendered = this.createLazyEvent<ECActionEvent>('rendered');
+  @Output() chartFinished = this.createLazyEvent<ECActionEvent>('finished');
 
   public animationFrameID = null;
   private chart: ECharts;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { ECElementEvent, EChartsOption } from 'echarts';
+import type { ECActionEvent } from 'echarts/types/src/util/types';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
 declare const require: any;
@@ -125,7 +126,7 @@ export class BasicEventsComponent implements OnInit {
     };
   }
 
-  onChartEvent(event: any, type: string) {
+  onChartEvent(event: ECElementEvent | ECActionEvent, type: string) {
     console.log('chart event:', type, event);
   }
 }

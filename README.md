@@ -55,6 +55,10 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2023.10.11: v16.1.0:
+
+  - Feat: Add types to `chartXXX` EventEmitters. Support new events such as: `'selectchanged'`
+
 - 2023.05.10: v16.0.0:
 
   - Feat: upgrade to Angular 16
@@ -358,43 +362,47 @@ As ECharts supports the `'click'`, `'dblclick'`, `'mousedown'`, `'mouseup'`, `'m
 
 It supports following event outputs:
 
-| @Output                   | Event                                   |
-| ------------------------- | --------------------------------------- |
-| chartInit                 | Emitted when the chart is initialized   |
-| chartClick                | echarts event: `'click'`                |
-| chartDblClick             | echarts event: `'dblclick'`             |
-| chartMouseDown            | echarts event: `'mousedown'`            |
-| chartMouseMove            | echarts event: `'mousemove'`            |
-| chartMouseUp              | echarts event: `'mouseup'`              |
-| chartMouseOver            | echarts event: `'mouseover'`            |
-| chartMouseOut             | echarts event: `'mouseout'`             |
-| chartGlobalOut            | echarts event: `'globalout'`            |
-| chartContextMenu          | echarts event: `'contextmenu'`          |
-| chartLegendSelectChanged  | echarts event: `'legendselectchanged'`  |
-| chartLegendSelected       | echarts event: `'legendselected'`       |
-| chartLegendUnselected     | echarts event: `'legendunselected'`     |
-| chartLegendScroll         | echarts event: `'legendscroll'`         |
-| chartDataZoom             | echarts event: `'datazoom'`             |
-| chartDataRangeSelected    | echarts event: `'datarangeselected'`    |
-| chartTimelineChanged      | echarts event: `'timelinechanged'`      |
-| chartTimelinePlayChanged  | echarts event: `'timelineplaychanged'`  |
-| chartRestore              | echarts event: `'restore'`              |
-| chartDataViewChanged      | echarts event: `'dataviewchanged'`      |
-| chartMagicTypeChanged     | echarts event: `'magictypechanged'`     |
-| chartPieSelectChanged     | echarts event: `'pieselectchanged'`     |
-| chartPieSelected          | echarts event: `'pieselected'`          |
-| chartPieUnselected        | echarts event: `'pieunselected'`        |
-| chartMapSelectChanged     | echarts event: `'mapselectchanged'`     |
-| chartMapSelected          | echarts event: `'mapselected'`          |
-| chartMapUnselected        | echarts event: `'mapunselected'`        |
-| chartAxisAreaSelected     | echarts event: `'axisareaselected'`     |
-| chartFocusNodeAdjacency   | echarts event: `'focusnodeadjacency'`   |
-| chartUnfocusNodeAdjacency | echarts event: `'unfocusnodeadjacency'` |
-| chartBrush                | echarts event: `'brush'`                |
-| chartBrushEnd             | echarts event: `'brushend'`             |
-| chartBrushSelected        | echarts event: `'brushselected'`        |
-| chartRendered             | echarts event: `'rendered'`             |
-| chartFinished             | echarts event: `'finished'`             |
+| @Output                        | Event                                  |
+| ------------------------------ | -------------------------------------- |
+| chartInit                      | Emitted when the chart is initialized  |
+| chartClick                     | echarts event: `'click'`               |
+| chartDblClick                  | echarts event: `'dblclick'`            |
+| chartMouseDown                 | echarts event: `'mousedown'`           |
+| chartMouseMove                 | echarts event: `'mousemove'`           |
+| chartMouseUp                   | echarts event: `'mouseup'`             |
+| chartMouseOver                 | echarts event: `'mouseover'`           |
+| chartMouseOut                  | echarts event: `'mouseout'`            |
+| chartGlobalOut                 | echarts event: `'globalout'`           |
+| chartContextMenu               | echarts event: `'contextmenu'`         |
+| chartHighlight                 | echarts event: `'highlight'`           |
+| chartDownplay                  | echarts event: `'downplay'`            |
+| chartSelectChanged             | echarts event: `'selectchanged'`       |
+| chartLegendSelectChanged       | echarts event: `'legendselectchanged'` |
+| chartLegendSelected            | echarts event: `'legendselected'`      |
+| chartLegendUnselected          | echarts event: `'legendunselected'`    |
+| chartLegendLegendSelectAll     | echarts event: `'legendselectall'`     |
+| chartLegendLegendInverseSelect | echarts event: `'legendinverseselect'` |
+| chartLegendScroll              | echarts event: `'legendscroll'`        |
+| chartDataZoom                  | echarts event: `'datazoom'`            |
+| chartDataRangeSelected         | echarts event: `'datarangeselected'`   |
+| chartGraphRoam                 | echarts event: `'graphroam'`           |
+| chartGeoRoam                   | echarts event: `'georoam'`             |
+| chartTreeRoam                  | echarts event: `'treeroam'`            |
+| chartTimelineChanged           | echarts event: `'timelinechanged'`     |
+| chartTimelinePlayChanged       | echarts event: `'timelineplaychanged'` |
+| chartRestore                   | echarts event: `'restore'`             |
+| chartDataViewChanged           | echarts event: `'dataviewchanged'`     |
+| chartMagicTypeChanged          | echarts event: `'magictypechanged'`    |
+| chartGeoSelectChanged          | echarts event: `'geoselectchanged'`    |
+| chartGeoSelected               | echarts event: `'geoselected'`         |
+| chartGeoUnselected             | echarts event: `'geounselected'`       |
+| chartAxisAreaSelected          | echarts event: `'axisareaselected'`    |
+| chartBrush                     | echarts event: `'brush'`               |
+| chartBrushEnd                  | echarts event: `'brushend'`            |
+| chartBrushSelected             | echarts event: `'brushselected'`       |
+| chartGlobalCursorTaken         | echarts event: `'globalcursortaken'`   |
+| chartRendered                  | echarts event: `'rendered'`            |
+| chartFinished                  | echarts event: `'finished'`            |
 
 You can refer to the ECharts tutorial: [Events and Actions in ECharts](https://echarts.apache.org/en/tutorial.html#Events%20and%20Actions%20in%20ECharts) for more details of the event params. You can also refer to the [demo](https://xieziyu.github.io/#/ngx-echarts/demo) page for a detailed example.
 
