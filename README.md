@@ -42,13 +42,13 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
-- `v16.x` for Angular >= 16
-- `v15.x` for Angular >= 15
-- `v14.x` for Angular >= 14
-- `v8.x` for Angular >= 13
-- `v7.x` for Angular >= 11
-- `v6.x` for Angular >= 10, < 11
-- `v5.x` for Angular >= 6, < 10
+- `v16.1.1` for Angular 16
+- `v15.0.3` for Angular 15
+- `v14.0.0` for Angular 14
+- `v8.0.1` for Angular 13
+- `v7.1.0` for Angular >= 11, < 13
+- `v6.0.1` for Angular >= 10, < 11
+- `v5.2.2` for Angular >= 6, < 10
 - `v2.3.1` for Angular < 6 (Please refer to https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md)
 
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
