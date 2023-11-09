@@ -9,6 +9,9 @@ import { GraphSimpleComponent } from './series-graph/graph-simple/graph-simple.c
 import { SeriesTreeComponent } from './series-tree/series-tree.component';
 import { TreeFromLeftToRightComponent } from './series-tree/tree-from-left-to-right/tree-from-left-to-right.component';
 import { TreeRadialComponent } from './series-tree/tree-radial/tree-radial.component';
+import { SeriesHeatmapComponent } from './series-heatmap/series-heatmap.component';
+import { HeatmapCalendarComponent } from './series-heatmap/heatmap-calendar/heatmap-calendar.component';
+import { HeatmapDiscreteComponent } from './series-heatmap/heatmap-discrete/heatmap-discrete.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { TreeRadialComponent } from './series-tree/tree-radial/tree-radial.compo
     SeriesTreeComponent,
     TreeFromLeftToRightComponent,
     TreeRadialComponent,
+    SeriesHeatmapComponent,
+    HeatmapCalendarComponent,
+    HeatmapDiscreteComponent,
   ],
   imports: [CommonModule, SharedModule, NgxEchartsModule, DemoSeriesRoutingModule],
 })

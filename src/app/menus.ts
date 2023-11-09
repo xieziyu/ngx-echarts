@@ -37,6 +37,10 @@ export const APP_MENUS: AppMenu[] = [
         path: '/series/tree',
         text: 'Tree',
       },
+      {
+        path: '/series/heatmap',
+        text: 'Heatmap',
+      },
     ],
   },
   {
