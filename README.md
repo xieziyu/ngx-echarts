@@ -43,7 +43,7 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 Latest version @npm:
 
 - `v17.0.0` for Angular 17
-- `v16.1.1` for Angular 16
+- `v16.1.2` for Angular 16
 - `v15.0.3` for Angular 15
 - `v14.0.0` for Angular 14
 - `v8.0.1` for Angular 13
