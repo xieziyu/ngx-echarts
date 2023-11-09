@@ -65,6 +65,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   @Output() chartHighlight = this.createLazyEvent<any>('highlight');
   @Output() chartDownplay = this.createLazyEvent<any>('downplay');
   @Output() chartSelectChanged = this.createLazyEvent<any>('selectchanged');
+  @Output() chartLegendSelectChanged = this.createLazyEvent<any>('legendselectchanged');
   @Output() chartLegendSelected = this.createLazyEvent<any>('legendselected');
   @Output() chartLegendUnselected = this.createLazyEvent<any>('legendunselected');
   @Output() chartLegendLegendSelectAll = this.createLazyEvent<any>('legendselectall');
