@@ -3126,11 +3126,6 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
   integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
 
-"@types/marked@^4.0.3":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@types/marked/-/marked-4.3.0.tgz#5cd14a190b0a4d212781cfee7093f611ec74a111"
-  integrity sha512-zK4gSFMjgslsv5Lyvr3O1yCjgmnE4pr8jbG8qVn4QglMwtpvPCf4YT2Wma7Nk95OxUUJI8Z+kzdXohbM7mVpGw==
-
 "@types/mime@*":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
@@ -5685,10 +5680,10 @@ emoji-regex@^9.2.2:
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"
   integrity sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==
 
-emoji-toolkit@^6.6.0:
-  version "6.6.0"
-  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-6.6.0.tgz#e7287c43a96f940ec4c5428cd7100a40e57518f1"
-  integrity sha512-pEu0kow2p1N8zCKnn/L6H0F3rWUBB3P3hVjr/O5yl1fK7N9jU4vO4G7EFapC5Y3XwZLUCY0FZbOPyTkH+4V2eQ==
+emoji-toolkit@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/emoji-toolkit/-/emoji-toolkit-7.0.1.tgz#4ea2a78fe4b40c7cdbe7ef5725c7011299932f09"
+  integrity sha512-l5aJyAhpC5s4mDuoVuqt4SzVjwIsIvakPh4ZGJJE4KWuWFCEHaXacQFkStVdD9zbRR+/BbRXob7u99o0lQFr8A==
 
 emojis-list@^3.0.0:
   version "3.0.0"
@@ -8438,7 +8433,7 @@ map-stream@0.0.7:
   resolved "https://registry.yarnpkg.com/map-stream/-/map-stream-0.0.7.tgz#8a1f07896d82b10926bd3744a2420009f88974a8"
   integrity sha512-C0X0KQmGm3N2ftbTGBhSyuydQ+vV1LC3f3zPvT3RXHXNZrvfPZcoXp/N5DOa8vedX/rTMm2CjTtivFg2STJMRQ==
 
-marked@^4.0.12, marked@^4.0.17:
+marked@^4.0.12:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/marked/-/marked-4.3.0.tgz#796362821b019f734054582038b116481b456cf3"
   integrity sha512-PRsaiG84bK+AMvxziE/lCFss8juXjNaWzVbN5tXAm4XjeaS9NAHhop+PjQxz2A9h8Q4M/xGmzP8vqNwy6JeK0A==
@@ -8822,19 +8817,18 @@ ng-zorro-antd@~13.3.1:
     date-fns "^2.16.1"
     tslib "^2.3.0"
 
-ngx-markdown@^14.0.0:
-  version "14.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-14.0.1.tgz#5e97d91012dd3f429635aa7a18b2b75051eea85e"
-  integrity sha512-y5CY4e0QM0uR6+MvU1rnh1Ks+rku14309kVVojyXLcWl4zlrt8VAYCcf/+A+8z/IDOaz38yTrxNBnvYDJzNzYA==
+ngx-markdown@^16.0.0:
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-markdown/-/ngx-markdown-16.0.0.tgz#83e0bcaaf86511f496be39a187f04bdcb5179b1c"
+  integrity sha512-/rlbXi+HBscJCDdwaTWIUrRkvwJicPnuAgeugOCZa0UbZ4VCWV3U0+uB1Zv6krRDF6FXJNXNLTUrMZV7yH8I6A==
   dependencies:
-    "@types/marked" "^4.0.3"
+    tslib "^2.3.0"
+  optionalDependencies:
     clipboard "^2.0.11"
-    emoji-toolkit "^6.6.0"
+    emoji-toolkit "^7.0.0"
     katex "^0.16.0"
-    marked "^4.0.17"
     mermaid "^9.1.2"
     prismjs "^1.28.0"
-    tslib "^2.3.0"
 
 nice-napi@^1.0.2:
   version "1.0.2"
