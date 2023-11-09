@@ -224,14 +224,14 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@^13.0.1":
-  version "13.3.9"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-13.3.9.tgz#a177196e872e29be3f84d3a50f778d361c689ff7"
-  integrity sha512-XCuCbeuxWFyo3EYrgEYx7eHzwl76vaWcxtWXl00ka8d+WAOtMQ6Tf1D98ybYT5uwF9889fFpXAPw98mVnlo3MA==
+"@angular/cdk@^16.0.0":
+  version "16.2.12"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-16.2.12.tgz#013b412a0a112b2e86eaac990550ad20cb169107"
+  integrity sha512-wT8/265zm2WKY0BDaRoYbrAT4kadrmejTRLjuimQIEUKnw4vBsJMWCwQkpFo3s6zr6eznGqYVAFb8KKPVLKGBg==
   dependencies:
     tslib "^2.3.0"
   optionalDependencies:
-    parse5 "^5.0.0"
+    parse5 "^7.1.2"
 
 "@angular/cli@~17.0.0":
   version "17.0.0"
@@ -342,12 +342,27 @@
   dependencies:
     "@ctrl/tinycolor" "^3.3.1"
 
-"@ant-design/icons-angular@^13.0.1", "@ant-design/icons-angular@^13.1.0":
+"@ant-design/colors@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/colors/-/colors-7.0.0.tgz#eb7eecead124c3533aea05d61254f0a17f2b61b3"
+  integrity sha512-iVm/9PfGCbC0dSMBrz7oiEXZaaGH7ceU40OJEfKmyuzR9R5CRimJYPlRiFtMQGQcbNMea/ePcoIebi4ASGYXtg==
+  dependencies:
+    "@ctrl/tinycolor" "^3.4.0"
+
+"@ant-design/icons-angular@^13.1.0":
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@ant-design/icons-angular/-/icons-angular-13.1.0.tgz#6ff472ae880f911bf3a04f19b2f9b5ef5d096a90"
   integrity sha512-bQ1pxiDmR8Hx7kUwQImxLGAtexv0uDCCMlKSWdyaw39TnNAPz+Hls0XL+UqVIjHgt/D4R8tkmSMpx3eBGFIY/Q==
   dependencies:
     "@ant-design/colors" "^5.0.0"
+    tslib "^2.0.0"
+
+"@ant-design/icons-angular@^16.0.0":
+  version "16.0.0"
+  resolved "https://registry.yarnpkg.com/@ant-design/icons-angular/-/icons-angular-16.0.0.tgz#32a80e66cfc85e1bcfed232498251aeb8e524e4a"
+  integrity sha512-KWBmWZl2so49R/MdAT7aG+xaBlMKl9SArR3Du/iPA0Am9GI1i9R89KgnnLWz+gkzHTye15S1IBXpgts4GPPU/w==
+  dependencies:
+    "@ant-design/colors" "^7.0.0"
     tslib "^2.0.0"
 
 "@assemblyscript/loader@^0.10.1":
@@ -2184,6 +2199,11 @@
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.0.tgz#53fa5fe9c34faee89469e48f91d51a3766108bc8"
   integrity sha512-/Z3l6pXthq0JvMYdUFyX9j0MaCltlIn6mfh9jLyQwg5aPKxkyNa0PTHtU1AlFXLNk55ZuAeJRcpvq+tmLfKmaQ==
+
+"@ctrl/tinycolor@^3.4.0":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.6.1.tgz#b6c75a56a1947cc916ea058772d666a2c8932f31"
+  integrity sha512-SITSV6aIXsuVNV3f3O0f2n/cgyEDWoSqtZMYiAmcsYHydcKrOz3gUxB/iXd/Qf08+IZX4KpgNbvUdMBmWz+kcA==
 
 "@discoveryjs/json-ext@0.5.7":
   version "0.5.7"
@@ -8807,13 +8827,13 @@ ng-packagr@^17.0.0:
   optionalDependencies:
     esbuild "^0.19.0"
 
-ng-zorro-antd@~13.3.1:
-  version "13.3.2"
-  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-13.3.2.tgz#04d79f884231afdfdb5759919c0fa202f431cc8f"
-  integrity sha512-bmpolaSevoZSVlP2nVpvi/CrFFu7hdaK/vz1k0R84db4AYOYFHcRwlAUBaWVKjWGaCHek+k1atC/pckXZqEgIA==
+ng-zorro-antd@~16.2.2:
+  version "16.2.2"
+  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-16.2.2.tgz#40970f76443e44299a3d276ef00c40171eaf9bcd"
+  integrity sha512-Y7ALO+iRjqBfVW9hqnlU4jJUovM5r6wNzXuwTxKIo/5c35/PJFwk++73iwhas6pCb3+kFucwL5XTUWUoLce3wQ==
   dependencies:
-    "@angular/cdk" "^13.0.1"
-    "@ant-design/icons-angular" "^13.0.1"
+    "@angular/cdk" "^16.0.0"
+    "@ant-design/icons-angular" "^16.0.0"
     date-fns "^2.16.1"
     tslib "^2.3.0"
 
@@ -9412,17 +9432,12 @@ parse5-sax-parser@^7.0.0:
   dependencies:
     parse5 "^7.0.0"
 
-parse5@^5.0.0:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
-  integrity sha512-ugq4DFI0Ptb+WWjAdOK16+u/nHfiIrcE+sh8kZMaM0WllQKLI9rOUq6c2b7cwPkXdzfQESqvoqK6ug7U/Yyzug==
-
 parse5@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw==
 
-parse5@^7.0.0:
+parse5@^7.0.0, parse5@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-7.1.2.tgz#0736bebbfd77793823240a23b7fc5e010b7f8e32"
   integrity sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==
