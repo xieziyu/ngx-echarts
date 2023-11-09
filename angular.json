@@ -14,7 +14,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "skipTests": true
+          "skipTests": true,
+          "standalone": false
         },
         "@schematics/angular:service": {
           "skipTests": true
@@ -98,18 +99,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-echarts-demo:build"
+            "buildTarget": "ngx-echarts-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-echarts-demo:build:production"
+              "buildTarget": "ngx-echarts-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-echarts-demo:build"
+            "buildTarget": "ngx-echarts-demo:build"
           }
         },
         "test": {
