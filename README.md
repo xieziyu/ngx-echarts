@@ -23,16 +23,19 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 - [Installation](#installation)
   - [Upgrade from v4.x](#upgrade-from-v4x)
 - [Usage](#usage)
+  - [Standalone](#standalone)
+  - [NgModule](#ngmodule)
+  - [Directive](#directive)
 - [API](#api)
-    - [Directive](#directive)
+    - [Directive](#directive-1)
     - [ECharts API](#echarts-api)
     - [ECharts Instance](#echarts-instance)
     - [ECharts Extensions](#echarts-extensions)
     - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
-  - [Legacy Custom Build](#legacy-custom-build)
   - [Treeshaking Custom Build](#treeshaking-custom-build)
+  - [Legacy Custom Build](#legacy-custom-build)
 - [Custom Locale](#custom-locale)
 - [Demo](#demo)
 
@@ -42,8 +45,8 @@ Angular directive for [Apache ECharts (incubating)](https://github.com/apache/in
 
 Latest version @npm:
 
-- `v17.0.1` for Angular 17
-- `v16.1.2` for Angular 16
+- `v17.1.0` for Angular 17
+- `v16.2.0` for Angular 16
 - `v15.0.3` for Angular 15
 - `v14.0.0` for Angular 14
 - `v8.0.1` for Angular 13
@@ -55,6 +58,10 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2023.11.10: v17.1.0 / v16.2.0:
+
+  - Feat: Exported standalone `NgxEchartsDirective`, `provideEcharts` and `provideEchartsCore`
 
 - 2023.11.08: v17.0.1:
 
@@ -97,10 +104,6 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
   
   - Fix: remove @juggle/resize-observer from the peer dependencies
   - Perf: fix performance issue [#330](https://github.com/xieziyu/ngx-echarts/issues/330)
-
-- 2021.08.05: v7.0.2:
-
-  - [PR #322](https://github.com/xieziyu/ngx-echarts/pull/322): Add initOpts locale property (by [augustoicaro](https://github.com/augustoicaro))
 
 - 2021.05.17: v7.0.0:
 
@@ -172,107 +175,105 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
-1. Firstly, import `NgxEchartsModule` in your app module (or any other proper angular module):
+## Standalone
 
-  ```typescript
-  import { NgxEchartsModule } from 'ngx-echarts';
+import `NgxEchartsDirective` and `provideEcharts`. Or you can use `provideEchartsCore` to do treeshaking custom build.
 
-  @NgModule({
-    imports: [
-      NgxEchartsModule.forRoot({
-        /**
-         * This will import all modules from echarts.
-         * If you only need custom modules,
-         * please refer to [Custom Build] section.
-         */
-        echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-      }),
-    ],
-  })
-  export class AppModule {}
-  ```
+```typescript
+import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
 
-  The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, NgxEchartsDirective],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  providers: [
+    provideEcharts(),
+  ]
+})
+export class AppComponent {}
+```
 
-  You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
+## NgModule
 
-  ```typescript
-  import * as echarts from 'echarts';
-  import { NgxEchartsModule } from 'ngx-echarts';
+import `NgxEchartsModule`:
 
-  @NgModule({
-    imports: [
-      NgxEchartsModule.forRoot({ echarts }),
-    ],
-  })
-  export class AppModule {}
-  ```
+```typescript
+import { NgxEchartsModule } from 'ngx-echarts';
 
-  When using NgxEchartsModule in a **standalone component**, we can use token `NGX_ECHARTS_CONFIG` to provide echarts
+@NgModule({
+  imports: [
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
+  ],
+})
+export class AppModule {}
+```
 
-  ```typescript
-  import { NgxEchartsModule, NGX_ECHARTS_CONFIG } from 'ngx-echarts';
+The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
 
-  @Component({
-    standalone: true,
-    selector: 'my-chart',
-    template: `
-      <div echarts [options]="chartOptions" class="demo-chart"></div>
-    `,
-    imports: [NgxEchartsModule],
-    providers: [
-      {
-        provide: NGX_ECHARTS_CONFIG,
-        useFactory: () => ({ echarts: () => import('echarts') })
-      },
-    ]
-  })
-  export class MyChartComponent {
-    // logic
-  }
-  ```
+You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
 
-2. Then: use `echarts` directive in a div which has **pre-defined height**. (From v2.0, it has default height: 400px)
+```typescript
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
-   - Simple example:
+@NgModule({
+  imports: [
+    NgxEchartsModule.forRoot({ echarts }),
+  ],
+})
+export class AppModule {}
+```
 
-     - html:
+## Directive
 
-     ```html
-     <div echarts [options]="chartOption" class="demo-chart"></div>
-     ```
+use `echarts` directive in a div which has **pre-defined height**. (From v2.0, it has default height: 400px)
 
-     - scss:
+- html:
 
-     ```css
-     .demo-chart {
-       height: 400px;
-     }
-     ```
+```html
+<div echarts [options]="chartOption" class="demo-chart"></div>
+```
 
-     - component:
+- css:
 
-     ```typescript
-     import { EChartsOption } from 'echarts';
+```css
+.demo-chart {
+  height: 400px;
+}
+```
 
-     // ...
+- component:
 
-     chartOption: EChartsOption = {
-       xAxis: {
-         type: 'category',
-         data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-       },
-       yAxis: {
-         type: 'value',
-       },
-       series: [
-         {
-           data: [820, 932, 901, 934, 1290, 1330, 1320],
-           type: 'line',
-         },
-       ],
-     };
-     ```
+```typescript
+import { EChartsOption } from 'echarts';
+
+// ...
+
+chartOption: EChartsOption = {
+  xAxis: {
+    type: 'category',
+    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+  },
+  yAxis: {
+    type: 'value',
+  },
+  series: [
+    {
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      type: 'line',
+    },
+  ],
+};
+```
 
 # API
 
@@ -413,6 +414,76 @@ You can refer to the ECharts tutorial: [Events and Actions in ECharts](https://e
 
 # Custom Build
 
+## Treeshaking Custom Build
+
+> Since version 5.0.1 ECharts supports [Treeshaking with NPM](https://echarts.apache.org/en/tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM).
+
+The `app.modules.ts` should look like this:
+
+```typescript
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+
+import { AppComponent } from './app.component';
+
+// Import the echarts core module, which provides the necessary interfaces for using echarts.
+import * as echarts from 'echarts/core';
+
+// Import bar charts, all suffixed with Chart
+import { BarChart } from 'echarts/charts';
+
+// Import the tooltip, title, rectangular coordinate system, dataset and transform components
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
+} from 'echarts/components';
+
+// Features like Universal Transition and Label Layout
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+
+// Import the Canvas renderer
+// Note that including the CanvasRenderer or SVGRenderer is a required step
+import { CanvasRenderer } from 'echarts/renderers';
+
+// Import the theme
+import 'echarts/theme/macarons.js';
+
+// Register the required components
+echarts.use([
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer
+]);
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    // import standalone directive:
+    NgxEchartsDirective,
+  ],
+  providers: [{ 
+    // Provide custom builded ECharts core:
+    provideEchartsCore({ echarts })
+  }],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
 ## Legacy Custom Build
 
 > Please refer to [ECharts Documentation](https://echarts.apache.org/en/tutorial.html#Create%20Custom%20Build%20of%20ECharts) for more details.
@@ -469,41 +540,6 @@ function (root, factory) {
         factory({}, root.echarts);
     }
 }
-```
-
-## Treeshaking Custom Build
-
-> Since version 5.0.1 ECharts supports [Treeshaking with NPM](https://echarts.apache.org/en/tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM).
-
-There is no need for the `custom-echarts.ts` file anymore. The `app.modules.ts` should look like this:
-
-```typescript
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-
-import { NgxEchartsModule } from 'ngx-echarts';
-
-import { AppComponent } from './app.component';
-
-// Import the echarts core module, which provides the necessary interfaces for using echarts.
-import * as echarts from 'echarts/core';
-// Import bar charts, all with Chart suffix
-import { BarChart } from 'echarts/charts';
-import { TitleComponent, TooltipComponent, GridComponent } from 'echarts/components';
-// Import the Canvas renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import { CanvasRenderer } from 'echarts/renderers';
-import 'echarts/theme/macarons.js';
-
-echarts.use([TitleComponent, TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
-
-@NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, NgxEchartsModule.forRoot({ echarts }), HttpClientModule],
-  providers: [],
-  bootstrap: [AppComponent],
-})
-export class AppModule {}
 ```
 
 # Custom Locale

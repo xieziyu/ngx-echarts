@@ -17,7 +17,25 @@ export class WelcomeComponent {
   \`\`\`
 `;
   importText = `
-  ## Import
+  ## Import Standalone Directive
+  \`\`\`typescript
+  import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+
+  @Component({
+    selector: 'app-root',
+    standalone: true,
+    imports: [CommonModule, NgxEchartsDirective],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    providers: [
+      provideEcharts(),
+    ]
+  })
+  export class AppComponent {}
+  \`\`\`
+`;
+  importNgModuleText = `
+  ## Import NgModule
   \`\`\`typescript
   import { NgxEchartsModule } from 'ngx-echarts';
   @NgModule({

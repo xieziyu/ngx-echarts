@@ -27,6 +27,7 @@ export type ThemeOption = Record<string, any>;
 export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
 
 @Directive({
+  standalone: true,
   selector: 'echarts, [echarts]',
   exportAs: 'echarts',
 })
