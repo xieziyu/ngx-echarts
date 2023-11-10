@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NgZorroCustomModule } from './shared/ng-zorro-custom.module';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,15 +31,14 @@ registerLocaleData(en);
     MarkdownModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
-    NgxEchartsModule.forRoot({
-      echarts: () => import('echarts'), // Import all modules from echarts:
-    }),
+    NgxEchartsDirective,
   ],
   providers: [
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    provideEcharts(),
   ],
   bootstrap: [AppComponent],
 })

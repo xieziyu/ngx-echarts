@@ -37,11 +37,14 @@
 
 <div class="container">
   <div nz-row nzGutter="16">
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="24">
       <markdown ngPreserveWhitespaces [data]="scriptText"></markdown>
     </div>
-    <div nz-col nzSpan="12">
+    <div nz-col nzSpan="24">
       <markdown ngPreserveWhitespaces [data]="importText"></markdown>
+    </div>
+    <div nz-col nzSpan="24">
+      <markdown ngPreserveWhitespaces [data]="importNgModuleText"></markdown>
     </div>
   </div>
 </div>
