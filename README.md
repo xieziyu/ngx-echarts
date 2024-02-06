@@ -1,23 +1,29 @@
-# ngx-echarts
-
-<!-- Badges section here. -->
-
-[![npm](https://img.shields.io/npm/v/ngx-echarts.svg)][npm-badge-url]
-[![npm](https://img.shields.io/npm/dm/ngx-echarts.svg)][npm-badge-url]
-[![Build Status](https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml/badge.svg)][ci-url]
-
-Angular directive for [Apache ECharts (incubating)](https://github.com/apache/incubator-echarts)
-(version >= 3.x) (The project is renamed from **angular2-echarts**)
-
-- [Online Demo](https://xieziyu.github.io/ngx-echarts)
-- [Online Docs](https://xieziyu.github.io/ngx-echarts/api-doc)
-- [Starter Project](https://github.com/xieziyu/ngx-echarts-starter)
-- [Changelog](https://xieziyu.github.io/ngx-echarts/#/changelogs)
+<div align="center">
+  <a href="https://xieziyu.github.io/ngx-echarts">
+    <img src="./src/assets/img/logo.svg" alt="Logo" width="80">
+  </a>
+  <h3 align="center">NGX-ECHARTS</h3>
+  <p align="center">
+    Angular directive for <a href="https://github.com/apache/incubator-echarts">Apache ECharts</a>
+  </p>
+  <p align="center">
+    <a href="https://xieziyu.github.io/ngx-echarts">Online Demo</a> |
+    <a href="https://github.com/xieziyu/ngx-echarts-starter">Starter</a>
+  </p>
+  <p align="center">
+    <a href="https://www.npmjs.com/package/ngx-echarts">
+      <img alt="npm" src="https://img.shields.io/npm/v/ngx-echarts.svg">
+    </a>
+    <a href="https://www.npmjs.com/package/ngx-echarts">
+      <img alt="downloads" src="https://img.shields.io/npm/dm/ngx-echarts.svg">
+    </a>
+    <a href="https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml">
+      <img alt="build" src="https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml/badge.svg">
+    </a>
+  </p>
+</div>
 
 ## Table of contents
-
-- [ngx-echarts](#ngx-echarts)
-  - [Table of contents](#table-of-contents)
 - [Getting Started](#getting-started)
 - [Latest Update](#latest-update)
 - [Installation](#installation)
@@ -581,6 +587,3 @@ yarn demo
 ```
 
 The demo page server is listening on: http://localhost:4202
-
-[npm-badge-url]: https://www.npmjs.com/package/ngx-echarts
-[ci-url]: https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml
