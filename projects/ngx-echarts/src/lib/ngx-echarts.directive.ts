@@ -20,6 +20,7 @@ import type { EChartsOption, ECharts, ECElementEvent } from 'echarts';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
+  theme?: string | ThemeOption;
 }
 
 export type ThemeOption = Record<string, any>;
@@ -110,6 +111,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     private ngZone: NgZone
   ) {
     this.echarts = config.echarts;
+    if (!this.theme && config.theme) {
+      this.theme = config.theme;
+    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
