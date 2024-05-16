@@ -6,10 +6,13 @@ import {
   ThemeOption,
 } from './ngx-echarts.directive';
 
-const provideEcharts = (): Provider => {
+const provideEcharts = (config: Omit<NgxEchartsConfig, 'echarts'> = {}): Provider => {
   return {
     provide: NGX_ECHARTS_CONFIG,
-    useFactory: () => ({ echarts: () => import('echarts') }),
+    useFactory: () => ({
+      ...config,
+      echarts: () => import('echarts'),
+    }),
   };
 };
 
