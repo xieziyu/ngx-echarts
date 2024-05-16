@@ -104,6 +104,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private initChartTimer?: number;
   private changeFilter = new ChangeFilterV2();
   private loadingSub: Subscription;
+  private resizeObFired: boolean = false;
 
   constructor(
     @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
@@ -127,10 +128,22 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       .subscribe(() => this.resize());
 
     if (this.autoResize) {
+      // https://github.com/xieziyu/ngx-echarts/issues/413
       this.resizeOb = this.ngZone.runOutsideAngular(
         () =>
-          new window.ResizeObserver(() => {
-            this.animationFrameID = window.requestAnimationFrame(() => this.resize$.next());
+          new window.ResizeObserver(entries => {
+            for (const entry of entries) {
+              if (entry.target === this.el.nativeElement) {
+                // Ignore first fire on insertion, no resize actually happened
+                if (!this.resizeObFired) {
+                  this.resizeObFired = true;
+                } else {
+                  this.animationFrameID = window.requestAnimationFrame(() => {
+                    this.resize$.next();
+                  });
+                }
+              }
+            }
           })
       );
       this.resizeOb.observe(this.el.nativeElement);
