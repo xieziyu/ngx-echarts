@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -22,6 +22,7 @@ registerLocaleData(en);
 
 @NgModule({
   declarations: [AppComponent],
+  bootstrap: [AppComponent],
   imports: [
     BrowserModule,
     LayoutModule,
@@ -29,7 +30,6 @@ registerLocaleData(en);
     FormsModule,
     NgZorroCustomModule,
     MarkdownModule.forRoot(),
-    HttpClientModule,
     BrowserAnimationsModule,
     NgxEchartsDirective,
   ],
@@ -39,7 +39,7 @@ registerLocaleData(en);
       useClass: HashLocationStrategy,
     },
     provideEcharts(),
+    provideHttpClient(withInterceptorsFromDi()),
   ],
-  bootstrap: [AppComponent],
 })
 export class AppModule {}

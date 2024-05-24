@@ -1,3 +1,12 @@
+export const html = `
+<!-- DEMO START -->
+<div echarts [options]="options" class="demo-chart"></div>
+<!-- DEMO END -->
+
+<app-code-block [html]="html" [component]="component"> </app-code-block>
+`;
+
+export const component = `
 import { Component, OnInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
@@ -61,3 +70,4 @@ export class BasicSimpleComponent implements OnInit {
     };
   }
 }
+`;
