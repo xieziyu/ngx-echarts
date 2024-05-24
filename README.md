@@ -51,6 +51,7 @@
 
 Latest version @npm:
 
+- `v18.0.0` for Angular 18
 - `v17.2.0` for Angular 17
 - `v16.2.0` for Angular 16
 - `v15.0.3` for Angular 15
@@ -65,10 +66,9 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-2024.05.16: v17.2.0
+- 2024.05.24: v18.0.0:
 
-  - Feat: `provideEcharts` supports default theme config. (by [wheeljs](https://github.com/wheeljs))
-  - Fix: Issue [#413](https://github.com/xieziyu/ngx-echarts/issues/413) (Thanks to [s9ke](https://github.com/s9ke))
+  - Feat: upgrade to Angular 18
 
 [CHANGELOG.md](./CHANGELOG.md)
 

@@ -1,3 +1,7 @@
+- 2024.05.24: v18.0.0:
+
+  - Feat: upgrade to Angular 18
+
 - 2024.05.16: v17.2.0
 
   - Feat: `provideEcharts` supports default theme config. (by [wheeljs](https://github.com/wheeljs))
