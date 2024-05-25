@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import type { ECharts, EChartsOption } from 'echarts';
 import { NzMessageService } from 'ng-zorro-antd/message';
 // IGNORE START
-import html from './basic-instance.component.html';
-import component from './basic-instance.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -13,8 +12,10 @@ import component from './basic-instance.component.txt';
 })
 export class BasicInstanceComponent {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-instance.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-instance.component.ts').default;
   // IGNORE END
   chartInstance: ECharts;
   options: EChartsOption = {

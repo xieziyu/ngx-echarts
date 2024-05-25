@@ -3,9 +3,7 @@ import type { EChartsOption } from 'echarts';
 import { ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
 // IGNORE START
-import html from './basic-themes.component.html';
-import component from './basic-themes.component.txt';
-import data from './cool-theme.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -15,9 +13,11 @@ import data from './cool-theme.txt';
 })
 export class BasicThemesComponent {
   // IGNORE START
-  html = html;
-  component = component;
-  data = data;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-themes.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-themes.component.ts').default;
+  data = require('!!raw-loader!./cool-theme.ts').default;
   // IGNORE END
   theme: string | ThemeOption;
   coolTheme = CoolTheme;

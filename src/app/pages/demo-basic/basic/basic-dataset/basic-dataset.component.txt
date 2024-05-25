@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './basic-dataset.component.html';
-import component from './basic-dataset.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -12,8 +11,10 @@ import component from './basic-dataset.component.txt';
 })
 export class BasicDatasetComponent {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-dataset.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-dataset.component.ts').default;
   // IGNORE END
   options: EChartsOption = {
     legend: {},

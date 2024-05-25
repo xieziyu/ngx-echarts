@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './heatmap-discrete.component.html';
-import component from './heatmap-discrete.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -13,8 +12,10 @@ import component from './heatmap-discrete.component.txt';
 })
 export class HeatmapDiscreteComponent implements OnInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./heatmap-discrete.component.html')
+      .default;
+  component = require('!!raw-loader!./heatmap-discrete.component.ts').default;
   // IGNORE END
   options: EChartsOption;
   noise = getNoiseHelper();

@@ -2,8 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 import { getInstanceByDom, connect } from 'echarts';
 // IGNORE START
-import html from './connect-charts.component.html';
-import component from './connect-charts.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -13,8 +12,10 @@ import component from './connect-charts.component.txt';
 })
 export class ConnectChartsComponent implements AfterViewInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./connect-charts.component.html')
+      .default;
+  component = require('!!raw-loader!./connect-charts.component.ts').default;
   // IGNORE END
   options: EChartsOption = {
     color: ['#3398DB'],
