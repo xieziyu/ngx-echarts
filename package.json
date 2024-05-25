@@ -15,7 +15,7 @@
     "fix": "ng lint --fix",
     "e2e": "ng e2e",
     "clean": "rm -rf dist",
-    "compodoc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -d dist/docs/api-doc --theme stripe",
+    "compodoc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -d dist/docs/browser/api-doc --theme stripe",
     "serve:doc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -s",
     "build:doc": "run-s build:prod compodoc",
     "update:file": "cpr README.md dist/ngx-echarts/README.md -o",
