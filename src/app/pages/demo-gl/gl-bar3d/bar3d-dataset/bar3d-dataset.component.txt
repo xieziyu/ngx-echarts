@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 // IGNORE START
-import html from './bar3d-dataset.component.html';
-import component from './bar3d-dataset.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -14,8 +13,10 @@ import component from './bar3d-dataset.component.txt';
 })
 export class Bar3dDatasetComponent implements OnInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./bar3d-dataset.component.html')
+      .default;
+  component = require('!!raw-loader!./bar3d-dataset.component.ts').default;
   // IGNORE END
   options: Observable<any>;
 

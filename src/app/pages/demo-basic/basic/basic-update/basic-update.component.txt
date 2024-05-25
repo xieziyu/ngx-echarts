@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './basic-update.component.html';
-import component from './basic-update.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -12,8 +11,10 @@ import component from './basic-update.component.txt';
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-update.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-update.component.ts').default;
   // IGNORE END
   options: EChartsOption;
   updateOptions: EChartsOption;

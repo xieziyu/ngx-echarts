@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './heatmap-calendar.component.html';
-import component from './heatmap-calendar.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -13,8 +12,10 @@ import component from './heatmap-calendar.component.txt';
 })
 export class HeatmapCalendarComponent implements OnInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./heatmap-calendar.component.html')
+      .default;
+  component = require('!!raw-loader!./heatmap-calendar.component.ts').default;
   // IGNORE END
   options: EChartsOption;
 

@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './tree-radial.component.html';
-import component from './tree-radial.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -15,8 +14,10 @@ import component from './tree-radial.component.txt';
 })
 export class TreeRadialComponent implements OnInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-radial.component.html')
+      .default;
+  component = require('!!raw-loader!./tree-radial.component.ts').default;
   // IGNORE END
   options: Observable<EChartsOption>;
   constructor(private http: HttpClient) {}

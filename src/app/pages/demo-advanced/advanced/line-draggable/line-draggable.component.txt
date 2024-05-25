@@ -2,8 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import type { ECharts, EChartsOption } from 'echarts';
 import * as util from 'zrender/lib/core/util';
 // IGNORE START
-import html from './line-draggable.component.html';
-import component from './line-draggable.component.txt';
+declare const require: any;
 // IGNORE END
 
 const SymbolSize = 20;
@@ -22,8 +21,10 @@ const Data = [
 })
 export class LineDraggableComponent implements OnDestroy {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./line-draggable.component.html')
+      .default;
+  component = require('!!raw-loader!./line-draggable.component.ts').default;
   // IGNORE END
   updatePosition: () => void;
   options: EChartsOption = {

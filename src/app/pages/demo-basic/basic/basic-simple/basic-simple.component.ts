@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import { html, component } from './demo';
+import html from './basic-simple.component.html';
+import component from './basic-simple.component.txt';
 // IGNORE END
 
 @Component({

@@ -3,8 +3,7 @@ import type { ECElementEvent, EChartsOption } from 'echarts';
 import type { ECActionEvent } from 'echarts/types/src/util/types';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
-import html from './basic-events.component.html';
-import component from './basic-events.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -14,8 +13,10 @@ import component from './basic-events.component.txt';
 })
 export class BasicEventsComponent implements OnInit {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-events.component.html')
+      .default;
+  component = require('!!raw-loader!./basic-events.component.ts').default;
   // IGNORE END
   options: EChartsOption;
 

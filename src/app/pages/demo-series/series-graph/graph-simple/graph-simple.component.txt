@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import type { EChartsOption } from 'echarts';
 // IGNORE START
-import html from './graph-simple.component.html';
-import component from './graph-simple.component.txt';
+declare const require: any;
 // IGNORE END
 
 @Component({
@@ -12,8 +11,10 @@ import component from './graph-simple.component.txt';
 })
 export class GraphSimpleComponent {
   // IGNORE START
-  html = html;
-  component = component;
+  html =
+    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-simple.component.html')
+      .default;
+  component = require('!!raw-loader!./graph-simple.component.ts').default;
   // IGNORE END
   options: EChartsOption = {
     title: {
