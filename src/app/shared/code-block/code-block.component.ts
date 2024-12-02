@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-code-block',
   templateUrl: './code-block.component.html',
   styleUrls: ['./code-block.component.scss'],
+  standalone: false,
 })
 export class CodeBlockComponent implements OnInit {
   @Input() html: string;

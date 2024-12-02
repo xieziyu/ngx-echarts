@@ -1,23 +1,23 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './basic-update.component.html';
+import component from './basic-update.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
+  standalone: false,
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-update.component.html')
-      .default;
-  component = require('!!raw-loader!./basic-update.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: EChartsOption;
-  updateOptions: EChartsOption;
+  options: EChartsCoreOption;
+  updateOptions: EChartsCoreOption;
 
   private oneDay = 24 * 3600 * 1000;
   private now: Date;

@@ -11,6 +11,7 @@ import component from './bar3d-dataset.component.txt';
   selector: 'app-bar3d-dataset',
   templateUrl: './bar3d-dataset.component.html',
   styleUrls: ['./bar3d-dataset.component.scss'],
+  standalone: false,
 })
 export class Bar3dDatasetComponent implements OnInit {
   // IGNORE START

@@ -7,18 +7,65 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { NgZorroCustomModule } from './shared/ng-zorro-custom.module';
-import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+
+import * as echarts from 'echarts/core';
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  LegendComponent,
+  DataZoomComponent,
+  VisualMapComponent,
+  GraphicComponent,
+  CalendarComponent,
+} from 'echarts/components';
+import { BarChart, LineChart, HeatmapChart, PieChart, GraphChart, TreeChart } from 'echarts/charts';
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 
 // Import echarts extensions
-import 'echarts-gl';
+import { Bar3DChart } from 'echarts-gl/charts';
+import { Grid3DComponent } from 'echarts-gl/components';
 // Import echarts themes
 import 'echarts/theme/macarons.js';
 
 registerLocaleData(en);
+
+// Register the required components
+echarts.use([
+  // charts ...
+  BarChart,
+  LineChart,
+  HeatmapChart,
+  PieChart,
+  GraphChart,
+  TreeChart,
+  Bar3DChart,
+  // components ...
+  LegendComponent,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  DataZoomComponent,
+  VisualMapComponent,
+  GraphicComponent,
+  CalendarComponent,
+  Grid3DComponent,
+  // features ...
+  LabelLayout,
+  UniversalTransition,
+  // renderers ...
+  CanvasRenderer,
+]);
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +85,7 @@ registerLocaleData(en);
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
-    provideEcharts(),
+    provideEchartsCore({ echarts }),
     provideHttpClient(withInterceptorsFromDi()),
   ],
 })

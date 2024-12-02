@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-update.component.html';
 import component from './basic-update.component.txt';
@@ -9,14 +9,15 @@ import component from './basic-update.component.txt';
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
+  standalone: false,
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
-  updateOptions: EChartsOption;
+  options: EChartsCoreOption;
+  updateOptions: EChartsCoreOption;
 
   private oneDay = 24 * 3600 * 1000;
   private now: Date;

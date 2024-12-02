@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-simple.component.html';
 import component from './graph-simple.component.txt';
@@ -9,13 +9,14 @@ import component from './graph-simple.component.txt';
   selector: 'app-graph-simple',
   templateUrl: './graph-simple.component.html',
   styleUrls: ['./graph-simple.component.scss'],
+  standalone: false,
 })
 export class GraphSimpleComponent {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     title: {
       text: 'Simple Graph',
     },

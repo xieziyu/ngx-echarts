@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 import { ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
 // IGNORE START
@@ -12,6 +12,7 @@ import data from './cool-theme.txt';
   selector: 'app-basic-themes',
   templateUrl: './basic-themes.component.html',
   styleUrls: ['./basic-themes.component.scss'],
+  standalone: false,
 })
 export class BasicThemesComponent {
   // IGNORE START
@@ -21,7 +22,7 @@ export class BasicThemesComponent {
   // IGNORE END
   theme: string | ThemeOption;
   coolTheme = CoolTheme;
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     title: {
       left: '50%',
       text: 'Nightingale Rose Diagram',

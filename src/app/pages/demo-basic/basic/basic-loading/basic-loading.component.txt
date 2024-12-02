@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './basic-loading.component.html';
+import component from './basic-loading.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-loading',
   templateUrl: './basic-loading.component.html',
   styleUrls: ['./basic-loading.component.scss'],
+  standalone: false,
 })
 export class BasicLoadingComponent {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments": false}}!./basic-loading.component.html')
-      .default;
-  component = require('!!raw-loader!./basic-loading.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
   isLoading = true;
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     tooltip: {
       trigger: 'axis',
       axisPointer: {

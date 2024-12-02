@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-dataset.component.html';
 import component from './basic-dataset.component.txt';
@@ -9,13 +9,14 @@ import component from './basic-dataset.component.txt';
   selector: 'app-basic-dataset',
   templateUrl: './basic-dataset.component.html',
   styleUrls: ['./basic-dataset.component.scss'],
+  standalone: false,
 })
 export class BasicDatasetComponent {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     legend: {},
     tooltip: {},
     dataset: {
@@ -38,7 +39,7 @@ export class BasicDatasetComponent {
     series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }],
   };
 
-  mergeOptions: EChartsOption;
+  mergeOptions: EChartsCoreOption;
 
   RandomDataset() {
     this.mergeOptions = {

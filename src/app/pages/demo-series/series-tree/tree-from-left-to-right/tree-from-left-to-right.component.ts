@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as util from 'zrender/lib/core/util';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './tree-from-left-to-right.component.html';
 import component from './tree-from-left-to-right.component.txt';
@@ -13,13 +13,14 @@ import component from './tree-from-left-to-right.component.txt';
   selector: 'app-tree-from-left-to-right',
   templateUrl: './tree-from-left-to-right.component.html',
   styleUrls: ['./tree-from-left-to-right.component.scss'],
+  standalone: false,
 })
 export class TreeFromLeftToRightComponent implements OnInit {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: Observable<EChartsOption>;
+  options: Observable<EChartsCoreOption>;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

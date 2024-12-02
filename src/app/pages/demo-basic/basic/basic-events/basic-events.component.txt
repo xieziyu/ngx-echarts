@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import type { ECElementEvent, EChartsOption } from 'echarts';
+import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import type { ECActionEvent } from 'echarts/types/src/util/types';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
-declare const require: any;
+import html from './basic-events.component.html';
+import component from './basic-events.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-events',
   templateUrl: './basic-events.component.html',
   styleUrls: ['./basic-events.component.scss'],
+  standalone: false,
 })
 export class BasicEventsComponent implements OnInit {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-events.component.html')
-      .default;
-  component = require('!!raw-loader!./basic-events.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
 
   constructor() {}
 
@@ -126,7 +126,7 @@ export class BasicEventsComponent implements OnInit {
     };
   }
 
-  onChartEvent(event: ECElementEvent | ECActionEvent, type: string) {
+  onChartEvent(event: ECElementEvent | ECActionEvent | ECharts, type: string) {
     console.log('chart event:', type, event);
   }
 }

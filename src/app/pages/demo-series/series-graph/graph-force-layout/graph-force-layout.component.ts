@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-force-layout.component.html';
 import component from './graph-force-layout.component.txt';
@@ -9,13 +9,14 @@ import component from './graph-force-layout.component.txt';
   selector: 'app-graph-force-layout',
   templateUrl: './graph-force-layout.component.html',
   styleUrls: ['./graph-force-layout.component.scss'],
+  standalone: false,
 })
 export class GraphForceLayoutComponent implements OnInit {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
 
   createNodes(count: number) {
     const nodes = [];

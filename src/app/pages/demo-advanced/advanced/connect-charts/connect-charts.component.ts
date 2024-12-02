@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
-import { getInstanceByDom, connect } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
+import { getInstanceByDom, connect } from 'echarts/core';
 // IGNORE START
 import html from './connect-charts.component.html';
 import component from './connect-charts.component.txt';
@@ -10,13 +10,14 @@ import component from './connect-charts.component.txt';
   selector: 'app-connect-charts',
   templateUrl: './connect-charts.component.html',
   styleUrls: ['./connect-charts.component.scss'],
+  standalone: false,
 })
 export class ConnectChartsComponent implements AfterViewInit {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

@@ -1,8 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import * as util from 'zrender/lib/core/util';
 // IGNORE START
-declare const require: any;
+import html from './line-draggable.component.html';
+import component from './line-draggable.component.txt';
 // IGNORE END
 
 const SymbolSize = 20;
@@ -18,16 +19,15 @@ const Data = [
   selector: 'app-line-draggable',
   templateUrl: './line-draggable.component.html',
   styleUrls: ['./line-draggable.component.scss'],
+  standalone: false,
 })
 export class LineDraggableComponent implements OnDestroy {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./line-draggable.component.html')
-      .default;
-  component = require('!!raw-loader!./line-draggable.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
   updatePosition: () => void;
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     title: {
       text: 'Try Dragging these Points',
     },

@@ -1,23 +1,23 @@
 import { Component, AfterViewInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
-import { getInstanceByDom, connect } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
+import { getInstanceByDom, connect } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './connect-charts.component.html';
+import component from './connect-charts.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-connect-charts',
   templateUrl: './connect-charts.component.html',
   styleUrls: ['./connect-charts.component.scss'],
+  standalone: false,
 })
 export class ConnectChartsComponent implements AfterViewInit {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./connect-charts.component.html')
-      .default;
-  component = require('!!raw-loader!./connect-charts.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

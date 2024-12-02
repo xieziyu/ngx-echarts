@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-simple.component.html';
 import component from './basic-simple.component.txt';
@@ -9,13 +9,14 @@ import component from './basic-simple.component.txt';
   selector: 'app-basic-simple',
   templateUrl: './basic-simple.component.html',
   styleUrls: ['./basic-simple.component.scss'],
+  standalone: false,
 })
 export class BasicSimpleComponent implements OnInit {
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
   constructor() {}
 
   ngOnInit(): void {

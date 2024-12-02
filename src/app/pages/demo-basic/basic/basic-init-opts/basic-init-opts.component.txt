@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './basic-init-opts.component.html';
+import component from './basic-init-opts.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-init-opts',
   templateUrl: './basic-init-opts.component.html',
   styleUrls: ['./basic-init-opts.component.scss'],
+  standalone: false,
 })
 export class BasicInitOptsComponent {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./basic-init-opts.component.html')
-      .default;
-  component = require('!!raw-loader!./basic-init-opts.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
   initOpts = {
     renderer: 'svg',
@@ -22,7 +22,7 @@ export class BasicInitOptsComponent {
     height: 300,
   };
 
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',
