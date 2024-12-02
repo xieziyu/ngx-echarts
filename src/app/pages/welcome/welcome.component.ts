@@ -20,7 +20,12 @@ export class WelcomeComponent {
   importText = `
   ## Import Standalone Directive
   \`\`\`typescript
-  import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+  import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+  import * as echarts from 'echarts/core';
+  import { BarChart } from 'echarts/charts';
+  import { GridComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+  echarts.use([BarChart, GridComponent, CanvasRenderer]);
 
   @Component({
     selector: 'app-root',
@@ -29,7 +34,7 @@ export class WelcomeComponent {
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     providers: [
-      provideEcharts(),
+      provideEchartsCore({ echarts }),
     ]
   })
   export class AppComponent {}
@@ -39,12 +44,16 @@ export class WelcomeComponent {
   ## Import NgModule
   \`\`\`typescript
   import { NgxEchartsModule } from 'ngx-echarts';
+  import * as echarts from 'echarts/core';
+  import { BarChart } from 'echarts/charts';
+  import { GridComponent } from 'echarts/components';
+  import { CanvasRenderer } from 'echarts/renderers';
+  echarts.use([BarChart, GridComponent, CanvasRenderer]);
+
   @NgModule({
     imports: [
       ...,
-      NgxEchartsModule.forRoot({
-        echarts: () => import('echarts')
-      })
+      NgxEchartsModule.forRoot({ echarts })
     ],
   })
   export class AppModule {}
