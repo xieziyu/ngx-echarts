@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as echarts from 'echarts';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 declare const require: any;
 // IGNORE END

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-discrete.component.html';
 import component from './heatmap-discrete.component.txt';
@@ -17,7 +16,7 @@ export class HeatmapDiscreteComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
   noise = getNoiseHelper();
 
   ngOnInit(): void {

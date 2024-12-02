@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import type { ECElementEvent, ECharts, EChartsOption } from 'echarts';
+import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import type { ECActionEvent } from 'echarts/types/src/util/types';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
@@ -18,7 +18,7 @@ export class BasicEventsComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
 
   constructor() {}
 

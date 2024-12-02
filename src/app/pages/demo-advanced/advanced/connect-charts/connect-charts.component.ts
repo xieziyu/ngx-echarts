@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
-import { getInstanceByDom, connect } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
+import { getInstanceByDom, connect } from 'echarts/core';
 // IGNORE START
 import html from './connect-charts.component.html';
 import component from './connect-charts.component.txt';
@@ -17,7 +17,7 @@ export class ConnectChartsComponent implements AfterViewInit {
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

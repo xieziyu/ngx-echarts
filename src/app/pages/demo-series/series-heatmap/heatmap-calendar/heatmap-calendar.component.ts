@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
-import type { EChartsOption } from 'echarts';
+import { time as echartTime } from 'echarts/core';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-calendar.component.html';
 import component from './heatmap-calendar.component.txt';
@@ -17,7 +17,7 @@ export class HeatmapCalendarComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
 
   ngOnInit(): void {
     this.options = {
@@ -55,13 +55,13 @@ export class HeatmapCalendarComponent implements OnInit {
   }
 
   getVirtualData(year: string) {
-    const date = +echarts.time.parse(year + '-01-01');
-    const end = +echarts.time.parse(+year + 1 + '-01-01');
+    const date = +echartTime.parse(year + '-01-01');
+    const end = +echartTime.parse(+year + 1 + '-01-01');
     const dayTime = 3600 * 24 * 1000;
     const data: [string, number][] = [];
     for (let time = date; time < end; time += dayTime) {
       data.push([
-        echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),
+        echartTime.format(time, '{yyyy}-{MM}-{dd}', false),
         Math.floor(Math.random() * 10000),
       ]);
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 import { ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
 // IGNORE START

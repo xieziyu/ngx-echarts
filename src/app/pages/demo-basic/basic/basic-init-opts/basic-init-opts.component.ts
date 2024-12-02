@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-init-opts.component.html';
 import component from './basic-init-opts.component.txt';
@@ -22,7 +22,7 @@ export class BasicInitOptsComponent {
     height: 300,
   };
 
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     color: ['#3398DB'],
     tooltip: {
       trigger: 'axis',

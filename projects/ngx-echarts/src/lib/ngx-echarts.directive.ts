@@ -16,7 +16,7 @@ import {
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
-import type { EChartsOption, ECharts, ECElementEvent } from 'echarts';
+import type { EChartsCoreOption, ECharts, ECElementEvent } from 'echarts/core';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
@@ -33,7 +33,7 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
   exportAs: 'echarts',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
-  @Input() options: EChartsOption | null = null;
+  @Input() options: EChartsCoreOption | null = null;
   @Input() theme: string | ThemeOption | null = null;
   @Input() initOpts: {
     devicePixelRatio?: number;
@@ -42,7 +42,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     height?: number | string;
     locale?: string;
   } | null = null;
-  @Input() merge: EChartsOption | null = null;
+  @Input() merge: EChartsCoreOption | null = null;
   @Input() autoResize = true;
   @Input() loading = false;
   @Input() loadingType = 'default';

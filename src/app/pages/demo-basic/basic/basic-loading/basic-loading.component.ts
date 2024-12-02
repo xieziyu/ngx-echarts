@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-loading.component.html';
 import component from './basic-loading.component.txt';
@@ -17,7 +17,7 @@ export class BasicLoadingComponent {
   component = component;
   // IGNORE END
   isLoading = true;
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     tooltip: {
       trigger: 'axis',
       axisPointer: {

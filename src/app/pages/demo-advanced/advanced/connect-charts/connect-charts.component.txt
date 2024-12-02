@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 import { getInstanceByDom, connect } from 'echarts';
 // IGNORE START
 declare const require: any;

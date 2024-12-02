@@ -34,7 +34,7 @@
     "@angular/platform-browser-dynamic": "~19.0.1",
     "@angular/router": "~19.0.1",
     "@ant-design/icons-angular": "^17.0.0",
-    "echarts": "^5.4.2",
+    "echarts": "^5.5.1",
     "echarts-gl": "^2.0.9",
     "ng-zorro-antd": "~17.4.0",
     "rxjs": "~7.5.5",

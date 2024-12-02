@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-simple.component.html';
 import component from './basic-simple.component.txt';
@@ -16,7 +16,7 @@ export class BasicSimpleComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
   constructor() {}
 
   ngOnInit(): void {

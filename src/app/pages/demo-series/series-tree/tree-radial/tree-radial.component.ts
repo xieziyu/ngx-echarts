@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import type { EChartsOption } from 'echarts';
+import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './tree-radial.component.html';
 import component from './tree-radial.component.txt';
@@ -19,7 +19,7 @@ export class TreeRadialComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
-  options: Observable<EChartsOption>;
+  options: Observable<EChartsCoreOption>;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

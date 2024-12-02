@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import type { ECharts, EChartsOption } from 'echarts';
+import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 // IGNORE START
 import html from './basic-instance.component.html';
@@ -18,7 +18,7 @@ export class BasicInstanceComponent {
   component = component;
   // IGNORE END
   chartInstance: ECharts;
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     backgroundColor: '#2c343c',
     title: {
       text: 'Customized Pie',
