@@ -5,22 +5,22 @@ import { map } from 'rxjs/operators';
 import * as util from 'zrender/lib/core/util';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './tree-from-left-to-right.component.html';
+import component from './tree-from-left-to-right.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-tree-from-left-to-right',
   templateUrl: './tree-from-left-to-right.component.html',
   styleUrls: ['./tree-from-left-to-right.component.scss'],
+  standalone: false,
 })
 export class TreeFromLeftToRightComponent implements OnInit {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./tree-from-left-to-right.component.html')
-      .default;
-  component = require('!!raw-loader!./tree-from-left-to-right.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: Observable<EChartsOption>;
+  options: Observable<EChartsCoreOption>;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {

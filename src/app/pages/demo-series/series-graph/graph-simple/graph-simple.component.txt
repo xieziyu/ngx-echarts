@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './graph-simple.component.html';
+import component from './graph-simple.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-graph-simple',
   templateUrl: './graph-simple.component.html',
   styleUrls: ['./graph-simple.component.scss'],
+  standalone: false,
 })
 export class GraphSimpleComponent {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./graph-simple.component.html')
-      .default;
-  component = require('!!raw-loader!./graph-simple.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: EChartsOption = {
+  options: EChartsCoreOption = {
     title: {
       text: 'Simple Graph',
     },

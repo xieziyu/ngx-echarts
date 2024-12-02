@@ -1,23 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import * as echarts from 'echarts';
+import { time as echartTime } from 'echarts/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-declare const require: any;
+import html from './heatmap-calendar.component.html';
+import component from './heatmap-calendar.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-heatmap-calendar',
   templateUrl: './heatmap-calendar.component.html',
   styleUrl: './heatmap-calendar.component.scss',
+  standalone: false,
 })
 export class HeatmapCalendarComponent implements OnInit {
   // IGNORE START
-  html =
-    require('!!html-loader?{"minimize": {"removeComments":false,"caseSensitive":true}}!./heatmap-calendar.component.html')
-      .default;
-  component = require('!!raw-loader!./heatmap-calendar.component.ts').default;
+  html = html;
+  component = component;
   // IGNORE END
-  options: EChartsOption;
+  options: EChartsCoreOption;
 
   ngOnInit(): void {
     this.options = {
@@ -55,13 +55,13 @@ export class HeatmapCalendarComponent implements OnInit {
   }
 
   getVirtualData(year: string) {
-    const date = +echarts.time.parse(year + '-01-01');
-    const end = +echarts.time.parse(+year + 1 + '-01-01');
+    const date = +echartTime.parse(year + '-01-01');
+    const end = +echartTime.parse(+year + 1 + '-01-01');
     const dayTime = 3600 * 24 * 1000;
     const data: [string, number][] = [];
     for (let time = date; time < end; time += dayTime) {
       data.push([
-        echarts.time.format(time, '{yyyy}-{MM}-{dd}', false),
+        echartTime.format(time, '{yyyy}-{MM}-{dd}', false),
         Math.floor(Math.random() * 10000),
       ]);
     }

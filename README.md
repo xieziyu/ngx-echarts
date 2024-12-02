@@ -45,6 +45,7 @@
 
 Latest version @npm:
 
+- `v19.0.0` for Angular 19
 - `v18.0.0` for Angular 18
 - `v17.2.0` for Angular 17
 - `v16.2.0` for Angular 16
@@ -60,8 +61,11 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-* 2024.05.25: v18.0.0
-  + Feat: Upgrade to angular 18
+* 2024.12.02: v19.0.0
+  + Feat: Upgrade to angular 19
+  + **BREAKING CHANGES**:
+    + According to [issue #443](https://github.com/xieziyu/ngx-echarts/issues/437), we cannot import from `echarts/index.js` using Angular 19. Therefore, we need to perform a custom build and import everything required from `echarts/core`, `echarts/charts`, `echarts/components`, or other specific entry points.
+    + `provideEcharts` is REMOVED.
 
 [CHANGELOG.md](./CHANGELOG.md)
 
@@ -101,10 +105,17 @@ Please refer to the [demo](https://xieziyu.github.io/ngx-echarts) page.
 
 ## Standalone
 
-import `NgxEchartsDirective` and `provideEcharts`. Or you can use `provideEchartsCore` to do treeshaking custom build.
+import `NgxEchartsDirective` and `provideEchartsCore`. Or you can use `provideEchartsCore` to do treeshaking custom build.
 
 ```typescript
-import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
+import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
+// import echarts core
+import * as echarts from 'echarts/core';
+// import necessary echarts components
+import { BarChart } from 'echarts/charts';
+import { GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
 
 @Component({
   selector: 'app-root',
@@ -113,7 +124,7 @@ import { NgxEchartsDirective, provideEcharts } from 'ngx-echarts';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   providers: [
-    provideEcharts(),
+    provideEchartsCore({ echarts }),
   ]
 })
 export class AppComponent {}
@@ -125,29 +136,13 @@ import `NgxEchartsModule`:
 
 ```typescript
 import { NgxEchartsModule } from 'ngx-echarts';
-
-@NgModule({
-  imports: [
-    NgxEchartsModule.forRoot({
-      /**
-       * This will import all modules from echarts.
-       * If you only need custom modules,
-       * please refer to [Custom Build] section.
-       */
-      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
-    }),
-  ],
-})
-export class AppModule {}
-```
-
-The echarts library will be imported **only when it gets called the first time** thanks to the function that uses the native import.
-
-You can also directly pass the echarts instead which will slow down initial rendering because it will load the whole echarts into your main bundle.
-
-```typescript
-import * as echarts from 'echarts';
-import { NgxEchartsModule } from 'ngx-echarts';
+// import echarts core
+import * as echarts from 'echarts/core';
+// import necessary echarts components
+import { BarChart } from 'echarts/charts';
+import { GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
 
 @NgModule({
   imports: [
@@ -178,11 +173,11 @@ use `echarts` directive in a div which has **pre-defined height**. (From v2.0, i
 - component:
 
 ```typescript
-import { EChartsOption } from 'echarts';
+import { EChartsCoreOption } from 'echarts/core';
 
 // ...
 
-chartOption: EChartsOption = {
+chartOption: EChartsCoreOption = {
   xAxis: {
     type: 'category',
     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -232,7 +227,7 @@ By default, `loadingOpts` is:
 If you need to access parts of the ECharts API such as `echarts.graphic`, please import it from echarts. For example:
 
 ```typescript
-import { graphic } from 'echarts';
+import { graphic } from 'echarts/core';
 
 new graphic.LinearGradient(/* ... */);
 ```
@@ -266,10 +261,11 @@ resizeChart() {
 Import echarts theme files or other extension files after you have imported `echarts` core. For example:
 
 ```typescript
-import * as echarts from 'echarts';
+import * as echarts from 'echarts/core';
 
 /** echarts extensions: */
-import 'echarts-gl';
+import { Bar3DChart } from 'echarts-gl/charts';
+import { Grid3DComponent } from 'echarts-gl/components';
 import 'echarts/theme/macarons.js';
 import 'echarts/dist/extension/bmap.min.js';
 ```
