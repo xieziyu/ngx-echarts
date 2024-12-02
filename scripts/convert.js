@@ -15,7 +15,6 @@ const dirList = [
     './src/app/pages/demo-basic/basic/basic-update',
     './src/app/pages/demo-advanced/advanced/connect-charts',
     './src/app/pages/demo-advanced/advanced/line-draggable',
-    './src/app/pages/demo-gl/gl-bar3d/bar3d-dataset',
     './src/app/pages/demo-series/series-graph/graph-force-layout',
     './src/app/pages/demo-series/series-graph/graph-simple',
     './src/app/pages/demo-series/series-heatmap/heatmap-calendar',

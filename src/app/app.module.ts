@@ -30,9 +30,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LayoutModule } from './layout/layout.module';
 
-// Import echarts extensions
-import { Bar3DChart } from 'echarts-gl/charts';
-import { Grid3DComponent } from 'echarts-gl/components';
 // Import echarts themes
 import 'echarts/theme/macarons.js';
 
@@ -47,7 +44,6 @@ echarts.use([
   PieChart,
   GraphChart,
   TreeChart,
-  Bar3DChart,
   // components ...
   LegendComponent,
   TitleComponent,
@@ -59,7 +55,6 @@ echarts.use([
   VisualMapComponent,
   GraphicComponent,
   CalendarComponent,
-  Grid3DComponent,
   // features ...
   LabelLayout,
   UniversalTransition,
