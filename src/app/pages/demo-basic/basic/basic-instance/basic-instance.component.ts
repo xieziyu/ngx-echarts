@@ -10,6 +10,7 @@ import component from './basic-instance.component.txt';
   selector: 'app-basic-instance',
   templateUrl: './basic-instance.component.html',
   styleUrls: ['./basic-instance.component.scss'],
+  standalone: false,
 })
 export class BasicInstanceComponent {
   // IGNORE START

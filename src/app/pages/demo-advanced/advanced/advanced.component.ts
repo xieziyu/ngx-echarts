@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.scss'],
+  standalone: false,
 })
 export class AdvancedComponent {
   constructor() {}

@@ -11,6 +11,7 @@ interface AppMenuEx extends AppMenu {
   selector: 'app-menu',
   templateUrl: './app-menu.component.html',
   styleUrls: ['./app-menu.component.scss'],
+  standalone: false,
 })
 export class AppMenuComponent {
   @Input() isCollapsed: boolean;

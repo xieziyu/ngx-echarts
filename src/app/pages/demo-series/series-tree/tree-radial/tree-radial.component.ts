@@ -12,6 +12,7 @@ import component from './tree-radial.component.txt';
   selector: 'app-tree-radial',
   templateUrl: './tree-radial.component.html',
   styleUrls: ['./tree-radial.component.scss'],
+  standalone: false,
 })
 export class TreeRadialComponent implements OnInit {
   // IGNORE START

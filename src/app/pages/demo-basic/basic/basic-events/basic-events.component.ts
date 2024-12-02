@@ -11,6 +11,7 @@ import component from './basic-events.component.txt';
   selector: 'app-basic-events',
   templateUrl: './basic-events.component.html',
   styleUrls: ['./basic-events.component.scss'],
+  standalone: false,
 })
 export class BasicEventsComponent implements OnInit {
   // IGNORE START

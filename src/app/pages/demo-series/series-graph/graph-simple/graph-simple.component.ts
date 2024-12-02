@@ -9,6 +9,7 @@ import component from './graph-simple.component.txt';
   selector: 'app-graph-simple',
   templateUrl: './graph-simple.component.html',
   styleUrls: ['./graph-simple.component.scss'],
+  standalone: false,
 })
 export class GraphSimpleComponent {
   // IGNORE START

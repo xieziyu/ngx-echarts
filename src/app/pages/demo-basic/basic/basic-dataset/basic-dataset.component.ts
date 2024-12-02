@@ -9,6 +9,7 @@ import component from './basic-dataset.component.txt';
   selector: 'app-basic-dataset',
   templateUrl: './basic-dataset.component.html',
   styleUrls: ['./basic-dataset.component.scss'],
+  standalone: false,
 })
 export class BasicDatasetComponent {
   // IGNORE START

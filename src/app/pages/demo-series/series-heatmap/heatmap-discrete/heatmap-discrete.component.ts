@@ -10,6 +10,7 @@ import component from './heatmap-discrete.component.txt';
   selector: 'app-heatmap-discrete',
   templateUrl: './heatmap-discrete.component.html',
   styleUrl: './heatmap-discrete.component.scss',
+  standalone: false,
 })
 export class HeatmapDiscreteComponent implements OnInit {
   // IGNORE START

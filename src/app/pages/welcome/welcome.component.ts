@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
+  standalone: false,
 })
 export class WelcomeComponent {
   scriptText = `

@@ -9,6 +9,7 @@ import component from './graph-force-layout.component.txt';
   selector: 'app-graph-force-layout',
   templateUrl: './graph-force-layout.component.html',
   styleUrls: ['./graph-force-layout.component.scss'],
+  standalone: false,
 })
 export class GraphForceLayoutComponent implements OnInit {
   // IGNORE START

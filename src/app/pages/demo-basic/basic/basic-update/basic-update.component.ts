@@ -9,6 +9,7 @@ import component from './basic-update.component.txt';
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
+  standalone: false,
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
   // IGNORE START

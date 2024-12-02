@@ -12,6 +12,7 @@ import data from './cool-theme.txt';
   selector: 'app-basic-themes',
   templateUrl: './basic-themes.component.html',
   styleUrls: ['./basic-themes.component.scss'],
+  standalone: false,
 })
 export class BasicThemesComponent {
   // IGNORE START

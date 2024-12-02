@@ -9,6 +9,7 @@ import component from './basic-simple.component.txt';
   selector: 'app-basic-simple',
   templateUrl: './basic-simple.component.html',
   styleUrls: ['./basic-simple.component.scss'],
+  standalone: false,
 })
 export class BasicSimpleComponent implements OnInit {
   // IGNORE START

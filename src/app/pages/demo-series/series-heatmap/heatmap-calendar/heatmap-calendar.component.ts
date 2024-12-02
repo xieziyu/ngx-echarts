@@ -10,6 +10,7 @@ import component from './heatmap-calendar.component.txt';
   selector: 'app-heatmap-calendar',
   templateUrl: './heatmap-calendar.component.html',
   styleUrl: './heatmap-calendar.component.scss',
+  standalone: false,
 })
 export class HeatmapCalendarComponent implements OnInit {
   // IGNORE START

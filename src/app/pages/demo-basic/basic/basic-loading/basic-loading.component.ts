@@ -9,6 +9,7 @@ import component from './basic-loading.component.txt';
   selector: 'app-basic-loading',
   templateUrl: './basic-loading.component.html',
   styleUrls: ['./basic-loading.component.scss'],
+  standalone: false,
 })
 export class BasicLoadingComponent {
   // IGNORE START

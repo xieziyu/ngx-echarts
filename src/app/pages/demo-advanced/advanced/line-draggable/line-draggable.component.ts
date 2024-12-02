@@ -19,6 +19,7 @@ const Data = [
   selector: 'app-line-draggable',
   templateUrl: './line-draggable.component.html',
   styleUrls: ['./line-draggable.component.scss'],
+  standalone: false,
 })
 export class LineDraggableComponent implements OnDestroy {
   // IGNORE START

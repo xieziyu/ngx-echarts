@@ -9,6 +9,7 @@ import component from './basic-init-opts.component.txt';
   selector: 'app-basic-init-opts',
   templateUrl: './basic-init-opts.component.html',
   styleUrls: ['./basic-init-opts.component.scss'],
+  standalone: false,
 })
 export class BasicInitOptsComponent {
   // IGNORE START

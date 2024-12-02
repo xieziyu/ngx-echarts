@@ -10,6 +10,7 @@ import component from './connect-charts.component.txt';
   selector: 'app-connect-charts',
   templateUrl: './connect-charts.component.html',
   styleUrls: ['./connect-charts.component.scss'],
+  standalone: false,
 })
 export class ConnectChartsComponent implements AfterViewInit {
   // IGNORE START

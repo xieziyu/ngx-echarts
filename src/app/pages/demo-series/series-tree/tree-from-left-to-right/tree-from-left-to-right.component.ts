@@ -13,6 +13,7 @@ import component from './tree-from-left-to-right.component.txt';
   selector: 'app-tree-from-left-to-right',
   templateUrl: './tree-from-left-to-right.component.html',
   styleUrls: ['./tree-from-left-to-right.component.scss'],
+  standalone: false,
 })
 export class TreeFromLeftToRightComponent implements OnInit {
   // IGNORE START
