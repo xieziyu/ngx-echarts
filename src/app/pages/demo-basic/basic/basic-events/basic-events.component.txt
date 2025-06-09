@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
-import type { ECActionEvent } from 'echarts/types/src/util/types';
+import type { ECActionEvent } from '../../../../shared/interface';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
 import html from './basic-events.component.html';
