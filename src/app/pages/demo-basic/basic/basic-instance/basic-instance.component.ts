@@ -1,23 +1,22 @@
 import { Component, inject } from '@angular/core';
 import type { ECharts, EChartsCoreOption } from 'echarts/core';
-import { NzMessageService } from 'ng-zorro-antd/message';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 // IGNORE START
-import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { NgxEchartsDirective } from 'ngx-echarts';
-import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 import html from './basic-instance.component.html';
 import component from './basic-instance.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-instance',
   templateUrl: './basic-instance.component.html',
   styleUrls: ['./basic-instance.component.scss'],
-  imports: [NzButtonComponent, NzWaveDirective, NgxEchartsDirective, CodeBlockComponent],
+  imports: [CodeBlockComponent, NgxEchartsDirective, MatButtonModule],
 })
 export class BasicInstanceComponent {
-  private msg = inject(NzMessageService);
+  private readonly snackBar = inject(MatSnackBar);
 
   // IGNORE START
   html = html;
@@ -92,7 +91,9 @@ export class BasicInstanceComponent {
   callMethod(type: string) {
     if (this.chartInstance) {
       const result = this.chartInstance[type]();
-      this.msg.info(`${type}(): ${result || 'void'}`);
+      this.snackBar.open(`${type}(): ${result || 'void'}`, 'Close', {
+        duration: 2000,
+      });
       console.log(result);
     }
   }

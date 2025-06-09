@@ -1,10 +1,12 @@
 import { Component, inject, input } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu';
 import { filter } from 'rxjs/operators';
 import { APP_MENUS, AppMenu } from '../../menus';
-
-import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButton } from '@angular/material/button';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 
 interface AppMenuEx extends AppMenu {
   pathRegex: RegExp;
@@ -15,16 +17,19 @@ interface AppMenuEx extends AppMenu {
   templateUrl: './app-menu.component.html',
   styleUrls: ['./app-menu.component.scss'],
   imports: [
-    NzMenuDirective,
-    NzMenuItemComponent,
+    MatButton,
+    MatExpansionModule,
+    MatIconModule,
+    MatListModule,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
     RouterLink,
     RouterLinkActive,
-    NzIconDirective,
-    NzSubMenuComponent,
   ],
 })
 export class AppMenuComponent {
-  private router = inject(Router);
+  private readonly router = inject(Router);
 
   readonly isCollapsed = input<boolean>(undefined);
   menus: AppMenuEx[];
@@ -41,7 +46,6 @@ export class AppMenuComponent {
       pathRegex: new RegExp(m.path),
       text: m.text,
       icon: m.icon,
-      iconTheme: m.iconTheme,
       submenus: m.submenus ? m.submenus.concat() : undefined,
     }));
   }

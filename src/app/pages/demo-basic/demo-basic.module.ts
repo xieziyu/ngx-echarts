@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { SharedModule } from '../../shared/shared.module';
-import { DemoBasicRoutingModule } from './demo-basic-routing.module';
 import { BasicComponent } from './basic/basic.component';
 import { BasicSimpleComponent } from './basic/basic-simple/basic-simple.component';
 import { BasicEventsComponent } from './basic/basic-events/basic-events.component';
@@ -15,19 +14,18 @@ import { BasicDatasetComponent } from './basic/basic-dataset/basic-dataset.compo
 
 @NgModule({
   imports: [
-    CommonModule,
-    SharedModule,
-    NgxEchartsModule,
-    DemoBasicRoutingModule,
     BasicComponent,
-    BasicSimpleComponent,
+    BasicDatasetComponent,
     BasicEventsComponent,
-    BasicThemesComponent,
-    BasicLoadingComponent,
-    BasicUpdateComponent,
     BasicInitOptsComponent,
     BasicInstanceComponent,
-    BasicDatasetComponent,
+    BasicLoadingComponent,
+    BasicSimpleComponent,
+    BasicThemesComponent,
+    BasicUpdateComponent,
+    CommonModule,
+    NgxEchartsModule,
+    SharedModule,
   ],
 })
 export class DemoBasicModule {}
