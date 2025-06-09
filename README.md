@@ -28,11 +28,11 @@
   - [NgModule](#ngmodule)
   - [Directive](#directive)
 - [API](#api)
-  - [Directive](#directive-1)
-  - [ECharts API](#echarts-api)
-  - [ECharts Instance](#echarts-instance)
-  - [ECharts Extensions](#echarts-extensions)
-  - [Service](#service)
+    - [Directive](#directive-1)
+    - [ECharts API](#echarts-api)
+    - [ECharts Instance](#echarts-instance)
+    - [ECharts Extensions](#echarts-extensions)
+    - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
   - [Treeshaking Custom Build](#treeshaking-custom-build)
@@ -66,6 +66,7 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 - 2025.06.09: v20.0.0
   - Feat: Upgrade to angular 20
   - Feat: Zoneless compatibility
+  - Refactor: Migrate the project to modern angular patterns. (Thanks to [pkurcx](https://github.com/pkurcx))
 
 [CHANGELOG.md](./CHANGELOG.md)
 
