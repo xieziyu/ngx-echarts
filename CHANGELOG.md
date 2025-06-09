@@ -1,3 +1,6 @@
+* 2025.06.09: v20.0.0
+  + Feat: Upgrade to angular 20
+  + Feat: Zoneless compatibility
 * 2024.12.02: v19.0.0
   + Feat: Upgrade to angular 19
   + **BREAKING CHANGES**:

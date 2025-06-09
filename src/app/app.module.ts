@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZonelessChangeDetection } from '@angular/core';
 import { MarkdownModule } from 'ngx-markdown';
 import { FormsModule } from '@angular/forms';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
@@ -76,6 +76,7 @@ echarts.use([
     NgxEchartsDirective,
   ],
   providers: [
+    provideZonelessChangeDetection(),
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
