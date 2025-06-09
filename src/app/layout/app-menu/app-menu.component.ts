@@ -1,10 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu';
 import { filter } from 'rxjs/operators';
 import { APP_MENUS, AppMenu } from '../../menus';
-import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu';
-import { NgFor, NgIf } from '@angular/common';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
+
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 
 interface AppMenuEx extends AppMenu {
@@ -17,10 +16,7 @@ interface AppMenuEx extends AppMenu {
   styleUrls: ['./app-menu.component.scss'],
   imports: [
     NzMenuDirective,
-    NgFor,
-    NgIf,
     NzMenuItemComponent,
-    ɵNzTransitionPatchDirective,
     RouterLink,
     RouterLinkActive,
     NzIconDirective,

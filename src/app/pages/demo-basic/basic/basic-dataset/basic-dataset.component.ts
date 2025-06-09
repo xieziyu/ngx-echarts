@@ -1,26 +1,19 @@
 import { Component } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-import html from './basic-dataset.component.html';
-import component from './basic-dataset.component.txt';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
 import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import html from './basic-dataset.component.html';
+import component from './basic-dataset.component.txt';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-dataset',
   templateUrl: './basic-dataset.component.html',
   styleUrls: ['./basic-dataset.component.scss'],
-  imports: [
-    NzButtonComponent,
-    NzWaveDirective,
-    ɵNzTransitionPatchDirective,
-    NgxEchartsDirective,
-    CodeBlockComponent,
-  ],
+  imports: [NzButtonComponent, NzWaveDirective, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicDatasetComponent {
   // IGNORE START

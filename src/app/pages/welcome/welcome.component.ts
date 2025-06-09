@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { ɵNzTransitionPatchDirective } from 'ng-zorro-antd/core/transition-patch';
 import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
 import { NzIconDirective } from 'ng-zorro-antd/icon';
 import { MarkdownComponent } from 'ngx-markdown';
@@ -9,14 +8,7 @@ import { MarkdownComponent } from 'ngx-markdown';
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  imports: [
-    NzButtonComponent,
-    ɵNzTransitionPatchDirective,
-    NzIconDirective,
-    NzRowDirective,
-    NzColDirective,
-    MarkdownComponent,
-  ],
+  imports: [NzButtonComponent, NzIconDirective, NzRowDirective, NzColDirective, MarkdownComponent],
 })
 export class WelcomeComponent {
   scriptText = `
