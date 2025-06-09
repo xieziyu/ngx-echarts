@@ -1,17 +1,7 @@
-import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
-import {
-  NgxEchartsDirective,
-  NgxEchartsConfig,
-  NGX_ECHARTS_CONFIG,
-  ThemeOption,
-} from './ngx-echarts.directive';
-
-const provideEchartsCore = (config: NgxEchartsConfig): Provider => {
-  return {
-    provide: NGX_ECHARTS_CONFIG,
-    useValue: config,
-  };
-};
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgxEchartsConfig } from './config';
+import { NgxEchartsDirective } from './ngx-echarts.directive';
+import { provideEchartsCore } from './provide';
 
 @NgModule({
   imports: [NgxEchartsDirective],
@@ -30,5 +20,3 @@ export class NgxEchartsModule {
     };
   }
 }
-
-export { NgxEchartsDirective, NGX_ECHARTS_CONFIG, ThemeOption, provideEchartsCore };

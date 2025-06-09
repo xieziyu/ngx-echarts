@@ -3,7 +3,6 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
-  InjectionToken,
   NgZone,
   OnChanges,
   OnDestroy,
@@ -18,15 +17,7 @@ import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
-
-export interface NgxEchartsConfig {
-  echarts: any | (() => Promise<any>);
-  theme?: string | ThemeOption;
-}
-
-export type ThemeOption = Record<string, any>;
-
-export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHARTS_CONFIG');
+import { NGX_ECHARTS_CONFIG, NgxEchartsConfig, ThemeOption } from './config';
 
 @Directive({
   standalone: true,
