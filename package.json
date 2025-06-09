@@ -14,6 +14,7 @@
     "lint": "ng lint",
     "fix": "ng lint --fix",
     "e2e": "ng e2e",
+    "format": "prettier --write .",
     "clean": "rm -rf dist",
     "compodoc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -d dist/docs/browser/api-doc --theme stripe",
     "serve:doc": "compodoc -p projects/ngx-echarts/tsconfig.lib.json -s",

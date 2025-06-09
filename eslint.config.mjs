@@ -9,9 +9,7 @@ import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: [
-      'scripts/convert.js',
-    ],
+    ignores: ['scripts/convert.js'],
   },
   // Override 1: *.ts files with angular-eslint + process-inline-templates + prettier
   {
@@ -27,7 +25,7 @@ export default [
     plugins: {
       '@typescript-eslint': typescriptEslint,
       '@angular-eslint': angularEslint,
-      'prettier': prettierPlugin,
+      prettier: prettierPlugin,
     },
     processor: angularTemplateEslint.processors['extract-inline-html'],
     rules: {
@@ -43,20 +41,20 @@ export default [
         {
           type: 'attribute',
           prefix: ['app', 'echarts'],
-          style: 'camelCase'
-        }
+          style: 'camelCase',
+        },
       ],
       '@angular-eslint/component-selector': [
         'error',
         {
           type: 'element',
           prefix: ['app', 'echarts'],
-          style: 'kebab-case'
-        }
+          style: 'kebab-case',
+        },
       ],
       // disable until standalone components are fully supported
       '@angular-eslint/prefer-standalone': 'off',
-    }
+    },
   },
 
   // Override 2: *.html files with angular-eslint template only
@@ -71,7 +69,7 @@ export default [
     rules: {
       // Rules from plugin:@angular-eslint/template/recommended
       ...(angularTemplateEslint.configs?.recommended?.rules || {}),
-    }
+    },
   },
 
   // Override 3: *.html files with prettier only (excluding inline templates)
@@ -79,7 +77,7 @@ export default [
     files: ['**/*.html'],
     ignores: ['*inline-template-*.component.html'],
     plugins: {
-      'prettier': prettierPlugin,
+      prettier: prettierPlugin,
     },
     rules: {
       // Rules from plugin:prettier/recommended
@@ -87,7 +85,7 @@ export default [
 
       // Custom prettier rule with angular parser (override default)
       'prettier/prettier': ['error', { parser: 'angular' }],
-    }
+    },
   },
 
   // Apply prettier config to disable conflicting rules

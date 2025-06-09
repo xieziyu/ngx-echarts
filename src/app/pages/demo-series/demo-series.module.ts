@@ -14,7 +14,11 @@ import { HeatmapCalendarComponent } from './series-heatmap/heatmap-calendar/heat
 import { HeatmapDiscreteComponent } from './series-heatmap/heatmap-discrete/heatmap-discrete.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    SharedModule,
+    NgxEchartsModule,
+    DemoSeriesRoutingModule,
     SeriesGraphComponent,
     GraphForceLayoutComponent,
     GraphSimpleComponent,
@@ -25,6 +29,5 @@ import { HeatmapDiscreteComponent } from './series-heatmap/heatmap-discrete/heat
     HeatmapCalendarComponent,
     HeatmapDiscreteComponent,
   ],
-  imports: [CommonModule, SharedModule, NgxEchartsModule, DemoSeriesRoutingModule],
 })
 export class DemoSeriesModule {}

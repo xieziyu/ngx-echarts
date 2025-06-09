@@ -7,8 +7,13 @@ import { IconsProviderModule } from './icons-provider.module';
 import { CodeBlockComponent } from './code-block/code-block.component';
 
 @NgModule({
-  declarations: [CodeBlockComponent],
-  imports: [CommonModule, IconsProviderModule, NgZorroCustomModule, MarkdownModule.forChild()],
+  imports: [
+    CommonModule,
+    IconsProviderModule,
+    NgZorroCustomModule,
+    MarkdownModule.forChild(),
+    CodeBlockComponent,
+  ],
   exports: [IconsProviderModule, NgZorroCustomModule, MarkdownModule, CodeBlockComponent],
 })
 export class SharedModule {}

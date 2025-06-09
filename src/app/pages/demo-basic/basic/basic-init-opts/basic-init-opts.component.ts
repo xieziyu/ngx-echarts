@@ -3,13 +3,15 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-init-opts.component.html';
 import component from './basic-init-opts.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-init-opts',
   templateUrl: './basic-init-opts.component.html',
   styleUrls: ['./basic-init-opts.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicInitOptsComponent {
   // IGNORE START

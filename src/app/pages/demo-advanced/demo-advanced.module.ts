@@ -8,7 +8,14 @@ import { ConnectChartsComponent } from './advanced/connect-charts/connect-charts
 import { LineDraggableComponent } from './advanced/line-draggable/line-draggable.component';
 
 @NgModule({
-  declarations: [AdvancedComponent, ConnectChartsComponent, LineDraggableComponent],
-  imports: [CommonModule, SharedModule, NgxEchartsModule, DemoAdvancedRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    NgxEchartsModule,
+    DemoAdvancedRoutingModule,
+    AdvancedComponent,
+    ConnectChartsComponent,
+    LineDraggableComponent,
+  ],
 })
 export class DemoAdvancedModule {}

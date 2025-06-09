@@ -4,6 +4,8 @@ import * as util from 'zrender/lib/core/util';
 // IGNORE START
 import html from './line-draggable.component.html';
 import component from './line-draggable.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 const SymbolSize = 20;
@@ -19,7 +21,7 @@ const Data = [
   selector: 'app-line-draggable',
   templateUrl: './line-draggable.component.html',
   styleUrls: ['./line-draggable.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class LineDraggableComponent implements OnDestroy {
   // IGNORE START

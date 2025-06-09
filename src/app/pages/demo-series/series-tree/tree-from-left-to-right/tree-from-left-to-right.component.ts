@@ -7,13 +7,16 @@ import * as util from 'zrender/lib/core/util';
 // IGNORE START
 import html from './tree-from-left-to-right.component.html';
 import component from './tree-from-left-to-right.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { AsyncPipe } from '@angular/common';
 // IGNORE END
 
 @Component({
   selector: 'app-tree-from-left-to-right',
   templateUrl: './tree-from-left-to-right.component.html',
   styleUrls: ['./tree-from-left-to-right.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent, AsyncPipe],
 })
 export class TreeFromLeftToRightComponent implements OnInit {
   private http = inject(HttpClient);

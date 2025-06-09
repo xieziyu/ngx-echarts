@@ -18,6 +18,7 @@
 </div>
 
 ## Table of contents
+
 - [Getting Started](#getting-started)
 - [Latest Update](#latest-update)
 - [Installation](#installation)
@@ -27,11 +28,11 @@
   - [NgModule](#ngmodule)
   - [Directive](#directive)
 - [API](#api)
-    - [Directive](#directive-1)
-    - [ECharts API](#echarts-api)
-    - [ECharts Instance](#echarts-instance)
-    - [ECharts Extensions](#echarts-extensions)
-    - [Service](#service)
+  - [Directive](#directive-1)
+  - [ECharts API](#echarts-api)
+  - [ECharts Instance](#echarts-instance)
+  - [ECharts Extensions](#echarts-extensions)
+  - [Service](#service)
 - [Events](#events)
 - [Custom Build](#custom-build)
   - [Treeshaking Custom Build](#treeshaking-custom-build)
@@ -62,9 +63,9 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-* 2025.06.09: v20.0.0
-  + Feat: Upgrade to angular 20
-  + Feat: Zoneless compatibility
+- 2025.06.09: v20.0.0
+  - Feat: Upgrade to angular 20
+  - Feat: Zoneless compatibility
 
 [CHANGELOG.md](./CHANGELOG.md)
 
@@ -122,9 +123,7 @@ echarts.use([BarChart, GridComponent, CanvasRenderer]);
   imports: [CommonModule, NgxEchartsDirective],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [
-    provideEchartsCore({ echarts }),
-  ]
+  providers: [provideEchartsCore({ echarts })],
 })
 export class AppComponent {}
 ```
@@ -144,9 +143,7 @@ import { CanvasRenderer } from 'echarts/renderers';
 echarts.use([BarChart, GridComponent, CanvasRenderer]);
 
 @NgModule({
-  imports: [
-    NgxEchartsModule.forRoot({ echarts }),
-  ],
+  imports: [NgxEchartsModule.forRoot({ echarts })],
 })
 export class AppModule {}
 ```
@@ -394,7 +391,7 @@ echarts.use([
     // import standalone directive:
     NgxEchartsDirective,
   ],
-  providers: [{ 
+  providers: [{
     // Provide custom builded ECharts core:
     provideEchartsCore({ echarts })
   }],
