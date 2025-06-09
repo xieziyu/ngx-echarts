@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts-demo",
-  "version": "17.0.0",
+  "version": "20.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port=4202",
@@ -38,8 +38,7 @@
     "echarts-gl": "^2.0.9",
     "ng-zorro-antd": "~17.4.0",
     "rxjs": "~7.5.5",
-    "tslib": "~2.4.0",
-    "zone.js": "~0.15.0"
+    "tslib": "~2.4.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~20.0.1",

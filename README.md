@@ -45,6 +45,7 @@
 
 Latest version @npm:
 
+- `v20.0.0` for Angular 20
 - `v19.0.0` for Angular 19
 - `v18.0.0` for Angular 18
 - `v17.2.0` for Angular 17
@@ -61,11 +62,9 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
-* 2024.12.02: v19.0.0
-  + Feat: Upgrade to angular 19
-  + **BREAKING CHANGES**:
-    + According to [issue #443](https://github.com/xieziyu/ngx-echarts/issues/437), we cannot import from `echarts/index.js` using Angular 19. Therefore, we need to perform a custom build and import everything required from `echarts/core`, `echarts/charts`, `echarts/components`, or other specific entry points.
-    + `provideEcharts` is REMOVED.
+* 2025.06.09: v20.0.0
+  + Feat: Upgrade to angular 20
+  + Feat: Zoneless compatibility
 
 [CHANGELOG.md](./CHANGELOG.md)
 
