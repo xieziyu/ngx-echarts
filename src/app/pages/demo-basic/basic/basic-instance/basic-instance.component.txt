@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 // IGNORE START
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 import html from './basic-instance.component.html';
 import component from './basic-instance.component.txt';
 // IGNORE END
@@ -10,9 +14,11 @@ import component from './basic-instance.component.txt';
   selector: 'app-basic-instance',
   templateUrl: './basic-instance.component.html',
   styleUrls: ['./basic-instance.component.scss'],
-  standalone: false,
+  imports: [NzButtonComponent, NzWaveDirective, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicInstanceComponent {
+  private msg = inject(NzMessageService);
+
   // IGNORE START
   html = html;
   component = component;
@@ -77,7 +83,6 @@ export class BasicInstanceComponent {
       },
     ],
   };
-  constructor(private msg: NzMessageService) {}
 
   onChartInit(e: ECharts) {
     this.chartInstance = e;

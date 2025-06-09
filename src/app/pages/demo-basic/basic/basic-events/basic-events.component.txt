@@ -5,13 +5,15 @@ import LinearGradient from 'zrender/lib/graphic/LinearGradient';
 // IGNORE START
 import html from './basic-events.component.html';
 import component from './basic-events.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-events',
   templateUrl: './basic-events.component.html',
   styleUrls: ['./basic-events.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicEventsComponent implements OnInit {
   // IGNORE START
