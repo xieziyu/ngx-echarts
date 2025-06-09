@@ -1,4 +1,4 @@
-<ul nz-menu nzTheme="dark" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed">
+<ul nz-menu nzTheme="dark" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed()">
   @for (menu of menus; track menu) {
     @if (!menu.submenus) {
       <li nz-menu-item [routerLink]="menu.path" [routerLinkActive]="'ant-menu-item-selected'">
@@ -6,7 +6,7 @@
           <i
             nz-icon
             [nzType]="menu.icon"
-          [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"></i>
+            [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"></i>
           <span class="nav-text">{{ menu.text }}</span>
         </span>
       </li>
@@ -27,7 +27,7 @@
                   <i
                     nz-icon
                     [nzType]="submenu.icon"
-                  [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"></i>
+                    [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"></i>
                 }
                 <span class="nav-text">{{ submenu.text }}</span>
               </span>

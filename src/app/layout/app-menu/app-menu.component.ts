@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu';
 import { filter } from 'rxjs/operators';
@@ -26,7 +26,7 @@ interface AppMenuEx extends AppMenu {
 export class AppMenuComponent {
   private router = inject(Router);
 
-  @Input() isCollapsed: boolean;
+  readonly isCollapsed = input<boolean>(undefined);
   menus: AppMenuEx[];
   currentUrl: string;
 

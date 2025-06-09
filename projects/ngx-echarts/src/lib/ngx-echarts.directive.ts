@@ -4,7 +4,6 @@ import {
   ElementRef,
   EventEmitter,
   InjectionToken,
-  Input,
   NgZone,
   OnChanges,
   OnDestroy,
@@ -12,6 +11,7 @@ import {
   Output,
   SimpleChanges,
   inject,
+  input,
 } from '@angular/core';
 import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
@@ -35,21 +35,22 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
   private el = inject(ElementRef);
   private ngZone = inject(NgZone);
+  private readonly config = inject<NgxEchartsConfig>(NGX_ECHARTS_CONFIG);
 
-  @Input() options: EChartsCoreOption | null = null;
-  @Input() theme: string | ThemeOption | null = null;
-  @Input() initOpts: {
+  readonly options = input<EChartsCoreOption | null>(null);
+  readonly theme = input<string | ThemeOption | null>(this.config.theme ?? null);
+  readonly initOpts = input<{
     devicePixelRatio?: number;
     renderer?: string;
     width?: number | string;
     height?: number | string;
     locale?: string;
-  } | null = null;
-  @Input() merge: EChartsCoreOption | null = null;
-  @Input() autoResize = true;
-  @Input() loading = false;
-  @Input() loadingType = 'default';
-  @Input() loadingOpts: object | null = null;
+  } | null>(null);
+  readonly merge = input<EChartsCoreOption | null>(null);
+  readonly autoResize = input(true);
+  readonly loading = input(false);
+  readonly loadingType = input('default');
+  readonly loadingOpts = input<object | null>(null);
 
   // ngx-echarts events
   @Output() chartInit = new EventEmitter<ECharts>();
@@ -100,7 +101,6 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   public animationFrameID = null;
   private chart: ECharts;
   private chart$ = new ReplaySubject<ECharts>(1);
-  private echarts: any;
   private resizeOb: ResizeObserver;
   private resize$ = new Subject<void>();
   private resizeSub: Subscription;
@@ -108,13 +108,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private changeFilter = new ChangeFilterV2();
   private loadingSub: Subscription;
   private resizeObFired: boolean = false;
-
-  constructor() {
-    const config = inject<NgxEchartsConfig>(NGX_ECHARTS_CONFIG);
-
-    this.echarts = config.echarts;
-    this.theme = config.theme || null;
-  }
+  private echarts: any = this.config.echarts;
 
   ngOnChanges(changes: SimpleChanges) {
     this.changeFilter.doFilter(changes);
@@ -128,7 +122,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       .pipe(throttleTime(100, asyncScheduler, { leading: false, trailing: true }))
       .subscribe(() => this.resize());
 
-    if (this.autoResize) {
+    if (this.autoResize()) {
       // https://github.com/xieziyu/ngx-echarts/issues/413
       this.resizeOb = this.ngZone.runOutsideAngular(
         () =>
@@ -199,11 +193,11 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private toggleLoading(loading: boolean) {
     if (this.chart) {
       loading
-        ? this.chart.showLoading(this.loadingType, this.loadingOpts)
+        ? this.chart.showLoading(this.loadingType(), this.loadingOpts())
         : this.chart.hideLoading();
     } else {
       this.loadingSub = this.chart$.subscribe(chart =>
-        loading ? chart.showLoading(this.loadingType, this.loadingOpts) : chart.hideLoading()
+        loading ? chart.showLoading(this.loadingType(), this.loadingOpts()) : chart.hideLoading()
       );
     }
   }
@@ -243,15 +237,18 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       const load =
         typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
 
-      return load().then(({ init }) => init(dom, this.theme, this.initOpts));
+      return load().then(({ init }) =>
+        init(dom, this.theme ?? this.config?.theme, this.initOpts())
+      );
     });
   }
 
   private async initChart() {
-    await this.onOptionsChange(this.options);
+    await this.onOptionsChange(this.options());
 
-    if (this.merge && this.chart) {
-      this.setOption(this.merge);
+    const merge = this.merge();
+    if (merge && this.chart) {
+      this.setOption(merge);
     }
   }
 
@@ -261,12 +258,12 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     }
 
     if (this.chart) {
-      this.setOption(this.options, true);
+      this.setOption(this.options(), true);
     } else {
       this.chart = await this.createChart();
       this.chart$.next(this.chart);
       this.chartInit.emit(this.chart);
-      this.setOption(this.options, true);
+      this.setOption(this.options(), true);
     }
   }
 
