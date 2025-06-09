@@ -1,24 +1,21 @@
-<nz-page-header nzTitle="Tree">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
-    <nz-breadcrumb-item>Tree</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
+<div class="page-header">
+  <h1>Tree</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/welcome">Home</a></li>
+      <li class="breadcrumb-item">Series</li>
+      <li class="breadcrumb-item active">Tree</li>
+    </ol>
+  </nav>
+</div>
 
-<nz-divider></nz-divider>
+<mat-divider></mat-divider>
 
-<nz-tabset style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="From Left To Right">
-    <ng-template nz-tab>
-      <app-tree-from-left-to-right></app-tree-from-left-to-right>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Radial Tree">
-    <ng-template nz-tab>
-      <app-tree-radial></app-tree-radial>
-    </ng-template>
-  </nz-tab>
-</nz-tabset>
+<mat-tab-group style="margin-top: 8px" mat-stretch-tabs="false">
+  <mat-tab label="From Left To Right">
+    <app-tree-from-left-to-right *matTabContent></app-tree-from-left-to-right>
+  </mat-tab>
+  <mat-tab label="Radial Tree">
+    <app-tree-radial *matTabContent></app-tree-radial>
+  </mat-tab>
+</mat-tab-group>

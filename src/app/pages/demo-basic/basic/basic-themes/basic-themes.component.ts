@@ -1,21 +1,20 @@
 import { Component } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
-import { NgxEchartsDirective, ThemeOption } from 'ngx-echarts';
+import { ThemeOption, NgxEchartsDirective } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
+import { MatButtonModule } from '@angular/material/button';
 // IGNORE START
-import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
-import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 import html from './basic-themes.component.html';
 import component from './basic-themes.component.txt';
 import data from './cool-theme.txt';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-themes',
   templateUrl: './basic-themes.component.html',
   styleUrls: ['./basic-themes.component.scss'],
-  imports: [NzButtonComponent, NzWaveDirective, NgxEchartsDirective, CodeBlockComponent],
+  imports: [CodeBlockComponent, NgxEchartsDirective, MatButtonModule],
 })
 export class BasicThemesComponent {
   // IGNORE START

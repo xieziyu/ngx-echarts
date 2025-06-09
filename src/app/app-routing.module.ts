@@ -1,30 +1,24 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
+import { DEMO_BASIC_ROUTES } from './pages/demo-basic/demo-basic-routing.module';
+import { DEMO_ADVANCED_MODULE } from './pages/demo-advanced/demo-advanced-routing.module';
+import { DEMO_SERIES_ROUTES } from './pages/demo-series/demo-series-routing.module';
 
-const routes: Routes = [
+export const ROUTES: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
   {
     path: 'welcome',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule),
+    loadComponent: () => import('./pages/welcome/welcome.component').then(c => c.WelcomeComponent),
   },
   {
     path: 'basic',
-    loadChildren: () => import('./pages/demo-basic/demo-basic.module').then(m => m.DemoBasicModule),
+    children: DEMO_BASIC_ROUTES,
   },
   {
     path: 'advanced',
-    loadChildren: () =>
-      import('./pages/demo-advanced/demo-advanced.module').then(m => m.DemoAdvancedModule),
+    children: DEMO_ADVANCED_MODULE,
   },
   {
     path: 'series',
-    loadChildren: () =>
-      import('./pages/demo-series/demo-series.module').then(m => m.DemoSeriesModule),
+    children: DEMO_SERIES_ROUTES,
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

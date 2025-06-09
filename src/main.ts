@@ -1,25 +1,21 @@
 import { enableProdMode, importProvidersFrom, provideZonelessChangeDetection } from '@angular/core';
-import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
-
-import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
-import { provideAnimations } from '@angular/platform-browser/animations';
-import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
-import { MarkdownModule } from 'ngx-markdown';
-import { AppRoutingModule } from './app/app-routing.module';
-import { AppComponent } from './app/app.component';
-import { LayoutModule } from './app/layout/layout.module';
-import { NgZorroCustomModule } from './app/shared/ng-zorro-custom.module';
 import { environment } from './environments/environment';
-
-// Import echarts themes
+import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { ROUTES } from './app/app-routing.module';
+import { MarkdownModule } from 'ngx-markdown';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart, GraphChart, HeatmapChart, LineChart, PieChart, TreeChart } from 'echarts/charts';
 import {
   CalendarComponent,
-  DataZoomComponent,
   DatasetComponent,
+  DataZoomComponent,
   GraphicComponent,
   GridComponent,
   LegendComponent,
@@ -28,18 +24,13 @@ import {
   TransformComponent,
   VisualMapComponent,
 } from 'echarts/components';
-import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-import 'echarts/theme/macarons.js';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 if (environment.production) {
   enableProdMode();
 }
 
-registerLocaleData(en);
-
-// Register the required components
 echarts.use([
   // charts ...
   BarChart,
@@ -68,22 +59,17 @@ echarts.use([
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      BrowserModule,
-      LayoutModule,
-      AppRoutingModule,
-      FormsModule,
-      NgZorroCustomModule,
-      MarkdownModule.forRoot(),
-      NgxEchartsDirective
-    ),
-    provideZonelessChangeDetection(),
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy,
     },
+    BrowserModule,
+    importProvidersFrom(MarkdownModule.forRoot()),
+    provideAnimations(),
+    provideRouter(ROUTES),
     provideEchartsCore({ echarts }),
     provideHttpClient(withInterceptorsFromDi()),
-    provideAnimations(),
+    provideAnimationsAsync(),
+    provideZonelessChangeDetection(),
   ],
-}).catch(err => console.error(err));
+});

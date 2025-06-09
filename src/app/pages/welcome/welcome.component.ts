@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
-import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  imports: [NzButtonComponent, NzIconDirective, NzRowDirective, NzColDirective, MarkdownComponent],
+  imports: [MarkdownComponent, MatButtonModule, MatIconModule],
 })
 export class WelcomeComponent {
   scriptText = `

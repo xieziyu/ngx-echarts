@@ -1,23 +1,22 @@
-<nz-page-header nzTitle="Advanced">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Advanced</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
+<div class="page-header">
+  <h1>Advanced</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/welcome">Home</a></li>
+      <li class="breadcrumb-item active">Advanced</li>
+    </ol>
+  </nav>
+</div>
 
-<nz-divider></nz-divider>
+<mat-divider></mat-divider>
 
-<nz-tabset style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Connect Charts">
-    <ng-template nz-tab>
-      <app-connect-charts></app-connect-charts>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Draggable Chart">
-    <ng-template nz-tab>
-      <app-line-draggable></app-line-draggable>
-    </ng-template>
-  </nz-tab>
-</nz-tabset>
+<div class="demo-tabs-container">
+  <mat-tab-group style="margin-top: 8px" mat-stretch-tabs="false">
+    <mat-tab label="Connect Charts">
+      <app-connect-charts *matTabContent></app-connect-charts>
+    </mat-tab>
+    <mat-tab label="Draggable Chart">
+      <app-line-draggable *matTabContent></app-line-draggable>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,0 +1,12 @@
+.chart-row {
+  display: flex;
+}
+
+.chart-col {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.demo-chart {
+  height: 300px;
+}

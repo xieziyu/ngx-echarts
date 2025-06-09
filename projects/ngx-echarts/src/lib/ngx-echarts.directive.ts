@@ -3,18 +3,18 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  inject,
+  input,
   NgZone,
   OnChanges,
   OnDestroy,
   OnInit,
-  SimpleChanges,
-  inject,
-  input,
   output,
+  SimpleChanges,
 } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
 import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
-import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
+import { asyncScheduler, Observable, ReplaySubject, Subject, Subscription } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
 import { NGX_ECHARTS_CONFIG, NgxEchartsConfig, ThemeOption } from './config';
