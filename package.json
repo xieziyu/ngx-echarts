@@ -36,7 +36,7 @@
     "@ant-design/icons-angular": "^17.0.0",
     "echarts": "^5.6.0",
     "echarts-gl": "^2.0.9",
-    "ng-zorro-antd": "~19.3.1",
+    "ng-zorro-antd": "~17.4.1",
     "rxjs": "~7.5.5",
     "tslib": "~2.4.0"
   },
