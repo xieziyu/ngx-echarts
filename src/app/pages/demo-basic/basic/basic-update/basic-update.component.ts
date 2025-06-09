@@ -3,13 +3,15 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-update.component.html';
 import component from './basic-update.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {
   // IGNORE START

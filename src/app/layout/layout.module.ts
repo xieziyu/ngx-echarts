@@ -5,8 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AppMenuComponent } from './app-menu/app-menu.component';
 
 @NgModule({
-  declarations: [AppMenuComponent],
-  imports: [CommonModule, SharedModule, RouterModule],
+  imports: [CommonModule, SharedModule, RouterModule, AppMenuComponent],
   exports: [AppMenuComponent],
 })
 export class LayoutModule {}

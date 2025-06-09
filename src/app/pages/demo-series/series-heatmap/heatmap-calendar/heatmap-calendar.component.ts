@@ -4,13 +4,15 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-calendar.component.html';
 import component from './heatmap-calendar.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-heatmap-calendar',
   templateUrl: './heatmap-calendar.component.html',
   styleUrl: './heatmap-calendar.component.scss',
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class HeatmapCalendarComponent implements OnInit {
   // IGNORE START

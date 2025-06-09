@@ -3,13 +3,15 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-discrete.component.html';
 import component from './heatmap-discrete.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-heatmap-discrete',
   templateUrl: './heatmap-discrete.component.html',
   styleUrl: './heatmap-discrete.component.scss',
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class HeatmapDiscreteComponent implements OnInit {
   // IGNORE START

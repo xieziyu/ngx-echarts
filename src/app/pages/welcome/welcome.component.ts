@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { NzButtonComponent } from 'ng-zorro-antd/button';
+import { NzColDirective, NzRowDirective } from 'ng-zorro-antd/grid';
+import { NzIconDirective } from 'ng-zorro-antd/icon';
+import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  standalone: false,
+  imports: [NzButtonComponent, NzIconDirective, NzRowDirective, NzColDirective, MarkdownComponent],
 })
 export class WelcomeComponent {
   scriptText = `
@@ -29,7 +33,6 @@ export class WelcomeComponent {
 
   @Component({
     selector: 'app-root',
-    standalone: true,
     imports: [CommonModule, NgxEchartsDirective],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],

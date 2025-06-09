@@ -1,7 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Component, inject, input } from '@angular/core';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { NzMenuDirective, NzMenuItemComponent, NzSubMenuComponent } from 'ng-zorro-antd/menu';
 import { filter } from 'rxjs/operators';
-import { AppMenu, APP_MENUS } from '../../menus';
+import { APP_MENUS, AppMenu } from '../../menus';
+
+import { NzIconDirective } from 'ng-zorro-antd/icon';
 
 interface AppMenuEx extends AppMenu {
   pathRegex: RegExp;
@@ -11,14 +14,25 @@ interface AppMenuEx extends AppMenu {
   selector: 'app-menu',
   templateUrl: './app-menu.component.html',
   styleUrls: ['./app-menu.component.scss'],
-  standalone: false,
+  imports: [
+    NzMenuDirective,
+    NzMenuItemComponent,
+    RouterLink,
+    RouterLinkActive,
+    NzIconDirective,
+    NzSubMenuComponent,
+  ],
 })
 export class AppMenuComponent {
-  @Input() isCollapsed: boolean;
+  private router = inject(Router);
+
+  readonly isCollapsed = input<boolean>(undefined);
   menus: AppMenuEx[];
   currentUrl: string;
 
-  constructor(private router: Router) {
+  constructor() {
+    const router = this.router;
+
     router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
       this.currentUrl = e.url;
     });

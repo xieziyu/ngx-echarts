@@ -8,20 +8,13 @@
     "declaration": false,
     "experimentalDecorators": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-echarts": [
-        "dist/ngx-echarts"
-      ],
-      "ngx-echarts/*": [
-        "dist/ngx-echarts/*"
-      ]
+      "ngx-echarts": ["dist/ngx-echarts"],
+      "ngx-echarts/*": ["dist/ngx-echarts/*"]
     },
     "useDefineForClassFields": false
   },

@@ -14,7 +14,11 @@ import { BasicInstanceComponent } from './basic/basic-instance/basic-instance.co
 import { BasicDatasetComponent } from './basic/basic-dataset/basic-dataset.component';
 
 @NgModule({
-  declarations: [
+  imports: [
+    CommonModule,
+    SharedModule,
+    NgxEchartsModule,
+    DemoBasicRoutingModule,
     BasicComponent,
     BasicSimpleComponent,
     BasicEventsComponent,
@@ -25,6 +29,5 @@ import { BasicDatasetComponent } from './basic/basic-dataset/basic-dataset.compo
     BasicInstanceComponent,
     BasicDatasetComponent,
   ],
-  imports: [CommonModule, SharedModule, NgxEchartsModule, DemoBasicRoutingModule],
 })
 export class DemoBasicModule {}

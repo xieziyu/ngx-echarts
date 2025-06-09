@@ -3,13 +3,15 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-force-layout.component.html';
 import component from './graph-force-layout.component.txt';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
 
 @Component({
   selector: 'app-graph-force-layout',
   templateUrl: './graph-force-layout.component.html',
   styleUrls: ['./graph-force-layout.component.scss'],
-  standalone: false,
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class GraphForceLayoutComponent implements OnInit {
   // IGNORE START
