@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, inject } from '@angular/core';
+import type { EChartsCoreOption } from 'echarts/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as util from 'zrender/lib/core/util';
-import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './tree-from-left-to-right.component.html';
 import component from './tree-from-left-to-right.component.txt';
@@ -16,12 +16,13 @@ import component from './tree-from-left-to-right.component.txt';
   standalone: false,
 })
 export class TreeFromLeftToRightComponent implements OnInit {
+  private http = inject(HttpClient);
+
   // IGNORE START
   html = html;
   component = component;
   // IGNORE END
   options: Observable<EChartsCoreOption>;
-  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.options = this.http.get<any>('assets/data/flare.json', { responseType: 'json' }).pipe(

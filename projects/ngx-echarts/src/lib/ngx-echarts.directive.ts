@@ -3,7 +3,6 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
-  Inject,
   InjectionToken,
   Input,
   NgZone,
@@ -12,11 +11,12 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  inject,
 } from '@angular/core';
+import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
-import type { EChartsCoreOption, ECharts, ECElementEvent } from 'echarts/core';
 
 export interface NgxEchartsConfig {
   echarts: any | (() => Promise<any>);
@@ -33,6 +33,9 @@ export const NGX_ECHARTS_CONFIG = new InjectionToken<NgxEchartsConfig>('NGX_ECHA
   exportAs: 'echarts',
 })
 export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterViewInit {
+  private el = inject(ElementRef);
+  private ngZone = inject(NgZone);
+
   @Input() options: EChartsCoreOption | null = null;
   @Input() theme: string | ThemeOption | null = null;
   @Input() initOpts: {
@@ -106,11 +109,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private loadingSub: Subscription;
   private resizeObFired: boolean = false;
 
-  constructor(
-    @Inject(NGX_ECHARTS_CONFIG) config: NgxEchartsConfig,
-    private el: ElementRef,
-    private ngZone: NgZone
-  ) {
+  constructor() {
+    const config = inject<NgxEchartsConfig>(NGX_ECHARTS_CONFIG);
+
     this.echarts = config.echarts;
     this.theme = config.theme || null;
   }

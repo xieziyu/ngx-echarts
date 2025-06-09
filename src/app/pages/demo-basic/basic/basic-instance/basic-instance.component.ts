@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 // IGNORE START
@@ -13,6 +13,8 @@ import component from './basic-instance.component.txt';
   standalone: false,
 })
 export class BasicInstanceComponent {
+  private msg = inject(NzMessageService);
+
   // IGNORE START
   html = html;
   component = component;
@@ -77,7 +79,6 @@ export class BasicInstanceComponent {
       },
     ],
   };
-  constructor(private msg: NzMessageService) {}
 
   onChartInit(e: ECharts) {
     this.chartInstance = e;
