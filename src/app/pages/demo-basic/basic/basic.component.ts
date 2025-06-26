@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { NzPageHeaderComponent, NzPageHeaderBreadcrumbDirective } from 'ng-zorro-antd/page-header';
-import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb';
 import { RouterLink } from '@angular/router';
-import { NzDividerComponent } from 'ng-zorro-antd/divider';
-import { NzTabSetComponent, NzTabComponent, NzTabDirective } from 'ng-zorro-antd/tabs';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTabContent, MatTabsModule } from '@angular/material/tabs';
 import { BasicSimpleComponent } from './basic-simple/basic-simple.component';
 import { BasicDatasetComponent } from './basic-dataset/basic-dataset.component';
 import { BasicEventsComponent } from './basic-events/basic-events.component';
@@ -18,23 +16,18 @@ import { BasicInstanceComponent } from './basic-instance/basic-instance.componen
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
   imports: [
-    NzPageHeaderComponent,
-    NzBreadCrumbComponent,
-    NzPageHeaderBreadcrumbDirective,
-    NzBreadCrumbItemComponent,
-    RouterLink,
-    NzDividerComponent,
-    NzTabSetComponent,
-    NzTabComponent,
-    NzTabDirective,
-    BasicSimpleComponent,
     BasicDatasetComponent,
     BasicEventsComponent,
-    BasicThemesComponent,
-    BasicLoadingComponent,
-    BasicUpdateComponent,
     BasicInitOptsComponent,
     BasicInstanceComponent,
+    BasicLoadingComponent,
+    BasicSimpleComponent,
+    BasicThemesComponent,
+    BasicUpdateComponent,
+    MatDividerModule,
+    MatTabContent,
+    MatTabsModule,
+    RouterLink,
   ],
 })
 export class BasicComponent {

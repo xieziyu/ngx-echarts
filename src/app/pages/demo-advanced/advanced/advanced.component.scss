@@ -1,0 +1,35 @@
+.page-header {
+  margin-bottom: 16px;
+
+  h1 {
+    margin-bottom: 4px;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  list-style: none;
+
+  .breadcrumb-item {
+    display: flex;
+
+    + .breadcrumb-item {
+      padding-left: 0.5rem;
+
+      &::before {
+        display: inline-block;
+        padding-right: 0.5rem;
+        color: #6c757d;
+        content: "/";
+      }
+    }
+
+    &.active {
+      color: #6c757d;
+    }
+  }
+}
+

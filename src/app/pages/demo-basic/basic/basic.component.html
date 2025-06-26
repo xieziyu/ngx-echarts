@@ -1,53 +1,40 @@
-<nz-page-header nzTitle="Getting Started">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Getting Started</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
+<div class="page-header">
+  <h1>Getting Started</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/welcome">Home</a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+    </ol>
+  </nav>
+</div>
 
-<nz-divider></nz-divider>
+<mat-divider></mat-divider>
 
-<nz-tabset style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Simple Chart">
-    <ng-template nz-tab>
-      <app-basic-simple></app-basic-simple>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Dataset">
-    <ng-template nz-tab>
-      <app-basic-dataset></app-basic-dataset>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Events">
-    <ng-template nz-tab>
-      <app-basic-events></app-basic-events>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[theme]">
-    <ng-template nz-tab>
-      <app-basic-themes></app-basic-themes>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[loading]">
-    <ng-template nz-tab>
-      <app-basic-loading></app-basic-loading>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[merge]">
-    <ng-template nz-tab>
-      <app-basic-update></app-basic-update>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[initOpts]">
-    <ng-template nz-tab>
-      <app-basic-init-opts></app-basic-init-opts>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="ECharts Instance">
-    <ng-template nz-tab>
-      <app-basic-instance></app-basic-instance>
-    </ng-template>
-  </nz-tab>
-</nz-tabset>
+<div class="demo-tabs-container">
+  <mat-tab-group style="margin-top: 8px" mat-stretch-tabs="false">
+    <mat-tab label="Simple Chart">
+      <app-basic-simple *matTabContent></app-basic-simple>
+    </mat-tab>
+    <mat-tab label="Dataset">
+      <app-basic-dataset *matTabContent></app-basic-dataset>
+    </mat-tab>
+    <mat-tab label="Events">
+      <app-basic-events *matTabContent></app-basic-events>
+    </mat-tab>
+    <mat-tab label="[theme]">
+      <app-basic-themes *matTabContent></app-basic-themes>
+    </mat-tab>
+    <mat-tab label="[loading]">
+      <app-basic-loading *matTabContent></app-basic-loading>
+    </mat-tab>
+    <mat-tab label="[autoResize]">
+      <app-basic-update *matTabContent></app-basic-update>
+    </mat-tab>
+    <mat-tab label="[initOpts]">
+      <app-basic-init-opts *matTabContent></app-basic-init-opts>
+    </mat-tab>
+    <mat-tab label="echarts Instance">
+      <app-basic-instance *matTabContent></app-basic-instance>
+    </mat-tab>
+  </mat-tab-group>
+</div>

@@ -1,40 +1,29 @@
-<ul nz-menu nzTheme="dark" [nzMode]="'inline'" [nzInlineCollapsed]="isCollapsed()">
-  @for (menu of menus; track menu) {
-    @if (!menu.submenus) {
-      <li nz-menu-item [routerLink]="menu.path" [routerLinkActive]="'ant-menu-item-selected'">
-        <span title>
-          <i
-            nz-icon
-            [nzType]="menu.icon"
-            [nzTheme]="menu.iconTheme ? menu.iconTheme : 'outline'"></i>
-          <span class="nav-text">{{ menu.text }}</span>
-        </span>
-      </li>
-    } @else {
-      <li
-        nz-submenu
-        [nzTitle]="menu.text"
-        [nzIcon]="menu.icon"
-        [nzOpen]="menu.pathRegex.test(currentUrl)">
-        <ul>
-          @for (submenu of menu.submenus; track submenu) {
-            <li
-              nz-menu-item
-              [routerLink]="submenu.path"
-              [routerLinkActive]="'ant-menu-item-selected'">
-              <span title>
-                @if (submenu.icon) {
-                  <i
-                    nz-icon
-                    [nzType]="submenu.icon"
-                    [nzTheme]="submenu.iconTheme ? submenu.iconTheme : 'outline'"></i>
-                }
-                <span class="nav-text">{{ submenu.text }}</span>
-              </span>
-            </li>
+@for (menu of menus; track menu) {
+  @if (!menu.submenus) {
+    <button mat-flat-button [routerLink]="menu.path" routerLinkActive="active-menu-item">
+      <mat-icon>{{ menu.icon }}</mat-icon>
+      @if (!isCollapsed()) {
+        <span class="nav-text">{{ menu.text }}</span>
+      }
+    </button>
+  } @else {
+    <button mat-flat-button color="secondary" [matMenuTriggerFor]="submenu">
+      <mat-icon>{{ menu.icon }}</mat-icon>
+      @if (!isCollapsed()) {
+        <span class="nav-text">{{ menu.text }}</span>
+      }
+      <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+    </button>
+
+    <mat-menu #submenu>
+      @for (submenu of menu.submenus; track submenu) {
+        <button mat-menu-item [routerLink]="submenu.path" routerLinkActive="active-menu-item">
+          @if (submenu.icon) {
+            <mat-icon>{{ submenu.icon }}</mat-icon>
           }
-        </ul>
-      </li>
-    }
+          <span class="nav-text">{{ submenu.text }}</span>
+        </button>
+      }
+    </mat-menu>
   }
-</ul>
+}

@@ -1,24 +1,21 @@
-<nz-page-header nzTitle="Tree">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
-    <nz-breadcrumb-item>Heatmap</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
+<div class="page-header">
+  <h1>Heatmap</h1>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/welcome">Home</a></li>
+      <li class="breadcrumb-item">Series</li>
+      <li class="breadcrumb-item active">Heatmap</li>
+    </ol>
+  </nav>
+</div>
 
-<nz-divider></nz-divider>
+<mat-divider></mat-divider>
 
-<nz-tabset style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Calendar Heatmap">
-    <ng-template nz-tab>
-      <app-heatmap-calendar></app-heatmap-calendar>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Discrete Mapping of Color">
-    <ng-template nz-tab>
-      <app-heatmap-discrete></app-heatmap-discrete>
-    </ng-template>
-  </nz-tab>
-</nz-tabset>
+<mat-tab-group style="margin-top: 8px" mat-stretch-tabs="false">
+  <mat-tab label="Calendar Heatmap">
+    <app-heatmap-calendar *matTabContent></app-heatmap-calendar>
+  </mat-tab>
+  <mat-tab label="Discrete Mapping of Color">
+    <app-heatmap-discrete *matTabContent></app-heatmap-discrete>
+  </mat-tab>
+</mat-tab-group>

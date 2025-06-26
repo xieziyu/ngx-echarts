@@ -1,42 +1,26 @@
+@use '@angular/material' as mat;
+
 :host {
+  height: 100vh;
+  width: 100vw;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+
   display: flex;
+  flex-direction: column;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-.app-layout {
-  height: 100vh;
-}
-
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
-  min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
-}
-
-.header-trigger {
-  padding: 20px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  transition:
-    all 0.3s,
-    padding 0s;
-}
-
-.trigger:hover {
-  color: #1890ff;
 }
 
 .sidebar-logo {
   position: relative;
   height: 64px;
   padding-left: 24px;
+  margin-right: 24px;
   overflow: hidden;
   line-height: 64px;
-  background: #001529;
-  transition: all 0.3s;
+  transition: all .3s;
 }
 
 .sidebar-logo img {
@@ -45,43 +29,22 @@
   vertical-align: middle;
 }
 
-nz-header {
-  padding: 0;
+.app-header {
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 2;
+
+  @include mat.toolbar-overrides((
+    container-background-color: #001529,
+  ));
 }
 
-.app-header {
-  position: relative;
-  height: 64px;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.github-logo {
-  padding: 0px 24px;
-  font-size: 25px;
-  cursor: pointer;
-  transition:
-    all 0.3s,
-    padding 0s;
-}
-
-a.github-logo {
-  color: rgba(0, 0, 0, 0.65);
-}
-
-nz-content {
-  margin: 24px;
-  overflow-y: scroll;
+.spacer {
+  flex: 1;
 }
 
 .inner-content {
   padding: 24px;
-  background: #fff;
-  // height: 100%;
+  overflow: auto;
 }
