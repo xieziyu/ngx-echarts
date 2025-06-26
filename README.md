@@ -46,7 +46,7 @@
 
 Latest version @npm:
 
-- `v20.0.0` for Angular 20
+- `v20.0.1` for Angular 20
 - `v19.0.0` for Angular 19
 - `v18.0.0` for Angular 18
 - `v17.2.0` for Angular 17
@@ -63,10 +63,13 @@ A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
 
+- 2025.06.26: v20.0.1
+  - fix: `[theme]` input issue [#28](https://github.com/xieziyu/ngx-echarts-starter/issues/28)
+
 - 2025.06.09: v20.0.0
-  - Feat: Upgrade to angular 20
-  - Feat: Zoneless compatibility
-  - Refactor: Migrate the project to modern angular patterns. (Thanks to [pkurcx](https://github.com/pkurcx))
+  - feat: Upgrade to angular 20
+  - feat: Zoneless compatibility
+  - refactor: Migrate the project to modern angular patterns. (Thanks to [pkurcx](https://github.com/pkurcx))
 
 [CHANGELOG.md](./CHANGELOG.md)
 

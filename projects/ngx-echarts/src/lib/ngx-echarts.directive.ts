@@ -256,7 +256,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
         typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
 
       return load().then(({ init }) =>
-        init(dom, this.theme ?? this.config?.theme, this.initOpts())
+        init(dom, this.theme() ?? this.config?.theme, this.initOpts())
       );
     });
   }
