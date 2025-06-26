@@ -1,45 +1,47 @@
+- 2025.06.26: v20.0.1
+  - fix: `[theme]` input issue [#28](https://github.com/xieziyu/ngx-echarts-starter/issues/28)
 - 2025.06.09: v20.0.0
-  - Feat: Upgrade to angular 20
-  - Feat: Zoneless compatibility
-  - Refactor: Migrate the project to modern angular patterns. (Thanks to [pkurcx](https://github.com/pkurcx))
+  - feat: Upgrade to angular 20
+  - feat: Zoneless compatibility
+  - refactor: Migrate the project to modern angular patterns. (Thanks to [pkurcx](https://github.com/pkurcx))
 - 2024.12.02: v19.0.0
-  - Feat: Upgrade to angular 19
+  - feat: Upgrade to angular 19
   - **BREAKING CHANGES**:
     - According to [issue #443](https://github.com/xieziyu/ngx-echarts/issues/437), we cannot import from `echarts/index.js` using Angular 19. Therefore, we need to perform a custom build and import everything required from `echarts/core`, `echarts/charts`, `echarts/components`, or other specific entry points.
     - `provideEcharts` is REMOVED.
 - 2024.05.25: v18.0.0
-  - Feat: Upgrade to angular 18
+  - feat: Upgrade to angular 18
 - 2024.05.16: v17.2.0
-  - Feat: `provideEcharts` supports default theme config. (by [wheeljs](https://github.com/wheeljs))
-  - Fix: Issue [#413](https://github.com/xieziyu/ngx-echarts/issues/413) (Thanks to [s9ke](https://github.com/s9ke))
+  - feat: `provideEcharts` supports default theme config. (by [wheeljs](https://github.com/wheeljs))
+  - fix: Issue [#413](https://github.com/xieziyu/ngx-echarts/issues/413) (Thanks to [s9ke](https://github.com/s9ke))
 - 2023.11.10: v17.1.0 / v16.2.0:
-  - Feat: Exported standalone `NgxEchartsDirective`, `provideEcharts` and `provideEchartsCore`
+  - feat: Exported standalone `NgxEchartsDirective`, `provideEcharts` and `provideEchartsCore`
 - 2023.11.08: v17.0.1:
-  - Feat: upgrade to Angular 17
+  - feat: upgrade to Angular 17
 - 2023.10.11: v16.1.0:
-  - Feat: Add types to `chartXXX` EventEmitters. Support new events such as: `'selectchanged'`
+  - feat: Add types to `chartXXX` EventEmitters. Support new events such as: `'selectchanged'`
 - 2023.05.10: v16.0.0:
-  - Feat: upgrade to Angular 16
-  - Chore: replaced tslint with eslint.
+  - feat: upgrade to Angular 16
+  - chore: replaced tslint with eslint.
 - 2023.03.27: v15.0.3:
-  - Fix: `[loading]=true` is not triggered when chart initialized.
+  - fix: `[loading]=true` is not triggered when chart initialized.
 - 2023.03.20: v15.0.2:
-  - Fix: unsubscribe ChangeFilter subscriptions onDestroy.
+  - fix: unsubscribe ChangeFilter subscriptions onDestroy.
 - 2022.12.01: v15.0.1:
-  - Feat: Support nullable @Inputs. Issue [#378](https://github.com/xieziyu/ngx-echarts/issues/378)
+  - feat: Support nullable @Inputs. Issue [#378](https://github.com/xieziyu/ngx-echarts/issues/378)
 - 2022.11.23: v15.0.0:
-  - Feat: upgrade to Angular 15
+  - feat: upgrade to Angular 15
 - 2022.06.21: v14.0.0:
-  - Feat: upgrade to Angular 14
+  - feat: upgrade to Angular 14
 - 2021.12.07: v8.0.1:
-  - Fix: NgxEchartsModule.forChild() issue [#334](https://github.com/xieziyu/ngx-echarts/issues/334)
+  - fix: NgxEchartsModule.forChild() issue [#334](https://github.com/xieziyu/ngx-echarts/issues/334)
 - 2021.11.08: v8.0.0 / v7.1.0:
-  - Fix: remove @juggle/resize-observer from the peer dependencies
-  - Perf: fix performance issue [#330](https://github.com/xieziyu/ngx-echarts/issues/330)
+  - fix: remove @juggle/resize-observer from the peer dependencies
+  - perf: fix performance issue [#330](https://github.com/xieziyu/ngx-echarts/issues/330)
 - 2021.05.17: v7.0.0:
-  - Feat: support Angular v11, ECharts v5
-  - Feat: support echart theme object
-  - Perf: resize animation
+  - feat: support Angular v11, ECharts v5
+  - feat: support echart theme object
+  - perf: resize animation
 - 2021.01.10: v6.0.1:
   - [PR #295](https://github.com/xieziyu/ngx-echarts/pull/295): Guard dispose (by [taipeiwu](https://github.com/taipeiwu))
 - 2021.01.10: v6.0.0:
