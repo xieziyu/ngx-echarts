@@ -1,5 +1,5 @@
 <div class="code-block">
-  <nz-tabset nzType="card">
+  <nz-tabs nzType="card">
     @if (htmlCode) {
       <nz-tab nzTitle="html">
         <markdown [data]="htmlCode | language: 'html'"></markdown>
@@ -20,5 +20,5 @@
         <markdown [data]="dataCode | language: 'typescript'"></markdown>
       </nz-tab>
     }
-  </nz-tabset>
+  </nz-tabs>
 </div>
