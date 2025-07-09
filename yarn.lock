@@ -10065,10 +10065,10 @@ ng-packagr@^20.0.0:
   optionalDependencies:
     rollup "^4.24.0"
 
-ng-zorro-antd@20.0.0-beta.0:
-  version "20.0.0-beta.0"
-  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-20.0.0-beta.0.tgz#1ae51c6d500727205ed7c2ed6c05db407f06da97"
-  integrity sha512-dJQVW7IXHog6Twcc3nZPE3cF3Xal0M2oGR+y07Tj0+nU8Y7s2MJ7c2P8YeF8lA8aYwrjaWa25grs4qDaKw4spA==
+ng-zorro-antd@20.0.0:
+  version "20.0.0"
+  resolved "https://registry.yarnpkg.com/ng-zorro-antd/-/ng-zorro-antd-20.0.0.tgz#d0093f1499ca5dedb9f3893575afe723cf2f8f49"
+  integrity sha512-12cQq+JaoBdMtKO+JsDHXdfzFIiF0ocDJ4KSsypzupsUTVJa8/jpfPKnW8b8HZ5aY6scPtnPWKJ/uIrJ/Bwn6A==
   dependencies:
     "@angular/cdk" "^20.0.0"
     "@ant-design/icons-angular" "^20.0.0"
