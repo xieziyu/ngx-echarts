@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NzPageHeaderComponent, NzPageHeaderBreadcrumbDirective } from 'ng-zorro-antd/page-header';
-import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb';
 import { RouterLink } from '@angular/router';
+import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb';
 import { NzDividerComponent } from 'ng-zorro-antd/divider';
-import { NzTabSetComponent, NzTabComponent, NzTabDirective } from 'ng-zorro-antd/tabs';
+import { NzPageHeaderBreadcrumbDirective, NzPageHeaderComponent } from 'ng-zorro-antd/page-header';
+import { NzTabComponent, NzTabDirective, NzTabsComponent } from 'ng-zorro-antd/tabs';
 import { HeatmapCalendarComponent } from './heatmap-calendar/heatmap-calendar.component';
 import { HeatmapDiscreteComponent } from './heatmap-discrete/heatmap-discrete.component';
 
@@ -18,7 +18,7 @@ import { HeatmapDiscreteComponent } from './heatmap-discrete/heatmap-discrete.co
     NzBreadCrumbItemComponent,
     RouterLink,
     NzDividerComponent,
-    NzTabSetComponent,
+    NzTabsComponent,
     NzTabComponent,
     NzTabDirective,
     HeatmapCalendarComponent,
