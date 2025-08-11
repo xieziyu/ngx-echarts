@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-import html from './basic-update.component.html';
-import component from './basic-update.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import html from './basic-update.component.html';
+import component from './basic-update.component.txt';
 // IGNORE END
 
 @Component({
@@ -26,6 +26,8 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
   private value: number;
   private data: DataT[];
   private timer: any;
+
+  private cdr = inject(ChangeDetectorRef);
 
   constructor() {}
 
@@ -101,6 +103,9 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
           },
         ],
       };
+
+      // Manually trigger change detection to ensure updates are detected when not using zone.js
+      this.cdr.detectChanges();
     }, 1000);
   }
 
