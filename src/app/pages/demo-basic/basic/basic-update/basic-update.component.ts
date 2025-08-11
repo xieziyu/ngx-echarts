@@ -104,7 +104,7 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
         ],
       };
 
-      // 手动触发变化检测，确保在不使用 zone.js 时更新能被检测到
+      // Manually trigger change detection to ensure updates are detected when not using zone.js
       this.cdr.detectChanges();
     }, 1000);
   }
