@@ -37,6 +37,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     width?: number | string;
     height?: number | string;
     locale?: string;
+    ssr?: boolean;
+    useDirtyRect?: boolean;
+    useCoarsePointer?: boolean;
+    pointerSize?: number;
   } | null>(null);
   readonly merge = input<EChartsCoreOption | null>(null);
   readonly autoResize = input(true);
