@@ -1,6 +1,6 @@
 {
   "name": "ngx-echarts",
-  "version": "20.0.2",
+  "version": "21.0.0",
   "author": "Xie, Ziyu",
   "license": "MIT",
   "keywords": [
@@ -16,7 +16,7 @@
   "homepage": "https://xieziyu.github.io/ngx-echarts",
   "bugs": "https://github.com/xieziyu/ngx-echarts/issues",
   "peerDependencies": {
-    "@angular/core": ">=20.0.0",
+    "@angular/core": ">=21.0.0",
     "echarts": ">=5.0.0"
   }
 }
