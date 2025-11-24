@@ -1,3 +1,5 @@
+- 2025.11.24: v21.0.0
+  - feat: Upgrade to angular 21
 - 2025.06.26: v20.0.1
   - fix: `[theme]` input issue [#28](https://github.com/xieziyu/ngx-echarts-starter/issues/28)
 - 2025.06.09: v20.0.0
