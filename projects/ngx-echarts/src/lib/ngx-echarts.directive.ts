@@ -148,7 +148,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       // https://github.com/xieziyu/ngx-echarts/issues/413
       this.resizeOb = this.ngZone.runOutsideAngular(
         () =>
-          new window.ResizeObserver(entries => {
+          new window.ResizeObserver((entries) => {
             for (const entry of entries) {
               if (entry.target === this.el.nativeElement) {
                 // Ignore first fire on insertion, no resize actually happened
@@ -166,9 +166,9 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       this.resizeOb.observe(this.el.nativeElement);
     }
 
-    this.changeFilter.notFirstAndEmpty('options', opt => this.onOptionsChange(opt));
-    this.changeFilter.notFirstAndEmpty('merge', opt => this.setOption(opt));
-    this.changeFilter.has<boolean>('loading', v => this.toggleLoading(!!v));
+    this.changeFilter.notFirstAndEmpty('options', (opt) => this.onOptionsChange(opt));
+    this.changeFilter.notFirstAndEmpty('merge', (opt) => this.setOption(opt));
+    this.changeFilter.has<boolean>('loading', (v) => this.toggleLoading(!!v));
     this.changeFilter.notFirst<string | ThemeOption>('theme', () => this.refreshChart());
   }
 
@@ -218,7 +218,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
         ? this.chart.showLoading(this.loadingType(), this.loadingOpts())
         : this.chart.hideLoading();
     } else {
-      this.loadingSub = this.chart$.subscribe(chart =>
+      this.loadingSub = this.chart$.subscribe((chart) =>
         loading ? chart.showLoading(this.loadingType(), this.loadingOpts()) : chart.hideLoading()
       );
     }
@@ -295,7 +295,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     return outputToObservable(this.chartInit).pipe(
       switchMap(
         (chart: any) =>
-          new Observable(observer => {
+          new Observable((observer) => {
             chart.on(eventName, (data: T) => this.ngZone.run(() => observer.next(data)));
             return () => {
               if (this.chart) {

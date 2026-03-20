@@ -27,7 +27,7 @@ for (let dir of dirList) {
   fs.readdir(dir, (err, files) => {
     if (err) throw err;
 
-    files.forEach(file => {
+    files.forEach((file) => {
       if (path.extname(file) === '.ts') {
         const filePath = path.join(dir, file);
         const outputFilePath = path.join(dir, file.replace('.ts', '.txt'));
@@ -37,7 +37,7 @@ for (let dir of dirList) {
           if (err) throw err;
 
           // 写入到 .txt 文件
-          fs.writeFile(outputFilePath, data, err => {
+          fs.writeFile(outputFilePath, data, (err) => {
             if (err) throw err;
             console.log(`${file} -- copied --> ${outputFilePath}`);
           });

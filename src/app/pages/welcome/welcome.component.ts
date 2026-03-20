@@ -10,7 +10,14 @@ import { GithubIconComponent } from '../../shared/github-icon/github-icon.compon
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  imports: [RouterLink, MatButtonModule, MatIconModule, MatCardModule, MarkdownComponent, GithubIconComponent],
+  imports: [
+    RouterLink,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MarkdownComponent,
+    GithubIconComponent,
+  ],
 })
 export class WelcomeComponent {
   copied = signal(false);

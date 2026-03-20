@@ -30,7 +30,7 @@ export class TreeRadialComponent implements OnInit {
 
   ngOnInit(): void {
     this.options = this.http.get<any>('assets/data/flare.json', { responseType: 'json' }).pipe(
-      map(data => ({
+      map((data) => ({
         tooltip: {
           trigger: 'item',
           triggerOn: 'mousemove',

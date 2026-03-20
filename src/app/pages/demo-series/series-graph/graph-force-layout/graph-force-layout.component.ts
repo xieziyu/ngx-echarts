@@ -67,7 +67,7 @@ export class GraphForceLayoutComponent implements OnInit {
             repulsion: 60,
             edgeLength: 2,
           },
-          edges: item.edges.map(e => {
+          edges: item.edges.map((e) => {
             return {
               source: e[0] + '',
               target: e[1] + '',

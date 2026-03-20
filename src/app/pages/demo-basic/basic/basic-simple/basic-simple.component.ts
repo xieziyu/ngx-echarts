@@ -53,17 +53,17 @@ export class BasicSimpleComponent implements OnInit {
           name: 'bar',
           type: 'bar',
           data: data1,
-          animationDelay: idx => idx * 10,
+          animationDelay: (idx) => idx * 10,
         },
         {
           name: 'bar2',
           type: 'bar',
           data: data2,
-          animationDelay: idx => idx * 10 + 100,
+          animationDelay: (idx) => idx * 10 + 100,
         },
       ],
       animationEasing: 'elasticOut',
-      animationDelayUpdate: idx => idx * 5,
+      animationDelayUpdate: (idx) => idx * 5,
     };
   }
 }

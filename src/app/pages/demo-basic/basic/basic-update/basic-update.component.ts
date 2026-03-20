@@ -50,7 +50,7 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
       },
       tooltip: {
         trigger: 'axis',
-        formatter: params => {
+        formatter: (params) => {
           params = params[0];
           const date = new Date(params.name);
           return (

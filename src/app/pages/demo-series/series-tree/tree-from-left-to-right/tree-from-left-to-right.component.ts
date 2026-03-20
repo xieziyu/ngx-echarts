@@ -31,7 +31,7 @@ export class TreeFromLeftToRightComponent implements OnInit {
 
   ngOnInit(): void {
     this.options = this.http.get<any>('assets/data/flare.json', { responseType: 'json' }).pipe(
-      map(data => {
+      map((data) => {
         util.each(
           data.children,
           (datum: any, index: number) => index % 2 === 0 && (datum.collapsed = true)

@@ -4,11 +4,13 @@
 // Single theme definition — colors use CSS light-dark() automatically.
 // Switching is done via color-scheme property, not separate theme definitions.
 html {
-  @include mat.theme((
-    color: mat.$azure-palette,
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
 body {

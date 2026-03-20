@@ -18,10 +18,7 @@
       </a>
     }
     @if (seriesMenu) {
-      <button
-        mat-button
-        [matMenuTriggerFor]="seriesDropdown"
-        [class.active-link]="seriesActive()">
+      <button mat-button [matMenuTriggerFor]="seriesDropdown" [class.active-link]="seriesActive()">
         {{ seriesMenu.text }}
         <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
       </button>

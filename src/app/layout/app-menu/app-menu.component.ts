@@ -33,10 +33,10 @@ export class AppMenuComponent {
   constructor() {
     const router = this.router;
 
-    router.events.pipe(filter(e => e instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
+    router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe((e: NavigationEnd) => {
       this.currentUrl = e.url;
     });
-    this.menus = APP_MENUS.map(m => ({
+    this.menus = APP_MENUS.map((m) => ({
       path: m.path,
       pathRegex: new RegExp(m.path),
       text: m.text,

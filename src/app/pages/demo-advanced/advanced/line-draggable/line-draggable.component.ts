@@ -37,7 +37,7 @@ export class LineDraggableComponent implements OnDestroy {
     },
     tooltip: {
       triggerOn: 'none',
-      formatter: params =>
+      formatter: (params) =>
         'X: ' + params.data[0].toFixed(2) + '<br>Y: ' + params.data[1].toFixed(2),
     },
     grid: {},
@@ -111,7 +111,7 @@ export class LineDraggableComponent implements OnDestroy {
       });
     };
 
-    const showTooltip = dataIndex => {
+    const showTooltip = (dataIndex) => {
       myChart.dispatchAction({
         type: 'showTip',
         seriesIndex: 0,
@@ -127,7 +127,7 @@ export class LineDraggableComponent implements OnDestroy {
 
     const updatePosition = () => {
       myChart.setOption({
-        graphic: util.map(Data, item => ({
+        graphic: util.map(Data, (item) => ({
           position: myChart.convertToPixel({ gridIndex: 0 }, item),
         })),
       });
