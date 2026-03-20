@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
+import { Component, signal } from '@angular/core';
 import { ConnectChartsComponent } from './connect-charts/connect-charts.component';
 import { LineDraggableComponent } from './line-draggable/line-draggable.component';
 
@@ -7,12 +6,9 @@ import { LineDraggableComponent } from './line-draggable/line-draggable.componen
   selector: 'app-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.scss'],
-  imports: [
-    MatTabsModule,
-    ConnectChartsComponent,
-    LineDraggableComponent,
-  ],
+  imports: [ConnectChartsComponent, LineDraggableComponent],
 })
 export class AdvancedComponent {
-  constructor() {}
+  selectedIndex = signal(0);
+  tabs = [{ label: 'Connect Charts' }, { label: 'Draggable Chart' }];
 }

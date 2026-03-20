@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { MatTabsModule } from '@angular/material/tabs';
+import { Component, signal } from '@angular/core';
 import { BasicDatasetComponent } from './basic-dataset/basic-dataset.component';
 import { BasicEventsComponent } from './basic-events/basic-events.component';
 import { BasicInitOptsComponent } from './basic-init-opts/basic-init-opts.component';
@@ -14,7 +13,6 @@ import { BasicUpdateComponent } from './basic-update/basic-update.component';
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
   imports: [
-    MatTabsModule,
     BasicSimpleComponent,
     BasicDatasetComponent,
     BasicEventsComponent,
@@ -26,5 +24,15 @@ import { BasicUpdateComponent } from './basic-update/basic-update.component';
   ],
 })
 export class BasicComponent {
-  constructor() {}
+  selectedIndex = signal(0);
+  tabs = [
+    { label: 'Simple Chart' },
+    { label: 'Dataset' },
+    { label: 'Events' },
+    { label: '[theme]' },
+    { label: '[loading]' },
+    { label: '[merge]' },
+    { label: '[initOpts]' },
+    { label: 'ECharts Instance' },
+  ];
 }

@@ -1,8 +1,19 @@
-<mat-tab-group>
-  <mat-tab label="Connect Charts">
-    <app-connect-charts></app-connect-charts>
-  </mat-tab>
-  <mat-tab label="Draggable Chart">
-    <app-line-draggable></app-line-draggable>
-  </mat-tab>
-</mat-tab-group>
+<div class="demo-layout">
+  <nav class="demo-sidebar">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button [class.active]="selectedIndex() === i" (click)="selectedIndex.set(i)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+  <div class="demo-content">
+    @switch (selectedIndex()) {
+      @case (0) {
+        <app-connect-charts />
+      }
+      @case (1) {
+        <app-line-draggable />
+      }
+    }
+  </div>
+</div>

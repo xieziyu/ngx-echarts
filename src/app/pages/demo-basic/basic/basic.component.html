@@ -1,26 +1,37 @@
-<mat-tab-group>
-  <mat-tab label="Simple Chart">
-    <app-basic-simple></app-basic-simple>
-  </mat-tab>
-  <mat-tab label="Dataset">
-    <app-basic-dataset></app-basic-dataset>
-  </mat-tab>
-  <mat-tab label="Events">
-    <app-basic-events></app-basic-events>
-  </mat-tab>
-  <mat-tab label="[theme]">
-    <app-basic-themes></app-basic-themes>
-  </mat-tab>
-  <mat-tab label="[loading]">
-    <app-basic-loading></app-basic-loading>
-  </mat-tab>
-  <mat-tab label="[merge]">
-    <app-basic-update></app-basic-update>
-  </mat-tab>
-  <mat-tab label="[initOpts]">
-    <app-basic-init-opts></app-basic-init-opts>
-  </mat-tab>
-  <mat-tab label="ECharts Instance">
-    <app-basic-instance></app-basic-instance>
-  </mat-tab>
-</mat-tab-group>
+<div class="demo-layout">
+  <nav class="demo-sidebar">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button [class.active]="selectedIndex() === i" (click)="selectedIndex.set(i)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+  <div class="demo-content">
+    @switch (selectedIndex()) {
+      @case (0) {
+        <app-basic-simple />
+      }
+      @case (1) {
+        <app-basic-dataset />
+      }
+      @case (2) {
+        <app-basic-events />
+      }
+      @case (3) {
+        <app-basic-themes />
+      }
+      @case (4) {
+        <app-basic-loading />
+      }
+      @case (5) {
+        <app-basic-update />
+      }
+      @case (6) {
+        <app-basic-init-opts />
+      }
+      @case (7) {
+        <app-basic-instance />
+      }
+    }
+  </div>
+</div>

@@ -1,24 +1,24 @@
 <div class="code-block">
   <mat-tab-group>
-      @if (htmlCode) {
-        <mat-tab label="html">
-          <markdown [data]="htmlCode | language: 'html'"></markdown>
-        </mat-tab>
-      }
-      @if (componentCode) {
-        <mat-tab label="component">
-          <markdown [data]="componentCode | language: 'typescript'"></markdown>
-        </mat-tab>
-      }
-      @if (scssCode) {
-        <mat-tab label="scss">
-          <markdown [data]="scssCode | language: 'scss'"></markdown>
-        </mat-tab>
-      }
-      @if (dataCode) {
-        <mat-tab label="data">
-          <markdown [data]="dataCode | language: 'typescript'"></markdown>
-        </mat-tab>
-      }
-    </mat-tab-group>
+    @if (htmlCode) {
+      <mat-tab label="html">
+        <markdown [data]="htmlCode | language: 'html'"></markdown>
+      </mat-tab>
+    }
+    @if (componentCode) {
+      <mat-tab label="component">
+        <markdown [data]="componentCode | language: 'typescript'"></markdown>
+      </mat-tab>
+    }
+    @if (scssCode) {
+      <mat-tab label="scss">
+        <markdown [data]="scssCode | language: 'scss'"></markdown>
+      </mat-tab>
+    }
+    @if (dataCode) {
+      <mat-tab label="data">
+        <markdown [data]="dataCode | language: 'typescript'"></markdown>
+      </mat-tab>
+    }
+  </mat-tab-group>
 </div>
