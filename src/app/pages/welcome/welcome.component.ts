@@ -32,15 +32,16 @@ export class WelcomeComponent {
   scriptText = `
   ## Install
   \`\`\`bash
-  # if you use npm
-  npm install echarts --save
-  npm install ngx-echarts --save
-  # or if you use yarn
+  # npm
+  npm install echarts ngx-echarts
+  # yarn
   yarn add echarts ngx-echarts
+  # pnpm
+  pnpm add echarts ngx-echarts
   \`\`\`
 `;
   importText = `
-  ## Import Standalone Directive
+  ## Standalone Directive
   \`\`\`typescript
   import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
   import * as echarts from 'echarts/core';
@@ -51,9 +52,9 @@ export class WelcomeComponent {
 
   @Component({
     selector: 'app-root',
-    imports: [CommonModule, NgxEchartsDirective],
+    imports: [NgxEchartsDirective],
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
+    styleUrl: './app.component.scss',
     providers: [
       provideEchartsCore({ echarts }),
     ]
@@ -62,7 +63,7 @@ export class WelcomeComponent {
   \`\`\`
 `;
   importNgModuleText = `
-  ## Import NgModule
+  ## NgModule
   \`\`\`typescript
   import { NgxEchartsModule } from 'ngx-echarts';
   import * as echarts from 'echarts/core';
@@ -73,8 +74,7 @@ export class WelcomeComponent {
 
   @NgModule({
     imports: [
-      ...,
-      NgxEchartsModule.forRoot({ echarts })
+      NgxEchartsModule.forRoot({ echarts }),
     ],
   })
   export class AppModule {}
