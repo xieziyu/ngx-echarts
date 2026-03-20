@@ -29,6 +29,7 @@ export class AppComponent {
   readonly themeService = inject(ThemeService);
   menus = APP_MENUS;
   sidenavOpened = false;
+  currentYear = new Date().getFullYear();
 
   get topLevelMenus() {
     return this.menus.filter(m => !m.submenus);

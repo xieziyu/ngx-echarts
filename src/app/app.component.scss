@@ -110,6 +110,37 @@
   box-sizing: border-box;
 }
 
+.app-footer {
+  border-top: 1px solid var(--app-border);
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--app-text-secondary);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  a {
+    color: var(--app-accent);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-sep {
+  color: var(--app-border);
+}
+
 @media (max-width: 768px) {
   .toolbar-nav {
     display: none;
