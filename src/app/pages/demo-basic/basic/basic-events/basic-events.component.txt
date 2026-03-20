@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import type { ECActionEvent } from '../../../../shared/interface';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
@@ -7,6 +7,7 @@ import html from './basic-events.component.html';
 import component from './basic-events.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 // IGNORE END
 
 @Component({
@@ -20,6 +21,7 @@ export class BasicEventsComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
+  readonly themeService = inject(ThemeService);
   options: EChartsCoreOption;
 
   constructor() {}

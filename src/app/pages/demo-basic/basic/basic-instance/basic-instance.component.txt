@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 import html from './basic-instance.component.html';
 import component from './basic-instance.component.txt';
 // IGNORE END
@@ -17,6 +18,7 @@ import component from './basic-instance.component.txt';
 })
 export class BasicInstanceComponent {
   private snackBar = inject(MatSnackBar);
+  readonly themeService = inject(ThemeService);
 
   // IGNORE START
   html = html;

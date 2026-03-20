@@ -21,9 +21,6 @@ export class GraphSimpleComponent {
   // IGNORE END
   readonly themeService = inject(ThemeService);
   options: EChartsCoreOption = {
-    title: {
-      text: 'Simple Graph',
-    },
     tooltip: {},
     animationDurationUpdate: 1500,
     animationEasingUpdate: 'quinticInOut',
