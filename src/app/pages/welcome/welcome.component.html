@@ -1,45 +1,55 @@
-<div class="text-center">
-  <a href="https://xieziyu.github.io/ngx-echarts">
-    <img src="assets/img/logo.svg" alt="Logo" width="80" />
-  </a>
-  <h1 align="center">NGX-ECHARTS</h1>
-  <p>
-    <img src="https://img.shields.io/npm/v/ngx-echarts.svg" alt="version" class="mr-2" />
-    <img src="https://img.shields.io/npm/dm/ngx-echarts.svg" alt="downloads" />
-  </p>
-  <p class="lead text-muted">
-    ngx-echarts is an <strong class="text-danger">Angular</strong>(ver >= 2.x) directive for
-    <strong class="text-danger">ECharts</strong> (ver >= 3.x)
-  </p>
-  <p>
-    <a
-      href="https://github.com/xieziyu/ngx-echarts"
-      target="blank"
-      nz-button
-      nzType="primary"
-      class="mr-2"
-      ><i nz-icon nzType="github" nzTheme="outline"></i> GitHub</a
-    >
-    <a
-      href="https://xieziyu.github.io/ngx-echarts/api-doc"
-      target="blank"
-      nz-button
-      nzType="default"
-      ><i nz-icon nzType="read" nzTheme="outline"></i> Documents</a
-    >
-  </p>
-</div>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Angular 21 + ECharts 6</div>
+    <h1>ngx-<span class="accent">echarts</span></h1>
+    <p class="tagline">Reactive, declarative Apache ECharts for Angular. Build powerful data visualizations with a simple directive.</p>
 
-<div class="container">
-  <div nz-row nzGutter="16">
-    <div nz-col nzSpan="24">
-      <markdown ngPreserveWhitespaces [data]="scriptText"></markdown>
+    <div class="install-card">
+      <code>npm install ngx-echarts echarts</code>
     </div>
-    <div nz-col nzSpan="24">
-      <markdown ngPreserveWhitespaces [data]="importText"></markdown>
-    </div>
-    <div nz-col nzSpan="24">
-      <markdown ngPreserveWhitespaces [data]="importNgModuleText"></markdown>
+
+    <div class="hero-actions">
+      <a mat-flat-button color="primary" routerLink="/basic">
+        <mat-icon>arrow_forward</mat-icon> Get Started
+      </a>
+      <a mat-stroked-button href="https://github.com/xieziyu/ngx-echarts" target="_blank">
+        <mat-icon>code</mat-icon> View on GitHub
+      </a>
     </div>
   </div>
-</div>
+</section>
+
+<section class="features">
+  <div class="section-header">
+    <h2>Why ngx-echarts?</h2>
+    <p>Everything you need to build production-grade charts in Angular</p>
+  </div>
+  <div class="features-grid">
+    <mat-card class="feature-card">
+      <mat-icon class="feature-icon">change_history</mat-icon>
+      <h3>Angular 21</h3>
+      <p>Built for the latest Angular with standalone components, signals, and zoneless change detection support.</p>
+    </mat-card>
+    <mat-card class="feature-card">
+      <mat-icon class="feature-icon">bar_chart</mat-icon>
+      <h3>ECharts 6</h3>
+      <p>Full support for Apache ECharts 6 with tree-shakable imports and custom builds for minimal bundle size.</p>
+    </mat-card>
+    <mat-card class="feature-card">
+      <mat-icon class="feature-icon">code</mat-icon>
+      <h3>TypeScript</h3>
+      <p>Complete type definitions with strict typing for chart options, events, and configuration objects.</p>
+    </mat-card>
+    <mat-card class="feature-card">
+      <mat-icon class="feature-icon">devices</mat-icon>
+      <h3>Responsive</h3>
+      <p>Auto-resize support out of the box. Charts adapt seamlessly to container size changes.</p>
+    </mat-card>
+  </div>
+</section>
+
+<section class="docs-section">
+  <markdown ngPreserveWhitespaces [data]="scriptText"></markdown>
+  <markdown ngPreserveWhitespaces [data]="importText"></markdown>
+  <markdown ngPreserveWhitespaces [data]="importNgModuleText"></markdown>
+</section>

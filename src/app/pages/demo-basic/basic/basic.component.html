@@ -1,53 +1,26 @@
-<nz-page-header nzTitle="Getting Started">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Getting Started</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
-
-<nz-divider></nz-divider>
-
-<nz-tabs style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Simple Chart">
-    <ng-template nz-tab>
-      <app-basic-simple></app-basic-simple>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Dataset">
-    <ng-template nz-tab>
-      <app-basic-dataset></app-basic-dataset>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Events">
-    <ng-template nz-tab>
-      <app-basic-events></app-basic-events>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[theme]">
-    <ng-template nz-tab>
-      <app-basic-themes></app-basic-themes>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[loading]">
-    <ng-template nz-tab>
-      <app-basic-loading></app-basic-loading>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[merge]">
-    <ng-template nz-tab>
-      <app-basic-update></app-basic-update>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="[initOpts]">
-    <ng-template nz-tab>
-      <app-basic-init-opts></app-basic-init-opts>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="ECharts Instance">
-    <ng-template nz-tab>
-      <app-basic-instance></app-basic-instance>
-    </ng-template>
-  </nz-tab>
-</nz-tabs>
+<mat-tab-group>
+  <mat-tab label="Simple Chart">
+    <app-basic-simple></app-basic-simple>
+  </mat-tab>
+  <mat-tab label="Dataset">
+    <app-basic-dataset></app-basic-dataset>
+  </mat-tab>
+  <mat-tab label="Events">
+    <app-basic-events></app-basic-events>
+  </mat-tab>
+  <mat-tab label="[theme]">
+    <app-basic-themes></app-basic-themes>
+  </mat-tab>
+  <mat-tab label="[loading]">
+    <app-basic-loading></app-basic-loading>
+  </mat-tab>
+  <mat-tab label="[merge]">
+    <app-basic-update></app-basic-update>
+  </mat-tab>
+  <mat-tab label="[initOpts]">
+    <app-basic-init-opts></app-basic-init-opts>
+  </mat-tab>
+  <mat-tab label="ECharts Instance">
+    <app-basic-instance></app-basic-instance>
+  </mat-tab>
+</mat-tab-group>

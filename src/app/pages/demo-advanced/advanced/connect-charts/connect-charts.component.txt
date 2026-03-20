@@ -4,7 +4,6 @@ import { getInstanceByDom, connect } from 'echarts/core';
 // IGNORE START
 import html from './connect-charts.component.html';
 import component from './connect-charts.component.txt';
-import { NzRowDirective, NzColDirective } from 'ng-zorro-antd/grid';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 // IGNORE END
@@ -13,7 +12,7 @@ import { CodeBlockComponent } from '../../../../shared/code-block/code-block.com
   selector: 'app-connect-charts',
   templateUrl: './connect-charts.component.html',
   styleUrls: ['./connect-charts.component.scss'],
-  imports: [NzRowDirective, NzColDirective, NgxEchartsDirective, CodeBlockComponent],
+  imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class ConnectChartsComponent implements AfterViewInit {
   // IGNORE START

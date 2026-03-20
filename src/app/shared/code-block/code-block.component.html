@@ -1,24 +1,29 @@
-<div class="code-block">
-  <nz-tabs nzType="card">
-    @if (htmlCode) {
-      <nz-tab nzTitle="html">
-        <markdown [data]="htmlCode | language: 'html'"></markdown>
-      </nz-tab>
-    }
-    @if (componentCode) {
-      <nz-tab nzTitle="component">
-        <markdown [data]="componentCode | language: 'typescript'"></markdown>
-      </nz-tab>
-    }
-    @if (scssCode) {
-      <nz-tab nzTitle="scss">
-        <markdown [data]="scssCode | language: 'scss'"></markdown>
-      </nz-tab>
-    }
-    @if (dataCode) {
-      <nz-tab nzTitle="data">
-        <markdown [data]="dataCode | language: 'typescript'"></markdown>
-      </nz-tab>
-    }
-  </nz-tabs>
+<div class="code-block-wrapper">
+  <div class="chart-area">
+    <ng-content></ng-content>
+  </div>
+  <div class="code-area">
+    <mat-tab-group>
+      @if (htmlCode) {
+        <mat-tab label="html">
+          <markdown [data]="htmlCode | language: 'html'"></markdown>
+        </mat-tab>
+      }
+      @if (componentCode) {
+        <mat-tab label="component">
+          <markdown [data]="componentCode | language: 'typescript'"></markdown>
+        </mat-tab>
+      }
+      @if (scssCode) {
+        <mat-tab label="scss">
+          <markdown [data]="scssCode | language: 'scss'"></markdown>
+        </mat-tab>
+      }
+      @if (dataCode) {
+        <mat-tab label="data">
+          <markdown [data]="dataCode | language: 'typescript'"></markdown>
+        </mat-tab>
+      }
+    </mat-tab-group>
+  </div>
 </div>

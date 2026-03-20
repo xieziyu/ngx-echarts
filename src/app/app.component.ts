@@ -1,28 +1,38 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NzIconDirective } from 'ng-zorro-antd/icon';
-import {
-  NzContentComponent,
-  NzHeaderComponent,
-  NzLayoutComponent,
-  NzSiderComponent,
-} from 'ng-zorro-antd/layout';
-import { AppMenuComponent } from './layout/app-menu/app-menu.component';
+import { Component, inject } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { APP_MENUS } from './menus';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   imports: [
-    NzLayoutComponent,
-    NzSiderComponent,
-    AppMenuComponent,
-    NzHeaderComponent,
-    NzIconDirective,
-    NzContentComponent,
     RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatSidenavModule,
   ],
 })
 export class AppComponent {
-  isCollapsed = false;
+  readonly themeService = inject(ThemeService);
+  menus = APP_MENUS;
+  sidenavOpened = false;
+
+  get topLevelMenus() {
+    return this.menus.filter(m => !m.submenus);
+  }
+
+  get seriesMenu() {
+    return this.menus.find(m => m.submenus);
+  }
 }

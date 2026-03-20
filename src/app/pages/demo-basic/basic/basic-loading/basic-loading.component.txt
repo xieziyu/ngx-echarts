@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
-import { NzButtonComponent } from 'ng-zorro-antd/button';
-import { NzWaveDirective } from 'ng-zorro-antd/core/wave';
+import { MatButtonModule } from '@angular/material/button';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
 import html from './basic-loading.component.html';
@@ -13,7 +12,7 @@ import component from './basic-loading.component.txt';
   selector: 'app-basic-loading',
   templateUrl: './basic-loading.component.html',
   styleUrls: ['./basic-loading.component.scss'],
-  imports: [NzButtonComponent, NzWaveDirective, NgxEchartsDirective, CodeBlockComponent],
+  imports: [MatButtonModule, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicLoadingComponent {
   // IGNORE START

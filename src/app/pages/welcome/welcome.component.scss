@@ -1,0 +1,131 @@
+.hero {
+  text-align: center;
+  padding: 64px 24px;
+  background: linear-gradient(135deg, var(--app-bg) 0%, var(--app-surface) 50%, var(--app-bg) 100%);
+  border-radius: 16px;
+  margin-bottom: 48px;
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--app-accent);
+  border: 1px solid var(--app-accent);
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.accent {
+  color: var(--app-accent);
+}
+
+.tagline {
+  font-size: 18px;
+  color: var(--app-text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.install-card {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  margin-bottom: 32px;
+
+  code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+  }
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.features {
+  margin-bottom: 48px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  h2 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: var(--app-text-secondary);
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  padding: 24px;
+  text-align: center;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+
+  .feature-icon {
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+    color: var(--app-accent);
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--app-text-secondary);
+    line-height: 1.5;
+  }
+}
+
+.docs-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  .tagline {
+    font-size: 16px;
+  }
+}
