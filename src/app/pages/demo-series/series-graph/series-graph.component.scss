@@ -7,6 +7,7 @@
   width: 200px;
   flex-shrink: 0;
   border-right: 1px solid var(--app-border);
+  background: var(--app-surface);
   display: flex;
   flex-direction: column;
   padding: 8px 0;
@@ -21,16 +22,18 @@
     border-left: 3px solid transparent;
     transition:
       background-color 0.15s,
-      border-color 0.15s;
+      border-color 0.15s,
+      color 0.15s;
 
     &:hover {
-      background-color: var(--mat-sys-surface-variant);
+      background-color: var(--app-glow);
+      color: var(--app-accent);
     }
 
     &.active {
-      color: var(--mat-sys-primary);
-      border-left-color: var(--mat-sys-primary);
-      background-color: var(--mat-sys-secondary-container);
+      color: var(--app-accent);
+      border-left-color: var(--app-accent);
+      background-color: var(--app-glow);
       font-weight: 500;
     }
   }
@@ -63,7 +66,7 @@
 
       &.active {
         border-left-color: transparent;
-        border-bottom-color: var(--mat-sys-primary);
+        border-bottom-color: var(--app-accent);
       }
     }
   }

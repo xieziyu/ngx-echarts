@@ -1,9 +1,10 @@
 .hero {
   text-align: center;
   padding: 64px 24px;
-  background: linear-gradient(135deg, var(--app-bg) 0%, var(--app-surface) 50%, var(--app-bg) 100%);
+  background: linear-gradient(135deg, var(--app-hero-from) 0%, var(--app-hero-via) 50%, var(--app-hero-to) 100%);
   border-radius: 16px;
   margin-bottom: 48px;
+  border: 1px solid var(--app-border);
 }
 
 .hero-inner {
@@ -26,6 +27,7 @@
   font-weight: 500;
   color: var(--app-accent);
   border: 1px solid var(--app-accent);
+  background: var(--app-glow);
   margin-bottom: 16px;
 }
 
@@ -64,12 +66,14 @@ h1 {
   padding: 8px 8px 8px 24px;
   background: var(--app-surface);
   border: 1px solid var(--app-border);
+  border-left: 3px solid var(--app-accent);
   border-radius: 8px;
   margin-bottom: 32px;
 
   code {
     font-family: 'Roboto Mono', monospace;
     font-size: 14px;
+    color: var(--app-accent);
   }
 }
 
@@ -92,6 +96,7 @@ h1 {
     font-size: 28px;
     font-weight: 500;
     margin-bottom: 8px;
+    color: var(--app-accent);
   }
 
   p {
@@ -111,13 +116,30 @@ h1 {
   background: var(--app-surface);
   border: 1px solid var(--app-border);
   border-radius: 12px;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 20px var(--app-glow);
+  }
 
   .feature-icon {
     font-size: 36px;
     width: 36px;
     height: 36px;
-    color: var(--app-accent);
     margin-bottom: 16px;
+  }
+
+  &:nth-child(1) .feature-icon {
+    color: var(--app-color-blue);
+  }
+  &:nth-child(2) .feature-icon {
+    color: var(--app-color-emerald);
+  }
+  &:nth-child(3) .feature-icon {
+    color: var(--app-color-amber);
+  }
+  &:nth-child(4) .feature-icon {
+    color: var(--app-color-rose);
   }
 
   h3 {
