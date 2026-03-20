@@ -10,8 +10,6 @@ import { NgxEchartsDirective, provideEchartsCore } from 'ngx-echarts';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppRoutingModule } from './app/app-routing.module';
 import { AppComponent } from './app/app.component';
-import { LayoutModule } from './app/layout/layout.module';
-import { NgZorroCustomModule } from './app/shared/ng-zorro-custom.module';
 import { environment } from './environments/environment';
 
 // Import echarts themes
@@ -70,10 +68,8 @@ bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
       BrowserModule,
-      LayoutModule,
       AppRoutingModule,
       FormsModule,
-      NgZorroCustomModule,
       MarkdownModule.forRoot(),
       NgxEchartsDirective
     ),
@@ -86,4 +82,4 @@ bootstrapApplication(AppComponent, {
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
   ],
-}).catch(err => console.error(err));
+}).catch((err) => console.error(err));

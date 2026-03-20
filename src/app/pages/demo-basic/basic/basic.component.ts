@@ -1,9 +1,4 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { NzBreadCrumbComponent, NzBreadCrumbItemComponent } from 'ng-zorro-antd/breadcrumb';
-import { NzDividerComponent } from 'ng-zorro-antd/divider';
-import { NzPageHeaderBreadcrumbDirective, NzPageHeaderComponent } from 'ng-zorro-antd/page-header';
-import { NzTabComponent, NzTabDirective, NzTabsComponent } from 'ng-zorro-antd/tabs';
+import { Component, signal } from '@angular/core';
 import { BasicDatasetComponent } from './basic-dataset/basic-dataset.component';
 import { BasicEventsComponent } from './basic-events/basic-events.component';
 import { BasicInitOptsComponent } from './basic-init-opts/basic-init-opts.component';
@@ -18,15 +13,6 @@ import { BasicUpdateComponent } from './basic-update/basic-update.component';
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
   imports: [
-    NzPageHeaderComponent,
-    NzBreadCrumbComponent,
-    NzPageHeaderBreadcrumbDirective,
-    NzBreadCrumbItemComponent,
-    RouterLink,
-    NzDividerComponent,
-    NzTabsComponent,
-    NzTabComponent,
-    NzTabDirective,
     BasicSimpleComponent,
     BasicDatasetComponent,
     BasicEventsComponent,
@@ -38,5 +24,15 @@ import { BasicUpdateComponent } from './basic-update/basic-update.component';
   ],
 })
 export class BasicComponent {
-  constructor() {}
+  selectedIndex = signal(0);
+  tabs = [
+    { label: 'Simple Chart' },
+    { label: 'Dataset' },
+    { label: 'Events' },
+    { label: '[theme]' },
+    { label: '[loading]' },
+    { label: '[merge]' },
+    { label: '[initOpts]' },
+    { label: 'ECharts Instance' },
+  ];
 }

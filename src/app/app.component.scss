@@ -1,87 +1,156 @@
 :host {
   display: flex;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.app-layout {
-  height: 100vh;
-}
-
-.menu-sidebar {
-  position: relative;
-  z-index: 10;
+  flex-direction: column;
   min-height: 100vh;
-  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
 }
 
-.header-trigger {
-  padding: 20px 24px;
-  font-size: 20px;
-  cursor: pointer;
-  transition:
-    all 0.3s,
-    padding 0s;
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--app-bg);
+  border-bottom: 1px solid var(--app-border);
+  border-top: 2px solid var(--app-accent);
+  box-shadow: 0 2px 12px var(--app-glow);
+  gap: 8px;
 }
 
-.trigger:hover {
-  color: #1890ff;
+.mobile-menu-btn {
+  display: none;
 }
 
-.sidebar-logo {
-  position: relative;
-  height: 64px;
-  padding-left: 24px;
-  overflow: hidden;
-  line-height: 64px;
-  background: #001529;
-  transition: all 0.3s;
-}
-
-.sidebar-logo img {
-  display: inline-block;
-  height: 40px;
-  vertical-align: middle;
-}
-
-nz-header {
-  padding: 0;
-  width: 100%;
-  z-index: 2;
-}
-
-.app-header {
-  position: relative;
-  height: 64px;
-  padding: 0;
-  background: #fff;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+.toolbar-logo {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 8px;
+  white-space: nowrap;
 }
 
-.github-logo {
-  padding: 0px 24px;
-  font-size: 25px;
-  cursor: pointer;
-  transition:
-    all 0.3s,
-    padding 0s;
+.logo-icon {
+  height: 32px;
+  width: auto;
 }
 
-a.github-logo {
-  color: rgba(0, 0, 0, 0.65);
+.logo-text {
+  font-size: 20px;
+  font-weight: 500;
 }
 
-nz-content {
-  margin: 24px;
-  overflow-y: scroll;
+.github-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
-.inner-content {
+.toolbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 16px;
+
+  a,
+  button {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+.active-link {
+  color: var(--app-accent) !important;
+  background: var(--app-glow);
+}
+
+.toolbar-spacer {
+  flex: 1;
+}
+
+.sidenav-container {
+  flex: 1;
+  margin-top: 64px;
+}
+
+.mobile-sidenav {
+  width: 260px;
+  padding: 16px 0;
+}
+
+.sidenav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: flex-start;
+  padding: 8px 24px;
+  text-transform: none;
+  font-size: 14px;
+}
+
+.sidenav-sub {
+  padding-left: 48px;
+}
+
+.sidenav-group-label {
+  padding: 16px 24px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--app-text-secondary);
+}
+
+.content-area {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 24px;
-  background: #fff;
-  // height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.app-footer {
+  border-top: 1px solid var(--app-border);
+  background: var(--app-surface);
+  padding: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--app-text-secondary);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  a {
+    color: var(--app-accent);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-sep {
+  color: var(--app-border);
+}
+
+@media (max-width: 768px) {
+  .toolbar-nav {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
 }

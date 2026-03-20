@@ -1,24 +1,24 @@
 <div class="code-block">
-  <nz-tabs nzType="card">
+  <mat-tab-group>
     @if (htmlCode) {
-      <nz-tab nzTitle="html">
+      <mat-tab label="html">
         <markdown [data]="htmlCode | language: 'html'"></markdown>
-      </nz-tab>
+      </mat-tab>
     }
     @if (componentCode) {
-      <nz-tab nzTitle="component">
+      <mat-tab label="component">
         <markdown [data]="componentCode | language: 'typescript'"></markdown>
-      </nz-tab>
+      </mat-tab>
     }
     @if (scssCode) {
-      <nz-tab nzTitle="scss">
+      <mat-tab label="scss">
         <markdown [data]="scssCode | language: 'scss'"></markdown>
-      </nz-tab>
+      </mat-tab>
     }
     @if (dataCode) {
-      <nz-tab nzTitle="data">
+      <mat-tab label="data">
         <markdown [data]="dataCode | language: 'typescript'"></markdown>
-      </nz-tab>
+      </mat-tab>
     }
-  </nz-tabs>
+  </mat-tab-group>
 </div>

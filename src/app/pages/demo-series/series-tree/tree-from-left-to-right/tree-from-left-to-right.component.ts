@@ -9,6 +9,7 @@ import html from './tree-from-left-to-right.component.html';
 import component from './tree-from-left-to-right.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 import { AsyncPipe } from '@angular/common';
 // IGNORE END
 
@@ -20,6 +21,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class TreeFromLeftToRightComponent implements OnInit {
   private http = inject(HttpClient);
+  readonly themeService = inject(ThemeService);
 
   // IGNORE START
   html = html;
@@ -29,7 +31,7 @@ export class TreeFromLeftToRightComponent implements OnInit {
 
   ngOnInit(): void {
     this.options = this.http.get<any>('assets/data/flare.json', { responseType: 'json' }).pipe(
-      map(data => {
+      map((data) => {
         util.each(
           data.children,
           (datum: any, index: number) => index % 2 === 0 && (datum.collapsed = true)

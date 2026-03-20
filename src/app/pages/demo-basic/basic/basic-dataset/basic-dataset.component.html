@@ -1,8 +1,13 @@
 <!-- DEMO START -->
 <div class="button-groups">
-  <button (click)="RandomDataset()" nz-button nzType="default">Random Dataset</button>
+  <button (click)="RandomDataset()" mat-stroked-button>Random Dataset</button>
 </div>
-<div echarts [options]="options" [merge]="mergeOptions" class="demo-chart"></div>
+<div
+  echarts
+  [options]="options"
+  [merge]="mergeOptions"
+  [theme]="themeService.echartsTheme()"
+  class="demo-chart"></div>
 <!-- DEMO END -->
 
 <app-code-block [html]="html" [component]="component"> </app-code-block>

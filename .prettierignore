@@ -38,3 +38,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# File types
+*.json
+*.md
+*.txt

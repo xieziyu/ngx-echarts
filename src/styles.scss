@@ -1,2 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 @use './styles/custom';
+
+// Single theme definition — colors use CSS light-dark() automatically.
+// Switching is done via color-scheme property, not separate theme definitions.
+html {
+  @include mat.theme(
+    (
+      color: mat.$azure-palette,
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--app-border);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--app-text-secondary);
+  }
+}
+
+// Dark theme
+.dark-theme {
+  color-scheme: dark;
+
+  --app-bg: #141422;
+  --app-surface: #1c1c36;
+  --app-surface-alt: #22223a;
+  --app-accent: #64b5f6;
+  --app-accent-secondary: #ce93d8;
+  --app-accent-tertiary: #80cbc4;
+  --app-text: #e8e8f0;
+  --app-text-secondary: #a0a0b8;
+  --app-border: rgba(255, 255, 255, 0.1);
+  --app-glow: rgba(100, 181, 246, 0.08);
+
+  // Feature card icon colors
+  --app-color-blue: #64b5f6;
+  --app-color-emerald: #69f0ae;
+  --app-color-amber: #ffd54f;
+  --app-color-rose: #f48fb1;
+
+  // Feature card tinted backgrounds
+  --app-tint-blue: rgba(100, 181, 246, 0.08);
+  --app-tint-emerald: rgba(105, 240, 174, 0.08);
+  --app-tint-amber: rgba(255, 213, 79, 0.06);
+  --app-tint-rose: rgba(244, 143, 177, 0.08);
+
+  // Hero gradient
+  --app-hero-from: #1a1a3e;
+  --app-hero-via: #1e2848;
+  --app-hero-to: #141422;
+
+  background-color: var(--app-bg);
+  color: var(--app-text);
+}
+
+// Light theme
+.light-theme {
+  color-scheme: light;
+
+  --app-bg: #f8f9fc;
+  --app-surface: #ffffff;
+  --app-surface-alt: #f0f2f8;
+  --app-accent: #1565c0;
+  --app-accent-secondary: #7b1fa2;
+  --app-accent-tertiary: #00796b;
+  --app-text: #1a1a2e;
+  --app-text-secondary: #5c5c78;
+  --app-border: rgba(0, 0, 0, 0.08);
+  --app-glow: rgba(21, 101, 192, 0.06);
+
+  // Feature card icon colors
+  --app-color-blue: #1565c0;
+  --app-color-emerald: #2e7d32;
+  --app-color-amber: #f57f17;
+  --app-color-rose: #c62828;
+
+  // Feature card tinted backgrounds
+  --app-tint-blue: rgba(21, 101, 192, 0.06);
+  --app-tint-emerald: rgba(46, 125, 50, 0.06);
+  --app-tint-amber: rgba(245, 127, 23, 0.05);
+  --app-tint-rose: rgba(198, 40, 40, 0.05);
+
+  // Hero gradient
+  --app-hero-from: #eef2ff;
+  --app-hero-via: #f0f4ff;
+  --app-hero-to: #f8f9fc;
+
+  background-color: var(--app-bg);
+  color: var(--app-text);
+}

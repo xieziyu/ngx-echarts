@@ -1,24 +1,19 @@
-<nz-page-header nzTitle="Tree">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
-    <nz-breadcrumb-item>Tree</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
-
-<nz-divider></nz-divider>
-
-<nz-tabs style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="From Left To Right">
-    <ng-template nz-tab>
-      <app-tree-from-left-to-right></app-tree-from-left-to-right>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Radial Tree">
-    <ng-template nz-tab>
-      <app-tree-radial></app-tree-radial>
-    </ng-template>
-  </nz-tab>
-</nz-tabs>
+<div class="demo-layout">
+  <nav class="demo-sidebar">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button [class.active]="selectedIndex() === i" (click)="selectedIndex.set(i)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+  <div class="demo-content">
+    @switch (selectedIndex()) {
+      @case (0) {
+        <app-tree-from-left-to-right />
+      }
+      @case (1) {
+        <app-tree-radial />
+      }
+    }
+  </div>
+</div>

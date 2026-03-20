@@ -1,33 +1,105 @@
-<nz-layout class="app-layout">
-  <nz-sider
-    class="menu-sidebar"
-    nzCollapsible
-    nzWidth="256px"
-    nzBreakpoint="md"
-    [(nzCollapsed)]="isCollapsed"
-    [nzTrigger]="null">
-    <div class="sidebar-logo">
-      <a href="https://xieziyu.github.io/ngx-echarts" target="_blank">
-        <img src="assets/img/brand.svg" alt="logo" />
+<mat-toolbar class="app-toolbar">
+  <!-- Mobile hamburger -->
+  <button mat-icon-button class="mobile-menu-btn" (click)="sidenavOpened = !sidenavOpened">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <!-- Logo -->
+  <a class="toolbar-logo" routerLink="/welcome">
+    <img src="assets/img/logo.svg" alt="ngx-echarts" class="logo-icon" />
+    <span class="logo-text">ngx-echarts</span>
+  </a>
+
+  <!-- Desktop nav -->
+  <nav class="toolbar-nav">
+    @for (menu of topLevelMenus; track menu.path) {
+      <a mat-button [routerLink]="menu.path" routerLinkActive="active-link">
+        {{ menu.text }}
       </a>
-    </div>
-    <app-menu [isCollapsed]="isCollapsed"></app-menu>
-  </nz-sider>
-  <nz-layout>
-    <nz-header>
-      <div class="app-header">
-        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-          <i class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></i>
-        </span>
-        <a class="github-logo" href="https://github.com/xieziyu/ngx-echarts" target="_blank">
-          <i class="trigger" nz-icon nzType="github" nzTheme="outline"></i>
+    }
+    @if (seriesMenu) {
+      <button mat-button [matMenuTriggerFor]="seriesDropdown" [class.active-link]="seriesActive()">
+        {{ seriesMenu.text }}
+        <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+      </button>
+      <mat-menu #seriesDropdown="matMenu">
+        @for (sub of seriesMenu.submenus; track sub.path) {
+          <a mat-menu-item [routerLink]="sub.path">{{ sub.text }}</a>
+        }
+      </mat-menu>
+    }
+  </nav>
+
+  <span class="toolbar-spacer"></span>
+
+  <!-- Actions -->
+  <button mat-icon-button (click)="themeService.toggle()" aria-label="Toggle theme">
+    <mat-icon>{{ themeService.isDark() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+  <a
+    mat-icon-button
+    class="github-btn"
+    href="https://github.com/xieziyu/ngx-echarts"
+    target="_blank"
+    aria-label="GitHub">
+    <app-github-icon />
+  </a>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #sidenav
+    mode="over"
+    [opened]="sidenavOpened"
+    (closed)="sidenavOpened = false"
+    class="mobile-sidenav">
+    @for (menu of topLevelMenus; track menu.path) {
+      <a
+        mat-button
+        class="sidenav-link"
+        [routerLink]="menu.path"
+        routerLinkActive="active-link"
+        (click)="sidenavOpened = false">
+        <mat-icon>{{ menu.icon }}</mat-icon>
+        {{ menu.text }}
+      </a>
+    }
+    @if (seriesMenu) {
+      <div class="sidenav-group-label">{{ seriesMenu.text }}</div>
+      @for (sub of seriesMenu.submenus; track sub.path) {
+        <a
+          mat-button
+          class="sidenav-link sidenav-sub"
+          [routerLink]="sub.path"
+          routerLinkActive="active-link"
+          (click)="sidenavOpened = false">
+          {{ sub.text }}
         </a>
+      }
+    }
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+
+    <footer class="app-footer">
+      <div class="footer-inner">
+        <span>MIT Licensed</span>
+        <span class="footer-sep">|</span>
+        <span>
+          Copyright &copy; 2017-{{ currentYear }}
+          <a href="https://github.com/xieziyu" target="_blank" rel="noopener">xieziyu</a>
+        </span>
+        <span class="footer-sep">|</span>
+        <span>
+          Powered by
+          <a href="https://angular.dev" target="_blank" rel="noopener">Angular</a>
+          &amp;
+          <a href="https://echarts.apache.org" target="_blank" rel="noopener">Apache ECharts</a>
+        </span>
       </div>
-    </nz-header>
-    <nz-content>
-      <div class="inner-content">
-        <router-outlet></router-outlet>
-      </div>
-    </nz-content>
-  </nz-layout>
-</nz-layout>
+    </footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

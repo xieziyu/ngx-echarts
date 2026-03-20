@@ -2,6 +2,7 @@
 <div
   echarts
   [options]="options"
+  [theme]="themeService.echartsTheme()"
   class="demo-chart"
   (chartInit)="onChartEvent($event, 'chartInit')"
   (chartClick)="onChartEvent($event, 'chartClick')"

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { SharedModule } from '../../shared/shared.module';
 import { DemoBasicRoutingModule } from './demo-basic-routing.module';
 import { BasicComponent } from './basic/basic.component';
 import { BasicSimpleComponent } from './basic/basic-simple/basic-simple.component';
@@ -16,7 +15,6 @@ import { BasicDatasetComponent } from './basic/basic-dataset/basic-dataset.compo
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule,
     NgxEchartsModule,
     DemoBasicRoutingModule,
     BasicComponent,

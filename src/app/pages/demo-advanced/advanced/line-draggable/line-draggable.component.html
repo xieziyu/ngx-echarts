@@ -1,5 +1,10 @@
 <!-- DEMO START -->
-<div echarts (chartInit)="onChartReady($event)" [options]="options" style="height: 600px"></div>
+<div
+  echarts
+  (chartInit)="onChartReady($event)"
+  [options]="options"
+  [theme]="themeService.echartsTheme()"
+  style="height: 600px"></div>
 <!-- DEMO END -->
 
 <app-code-block [html]="html" [component]="component"> </app-code-block>

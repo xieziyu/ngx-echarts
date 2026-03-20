@@ -1,5 +1,10 @@
 <!-- DEMO START -->
-<div echarts [options]="options" [merge]="updateOptions" class="demo-chart"></div>
+<div
+  echarts
+  [options]="options"
+  [merge]="updateOptions"
+  [theme]="themeService.echartsTheme()"
+  class="demo-chart"></div>
 <!-- DEMO END -->
 
 <app-code-block [html]="html" [component]="component"> </app-code-block>

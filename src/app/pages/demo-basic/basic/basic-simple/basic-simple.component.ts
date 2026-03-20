@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-simple.component.html';
 import component from './basic-simple.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 // IGNORE END
 
 @Component({
@@ -18,6 +19,7 @@ export class BasicSimpleComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
+  readonly themeService = inject(ThemeService);
   options: EChartsCoreOption;
   constructor() {}
 
@@ -51,17 +53,17 @@ export class BasicSimpleComponent implements OnInit {
           name: 'bar',
           type: 'bar',
           data: data1,
-          animationDelay: idx => idx * 10,
+          animationDelay: (idx) => idx * 10,
         },
         {
           name: 'bar2',
           type: 'bar',
           data: data2,
-          animationDelay: idx => idx * 10 + 100,
+          animationDelay: (idx) => idx * 10 + 100,
         },
       ],
       animationEasing: 'elasticOut',
-      animationDelayUpdate: idx => idx * 5,
+      animationDelayUpdate: (idx) => idx * 5,
     };
   }
 }

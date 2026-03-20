@@ -1,24 +1,19 @@
-<nz-page-header nzTitle="Graph">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
-    <nz-breadcrumb-item>Graph</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
-
-<nz-divider></nz-divider>
-
-<nz-tabs style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Simple Graph">
-    <ng-template nz-tab>
-      <app-graph-simple></app-graph-simple>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Force Layout">
-    <ng-template nz-tab>
-      <app-graph-force-layout></app-graph-force-layout>
-    </ng-template>
-  </nz-tab>
-</nz-tabs>
+<div class="demo-layout">
+  <nav class="demo-sidebar">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button [class.active]="selectedIndex() === i" (click)="selectedIndex.set(i)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+  <div class="demo-content">
+    @switch (selectedIndex()) {
+      @case (0) {
+        <app-graph-simple />
+      }
+      @case (1) {
+        <app-graph-force-layout />
+      }
+    }
+  </div>
+</div>

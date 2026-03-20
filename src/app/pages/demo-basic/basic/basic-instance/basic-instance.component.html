@@ -1,12 +1,17 @@
 <!-- DEMO START -->
 <div class="button-groups">
-  <button (click)="callMethod('getWidth')" nz-button nzType="default">getWidth()</button>
-  <button (click)="callMethod('getHeight')" nz-button nzType="default">getHeight()</button>
-  <button (click)="callMethod('getDom')" nz-button nzType="default">getDom()</button>
-  <button (click)="callMethod('getOption')" nz-button nzType="default">getOption()</button>
-  <button (click)="callMethod('clear')" nz-button nzType="default">clear()</button>
+  <button (click)="callMethod('getWidth')" mat-stroked-button>getWidth()</button>
+  <button (click)="callMethod('getHeight')" mat-stroked-button>getHeight()</button>
+  <button (click)="callMethod('getDom')" mat-stroked-button>getDom()</button>
+  <button (click)="callMethod('getOption')" mat-stroked-button>getOption()</button>
+  <button (click)="callMethod('clear')" mat-stroked-button>clear()</button>
 </div>
-<div echarts (chartInit)="onChartInit($event)" [options]="options" class="demo-chart"></div>
+<div
+  echarts
+  (chartInit)="onChartInit($event)"
+  [options]="options"
+  [theme]="themeService.echartsTheme()"
+  class="demo-chart"></div>
 <!-- DEMO END -->
 
 <app-code-block [html]="html" [component]="component"> </app-code-block>

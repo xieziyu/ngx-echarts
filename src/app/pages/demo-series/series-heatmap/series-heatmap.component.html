@@ -1,24 +1,19 @@
-<nz-page-header nzTitle="Tree">
-  <nz-breadcrumb nz-page-header-breadcrumb>
-    <nz-breadcrumb-item>
-      <a routerLink="/welcome">Home</a>
-    </nz-breadcrumb-item>
-    <nz-breadcrumb-item>Series</nz-breadcrumb-item>
-    <nz-breadcrumb-item>Heatmap</nz-breadcrumb-item>
-  </nz-breadcrumb>
-</nz-page-header>
-
-<nz-divider></nz-divider>
-
-<nz-tabs style="margin-top: 8px" [nzTabPosition]="'left'">
-  <nz-tab nzTitle="Calendar Heatmap">
-    <ng-template nz-tab>
-      <app-heatmap-calendar></app-heatmap-calendar>
-    </ng-template>
-  </nz-tab>
-  <nz-tab nzTitle="Discrete Mapping of Color">
-    <ng-template nz-tab>
-      <app-heatmap-discrete></app-heatmap-discrete>
-    </ng-template>
-  </nz-tab>
-</nz-tabs>
+<div class="demo-layout">
+  <nav class="demo-sidebar">
+    @for (tab of tabs; track tab.label; let i = $index) {
+      <button [class.active]="selectedIndex() === i" (click)="selectedIndex.set(i)">
+        {{ tab.label }}
+      </button>
+    }
+  </nav>
+  <div class="demo-content">
+    @switch (selectedIndex()) {
+      @case (0) {
+        <app-heatmap-calendar />
+      }
+      @case (1) {
+        <app-heatmap-discrete />
+      }
+    }
+  </div>
+</div>
