@@ -1,0 +1,233 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-echarts-demo documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="stylesheet" href="./styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ngx-echarts-demo documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<ul>
+<li>2025.11.24: v21.0.0<ul>
+<li>feat: Upgrade to angular 21</li>
+</ul>
+</li>
+<li>2025.06.26: v20.0.1<ul>
+<li>fix: <code>[theme]</code> input issue <a href="https://github.com/xieziyu/ngx-echarts-starter/issues/28">#28</a></li>
+</ul>
+</li>
+<li>2025.06.09: v20.0.0<ul>
+<li>feat: Upgrade to angular 20</li>
+<li>feat: Zoneless compatibility</li>
+<li>refactor: Migrate the project to modern angular patterns. (Thanks to <a href="https://github.com/pkurcx">pkurcx</a>)</li>
+</ul>
+</li>
+<li>2024.12.02: v19.0.0<ul>
+<li>feat: Upgrade to angular 19</li>
+<li><strong>BREAKING CHANGES</strong>:<ul>
+<li>According to <a href="https://github.com/xieziyu/ngx-echarts/issues/437">issue #443</a>, we cannot import from <code>echarts/index.js</code> using Angular 19. Therefore, we need to perform a custom build and import everything required from <code>echarts/core</code>, <code>echarts/charts</code>, <code>echarts/components</code>, or other specific entry points.</li>
+<li><code>provideEcharts</code> is REMOVED.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>2024.05.25: v18.0.0<ul>
+<li>feat: Upgrade to angular 18</li>
+</ul>
+</li>
+<li>2024.05.16: v17.2.0<ul>
+<li>feat: <code>provideEcharts</code> supports default theme config. (by <a href="https://github.com/wheeljs">wheeljs</a>)</li>
+<li>fix: Issue <a href="https://github.com/xieziyu/ngx-echarts/issues/413">#413</a> (Thanks to <a href="https://github.com/s9ke">s9ke</a>)</li>
+</ul>
+</li>
+<li>2023.11.10: v17.1.0 / v16.2.0:<ul>
+<li>feat: Exported standalone <code>NgxEchartsDirective</code>, <code>provideEcharts</code> and <code>provideEchartsCore</code></li>
+</ul>
+</li>
+<li>2023.11.08: v17.0.1:<ul>
+<li>feat: upgrade to Angular 17</li>
+</ul>
+</li>
+<li>2023.10.11: v16.1.0:<ul>
+<li>feat: Add types to <code>chartXXX</code> EventEmitters. Support new events such as: <code>&#39;selectchanged&#39;</code></li>
+</ul>
+</li>
+<li>2023.05.10: v16.0.0:<ul>
+<li>feat: upgrade to Angular 16</li>
+<li>chore: replaced tslint with eslint.</li>
+</ul>
+</li>
+<li>2023.03.27: v15.0.3:<ul>
+<li>fix: <code>[loading]=true</code> is not triggered when chart initialized.</li>
+</ul>
+</li>
+<li>2023.03.20: v15.0.2:<ul>
+<li>fix: unsubscribe ChangeFilter subscriptions onDestroy.</li>
+</ul>
+</li>
+<li>2022.12.01: v15.0.1:<ul>
+<li>feat: Support nullable @Inputs. Issue <a href="https://github.com/xieziyu/ngx-echarts/issues/378">#378</a></li>
+</ul>
+</li>
+<li>2022.11.23: v15.0.0:<ul>
+<li>feat: upgrade to Angular 15</li>
+</ul>
+</li>
+<li>2022.06.21: v14.0.0:<ul>
+<li>feat: upgrade to Angular 14</li>
+</ul>
+</li>
+<li>2021.12.07: v8.0.1:<ul>
+<li>fix: NgxEchartsModule.forChild() issue <a href="https://github.com/xieziyu/ngx-echarts/issues/334">#334</a></li>
+</ul>
+</li>
+<li>2021.11.08: v8.0.0 / v7.1.0:<ul>
+<li>fix: remove @juggle/resize-observer from the peer dependencies</li>
+<li>perf: fix performance issue <a href="https://github.com/xieziyu/ngx-echarts/issues/330">#330</a></li>
+</ul>
+</li>
+<li>2021.05.17: v7.0.0:<ul>
+<li>feat: support Angular v11, ECharts v5</li>
+<li>feat: support echart theme object</li>
+<li>perf: resize animation</li>
+</ul>
+</li>
+<li>2021.01.10: v6.0.1:<ul>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/295">PR #295</a>: Guard dispose (by <a href="https://github.com/taipeiwu">taipeiwu</a>)</li>
+</ul>
+</li>
+<li>2021.01.10: v6.0.0:<ul>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/285">PR #285</a>: Guard dispose (by <a href="https://github.com/gjsmith66">gjsmith66</a>)</li>
+<li>update demo to use echarts v5.0</li>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/282">PR #282</a>: fix avoid &quot;ResizeObserver loop limit exceeded&quot; error (by <a href="https://github.com/parkdihoon">parkdihoon</a>)</li>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/272">PR #272</a>: Angular 10 support (by <a href="https://github.com/Ghostbird">Ghostbird</a>)</li>
+</ul>
+</li>
+<li>2020.11.07: v5.2.1:<ul>
+<li>Required <code>resize-observer-polyfill</code></li>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/271">PR #271</a>: Fix autoResize functionality (by <a href="https://github.com/ThomasBower">ThomasBower</a>)</li>
+<li>Exposed methods: <code>refreshChart()</code> and <code>resize()</code></li>
+</ul>
+</li>
+<li>2020.07.24: v5.1.0:<ul>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/240">PR #240</a>: Added output &#39;optionsError&#39; (by <a href="https://github.com/trajnisz">trajnisz</a>)</li>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/242">PR #242</a>: Add output for brushEnd event (by <a href="https://github.com/Uular">Uular</a>)</li>
+<li><a href="https://github.com/xieziyu/ngx-echarts/pull/246">PR #246</a>: Allow loading echarts library lazily via native import (by <a href="https://github.com/smnbbrv">smnbbrv</a>)</li>
+</ul>
+</li>
+<li>2020.05.19: v5.0.0<ul>
+<li><strong>BREAKING CHANGES</strong>:<ul>
+<li><code>NgxEchartsModule</code> provides <code>.forRoot()</code> method to inject <code>echarts</code> core.</li>
+<li>Due to <code>.forRoot</code> method, we can do custom build without <code>NgxEchartsCoreModule</code>. Just import the <code>echarts</code> core from <code>echarts/src/echarts</code>, and other necessary charts.</li>
+<li><code>NgxEchartsCoreModule</code> is removed.</li>
+<li><code>[detectEventChanges]</code> is removed.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

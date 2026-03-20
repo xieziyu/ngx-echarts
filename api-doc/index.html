@@ -1,0 +1,682 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-echarts-demo documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+        <link rel="stylesheet" href="./styles/stripe.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ngx-echarts-demo documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<div align="center">
+  <a href="https://xieziyu.github.io/ngx-echarts">
+    <img src="./src/assets/img/logo.svg" alt="Logo" width="80">
+  </a>
+  <h3 align="center">NGX-ECHARTS</h3>
+  <p align="center">
+    Angular directive for <a href="https://github.com/apache/incubator-echarts">Apache ECharts</a>
+  </p>
+  <p align="center">
+    <a href="https://xieziyu.github.io/ngx-echarts">Online Demo</a> |
+    <a href="https://github.com/xieziyu/ngx-echarts-starter">Starter</a>
+  </p>
+  <p align="center">
+    <a href="https://www.npmjs.com/package/ngx-echarts"><img src="https://img.shields.io/npm/v/ngx-echarts.svg"></a>
+    <a href="https://www.npmjs.com/package/ngx-echarts"><img src="https://img.shields.io/npm/dm/ngx-echarts.svg"></a>
+    <a href="https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml"><img src="https://github.com/xieziyu/ngx-echarts/actions/workflows/ci.yaml/badge.svg"></a>
+  </p>
+</div>
+
+<h2 id="table-of-contents">Table of contents</h2>
+<ul>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="#latest-update">Latest Update</a></li>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#upgrade-from-v4x">Upgrade from v4.x</a></li>
+</ul>
+</li>
+<li><a href="#usage">Usage</a><ul>
+<li><a href="#standalone">Standalone</a></li>
+<li><a href="#ngmodule">NgModule</a></li>
+<li><a href="#directive">Directive</a></li>
+</ul>
+</li>
+<li><a href="#api">API</a><ul>
+<li><a href="#directive-1">Directive</a></li>
+<li><a href="#echarts-api">ECharts API</a></li>
+<li><a href="#echarts-instance">ECharts Instance</a></li>
+<li><a href="#echarts-extensions">ECharts Extensions</a></li>
+<li><a href="#service">Service</a></li>
+</ul>
+</li>
+<li><a href="#events">Events</a></li>
+<li><a href="#custom-build">Custom Build</a><ul>
+<li><a href="#treeshaking-custom-build">Treeshaking Custom Build</a></li>
+<li><a href="#legacy-custom-build">Legacy Custom Build</a></li>
+</ul>
+</li>
+<li><a href="#custom-locale">Custom Locale</a></li>
+<li><a href="#demo">Demo</a></li>
+</ul>
+<h1 id="getting-started">Getting Started</h1>
+<p><code>ngx-echarts</code> is an Angular (ver &gt;= 2.x) directive for ECharts (ver &gt;= 3.x).</p>
+<p>Latest version @npm:</p>
+<ul>
+<li><code>v21.0.0</code> for Angular 21</li>
+<li><code>v20.0.1</code> for Angular 20</li>
+<li><code>v19.0.0</code> for Angular 19</li>
+<li><code>v18.0.0</code> for Angular 18</li>
+<li><code>v17.2.0</code> for Angular 17</li>
+<li><code>v16.2.0</code> for Angular 16</li>
+<li><code>v15.0.3</code> for Angular 15</li>
+<li><code>v14.0.0</code> for Angular 14</li>
+<li><code>v8.0.1</code> for Angular 13</li>
+<li><code>v7.1.0</code> for Angular &gt;= 11, &lt; 13</li>
+<li><code>v6.0.1</code> for Angular &gt;= 10, &lt; 11</li>
+<li><code>v5.2.2</code> for Angular &gt;= 6, &lt; 10</li>
+<li><code>v2.3.1</code> for Angular &lt; 6 (Please refer to <a href="https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md">https://github.com/xieziyu/ngx-echarts/blob/v2.x/README.md</a>)</li>
+</ul>
+<p>A starter project on Github: <a href="https://github.com/xieziyu/ngx-echarts-starter">https://github.com/xieziyu/ngx-echarts-starter</a></p>
+<h1 id="latest-update">Latest Update</h1>
+<ul>
+<li><p>2025.11.24: v21</p>
+<ul>
+<li>feat: Upgrade to angular 21</li>
+</ul>
+</li>
+<li><p>2025.06.26: v20.0.1</p>
+<ul>
+<li>fix: <code>[theme]</code> input issue <a href="https://github.com/xieziyu/ngx-echarts-starter/issues/28">#28</a></li>
+</ul>
+</li>
+</ul>
+<p><a href="./CHANGELOG.md">CHANGELOG.md</a></p>
+<h1 id="installation">Installation</h1>
+<ul>
+<li><p>Since v5.0</p>
+<div><pre class="line-numbers"><code class="language-bash"># if you use npm
+npm install echarts -S
+npm install ngx-echarts -S
+
+# or if you use yarn
+yarn add echarts
+yarn add ngx-echarts</code></pre></div></li>
+<li><p>If you need ECharts GL support, please install it first:</p>
+<div><pre class="line-numbers"><code class="language-bash">npm install echarts-gl -S
+
+# or
+yarn add echarts-gl</code></pre></div></li>
+<li><p>Import other extensions such as themes or <code>echarts-gl</code> in your <code>main.ts</code>: <a href="#echarts-extensions">ECharts Extensions</a></p>
+</li>
+</ul>
+<h2 id="upgrade-from-v4x">Upgrade from v4.x</h2>
+<ol>
+<li>import <code>echarts</code> and provide it in <code>NgxEchartsModule.forRoot({ echarts })</code>.</li>
+<li><code>NgxEchartsCoreModule</code> is removed.</li>
+</ol>
+<h1 id="usage">Usage</h1>
+<p>Please refer to the <a href="https://xieziyu.github.io/ngx-echarts">demo</a> page.</p>
+<h2 id="standalone">Standalone</h2>
+<p>import <code>NgxEchartsDirective</code> and <code>provideEchartsCore</code>. Or you can use <code>provideEchartsCore</code> to do treeshaking custom build.</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxEchartsDirective, provideEchartsCore } from &#39;ngx-echarts&#39;;
+// import echarts core
+import * as echarts from &#39;echarts/core&#39;;
+// import necessary echarts components
+import { BarChart } from &#39;echarts/charts&#39;;
+import { GridComponent } from &#39;echarts/components&#39;;
+import { CanvasRenderer } from &#39;echarts/renderers&#39;;
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
+
+&#64;Component({
+  selector: &#39;app-root&#39;,
+  standalone: true,
+  imports: [CommonModule, NgxEchartsDirective],
+  templateUrl: &#39;./app.component.html&#39;,
+  styleUrls: [&#39;./app.component.scss&#39;],
+  providers: [provideEchartsCore({ echarts })],
+})
+export class AppComponent {}</code></pre></div><h2 id="ngmodule">NgModule</h2>
+<p>import <code>NgxEchartsModule</code>:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { NgxEchartsModule } from &#39;ngx-echarts&#39;;
+// import echarts core
+import * as echarts from &#39;echarts/core&#39;;
+// import necessary echarts components
+import { BarChart } from &#39;echarts/charts&#39;;
+import { GridComponent } from &#39;echarts/components&#39;;
+import { CanvasRenderer } from &#39;echarts/renderers&#39;;
+echarts.use([BarChart, GridComponent, CanvasRenderer]);
+
+&#64;NgModule({
+  imports: [NgxEchartsModule.forRoot({ echarts })],
+})
+export class AppModule {}</code></pre></div><h2 id="directive">Directive</h2>
+<p>use <code>echarts</code> directive in a div which has <strong>pre-defined height</strong>. (From v2.0, it has default height: 400px)</p>
+<ul>
+<li>html:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-html">&lt;div echarts [options]=&quot;chartOption&quot; class=&quot;demo-chart&quot;&gt;&lt;/div&gt;</code></pre></div><ul>
+<li>css:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-css">.demo-chart {
+  height: 400px;
+}</code></pre></div><ul>
+<li>component:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-typescript">import { EChartsCoreOption } from &#39;echarts/core&#39;;
+
+// ...
+
+chartOption: EChartsCoreOption = {
+  xAxis: {
+    type: &#39;category&#39;,
+    data: [&#39;Mon&#39;, &#39;Tue&#39;, &#39;Wed&#39;, &#39;Thu&#39;, &#39;Fri&#39;, &#39;Sat&#39;, &#39;Sun&#39;],
+  },
+  yAxis: {
+    type: &#39;value&#39;,
+  },
+  series: [
+    {
+      data: [820, 932, 901, 934, 1290, 1330, 1320],
+      type: &#39;line&#39;,
+    },
+  ],
+};</code></pre></div><h1 id="api">API</h1>
+<h3 id="directive-1">Directive</h3>
+<p><code>echarts</code> directive support following input properties:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Input</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[options]</code></td>
+<td>object</td>
+<td>null</td>
+<td>The same as the options on the official demo site.</td>
+</tr>
+<tr>
+<td><code>[merge]</code></td>
+<td>object</td>
+<td>null</td>
+<td>Used to update a part of the <code>options</code>, especially helpful when you need to update the chart data. In fact, the value of <code>merge</code> will be used in <code>echartsInstance.setOption()</code> with <code>notMerge = false</code>. Refer to <a href="https://echarts.apache.org/en/api.html#echartsInstance.setOption">ECharts documentation</a> for details.</td>
+</tr>
+<tr>
+<td><code>[loading]</code></td>
+<td>boolean</td>
+<td>false</td>
+<td>Used to toggle the echarts loading animation when your data is not ready.</td>
+</tr>
+<tr>
+<td><code>[autoResize]</code></td>
+<td>boolean</td>
+<td>true</td>
+<td>If set to <code>true</code>, the chart will be automatically resized when the window&#39;s width is changed.</td>
+</tr>
+<tr>
+<td><code>[initOpts]</code></td>
+<td>object</td>
+<td>null</td>
+<td>The value of <code>[initOpts]</code> will be used in <code>echarts.init()</code>. It may contain <code>devicePixelRatio</code>, <code>renderer</code>, <code>width</code> or <code>height</code> properties. Refer to <a href="https://echarts.apache.org/en/api.html#echarts.init">ECharts documentation</a> for details.</td>
+</tr>
+<tr>
+<td><code>[theme]</code></td>
+<td>string</td>
+<td>null</td>
+<td>Used it to initialize echarts with theme. The theme file must also be imported in <code>main.ts</code>.</td>
+</tr>
+<tr>
+<td><code>[loadingOpts]</code></td>
+<td>object</td>
+<td>null</td>
+<td>Input an object to customize the loading style. Refer to <a href="https://echarts.apache.org/en/api.html#echartsInstance.showLoading">ECharts documentation</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<p>By default, <code>loadingOpts</code> is:</p>
+<div><pre class="line-numbers"><code class="language-javascript">{
+  text: &#39;loading&#39;,
+  color: &#39;#c23531&#39;,
+  textColor: &#39;#000&#39;,
+  maskColor: &#39;rgba(255, 255, 255, 0.8)&#39;,
+  zlevel: 0
+}</code></pre></div><h3 id="echarts-api">ECharts API</h3>
+<p>If you need to access parts of the ECharts API such as <code>echarts.graphic</code>, please import it from echarts. For example:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { graphic } from &#39;echarts/core&#39;;
+
+new graphic.LinearGradient(/* ... */);</code></pre></div><h3 id="echarts-instance">ECharts Instance</h3>
+<p><code>echartsInstance</code> is exposed (since v1.1.6) in the <code>(chartInit)</code> event, enabling you to directly call functions like: <code>resize()</code>, <code>showLoading()</code>, etc. For example:</p>
+<ul>
+<li>html:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-html">&lt;div echarts class=&quot;demo-chart&quot; [options]=&quot;chartOptions&quot; (chartInit)=&quot;onChartInit($event)&quot;&gt;&lt;/div&gt;</code></pre></div><ul>
+<li>component:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-typescript">onChartInit(ec) {
+  this.echartsInstance = ec;
+}
+
+resizeChart() {
+  if (this.echartsInstance) {
+    this.echartsInstance.resize();
+  }
+}</code></pre></div><h3 id="echarts-extensions">ECharts Extensions</h3>
+<p>Import echarts theme files or other extension files after you have imported <code>echarts</code> core. For example:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import * as echarts from &#39;echarts/core&#39;;
+
+/** echarts extensions: */
+import { Bar3DChart } from &#39;echarts-gl/charts&#39;;
+import { Grid3DComponent } from &#39;echarts-gl/components&#39;;
+import &#39;echarts/theme/macarons.js&#39;;
+import &#39;echarts/dist/extension/bmap.min.js&#39;;</code></pre></div><h3 id="service">Service</h3>
+<p><code>NgxEchartsService</code> has been obsolete since v4.0</p>
+<h1 id="events">Events</h1>
+<p>As ECharts supports the <code>&#39;click&#39;</code>, <code>&#39;dblclick&#39;</code>, <code>&#39;mousedown&#39;</code>, <code>&#39;mouseup&#39;</code>, <code>&#39;mouseover&#39;</code>, <code>&#39;mouseout&#39;</code>, and <code>&#39;globalout&#39;</code> mouse events, our <code>ngx-echarts</code> directive also supports the same mouse events but with an additional <code>chart</code> prefix. For example:</p>
+<ul>
+<li>html:</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-html">&lt;div echarts class=&quot;demo-chart&quot; [options]=&quot;chartOptions&quot; (chartClick)=&quot;onChartClick($event)&quot;&gt;&lt;/div&gt;</code></pre></div><ul>
+<li>The &#39;$event&#39; is same with the &#39;params&#39; that ECharts dispatches.</li>
+</ul>
+<p>It supports following event outputs:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>@Output</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>chartInit</td>
+<td>Emitted when the chart is initialized</td>
+</tr>
+<tr>
+<td>chartClick</td>
+<td>echarts event: <code>&#39;click&#39;</code></td>
+</tr>
+<tr>
+<td>chartDblClick</td>
+<td>echarts event: <code>&#39;dblclick&#39;</code></td>
+</tr>
+<tr>
+<td>chartMouseDown</td>
+<td>echarts event: <code>&#39;mousedown&#39;</code></td>
+</tr>
+<tr>
+<td>chartMouseMove</td>
+<td>echarts event: <code>&#39;mousemove&#39;</code></td>
+</tr>
+<tr>
+<td>chartMouseUp</td>
+<td>echarts event: <code>&#39;mouseup&#39;</code></td>
+</tr>
+<tr>
+<td>chartMouseOver</td>
+<td>echarts event: <code>&#39;mouseover&#39;</code></td>
+</tr>
+<tr>
+<td>chartMouseOut</td>
+<td>echarts event: <code>&#39;mouseout&#39;</code></td>
+</tr>
+<tr>
+<td>chartGlobalOut</td>
+<td>echarts event: <code>&#39;globalout&#39;</code></td>
+</tr>
+<tr>
+<td>chartContextMenu</td>
+<td>echarts event: <code>&#39;contextmenu&#39;</code></td>
+</tr>
+<tr>
+<td>chartHighlight</td>
+<td>echarts event: <code>&#39;highlight&#39;</code></td>
+</tr>
+<tr>
+<td>chartDownplay</td>
+<td>echarts event: <code>&#39;downplay&#39;</code></td>
+</tr>
+<tr>
+<td>chartSelectChanged</td>
+<td>echarts event: <code>&#39;selectchanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendSelectChanged</td>
+<td>echarts event: <code>&#39;legendselectchanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendSelected</td>
+<td>echarts event: <code>&#39;legendselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendUnselected</td>
+<td>echarts event: <code>&#39;legendunselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendLegendSelectAll</td>
+<td>echarts event: <code>&#39;legendselectall&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendLegendInverseSelect</td>
+<td>echarts event: <code>&#39;legendinverseselect&#39;</code></td>
+</tr>
+<tr>
+<td>chartLegendScroll</td>
+<td>echarts event: <code>&#39;legendscroll&#39;</code></td>
+</tr>
+<tr>
+<td>chartDataZoom</td>
+<td>echarts event: <code>&#39;datazoom&#39;</code></td>
+</tr>
+<tr>
+<td>chartDataRangeSelected</td>
+<td>echarts event: <code>&#39;datarangeselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartGraphRoam</td>
+<td>echarts event: <code>&#39;graphroam&#39;</code></td>
+</tr>
+<tr>
+<td>chartGeoRoam</td>
+<td>echarts event: <code>&#39;georoam&#39;</code></td>
+</tr>
+<tr>
+<td>chartTreeRoam</td>
+<td>echarts event: <code>&#39;treeroam&#39;</code></td>
+</tr>
+<tr>
+<td>chartTimelineChanged</td>
+<td>echarts event: <code>&#39;timelinechanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartTimelinePlayChanged</td>
+<td>echarts event: <code>&#39;timelineplaychanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartRestore</td>
+<td>echarts event: <code>&#39;restore&#39;</code></td>
+</tr>
+<tr>
+<td>chartDataViewChanged</td>
+<td>echarts event: <code>&#39;dataviewchanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartMagicTypeChanged</td>
+<td>echarts event: <code>&#39;magictypechanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartGeoSelectChanged</td>
+<td>echarts event: <code>&#39;geoselectchanged&#39;</code></td>
+</tr>
+<tr>
+<td>chartGeoSelected</td>
+<td>echarts event: <code>&#39;geoselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartGeoUnselected</td>
+<td>echarts event: <code>&#39;geounselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartAxisAreaSelected</td>
+<td>echarts event: <code>&#39;axisareaselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartBrush</td>
+<td>echarts event: <code>&#39;brush&#39;</code></td>
+</tr>
+<tr>
+<td>chartBrushEnd</td>
+<td>echarts event: <code>&#39;brushend&#39;</code></td>
+</tr>
+<tr>
+<td>chartBrushSelected</td>
+<td>echarts event: <code>&#39;brushselected&#39;</code></td>
+</tr>
+<tr>
+<td>chartGlobalCursorTaken</td>
+<td>echarts event: <code>&#39;globalcursortaken&#39;</code></td>
+</tr>
+<tr>
+<td>chartRendered</td>
+<td>echarts event: <code>&#39;rendered&#39;</code></td>
+</tr>
+<tr>
+<td>chartFinished</td>
+<td>echarts event: <code>&#39;finished&#39;</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can refer to the ECharts tutorial: <a href="https://echarts.apache.org/en/tutorial.html#Events%20and%20Actions%20in%20ECharts">Events and Actions in ECharts</a> for more details of the event params. You can also refer to the <a href="https://xieziyu.github.io/#/ngx-echarts/demo">demo</a> page for a detailed example.</p>
+<h1 id="custom-build">Custom Build</h1>
+<h2 id="treeshaking-custom-build">Treeshaking Custom Build</h2>
+<blockquote>
+<p>Since version 5.0.1 ECharts supports <a href="https://echarts.apache.org/en/tutorial.html#Use%20ECharts%20with%20bundler%20and%20NPM">Treeshaking with NPM</a>.</p>
+</blockquote>
+<p>The <code>app.modules.ts</code> should look like this:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#39;&#64;angular/platform-browser&#39;;
+import { NgModule } from &#39;&#64;angular/core&#39;;
+import { HttpClientModule } from &#39;&#64;angular/common/http&#39;;
+
+import { NgxEchartsDirective, provideEchartsCore } from &#39;ngx-echarts&#39;;
+
+import { AppComponent } from &#39;./app.component&#39;;
+
+// Import the echarts core module, which provides the necessary interfaces for using echarts.
+import * as echarts from &#39;echarts/core&#39;;
+
+// Import bar charts, all suffixed with Chart
+import { BarChart } from &#39;echarts/charts&#39;;
+
+// Import the tooltip, title, rectangular coordinate system, dataset and transform components
+import {
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent
+} from &#39;echarts/components&#39;;
+
+// Features like Universal Transition and Label Layout
+import { LabelLayout, UniversalTransition } from &#39;echarts/features&#39;;
+
+// Import the Canvas renderer
+// Note that including the CanvasRenderer or SVGRenderer is a required step
+import { CanvasRenderer } from &#39;echarts/renderers&#39;;
+
+// Import the theme
+import &#39;echarts/theme/macarons.js&#39;;
+
+// Register the required components
+echarts.use([
+  BarChart,
+  TitleComponent,
+  TooltipComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer
+]);
+
+&#64;NgModule({
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    // import standalone directive:
+    NgxEchartsDirective,
+  ],
+  providers: [{
+    // Provide custom builded ECharts core:
+    provideEchartsCore({ echarts })
+  }],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}</code></pre></div><h2 id="legacy-custom-build">Legacy Custom Build</h2>
+<blockquote>
+<p>Please refer to <a href="https://echarts.apache.org/en/tutorial.html#Create%20Custom%20Build%20of%20ECharts">ECharts Documentation</a> for more details.</p>
+</blockquote>
+<p>If you want to produce a custom build of ECharts, prepare a file like <code>custom-echarts.ts</code>:</p>
+<div><pre class="line-numbers"><code class="language-ts">// custom-echarts.ts
+export * from &#39;echarts/src/echarts&#39;;
+
+import &#39;echarts/src/chart/line&#39;;
+import &#39;echarts/src/chart/bar&#39;;
+// component examples:
+import &#39;echarts/src/component/tooltip&#39;;
+import &#39;echarts/src/component/title&#39;;
+import &#39;echarts/src/component/toolbox&#39;;</code></pre></div><p>And then inject it in your <code>NgxEchartsModule</code>:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { NgxEchartsModule } from &#39;ngx-echarts&#39;;
+import * as echarts from &#39;./custom-echarts&#39;;
+
+&#64;NgModule({
+  imports: [
+    NgxEchartsModule.forRoot({
+      echarts,
+    }),
+  ],
+})
+export class AppModule {}</code></pre></div><p>And if you want to use the global <code>echarts</code> object, please import it from <code>lib</code> or <code>src</code> instead:</p>
+<div><pre class="line-numbers"><code class="language-ts">import * as echarts from &#39;echarts/lib/echarts&#39;;</code></pre></div><p>If you need to import theme files, remember to change the <code>&#39;echarts&#39;</code> path to <code>&#39;echarts/lib/echarts&#39;</code>, for example:</p>
+<div><pre class="line-numbers"><code class="language-ts">// ... part of echarts/theme/dark.js:
+function (root, factory) {
+    if (typeof define === &#39;function&#39; &amp;&amp; define.amd) {
+        // AMD. Register as an anonymous module.
+        define([&#39;exports&#39;, &#39;echarts/lib/echarts&#39;], factory);
+    } else if (typeof exports === &#39;object&#39; &amp;&amp; typeof exports.nodeName !== &#39;string&#39;) {
+        // CommonJS
+        factory(exports, require(&#39;echarts/lib/echarts&#39;));
+    } else {
+        // Browser globals
+        factory({}, root.echarts);
+    }
+}</code></pre></div><h1 id="custom-locale">Custom Locale</h1>
+<p>You can change the chart locale registering a built-in locale (located in <code>node_modules/echarts/lib/i18n/</code>) or a custom locale object. To register a locale, you will need to change the module that echart is being imported (usually <code>app.module.ts</code>).</p>
+<div><pre class="line-numbers"><code class="language-ts">import {NgxEchartsModule} from &quot;ngx-echarts&quot;;
+import * as echarts from &#39;echarts/core&#39;;
+import langCZ from &#39;echarts/lib/i18n/langCZ&#39;;
+
+echarts.registerLocale(&quot;CZ&quot;, langCZ)
+
+&#64;NgModule({
+  imports: [NgxEchartsModule.forRoot({echarts})],
+  declarations: [],
+  providers: [],
+  bootstrap: [AppComponent]
+})</code></pre></div><p>and in your HTML file use:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;div echarts [initOpts]=&quot;{ locale: &#39;CZ&#39; }&quot; [options]=&quot;options&quot; class=&quot;demo-chart&quot;&gt;&lt;/div&gt;</code></pre></div><h1 id="demo">Demo</h1>
+<p>You can clone this repo to your working copy and then launch the demo page in your local machine:</p>
+<div><pre class="line-numbers"><code class="language-bash">npm install
+npm run demo
+
+# or
+yarn install
+yarn demo</code></pre></div><p>The demo page server is listening on: <a href="http://localhost:4202">http://localhost:4202</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
