@@ -21,8 +21,7 @@
       <button
         mat-button
         [matMenuTriggerFor]="seriesDropdown"
-        routerLinkActive="active-link"
-        [routerLink]="seriesMenu.submenus![0].path">
+        [class.active-link]="seriesActive()">
         {{ seriesMenu.text }}
         <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
       </button>
