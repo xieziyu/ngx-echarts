@@ -4,12 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MarkdownComponent } from 'ngx-markdown';
+import { GithubIconComponent } from '../../shared/github-icon/github-icon.component';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss'],
-  imports: [RouterLink, MatButtonModule, MatIconModule, MatCardModule, MarkdownComponent],
+  imports: [RouterLink, MatButtonModule, MatIconModule, MatCardModule, MarkdownComponent, GithubIconComponent],
 })
 export class WelcomeComponent {
   copied = signal(false);

@@ -3,6 +3,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { GithubIconComponent } from './shared/github-icon/github-icon.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { APP_MENUS } from './menus';
@@ -21,6 +22,7 @@ import { ThemeService } from './services/theme.service';
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
+    GithubIconComponent,
   ],
 })
 export class AppComponent {
