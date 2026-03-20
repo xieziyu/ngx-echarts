@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,6 +12,15 @@ import { MarkdownComponent } from 'ngx-markdown';
   imports: [RouterLink, MatButtonModule, MatIconModule, MatCardModule, MarkdownComponent],
 })
 export class WelcomeComponent {
+  copied = signal(false);
+
+  copyInstallCmd() {
+    navigator.clipboard.writeText('npm install ngx-echarts echarts').then(() => {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    });
+  }
+
   scriptText = `
   ## Install
   \`\`\`bash

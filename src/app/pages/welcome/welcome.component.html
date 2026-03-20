@@ -10,6 +10,13 @@
 
     <div class="install-card">
       <code>npm install ngx-echarts echarts</code>
+      <button
+        mat-icon-button
+        class="copy-btn"
+        (click)="copyInstallCmd()"
+        [attr.aria-label]="copied() ? 'Copied' : 'Copy to clipboard'">
+        <mat-icon>{{ copied() ? 'check' : 'content_copy' }}</mat-icon>
+      </button>
     </div>
 
     <div class="hero-actions">
