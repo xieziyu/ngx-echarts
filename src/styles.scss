@@ -11,6 +11,11 @@ html {
   ));
 }
 
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  margin: 0;
+}
+
 // Dark theme
 .dark-theme {
   color-scheme: dark;
