@@ -1,31 +1,18 @@
 @use '@angular/material' as mat;
 @use './styles/custom';
 
-// Dark theme definition
-$dark-theme: mat.define-theme((
-  color: (
-    theme-type: dark,
-    primary: mat.$azure-palette,
-  ),
-));
-
-// Light theme definition
-$light-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-  ),
-));
-
+// Single theme definition — colors use CSS light-dark() automatically.
+// Switching is done via color-scheme property, not separate theme definitions.
 html {
-  @include mat.theme($dark-theme);
-  @include mat.system-classes();
-  color-scheme: dark;
+  @include mat.theme((
+    color: mat.$azure-palette,
+    typography: Roboto,
+    density: 0,
+  ));
 }
 
-// Dark theme scoped styles
+// Dark theme
 .dark-theme {
-  @include mat.theme($dark-theme);
   color-scheme: dark;
 
   --app-bg: #1a1a2e;
@@ -39,9 +26,8 @@ html {
   color: var(--app-text);
 }
 
-// Light theme scoped styles
+// Light theme
 .light-theme {
-  @include mat.theme($light-theme);
   color-scheme: light;
 
   --app-bg: #fafafa;
