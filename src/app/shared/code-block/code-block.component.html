@@ -1,9 +1,5 @@
-<div class="code-block-wrapper">
-  <div class="chart-area">
-    <ng-content></ng-content>
-  </div>
-  <div class="code-area">
-    <mat-tab-group>
+<div class="code-block">
+  <mat-tab-group>
       @if (htmlCode) {
         <mat-tab label="html">
           <markdown [data]="htmlCode | language: 'html'"></markdown>
@@ -25,5 +21,4 @@
         </mat-tab>
       }
     </mat-tab-group>
-  </div>
 </div>

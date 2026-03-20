@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-simple.component.html';
 import component from './graph-simple.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 // IGNORE END
 
 @Component({
@@ -18,6 +19,7 @@ export class GraphSimpleComponent {
   html = html;
   component = component;
   // IGNORE END
+  readonly themeService = inject(ThemeService);
   options: EChartsCoreOption = {
     title: {
       text: 'Simple Graph',

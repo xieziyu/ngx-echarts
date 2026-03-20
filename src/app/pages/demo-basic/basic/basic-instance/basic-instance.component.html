@@ -6,7 +6,7 @@
   <button (click)="callMethod('getOption')" mat-stroked-button>getOption()</button>
   <button (click)="callMethod('clear')" mat-stroked-button>clear()</button>
 </div>
-<div echarts (chartInit)="onChartInit($event)" [options]="options" class="demo-chart"></div>
+<div echarts (chartInit)="onChartInit($event)" [options]="options" [theme]="themeService.echartsTheme()" class="demo-chart"></div>
 <!-- DEMO END -->
 
 <app-code-block [html]="html" [component]="component"> </app-code-block>

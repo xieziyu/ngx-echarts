@@ -3,6 +3,7 @@ import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 import html from './basic-update.component.html';
 import component from './basic-update.component.txt';
 // IGNORE END
@@ -18,6 +19,7 @@ export class BasicUpdateComponent implements OnInit, OnDestroy {
   html = html;
   component = component;
   // IGNORE END
+  readonly themeService = inject(ThemeService);
   options: EChartsCoreOption;
   updateOptions: EChartsCoreOption;
 

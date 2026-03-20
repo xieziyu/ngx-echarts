@@ -8,6 +8,7 @@ import html from './tree-radial.component.html';
 import component from './tree-radial.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 import { AsyncPipe } from '@angular/common';
 // IGNORE END
 
@@ -19,6 +20,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class TreeRadialComponent implements OnInit {
   private http = inject(HttpClient);
+  readonly themeService = inject(ThemeService);
 
   // IGNORE START
   html = html;

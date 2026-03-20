@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-discrete.component.html';
 import component from './heatmap-discrete.component.txt';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { CodeBlockComponent } from '../../../../shared/code-block/code-block.component';
+import { ThemeService } from '../../../../services/theme.service';
 // IGNORE END
 
 @Component({
@@ -18,6 +19,7 @@ export class HeatmapDiscreteComponent implements OnInit {
   html = html;
   component = component;
   // IGNORE END
+  readonly themeService = inject(ThemeService);
   options: EChartsCoreOption;
   noise = getNoiseHelper();
 

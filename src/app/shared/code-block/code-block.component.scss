@@ -1,20 +1,3 @@
-.code-block-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.code-block {
   margin-top: 16px;
-}
-
-.chart-area {
-  min-height: 400px;
-}
-
-.code-area {
-  overflow: hidden;
-}
-
-@media (max-width: 960px) {
-  .code-block-wrapper {
-    grid-template-columns: 1fr;
-  }
 }
