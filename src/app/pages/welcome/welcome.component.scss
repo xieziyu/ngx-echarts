@@ -26,7 +26,18 @@
   font-weight: 500;
   color: var(--app-accent);
   border: 1px solid var(--app-accent);
+  margin-bottom: 16px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
   margin-bottom: 24px;
+
+  img {
+    height: 20px;
+  }
 }
 
 h1 {
