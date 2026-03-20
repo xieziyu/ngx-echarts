@@ -1,10 +1,12 @@
 .hero {
   text-align: center;
-  padding: 64px 24px;
+  padding: 80px 24px 64px;
   background: linear-gradient(135deg, var(--app-hero-from) 0%, var(--app-hero-via) 50%, var(--app-hero-to) 100%);
   border-radius: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
   border: 1px solid var(--app-border);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-inner {
@@ -43,9 +45,10 @@
 }
 
 h1 {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 56px;
+  font-weight: 800;
   margin-bottom: 16px;
+  letter-spacing: -1.5px;
 }
 
 .accent {
@@ -85,79 +88,135 @@ h1 {
 }
 
 .features {
-  margin-bottom: 48px;
+  margin-bottom: 64px;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 
   h2 {
-    font-size: 28px;
-    font-weight: 500;
-    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
     color: var(--app-accent);
+    letter-spacing: -0.5px;
   }
 
   p {
+    font-size: 16px;
     color: var(--app-text-secondary);
   }
 }
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 .feature-card {
-  padding: 24px;
-  text-align: center;
+  padding: 28px;
+  text-align: left;
   background: var(--app-surface);
   border: 1px solid var(--app-border);
-  border-radius: 12px;
-  transition: box-shadow 0.2s;
+  border-radius: 14px;
+  transition:
+    transform 0.25s cubic-bezier(0.33, 1, 0.68, 1),
+    box-shadow 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+  }
 
   &:hover {
-    box-shadow: 0 4px 20px var(--app-glow);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px var(--app-glow);
   }
 
   .feature-icon {
-    font-size: 36px;
-    width: 36px;
-    height: 36px;
-    margin-bottom: 16px;
+    font-size: 28px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    margin-bottom: 20px;
   }
 
-  &:nth-child(1) .feature-icon {
-    color: var(--app-color-blue);
+  // Card 1 — Blue (Angular)
+  &:nth-child(1) {
+    &::before {
+      background: var(--app-color-blue);
+    }
+    .feature-icon {
+      color: var(--app-color-blue);
+      background: var(--app-tint-blue);
+    }
   }
-  &:nth-child(2) .feature-icon {
-    color: var(--app-color-emerald);
+
+  // Card 2 — Emerald (Tree-shake)
+  &:nth-child(2) {
+    &::before {
+      background: var(--app-color-emerald);
+    }
+    .feature-icon {
+      color: var(--app-color-emerald);
+      background: var(--app-tint-emerald);
+    }
   }
-  &:nth-child(3) .feature-icon {
-    color: var(--app-color-amber);
+
+  // Card 3 — Amber (TypeScript)
+  &:nth-child(3) {
+    &::before {
+      background: var(--app-color-amber);
+    }
+    .feature-icon {
+      color: var(--app-color-amber);
+      background: var(--app-tint-amber);
+    }
   }
-  &:nth-child(4) .feature-icon {
-    color: var(--app-color-rose);
+
+  // Card 4 — Rose (Responsive)
+  &:nth-child(4) {
+    &::before {
+      background: var(--app-color-rose);
+    }
+    .feature-icon {
+      color: var(--app-color-rose);
+      background: var(--app-tint-rose);
+    }
   }
 
   h3 {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 8px;
   }
 
   p {
     font-size: 14px;
     color: var(--app-text-secondary);
-    line-height: 1.5;
+    line-height: 1.6;
+    margin: 0;
   }
 }
 
 .docs-section {
   max-width: 800px;
   margin: 0 auto;
+  padding: 32px;
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 14px;
 }
 
 @media (max-width: 768px) {
@@ -167,5 +226,9 @@ h1 {
 
   .tagline {
     font-size: 16px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
   }
 }

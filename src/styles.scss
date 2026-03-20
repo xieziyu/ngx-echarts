@@ -58,6 +58,12 @@ body {
   --app-color-amber: #ffd54f;
   --app-color-rose: #f48fb1;
 
+  // Feature card tinted backgrounds
+  --app-tint-blue: rgba(100, 181, 246, 0.08);
+  --app-tint-emerald: rgba(105, 240, 174, 0.08);
+  --app-tint-amber: rgba(255, 213, 79, 0.06);
+  --app-tint-rose: rgba(244, 143, 177, 0.08);
+
   // Hero gradient
   --app-hero-from: #1a1a3e;
   --app-hero-via: #1e2848;
@@ -87,6 +93,12 @@ body {
   --app-color-emerald: #2e7d32;
   --app-color-amber: #f57f17;
   --app-color-rose: #c62828;
+
+  // Feature card tinted backgrounds
+  --app-tint-blue: rgba(21, 101, 192, 0.06);
+  --app-tint-emerald: rgba(46, 125, 50, 0.06);
+  --app-tint-amber: rgba(245, 127, 23, 0.05);
+  --app-tint-rose: rgba(198, 40, 40, 0.05);
 
   // Hero gradient
   --app-hero-from: #eef2ff;
