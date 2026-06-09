@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { ConnectChartsComponent } from './connect-charts/connect-charts.component';
 import { LineDraggableComponent } from './line-draggable/line-draggable.component';
 
@@ -6,6 +6,7 @@ import { LineDraggableComponent } from './line-draggable/line-draggable.componen
   selector: 'app-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [ConnectChartsComponent, LineDraggableComponent],
 })
 export class AdvancedComponent {

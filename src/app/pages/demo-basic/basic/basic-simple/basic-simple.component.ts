@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './basic-simple.component.html';
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-basic-simple',
   templateUrl: './basic-simple.component.html',
   styleUrls: ['./basic-simple.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicSimpleComponent implements OnInit {

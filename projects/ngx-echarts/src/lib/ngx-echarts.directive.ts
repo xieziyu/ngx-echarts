@@ -13,7 +13,7 @@ import {
   output,
 } from '@angular/core';
 import { outputFromObservable, outputToObservable } from '@angular/core/rxjs-interop';
-import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
+import type { ECElementEvent, ECharts, EChartsCoreOption, EChartsInitOpts } from 'echarts/core';
 import { Observable, ReplaySubject, Subject, Subscription, asyncScheduler } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { ChangeFilterV2 } from './change-filter-v2';
@@ -31,17 +31,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
 
   readonly options = input<EChartsCoreOption | null>(null);
   readonly theme = input<string | ThemeOption | null>(this.config.theme ?? null);
-  readonly initOpts = input<{
-    devicePixelRatio?: number;
-    renderer?: string;
-    width?: number | string;
-    height?: number | string;
-    locale?: string;
-    ssr?: boolean;
-    useDirtyRect?: boolean;
-    useCoarsePointer?: boolean;
-    pointerSize?: number;
-  } | null>(null);
+  readonly initOpts = input<EChartsInitOpts | null>(null);
   readonly merge = input<EChartsCoreOption | null>(null);
   readonly autoResize = input(true);
   readonly loading = input(false);
@@ -120,15 +110,15 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   readonly chartRendered = outputFromObservable(this.createLazyEvent<any>('rendered'));
   readonly chartFinished = outputFromObservable(this.createLazyEvent<any>('finished'));
 
-  public animationFrameID = null;
-  private chart: ECharts;
+  public animationFrameID: number | null = null;
+  private chart: ECharts | null = null;
   private chart$ = new ReplaySubject<ECharts>(1);
-  private resizeOb: ResizeObserver;
+  private resizeOb?: ResizeObserver;
   private resize$ = new Subject<void>();
-  private resizeSub: Subscription;
+  private resizeSub?: Subscription;
   private initChartTimer?: number;
   private changeFilter = new ChangeFilterV2();
-  private loadingSub: Subscription;
+  private loadingSub?: Subscription;
   private resizeObFired: boolean = false;
   private echarts: any = this.config.echarts;
 
@@ -215,11 +205,13 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
   private toggleLoading(loading: boolean) {
     if (this.chart) {
       loading
-        ? this.chart.showLoading(this.loadingType(), this.loadingOpts())
+        ? this.chart.showLoading(this.loadingType(), this.loadingOpts() ?? undefined)
         : this.chart.hideLoading();
     } else {
       this.loadingSub = this.chart$.subscribe((chart) =>
-        loading ? chart.showLoading(this.loadingType(), this.loadingOpts()) : chart.hideLoading()
+        loading
+          ? chart.showLoading(this.loadingType(), this.loadingOpts() ?? undefined)
+          : chart.hideLoading()
       );
     }
   }
@@ -230,7 +222,7 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
         this.chart.setOption(option, opts);
       } catch (e) {
         console.error(e);
-        this.optionsError.emit(e);
+        this.optionsError.emit(e instanceof Error ? e : new Error(String(e)));
       }
     }
   }
@@ -259,8 +251,8 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
       const load =
         typeof this.echarts === 'function' ? this.echarts : () => Promise.resolve(this.echarts);
 
-      return load().then(({ init }) =>
-        init(dom, this.theme() ?? this.config?.theme, this.initOpts())
+      return load().then(({ init }: { init: (typeof import('echarts/core'))['init'] }) =>
+        init(dom, this.theme() ?? this.config?.theme, this.initOpts() ?? undefined)
       );
     });
   }
@@ -282,9 +274,10 @@ export class NgxEchartsDirective implements OnChanges, OnDestroy, OnInit, AfterV
     if (this.chart) {
       this.setOption(this.options(), true);
     } else {
-      this.chart = await this.createChart();
-      this.chart$.next(this.chart);
-      this.chartInit.emit(this.chart);
+      const chart = await this.createChart();
+      this.chart = chart;
+      this.chart$.next(chart);
+      this.chartInit.emit(chart);
       this.setOption(this.options(), true);
     }
   }

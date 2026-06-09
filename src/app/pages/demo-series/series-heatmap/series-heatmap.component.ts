@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { HeatmapCalendarComponent } from './heatmap-calendar/heatmap-calendar.component';
 import { HeatmapDiscreteComponent } from './heatmap-discrete/heatmap-discrete.component';
 
@@ -6,6 +6,7 @@ import { HeatmapDiscreteComponent } from './heatmap-discrete/heatmap-discrete.co
   selector: 'app-series-heatmap',
   templateUrl: './series-heatmap.component.html',
   styleUrl: './series-heatmap.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [HeatmapCalendarComponent, HeatmapDiscreteComponent],
 })
 export class SeriesHeatmapComponent {

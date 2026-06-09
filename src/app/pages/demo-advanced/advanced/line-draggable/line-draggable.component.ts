@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import * as util from 'zrender/lib/core/util';
 // IGNORE START
@@ -22,6 +22,7 @@ const Data = [
   selector: 'app-line-draggable',
   templateUrl: './line-draggable.component.html',
   styleUrls: ['./line-draggable.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class LineDraggableComponent implements OnDestroy {

@@ -1,4 +1,11 @@
-import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import { NgxEchartsDirective } from 'ngx-echarts';
@@ -12,6 +19,7 @@ import component from './basic-update.component.txt';
   selector: 'app-basic-update',
   templateUrl: './basic-update.component.html',
   styleUrls: ['./basic-update.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicUpdateComponent implements OnInit, OnDestroy {

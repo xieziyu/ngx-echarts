@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +13,7 @@ import component from './basic-dataset.component.txt';
   selector: 'app-basic-dataset',
   templateUrl: './basic-dataset.component.html',
   styleUrls: ['./basic-dataset.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicDatasetComponent {

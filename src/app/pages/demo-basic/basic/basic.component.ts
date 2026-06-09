@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { BasicDatasetComponent } from './basic-dataset/basic-dataset.component';
 import { BasicEventsComponent } from './basic-events/basic-events.component';
 import { BasicInitOptsComponent } from './basic-init-opts/basic-init-opts.component';
@@ -12,6 +12,7 @@ import { BasicUpdateComponent } from './basic-update/basic-update.component';
   selector: 'app-basic',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     BasicSimpleComponent,
     BasicDatasetComponent,

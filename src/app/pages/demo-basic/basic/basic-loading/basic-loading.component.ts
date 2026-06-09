@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,7 @@ import component from './basic-loading.component.txt';
   selector: 'app-basic-loading',
   templateUrl: './basic-loading.component.html',
   styleUrls: ['./basic-loading.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicLoadingComponent {

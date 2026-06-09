@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import type { EChartsCoreOption } from 'echarts/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import type { EChartsCoreOption, EChartsInitOpts } from 'echarts/core';
 // IGNORE START
 import html from './basic-init-opts.component.html';
 import component from './basic-init-opts.component.txt';
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-basic-init-opts',
   templateUrl: './basic-init-opts.component.html',
   styleUrls: ['./basic-init-opts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicInitOptsComponent {
@@ -20,7 +21,7 @@ export class BasicInitOptsComponent {
   component = component;
   // IGNORE END
   readonly themeService = inject(ThemeService);
-  initOpts = {
+  initOpts: EChartsInitOpts = {
     renderer: 'svg',
     width: 300,
     height: 300,

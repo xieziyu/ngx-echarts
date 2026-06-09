@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-simple.component.html';
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-graph-simple',
   templateUrl: './graph-simple.component.html',
   styleUrls: ['./graph-simple.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class GraphSimpleComponent {

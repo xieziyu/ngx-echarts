@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -17,6 +17,7 @@ import { AsyncPipe } from '@angular/common';
   selector: 'app-tree-from-left-to-right',
   templateUrl: './tree-from-left-to-right.component.html',
   styleUrls: ['./tree-from-left-to-right.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent, AsyncPipe],
 })
 export class TreeFromLeftToRightComponent implements OnInit {

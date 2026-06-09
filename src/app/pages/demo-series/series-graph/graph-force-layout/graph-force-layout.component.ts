@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './graph-force-layout.component.html';
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-graph-force-layout',
   templateUrl: './graph-force-layout.component.html',
   styleUrls: ['./graph-force-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class GraphForceLayoutComponent implements OnInit {

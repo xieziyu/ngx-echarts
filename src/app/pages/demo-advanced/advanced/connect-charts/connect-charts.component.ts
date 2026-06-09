@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import { getInstanceByDom, connect } from 'echarts/core';
 // IGNORE START
@@ -12,6 +12,7 @@ import { CodeBlockComponent } from '../../../../shared/code-block/code-block.com
   selector: 'app-connect-charts',
   templateUrl: './connect-charts.component.html',
   styleUrls: ['./connect-charts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class ConnectChartsComponent implements AfterViewInit {
