@@ -2,7 +2,7 @@ import { enableProdMode, importProvidersFrom, provideZonelessChangeDetection } f
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 
 import { HashLocationStrategy, LocationStrategy, registerLocaleData } from '@angular/common';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi, withXhr } from '@angular/common/http';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -79,7 +79,7 @@ bootstrapApplication(AppComponent, {
       useClass: HashLocationStrategy,
     },
     provideEchartsCore({ echarts }),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withXhr(), withInterceptorsFromDi()),
     provideAnimations(),
   ],
 }).catch((err) => console.error(err));

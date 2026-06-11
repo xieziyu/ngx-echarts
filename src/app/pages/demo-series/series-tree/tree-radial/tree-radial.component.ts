@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -16,6 +16,7 @@ import { AsyncPipe } from '@angular/common';
   selector: 'app-tree-radial',
   templateUrl: './tree-radial.component.html',
   styleUrls: ['./tree-radial.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent, AsyncPipe],
 })
 export class TreeRadialComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { GraphForceLayoutComponent } from './graph-force-layout/graph-force-layout.component';
 import { GraphSimpleComponent } from './graph-simple/graph-simple.component';
 
@@ -6,6 +6,7 @@ import { GraphSimpleComponent } from './graph-simple/graph-simple.component';
   selector: 'app-series-graph',
   templateUrl: './series-graph.component.html',
   styleUrls: ['./series-graph.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [GraphSimpleComponent, GraphForceLayoutComponent],
 })
 export class SeriesGraphComponent {

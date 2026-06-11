@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import { time as echartTime } from 'echarts/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
@@ -13,6 +13,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-heatmap-calendar',
   templateUrl: './heatmap-calendar.component.html',
   styleUrl: './heatmap-calendar.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class HeatmapCalendarComponent implements OnInit {

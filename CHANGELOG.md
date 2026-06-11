@@ -1,3 +1,5 @@
+- 2026.06.09: v22.0.0
+  - feat: Upgrade to angular 22
 - 2025.11.24: v21.0.0
   - feat: Upgrade to angular 21
 - 2025.06.26: v20.0.1

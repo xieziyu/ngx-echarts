@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "esModuleInterop": true,
@@ -10,10 +9,11 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "importHelpers": true,
+    "strict": false,
     "target": "ES2022",
     "paths": {
-      "ngx-echarts": ["dist/ngx-echarts"],
-      "ngx-echarts/*": ["dist/ngx-echarts/*"]
+      "ngx-echarts": ["./dist/ngx-echarts"],
+      "ngx-echarts/*": ["./dist/ngx-echarts/*"]
     },
     "useDefineForClassFields": false
   },

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { ECElementEvent, ECharts, EChartsCoreOption } from 'echarts/core';
 import type { ECActionEvent } from '../../../../shared/interface';
 import LinearGradient from 'zrender/lib/graphic/LinearGradient';
@@ -14,6 +14,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-basic-events',
   templateUrl: './basic-events.component.html',
   styleUrls: ['./basic-events.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicEventsComponent implements OnInit {

@@ -46,6 +46,7 @@
 
 Latest version @npm:
 
+- `v22.0.0` for Angular 22
 - `v21.0.0` for Angular 21
 - `v20.0.1` for Angular 20
 - `v19.0.0` for Angular 19
@@ -63,6 +64,9 @@ Latest version @npm:
 A starter project on Github: https://github.com/xieziyu/ngx-echarts-starter
 
 # Latest Update
+
+- 2026.06.09: v22
+  - feat: Upgrade to angular 22
 
 - 2025.11.24: v21
   - feat: Upgrade to angular 21

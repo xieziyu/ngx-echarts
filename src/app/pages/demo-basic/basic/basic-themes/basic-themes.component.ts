@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import { NgxEchartsDirective, ThemeOption } from 'ngx-echarts';
 import { CoolTheme } from './cool-theme';
@@ -14,6 +14,7 @@ import data from './cool-theme.txt';
   selector: 'app-basic-themes',
   templateUrl: './basic-themes.component.html',
   styleUrls: ['./basic-themes.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicThemesComponent {

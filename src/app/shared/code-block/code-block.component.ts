@@ -1,4 +1,4 @@
-import { Component, OnInit, input } from '@angular/core';
+import { Component, OnInit, input, ChangeDetectionStrategy } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { LanguagePipe, MarkdownComponent } from 'ngx-markdown';
 
@@ -6,6 +6,7 @@ import { LanguagePipe, MarkdownComponent } from 'ngx-markdown';
   selector: 'app-code-block',
   templateUrl: './code-block.component.html',
   styleUrls: ['./code-block.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatTabsModule, MarkdownComponent, LanguagePipe],
 })
 export class CodeBlockComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { ECharts, EChartsCoreOption } from 'echarts/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // IGNORE START
@@ -14,6 +14,7 @@ import component from './basic-instance.component.txt';
   selector: 'app-basic-instance',
   templateUrl: './basic-instance.component.html',
   styleUrls: ['./basic-instance.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, NgxEchartsDirective, CodeBlockComponent],
 })
 export class BasicInstanceComponent {

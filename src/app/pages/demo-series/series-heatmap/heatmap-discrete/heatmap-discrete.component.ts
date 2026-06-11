@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectionStrategy } from '@angular/core';
 import type { EChartsCoreOption } from 'echarts/core';
 // IGNORE START
 import html from './heatmap-discrete.component.html';
@@ -12,6 +12,7 @@ import { ThemeService } from '../../../../services/theme.service';
   selector: 'app-heatmap-discrete',
   templateUrl: './heatmap-discrete.component.html',
   styleUrl: './heatmap-discrete.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [NgxEchartsDirective, CodeBlockComponent],
 })
 export class HeatmapDiscreteComponent implements OnInit {

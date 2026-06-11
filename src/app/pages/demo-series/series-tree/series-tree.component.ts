@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ChangeDetectionStrategy } from '@angular/core';
 import { TreeFromLeftToRightComponent } from './tree-from-left-to-right/tree-from-left-to-right.component';
 import { TreeRadialComponent } from './tree-radial/tree-radial.component';
 
@@ -6,6 +6,7 @@ import { TreeRadialComponent } from './tree-radial/tree-radial.component';
   selector: 'app-series-tree',
   templateUrl: './series-tree.component.html',
   styleUrls: ['./series-tree.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [TreeFromLeftToRightComponent, TreeRadialComponent],
 })
 export class SeriesTreeComponent {

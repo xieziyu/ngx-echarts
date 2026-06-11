@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ngx-echarts is an Angular directive library that wraps Apache ECharts for Angular applications. Published as `ngx-echarts` on npm. Targets Angular 21 and ECharts 6+.
+ngx-echarts is an Angular directive library that wraps Apache ECharts for Angular applications. Published as `ngx-echarts` on npm. Targets Angular 22 and ECharts 6+.
 
 ## Commands
 
@@ -41,11 +41,11 @@ ngx-echarts is an Angular directive library that wraps Apache ECharts for Angula
 
 ### Demo App (`src/app/`)
 
-- **App shell** (`app.component.ts`): Standalone component using **Angular Material 21** (toolbar, sidenav, menu, buttons, icons)
+- **App shell** (`app.component.ts`): Standalone component using **Angular Material 22** (toolbar, sidenav, menu, buttons, icons)
 - **Routing** (`app-routing.module.ts`): Lazy-loaded feature modules
 - **Pages**: `welcome`, `demo-basic` (8 demos), `demo-advanced` (2 demos), `demo-series` (graph/tree/heatmap with child routes)
 - **Shared**: `code-block` component (Material Tabs), `theme.service.ts` (dark/light theme with signals + CSS variables)
-- **UI**: Angular Material 21 (M3) throughout — toolbar, sidenav, menu, buttons, tabs
+- **UI**: Angular Material 22 (M3) throughout — toolbar, sidenav, menu, buttons, tabs
 - **Code rendering**: ngx-markdown + Prism.js
 
 ## Code Style
@@ -58,8 +58,8 @@ ngx-echarts is an Angular directive library that wraps Apache ECharts for Angula
 
 ## Key Dependencies
 
-- Angular 21, TypeScript ~5.9, RxJS ~7.5
-- Angular Material 21 (M3, full demo app UI)
+- Angular 22, TypeScript ~6.0, RxJS ~7.5
+- Angular Material 22 (M3, full demo app UI)
 - ngx-markdown ^20, Prism.js ^1.28
 - compodoc for API documentation
 
